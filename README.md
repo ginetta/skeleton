@@ -1,0 +1,4 @@
+skeleton
+========
+
+Temporary skeleton page
