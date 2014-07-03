@@ -16,37 +16,3 @@
 	line-height: ($px);
 	line-height: px2rem($px);
 }
-
-@mixin font-smoothing($value: true) {
-  @if $value == true {
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    font-smooth: always;
-  }
-  @else {
-    -webkit-font-smoothing: subpixel-antialiased;
-    -moz-osx-font-smoothing: auto;
-    font-smooth: auto;
-  }
-}
-
-@mixin placeholder($color) {
-  &.placeholder {
-    color: $color;
-  }
-  &::-webkit-input-placeholder {
-    color: $color;
-  }
-  // Firefox 4 to 18
-  &:-moz-placeholder {
-    color: $color;
-  }
-  // Firefox 19+
-  &::-moz-placeholder {
-    color: $color;
-  }
-  // Internet Explorer 10+
-  &:-ms-input-placeholder {
-    color: $color;
-  }
-}
