@@ -16,7 +16,7 @@ define(function(){
           window[vendors[x]+'CancelAnimationFrame'] || window[vendors[x]+'CancelRequestAnimationFrame'];
     }
 
-    if (!window.requestAnimationFrame)
+    if (!window.requestAnimationFrame) {
         window.requestAnimationFrame = function(callback, element) {
             var currTime = new Date().getTime();
             var timeToCall = Math.max(0, 16 - (currTime - lastTime));
@@ -25,11 +25,14 @@ define(function(){
             lastTime = currTime + timeToCall;
             return id;
         };
+    }
 
-    if (!window.cancelAnimationFrame)
+    if (!window.cancelAnimationFrame) {
         window.cancelAnimationFrame = function(id) {
-        clearTimeout(id);
-    };
+            clearTimeout(id);
+        };
+    }
+        
 
     return {
         request: function(){ return requestAnimationFrame.apply(null, arguments); },

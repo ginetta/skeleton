@@ -161,6 +161,24 @@ module.exports = function (grunt) {
                     cssprefix: '.icon-'
                 }
             }
+        },
+        jshint: {
+            options: {
+                jshintrc: true,
+                reporter: require('jshint-stylish')
+            },
+            js: {
+                expand: true,
+                src: ['Gruntfile.js', 'js/**'],
+                dest: config.targetDir,
+                cwd: config.srcDir + '/'
+            },
+            modulesjs: {
+                expand: true,
+                src: ['modules/**/*.js'],
+                dest: config.targetDir,
+                cwd: config.srcDir
+            },
         }
     });
 
@@ -174,6 +192,10 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-grunticon');
 
     grunt.loadNpmTasks('grunt-autoprefixer');
+
+
+    // Code Quality Stuff
+    grunt.loadNpmTasks('grunt-contrib-jshint')
 
 
     //grunt.task.loadTasks('./build/grunt-tasks/');
