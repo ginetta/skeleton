@@ -1,0 +1,78 @@
+// Media Queries in Sass 3.2
+//
+// These mixins make media queries a breeze with Sass.
+// The media queries from mobile up until desktop all
+// trigger at different points along the way
+//
+// And important point to remember is that and width
+// over the portrait width is considered to be part of the
+// landscape width. This allows us to capture widths of devices
+// that might not fit the dimensions exactly. This means the break
+// points are seamless.
+//
+// http://thesassway.com/intermediate/responsive-web-design-in-sass-using-media-queries-in-sass-32
+
+$mq-mobile-portrait     : 400px !default;
+$mq-mobile-landscape    : 740px !default;
+$mq-tablet-portrait     : 850px !default;
+$mq-tablet-landscape    : 1050px !default;
+$mq-desktop             : 1382px !default;
+
+// Both portrait and landscape
+@mixin mobile {
+    @media (max-width : $mq-mobile-landscape) {
+        @content;
+    }
+}
+@mixin not-mobile {
+    @media (min-width : ($mq-mobile-landscape+1px)) {
+        @content;
+    }
+}
+// Both portrait and landscape
+@mixin mobile-portrait {
+    @media (max-width : $mq-mobile-portrait) {
+        @content;
+    }
+}
+
+@mixin not-tablet {
+    @media (min-width : ($mq-tablet-landscape+1px)) {
+        @content;
+    }
+}
+
+// Up to and including the tablet landscape
+@mixin tablet {
+    @media only screen and (max-width : $mq-tablet-landscape) {
+        @content;
+    }
+}
+
+// Everything below and including the portrait width of the tablet
+@mixin tablet-portrait {
+    @media only screen and (max-width : $mq-tablet-portrait) {
+        @content;
+    }
+}
+
+// All high resolution devices (inc printer)
+@mixin highres {
+    @media print, (-o-min-device-pixel-ratio: 5/4), (-webkit-min-device-pixel-ratio: 1.25), (min-resolution: 120dpi) {
+        @content;
+    }
+}
+
+// Retina screens have a 1.5 pixel ratio, not 2
+@mixin retina {
+    @media only screen and (-webkit-min-device-pixel-ratio : 1.5), only screen and (min-device-pixel-ratio : 1.5) {
+        @content;
+    }
+}
+
+// printer
+@mixin print {
+    @media print {
+        @content;
+    }
+}

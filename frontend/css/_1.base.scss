@@ -1,0 +1,94 @@
+html, body {
+    height: 100%;
+    font-family: $f-default;
+}
+
+html, body, .l-body {
+    min-height: 100%;
+    font-weight: 300;
+}
+
+html {
+    font-size: $base-font-size;
+    color: $c-grey-darkest;
+    -webkit-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+}
+
+strong {
+    font-weight: 400;
+}
+
+.f-color--blue {
+    color: $blue;
+}
+.f-color--green {
+    color: $green;
+}
+.f-color--orange {
+    color: $orange;
+}
+
+.bg-color--blue-light {
+    background-color: rgba( $blue, .1 );
+}
+.bg-color--blue {
+    background: $blue;
+}
+.bg-color--green-light{
+    background-color: rgba( $green, .1 );
+}
+.bg-color--green {
+    background-color: $green;
+}
+.bg-color--orange-light {
+    background-color: rgba( $orange, .1 );
+}
+.bg-color--orange {
+    background-color: $orange;
+}
+
+/*
+ * Remove text-shadow in selection highlight: h5bp.com/i
+ * These selection rule sets have to be separate.
+ * Customize the background color to match your design.
+ */
+::-moz-selection {
+    background: #b3d4fc;
+    text-shadow: none;
+}
+
+::selection {
+    background: #b3d4fc;
+    text-shadow: none;
+}
+
+
+/*
+ * Remove the gap between images, videos, audio and canvas and the bottom of
+ * their containers: h5bp.com/i/440
+ */
+audio,
+canvas,
+img,
+svg,
+video {
+    vertical-align: middle;
+}
+
+/*
+ * Remove default fieldset styles.
+ */
+
+fieldset {
+    border: 0;
+    margin: 0;
+    padding: 0;
+}
+
+/*
+ * Allow only vertical resizing of textareas.
+ */
+textarea {
+    resize: vertical;
+}
