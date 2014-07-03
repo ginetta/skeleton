@@ -9,7 +9,7 @@ var config;
 
 config = {
     srcDir: 'frontend',
-    targetDir: 'web',
+    targetDir: 'dist',
     tepDir: 'tmp'
 };
 
@@ -57,6 +57,14 @@ module.exports = function (grunt) {
                     dest: config.targetDir,
                     cwd: config.srcDir
                 }]
+            },
+            vendorjs: {
+                files: [{
+                    expand: true,
+                    src: ['bower_components/**/*.js'],
+                    dest: config.targetDir,
+                    cwd: config.srcDir
+                }]    
             }
         },
         watch: {

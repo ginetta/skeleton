@@ -3,8 +3,7 @@ requirejs.config({
     baseUrl: '../js/',
     paths: {
         //jquery: '../bower_components/jquery/jquery',
-        SectionsParallax: '../modules/sections/Sections-parallax',
-        siteNavigation: '../modules/site/site-navigation/site-navigation'
+        mymodule: '../modules/mymodule/mymodule'
     },
     shim: {
 

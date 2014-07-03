@@ -1,8 +1,9 @@
 /tmp/
-/web/
+dist/
 /frontend/img/icons/icons-*.png
 # We don't need this, right?
 /frontend/img/icons-rendered
+/frontend/bower_components
 
 node_modules
 .sass-cache

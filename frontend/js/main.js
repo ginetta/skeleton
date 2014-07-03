@@ -15,22 +15,9 @@
 
     $("body").addClass("js");
 
-    require(['SectionsParallax'], function (SectionsParallax) {
-        if(!is_touch_device()){
-            $('.js-section-parallax').each(function(i){
-                var sectionsParallax;
-                sectionsParallax = new SectionsParallax($(this), '.js-section-parallax-image', .4, "sectionParallax" + i);
-            });
-        }
+    require(['mymodule'], function () {
+        console.log('mymodule is loaded');
     });
-
-
-    if( $('.js-toggler') && $('.js-toggler').length ) {
-      require(['toggler'], function (SectionsParallax) {});
-    }
-
-    require(['siteNavigation']);
-    require(['tooltip']);
 
 })();
 
