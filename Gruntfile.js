@@ -208,6 +208,17 @@ module.exports = function (grunt) {
                 config: '.scss-lint.yml',
                 colorizeOutput: true
             }
+        },
+        plato: {
+            allFiles: {
+                files: {
+                    'reports': [
+                        config.srcDir + '/modules/**/*.js',
+                        'Gruntfile.js',
+                        config.srcDir + '/js/**'
+                    ]
+                }
+            }
         }
     });
 
@@ -227,6 +238,7 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-contrib-jshint')
     grunt.loadNpmTasks('grunt-eslint');
     grunt.loadNpmTasks('grunt-scss-lint');
+    grunt.loadNpmTasks('grunt-plato');
 
 
     //grunt.task.loadTasks('./build/grunt-tasks/');
