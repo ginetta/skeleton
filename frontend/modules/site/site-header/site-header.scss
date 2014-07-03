@@ -1,0 +1,281 @@
+.site-header {
+  @extend %clearfix;
+  z-index: 5;
+
+  position: absolute;
+  top: 0; right: 0; left: 0;
+
+  padding: 30px 0;
+  color: $c-white;
+
+  font-size: 16px;
+  font-weight: 300;
+
+  text-align: left;
+
+  //@include transform(translate3d(0,0,20px));
+
+  @include mobile {
+    padding: 15px 20px;
+  }
+
+  &__inner {
+    position: relative;
+    z-index: 300;
+  }
+
+  &:before {
+    display: block;
+    content: "";
+    position: absolute;
+    top: -130px; left: 0; right: 0;
+    height: 100px;
+    box-shadow: 0 1px 300px 0 black;
+  }
+
+  a {
+    text-decoration: none;
+  }
+
+  &__nav {
+    @include inline-list;
+    line-height: 18px;
+
+    > li {
+      margin-right: 20px;
+    }
+    > li > a {
+      @include transition(color 0.2s);
+      &:link, &:visited {
+        color: $c-white;
+      }
+      &:hover, &:focus {
+        color: black;
+      }
+    }
+  }
+
+  &__left {
+    float: left;
+    padding-bottom: 0;
+    vertical-align: bottom;
+  }
+  &__right {
+    float: right;
+    width: 160px;
+    @include mobile {
+      width: 83px;
+      img {
+        width: 100% !important;
+        height: auto;
+      }
+    }
+  }
+  &__phone {
+    @include inline-block;
+    position: relative;
+    top: -2px;
+    font-size: 20px;
+    // IOS and other mobile browsers may transform the phone number to a link.
+    a {
+      text-decoration: none;
+      &:link, &:visited, &:hover, &:focus {
+        color: $c-white;
+      }
+    }
+  }
+  // Fixed header, visible on detail templates.
+  &__wrapper--fixed {
+    position: fixed;
+    top: 0; right: 0; left: 0;
+    height: 80px;
+    display: block;
+
+    z-index: 800;
+  }
+  // Large header, visible on special-u18 template.
+  &--large {
+    padding-bottom: 80px;
+  }
+  // White header, visible on kollektiv portal.
+  &--white {
+    // Display in white specific links, don't want to override dropdown style.
+    .site-header__phone,
+    .site-header__phone a {
+      &, &:link, &:visited, &:hover, &:focus {
+        color: $c-white;
+      }
+    }
+    .site-header__nav > li > a {
+      color: $c-white;
+      &:link, &:visited {
+        color: $c-white;
+      }
+      &:hover, &:focus {
+        color: black;
+      }
+    }
+    // Special case for dropdown in header white. Since links are white, when the
+    // dropdown is opened the trigger link become invisible.
+    // todo: maybe fix this with a modifier.
+    .dropdown--open > a {
+      color: black !important;
+    }
+    // Also switch the toggle here since this behavious only happen here.
+    // todo: refactor this, maybe move this directly on the dropdown__toggle if possible,
+    // or use a modifier.
+    .dropdown--open .dropdown__toggle.dropdown__toggle--white {
+      //@include sprite-ui(chevron-black--up);
+    }
+  }
+}
+
+
+$padding_side: 10px;
+
+.dropdown {
+  position: relative;
+  z-index: 10;
+  > a {
+    position: relative;
+    z-index: 20;
+    text-align: left;
+  }
+}
+
+.dropdown__menu {
+  @include no-bullets;
+  @include border-radius(3px);
+  display: none;
+  position: absolute;
+  top: -10px;
+  left: -($padding_side + 9px);
+  z-index: 12;
+  margin: 0;
+  padding: 37px $padding_side 10px $padding_side;
+  border: 1px solid #dddddd;
+  background: $white;
+  li {
+    display: block;
+    white-space: nowrap;
+  }
+  a {
+    @include clearfix;
+    display: block;
+    padding: 8px 1px;
+    border-top: 1px solid $c-grey-lightest;
+    text-decoration: none;
+    &:link, &:visited {
+      color: $c-grey-dark;
+    }
+    &:hover, &:focus {
+      color: $helsana-red;
+      background: #f0f0f0;
+    }
+  }
+}
+
+.dropdown__item--selected {
+  background: #f0f0f0;
+}
+
+.dropdown__menu {
+  &--primary {
+    a {
+      padding-left: 9px;
+      padding-right: 20px;
+      border-color: $c-grey-lightest;
+      &:link, &:visited {
+        color: $helsana-red;
+      }
+    }
+  }
+}
+
+.dropdown__menu--full {
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 600;
+  padding-top: 0;
+  padding-bottom: 0;
+  li:first-child a {
+    border-top: 0;
+  }
+}
+
+.dropdown__menu--small {
+  a {
+    padding: 6px 0;
+  }
+}
+
+.dropdown__menu--smaller {
+  a {
+    padding: 5px 5px;
+  }
+}
+
+@mixin dropdown-color($color) {
+  .dropdown__menu--#{$color} {
+    border-color: color($color, dark);
+    a {
+      &:link, &:visited {
+        color: color($color, dark);
+      }
+      &:hover, &:focus {
+        color: $black;
+      }
+    }
+    .dropdown__item-label {
+      color: color($color, normal);
+    }
+  }
+}
+
+@each $color in blue, green, orange, brown, red {
+  @include dropdown-color($color);
+}
+
+.dropdown__toggle {
+  @include inline-block;
+  position: relative;
+  top: 1px;
+  margin-left: 3px;
+  width: 10px;
+  height: 6px;
+}
+
+.dropdown__toggle--right {
+  top: 9px;
+  float: right;
+  margin-right: 6px;
+}
+
+.dropdown__toggle--right-edge {
+  top: 9px;
+  float: right;
+  margin-right: 0;
+  right: -2px;
+}
+
+.dropdown__item-label {
+  float: right;
+  margin-left: 10px;
+}
+
+.dropdown--open {
+  z-index: 300;
+  .dropdown__menu {
+    display: block;
+  }
+  .dropdown__toggle {
+    //@include sprite-ui(chevron--up);
+    &.dropdown__toggle--white {
+      //@include sprite-ui(chevron-white--up);
+    }
+    &.dropdown__toggle--blue {
+      //@include sprite-ui(chevron-blue--up);
+    }
+  }
+}

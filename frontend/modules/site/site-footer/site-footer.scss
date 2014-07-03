@@ -1,0 +1,20 @@
+.site-footer {
+  display: block;
+  font-size: 14px;
+  color: grey;
+
+  &__inner {
+    box-sizing: border-box;
+    height: 45px;
+    padding-top: 10px;
+  }
+  a {
+    padding-left: 17px;
+    &, &:link, &:visited {
+      color: grey;
+    }
+    &:hover, &:focus {
+      color: black;
+    }
+  }
+}

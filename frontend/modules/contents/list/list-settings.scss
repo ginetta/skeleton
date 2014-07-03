@@ -1,0 +1,83 @@
+.list__accordion {
+  > li {
+    border-top: 1px solid $c-grey-light;
+    padding: 27px 0;
+    //padding-bottom: 36px
+    &:last-child {
+      //padding-bottom: 0
+      border-bottom: 1px solid $c-grey-light;
+    }
+  }
+  &__head {
+    display: table;
+    width: 100%
+  }
+  &__title {
+    display: table-cell;
+    width: 704px - 50px;
+    margin: 0;
+    font-weight: 700;
+    @include font-size($f-size-mid);
+    @include mobile {
+      @include font-size($f-size-small);
+    }
+  }
+  &__head-right {
+    display: table-cell;
+    width: 14px;
+    text-align: right;
+    vertical-align: middle;
+    .icon {
+      display: none;
+    }
+    .icon-triangle-right--14--helsanared {
+      display: block;
+    }
+    .icon-triangle-down--14--helsanared {
+      display: none;
+    }
+  }
+  &__detail {
+    padding-top: 18px;
+    // Hide detail by default with js.
+    .js & {
+      display: none;
+    }
+  }
+  &__detail-toggle {
+    display: none;
+    .js & {
+      display: inline;
+    }
+  }
+  .list__content {
+    @include font-size($f-size-mid);
+    @include mobile {
+      @include font-size($f-size-small);
+    }
+  }
+}
+
+.desc {
+  font-size: $f-size-smaller;
+  @include mobile {
+    @include font-size($f-size-xtra-small);
+  }
+}
+
+.diagram {
+  display: table;
+  margin: 0 auto $s-gutter-double;
+  img {
+    width: 100%;
+  }
+}
+
+.toggler--is-down {
+  .icon-triangle-right--14--helsanared {
+    display: none;
+  }
+  .icon-triangle-down--14--helsanared {
+    display: block;
+  }
+}

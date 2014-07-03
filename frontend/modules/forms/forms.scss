@@ -1,0 +1,316 @@
+.form-input {
+  @include box-sizing(border-box);
+  display: inline-block;
+  vertical-align: middle;
+  border-radius: 3px;
+  padding: 5px 10px;
+  border: 1px solid $c-grey-mid;
+  line-height: 1.5;
+  @include placeholder($c-grey-mid);
+}
+
+.form-input__wrap {
+  @include box-sizing(border-box);
+  display: inline-block;
+  .form-input {
+    width: 100%;
+  }
+  @include mobile {
+    display: block;
+  }
+}
+
+.form-input__wrap--document-email {
+  width: 66.66%;
+  padding-right: 30px;
+  @include mobile {
+    width: 100%;
+    padding: 0 0 25px;
+  }
+}
+
+.form-input__wrap--document-submit {
+  width: 33.33%;
+  .button {
+    display: block;
+    width: 100%;
+  }
+  @include mobile {
+    width: 100%;
+  }
+}
+
+.form-input__wrap--document-agb {
+  display: block;
+  font-size: 14px;
+  padding-top: 20px;
+  @include mobile {
+    font-size: 12px;
+    margin-top: -5px;
+    padding-top: 0;
+    padding-bottom: 20px;
+  }
+}
+
+
+%button,
+.button {
+  @include transition(border-color 0.2s, background 0.2s);
+  @include inline-block;
+  @include border-radius(3px);
+
+  padding: 5px 10px;
+  border: 1px solid color(red, normal);
+  font-size: 16px;
+  font-weight: 300;
+  line-height: 1.5em;
+  background: color(red, normal);
+  color: white;
+  cursor: pointer;
+  text-decoration: none;
+  text-align: center;
+  // Force text color, especially on links (:visited).
+  &:link, &:visited {
+    color: white;
+  }
+  &:hover, &:focus {
+    border-color: color(red, dark);
+    background: color(red, dark);
+    color: white;
+    outline: 0;
+  }
+}
+
+input[type="submit"] {
+  @extend %button;
+}
+
+@mixin button-color($color) {
+  background: color($color, normal);
+  border-color: color($color, normal);
+  &%button--alt,
+  &.button--alt {
+    // Use transparent background so that it works in highlighted product.
+    // @see zusatz-default.html
+    background: transparent;
+    border-color: color($color, dark);
+    &:hover, &:focus {
+      background: transparent;
+      border-color: color($color, darker);
+    }
+  }
+  &%button--alt-selected,
+  &.button--alt-selected {
+    border-color: color($color, darker);
+    background: transparent;
+    &:hover, &:focus {
+      border-color: color($color, darker);
+      background: color($color, darker);
+    }
+  }
+  &%button--outline,
+  &.button--outline {
+    border-color: color($color, dark);
+    background: $white;
+    &, &:visited {
+      color: color($color, dark);
+    }
+    &:hover, &:focus {
+      color: color($color, darker);
+      border-color: color($color, darker);
+      background: transparent;
+    }
+  }
+  &%button--transparent,
+  &.button--transparent {
+    border-color: transparent;
+    background-color: transparent;
+    &:hover, &:focus {
+      background-color: transparent;
+      border-color: color($color, darker);
+    }
+  }
+  &:hover, &:focus {
+    border-color: color($color, darker);
+    background: color($color, darker);
+  }
+  &%button--primary,
+  &.button--primary {
+    border-color: color($color, dark);
+    background-color: color($color, dark);
+    &:hover, &:focus {
+      border-color: color($color, darker);
+      background-color: color($color, darker);
+    }
+  }
+}
+
+%button,
+.button {
+  @include button-color(red);
+}
+
+
+@mixin button-color--wrapper($color) {
+  %button--#{$color},
+  .button--#{$color} {
+    @include button-color($color);
+  }
+}
+
+@each $color in blue, green, orange, brown {
+  @include button-color--wrapper($color);
+}
+
+$white_darker: #cccccc;
+
+.button--white.button--outline {
+  &.button--outline {
+    border-color: white;
+    background: transparent;
+    &, &:visited {
+      color: white;
+    }
+    &:hover, &:focus {
+      color: $white_darker;
+      border-color: $white_darker;
+      background: transparent;
+    }
+  }
+}
+
+// Special white button for video in detail templates.
+.button--white.button--alt {
+  border-color: $c-grey-dark;
+  background: white;
+  &, &:visited {
+    color: $c-grey-darkest;
+  }
+  &:hover, &:focus {
+    color: $c-grey-darkest;
+    border-color: $c-grey-mid;
+    background: $c-grey-lightest;
+  }
+}
+
+// Special button type, used in offer.
+.button--input {
+  @include box-sizing(border-box);
+  padding: 7px 15px;
+  font-weight: 300;
+  line-height: normal;
+  &, &:link, &:visited, &:active, &:hover, &:focus {
+    border: 1px solid $c-grey-light;
+    color: black;
+    background: white;
+  }
+}
+
+// Button used in the footer of kollektiv form for "Zurück".
+.button--link {
+  @include font-smoothing(false);
+  border-color: transparent;
+  background: transparent;
+  &, &:visited, &:active {
+    color: $link-color !important;
+  }
+  &:hover, &:focus {
+    color: $link-hover-color !important;
+    border-color: transparent;
+    background: transparent;
+  }
+}
+
+.button--disabled-grey {
+  @include font-smoothing(false);
+  border-color: $c-grey-dark !important;
+  background: transparent !important;
+  color: $c-grey-dark !important;
+}
+
+
+@mixin button-disabled($color) {
+  &.button--disabled,
+  &[disabled=disabled],
+  &:disabled {
+    background-color: $color;
+    border-color: $color;
+    cursor: default;
+    &.button--outline {
+      background-color: transparent;
+      border-color: $color !important;
+      color: $color;
+    }
+  }
+}
+
+%button,
+.button {
+  @include button-disabled(#d79db3);
+}
+
+%button,
+.button {
+  &--large {
+    font-size: 18px;
+  }
+  &--full {
+    display: block;
+  }
+  &--wide {
+    min-width: 136px;
+  }
+  &--wider {
+    min-width: 190px;
+    // On kollektiv, button-large are a little wider.
+    &.button--large {
+      min-width: 198px;
+    }
+  }
+  &--widest {
+    // Used in thank-you template.
+    min-width: 310px;
+  }
+}
+
+
+
+%button--left,
+.button--left {
+  text-align: left;
+}
+
+%button__icon--right,
+.button__icon--right {
+  float: right;
+}
+
+%button-group,
+.button-group {
+  @include inline-list;
+  .button {
+    margin-right: 8px;
+  }
+  @include mobile {
+    display: block;
+    li {
+      display: block;
+    }
+    .button {
+      display: block;
+      width: 100%;
+      margin: 0 0 10px;
+      @include box-sizing(border-box);
+    }
+  }
+}
+
+%button-group--wide,
+.button-group--wide {
+  .button {
+    margin-right: 26px;
+    @include mobile {
+      margin-right: 0;
+    }
+  }
+}

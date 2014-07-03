@@ -1,0 +1,135 @@
+$circle-diameter: 340px;
+$circle-diameter-inner: 220px;
+
+$circle-diameter-mobile: 240px;
+$circle-diameter-mobile-inner: 155px;
+
+
+.insurance {
+    position: relative;
+    font-size: 14px;
+    margin: 50px 0;
+    @include mobile {
+        margin: 20px 0 30px;
+    }
+}
+
+.insurance__circle {
+    position: relative;
+    width: $circle-diameter; height: $circle-diameter;
+    @include mobile {
+        width: $circle-diameter-mobile; height: $circle-diameter-mobile;
+    }
+    margin: 0 auto;
+    &:after {
+        z-index: 3;
+        content: "";
+        position: absolute;
+        top: 50%; left: 50%;
+        width: $circle-diameter-inner; height: $circle-diameter-inner;
+        margin: ($circle-diameter-inner * -0.5) 0 0 ($circle-diameter-inner * -0.5);
+        @include mobile {
+            width: $circle-diameter-mobile-inner; height: $circle-diameter-mobile-inner;
+            margin: ($circle-diameter-mobile-inner * -0.5) 0 0 ($circle-diameter-mobile-inner * -0.5);
+        }
+        background: $white;
+        border-radius: 100%;
+    }
+}
+
+.insurance__image {
+    position: absolute;
+    top: 0; left: 0;
+    width: calc(100% + 10px); height: calc(100% + 10px);
+}
+
+.insurance__circle__inner {
+    position: absolute;
+    width: $circle-diameter; height: $circle-diameter;
+    @include mobile {
+        width: $circle-diameter-mobile; height: $circle-diameter-mobile;
+    }
+    border-radius: 100%;
+
+}
+
+.insurance__circle__left,
+.insurance__circle__right-top,
+.insurance__circle__right-bottom,
+.insurance__left,
+.insurance__right-top,
+.insurance__right-bottom {
+    position: absolute;
+    width: 50%;
+    overflow: hidden;
+    vertical-align: middle;
+    @include box-sizing(border-box);
+    text-decoration: none;
+}
+
+.insurance__left {
+    height: 100%;
+    top: 0; left: 0;
+    padding-right: ($circle-diameter / 2) + 20px;
+    @include mobile {
+        padding-right: ($circle-diameter-mobile / 2) + 20px;
+    }
+    text-align: right;
+}
+
+.insurance__circle__left {
+    height: 100%;
+    &, .insurance__circle__inner {
+        top: 0; left: 0;
+    }
+    .insurance__circle__inner {
+        background: $helsana-blue;
+    }
+
+}
+
+.insurance__right-top {
+    height: 50%;
+    top: 0; right: 0;
+    padding-left: ($circle-diameter / 2) + 20px;
+    @include mobile {
+        padding-left: ($circle-diameter-mobile / 2) + 20px;
+    }
+}
+
+.insurance__circle__right-top {
+    height: 50%;
+    &, .insurance__circle__inner {
+        top: 0; right: 0;
+    }
+    .insurance__circle__inner {
+        background: $helsana-green;
+    }
+}
+
+.insurance__right-bottom {
+    height: 50%;
+    bottom: 0; right: 0;
+    padding-left: ($circle-diameter / 2) + 20px;
+    @include mobile {
+        padding-left: ($circle-diameter-mobile / 2) + 20px;
+    }
+}
+
+.insurance__circle__right-bottom {
+    height: 50%;
+    &, .insurance__circle__inner {
+       bottom: 0; right: 0;
+    }
+    .insurance__circle__inner {
+        background: $helsana-orange;
+    }
+}
+
+
+.insurance__caption {
+    position: relative;
+    top: 50%;
+    @include transform( translateY(-50%) );
+    display: block;
+}

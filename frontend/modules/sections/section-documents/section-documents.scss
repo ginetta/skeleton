@@ -1,0 +1,55 @@
+.document-preview__list {
+    font-size: 0;
+    margin-bottom: 45px;
+    @include mobile {
+        margin-bottom: 25px;
+    }
+}
+.document-preview__item {
+    width: 33.33%;
+    font-size: 16px;
+    text-align: center;
+    &:first-of-type, &:first-child {
+        text-align: left;
+    }
+    &:last-of-type, &:last-child {
+        text-align: right;
+    }
+}
+
+.document-preview {
+    position: relative;
+    display: inline-block;
+    box-shadow: 0 0 10px rgba($black,.6);
+    @include mobile {
+        width: 93%;
+        font-size: 12px;
+
+        img {
+            width: 100%;
+        }
+    }
+    &:hover .document-preview__overlay {
+        opacity: 1;
+    }
+    .icon {
+        display: block;
+        margin: 0 auto;
+    }
+}
+
+.document-preview__overlay {
+    position: absolute;
+    top: 0; right: 0; bottom: 0; left: 0;
+    background: rgba($black,.6);
+    opacity: 0;
+    @include transition(opacity 300ms ease-in);
+    @include mobile {
+        opacity: 1;
+    }
+}
+
+.document-preview__text {
+    color: $white;
+    text-align: center;
+}

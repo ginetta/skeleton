@@ -1,0 +1,99 @@
+.side-nav {
+  @include transition(opacity 0.2s);
+  max-width: 140px;
+  // todo: make margin top dynamic, should stay centered with more links.
+  margin-top: -60px;
+  font-size: 14px;
+  white-space: nowrap;
+
+  @include tablet {
+    display: none;
+  }
+
+  a {
+    display: block;
+    margin-bottom: 5px;
+
+    &:link, &:visited, &:hover, &:focus {
+      color: $c-grey-mid;
+      color: rgba(black, 0.4);
+      outline: 0;
+    }
+    text-decoration: none;
+  }
+  .current a {
+    &:link, &:visited, &:hover, &:focus {
+      color: $c-grey-darkest;
+      color: rgba(black, 0.8);
+    }
+  }
+  &--hidden {
+    opacity: 0;
+  }
+  &__wrapper {
+    position: fixed;
+    z-index: 1;
+    top: 50%;
+    left: 20px;
+    right: 0;
+    height: 0;
+    overflow: visible;
+  }
+  &__text {
+    @include transition(opacity 0.2s, visibility 0s ease 1s);
+    opacity: 0;
+    visibility: hidden;
+  }
+  &--focused {
+    .side-nav__text {
+      @include transition-delay(0);
+      opacity: 1;
+      visibility: visible;
+    }
+  }
+}
+
+.side-nav__wrapper .container {
+  height: 0;
+}
+
+// Side nav bullet icon.
+.icon-side-nav__bullet {
+  @include inline-block;
+  width: 12px;
+  height: 12px;
+  margin-right: 10px;
+  border-radius: 100%;
+  background: rgba($white,.2);
+  border: 1px solid $c-grey-light;
+
+  li:hover & {
+    border-color: $black;
+  }
+  li.current & {
+    background: $black;
+    border-color: $black;
+  }
+}
+
+.borderradius .icon-side-nav__bullet {
+  @include transition(background-color 0.2s, border-color 0.2s);
+  @include border-radius(6px);
+  @include box-sizing(border-box);
+  background-image: none !important;
+  border: 1px solid $c-grey-mid;
+  border-color: rgba(black, 0.4);
+}
+
+.side-nav li:hover .icon-side-nav__bullet {
+  border-color: $c-grey-darkest;
+  border-color: rgba(black, 0.8);
+}
+
+.borderradius .current .icon-side-nav__bullet {
+  //background-image: none
+  background-color: $c-grey-darkest;
+  background-color: rgba(black, 0.8);
+  border-color: $c-grey-darkest;
+  border-color: rgba(black, 0.8);
+}

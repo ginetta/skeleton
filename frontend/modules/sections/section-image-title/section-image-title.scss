@@ -1,0 +1,16 @@
+.section--image-title {
+    .l-site-width {
+        @extend %clearfix;
+    }
+    .section__inner {
+        min-height: 360px;
+        position: relative;
+        @extend %clearfix;
+
+        @include box-sizing(border-box);
+        @include mobile {
+            min-height: 0;
+            padding: 40px 20px;
+        }
+    }
+}
