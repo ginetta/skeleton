@@ -1,5 +1,5 @@
-define(['globals','Scroll'],function(globals,Scroll){
+define(function(){
     'use strict';
 
-    console.log("BIP BOOP! [mymodule is running]");
+    console.log('BIP BOOP! [mymodule is running]');
 });

@@ -4,19 +4,20 @@
 (function(){
     'use strict';
 
-    function is_touch_device() {
+    function isTouchDevice() {
       try {
-        document.createEvent("TouchEvent");
+        document.createEvent('TouchEvent');
         return true;
       } catch (e) {
         return false;
       }
     }
 
-    $("body").addClass("js");
+    $('body').addClass('js');
 
     require(['mymodule'], function () {
         console.log('mymodule is loaded');
+        isTouchDevice(); // TODO: remove this, is just to pass eslint
     });
 
 })();

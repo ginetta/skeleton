@@ -162,6 +162,7 @@ module.exports = function (grunt) {
                 }
             }
         },
+        // Code quality configurations
         jshint: {
             options: {
                 jshintrc: true,
@@ -178,7 +179,35 @@ module.exports = function (grunt) {
                 src: ['modules/**/*.js'],
                 dest: config.targetDir,
                 cwd: config.srcDir
+            }
+        },
+        eslint: {
+            options: {
+                config: ".eslint"
             },
+            js: {
+                expand: true,
+                src: ['Gruntfile.js', 'js/**'],
+                dest: config.targetDir,
+                cwd: config.srcDir + '/'
+            },
+            modulesjs: {
+                expand: true,
+                src: ['modules/**/*.js'],
+                dest: config.targetDir,
+                cwd: config.srcDir
+            }  
+        },
+        scsslint: {
+            allFiles: [
+                config.srcDir + '/css/**',
+                config.srcDir + '/**/*.scss'
+            ],
+            options: {
+                bundleExec: true,
+                config: '.scss-lint.yml',
+                colorizeOutput: true
+            }
         }
     });
 
@@ -196,6 +225,8 @@ module.exports = function (grunt) {
 
     // Code Quality Stuff
     grunt.loadNpmTasks('grunt-contrib-jshint')
+    grunt.loadNpmTasks('grunt-eslint');
+    grunt.loadNpmTasks('grunt-scss-lint');
 
 
     //grunt.task.loadTasks('./build/grunt-tasks/');
@@ -220,6 +251,11 @@ module.exports = function (grunt) {
         'compass',
         'jade',
         'requirejs'
+    ]);
+
+    grunt.registerTask('good-code', [
+        'jshint',
+        'eslint'
     ]);
 
 };
