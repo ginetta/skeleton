@@ -1,0 +1,22 @@
+default:
+  - 'work'
+
+work:
+  - 'build-dev'
+  - 'connect'
+  - 'watch'
+
+
+build-dev:
+  - 'clean'
+  - 'grunticon'
+  - 'copy'
+  - 'compass'
+  - 'jade'
+  - 'requirejs'
+
+good-code:
+  - "jshint"
+  - "eslint"
+  - "scsslint"
+  - "plato"

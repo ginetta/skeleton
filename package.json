@@ -29,6 +29,8 @@
     "grunt-scss-lint": "^0.1.12",
     "grunt-shared-config": "^0.3.0",
     "jshint-stylish": "^0.2.0",
+    "load-grunt-config": "^0.10.0",
+    "load-grunt-tasks": "^0.6.0",
     "time-grunt": "^0.3.2"
   }
 }
