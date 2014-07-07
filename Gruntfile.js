@@ -1,6 +1,7 @@
 var config  = {
     srcDir: 'frontend',
-    targetDir: 'dist'
+    targetDir: 'dist',
+    componentListDir: 'styleguide'
 };
 
 module.exports = function (grunt) {

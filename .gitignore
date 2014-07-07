@@ -1,6 +1,7 @@
 /tmp/
 dist/
 reports/
+styleguide/
 /frontend/img/icons/icons-*.png
 # We don't need this, right?
 /frontend/img/icons-rendered

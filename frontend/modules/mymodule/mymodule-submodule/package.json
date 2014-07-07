@@ -1,0 +1,10 @@
+{
+  "name": "mymodule-submodule",
+  "version": "0.0.1",
+  "description": "example submodule",
+  "author": "ginetta",
+  "data": {
+    "firstname": "John Doe",
+    "age":       12
+  }
+}
