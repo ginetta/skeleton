@@ -5,9 +5,9 @@ module.exports = function (grunt, options) {
                 //debug: true,
                 //styleguide: grunt.file.readJSON(config.configDir + "/config.json"),
                 //pagedata: grunt.file.readJSON(config.dataDir + "/pagedata.json")
-                t: {
-                    en: grunt.file.readJSON('locales/en_US.json')
-                }
+                // t: {
+                //     en: grunt.file.readJSON('locales/en_US.json')
+                // }
             },
             pretty: true,
             basedir: '<%= config.srcDir %>'
@@ -15,9 +15,9 @@ module.exports = function (grunt, options) {
         compile: {
             files: [{
                 expand: true,
-                cwd: '<%= config.srcDir %>',
+                cwd: '<%= config.srcDir %>/pages',
                 src: ["**/*.jade"],
-                dest: '<%= config.targetDir %>',
+                dest: '<%= config.targetDir %>/pages',
                 ext: ".html"
             }]
         }

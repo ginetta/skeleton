@@ -1,7 +1,8 @@
 module.exports = function (grunt, options) {
-    var   chalk = require('chalk')
-        , srcDir = options.config.srcDir
-        , targetDir = options.config.componentListDir
+    var   chalk         = require('chalk')
+        , srcDir        = options.config.srcDir
+        , targetDir     = options.config.targetDir
+        , styleguideDir = options.config.componentListDir
         ;
 
 
@@ -38,11 +39,18 @@ module.exports = function (grunt, options) {
             modInfo.identifier = path.replace(srcDir + '/modules/', '').replace(/(\/[^\/]+|\.jade)$/, '');
             // override base html since it's broken in IE8/9
             modInfo.identifier = modInfo.identifier.replace(/\//g, '-');
-            grunt.log.writeln(chalk.cyan('\t\t— ' + modInfo.identifier));
+            grunt.log.writeln(chalk.cyan('\t\t— ' + modInfo.identifier) + ' (' + styleguideDir + '/components/' + modInfo.identifier + '.html' + ' )');
 
             modInfo.html = jadeRender(tplFile, modInfo);
             modules.push(modInfo);
 
+            //  Creates styleguide page
+            grunt.file.write(
+                styleguideDir + '/components/' + modInfo.identifier + '.html',
+                modInfo.html
+            );
+
+            // Creates component page (for developement);
             grunt.file.write(
                 targetDir + '/components/' + modInfo.identifier + '.html',
                 modInfo.html
@@ -66,13 +74,5 @@ module.exports = function (grunt, options) {
 
         // 2. Build modules page
         buildModulesPage();
-
-
-
-
-        // grunt.file.write(
-        //     targetDir + '/html/components.html',
-        //     jadeRender(srcDir + '/components/list.jade', {mods: mods, pages: pages})
-        // );
     });
 };
