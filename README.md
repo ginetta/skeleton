@@ -1,3 +1,5 @@
+<img align="right" height="150" style="margin: 0 0 20px 20px" src="http://imgh.us/skeleton.svg">
+
 # Project Setup skeleton-project
 
 
