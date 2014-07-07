@@ -13,7 +13,6 @@ build-dev:
   - 'copy'
   - 'compass'
   - 'buildComponentList'
-  - 'jade'
   - 'requirejs'
 
 good-code:

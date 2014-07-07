@@ -9,12 +9,8 @@ module.exports = {
         ],
         tasks: ['compass']
     },
-    jadePages: {
-        files: ['<%= config.srcDir %>' + '/pages/**/*.jade'],
-        tasks: ['jade']
-    },
-    jadeComponents: {
-        files: ['<%= config.srcDir %>' + '/modules/**/*.jade'],
+    jade: {
+        files: ['<%= config.srcDir %>' + '/**/*.jade'],
         tasks: ['buildComponentList']
     },
     js: {
