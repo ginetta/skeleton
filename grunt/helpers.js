@@ -1,9 +1,7 @@
-var chalk      = require('chalk')
-  , changeCase = require('change-case')
-  , _          = require('lodash')
-  ;
-
-var Helper;
+var _          = require('lodash'),
+    chalk      = require('chalk'),
+    changeCase = require('change-case'),
+    Helper;
 
 Helper = (function() {
   var grunt, options, srcDir, targetDir, localesDir;
@@ -88,9 +86,8 @@ Helper = (function() {
    *
    */
   Helper.prototype.getModulesData = function () {
-    var modules     = []
-      , allMetadata = {}
-      ;
+    var modules     = [],
+        allMetadata = {};
 
     grunt.log.writeln(chalk.red('\tLooking for modules and merging metadata:'));
     grunt.file.glob.sync(srcDir + '/modules/**/package.json').forEach(function (path) {
@@ -113,7 +110,7 @@ Helper = (function() {
 
   Helper.prototype.getPageFiles = function () {
     return grunt.file.glob.sync(srcDir + '/pages/**/*.jade');
-  }
+  };
 
   Helper.prototype.getLocales = function () {
     var locales = {};
@@ -122,7 +119,7 @@ Helper = (function() {
       locales[localeName] = grunt.file.readJSON(localePath);
     });
     return locales;
-  }
+  };
 
   return Helper;
 

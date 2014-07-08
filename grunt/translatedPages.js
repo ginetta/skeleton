@@ -1,18 +1,16 @@
 module.exports = function (grunt, options) {
-  var chalk         = require('chalk')
-    , srcDir      = options.config.srcDir
-    , targetDir   = options.config.targetDir
-    , changeCase  = require('change-case')
-    , _           = require('lodash')
-    , Helper      = new (require('./helpers'))(grunt, options)
-    ;
+  var _           = require('lodash'),
+      chalk         = require('chalk'),
+      srcDir      = options.config.srcDir,
+      targetDir   = options.config.targetDir,
+      changeCase  = require('change-case'),
+      Helper      = new (require('./helpers'))(grunt, options);
 
   grunt.registerTask('translatedPages', function () {
 
-    var modulesData = {}
-      , locales     = {}
-      , pages       = {}
-      ;
+    var modulesData = {},
+        locales     = {},
+        pages       = {};
 
     // 1. Read modules data and render their html
     modulesData = Helper.getModulesData();

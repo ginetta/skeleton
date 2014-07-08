@@ -13,13 +13,12 @@
 
 
 module.exports = function (grunt, options) {
-  var chalk         = require('chalk')
-    , srcDir        = options.config.srcDir
-    , targetDir     = options.config.targetDir
-    , styleguideDir = options.config.componentListDir
-    , Helper        = new (require('./helpers'))(grunt, options)
-    , _             = require('lodash')
-    ;
+  var chalk         = require('chalk'),
+      srcDir        = options.config.srcDir,
+      targetDir     = options.config.targetDir,
+      styleguideDir = options.config.componentListDir,
+      Helper        = new (require('./helpers'))(grunt, options),
+      _             = require('lodash');
 
   grunt.registerTask('componentPages', function () {
     var modulesData = {};
@@ -66,5 +65,5 @@ module.exports = function (grunt, options) {
         html
       );
     });
-  };
+  }
 };
