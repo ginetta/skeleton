@@ -1,3 +1,5 @@
+<img align="right" height="150" style="margin: 0 0 20px 20px" src="http://imgh.us/skeleton.svg">
+
 # Project Setup skeleton-project
 
 
@@ -32,18 +34,6 @@ Require JS is used for JS Dependency management. The basic idea of require.js is
 
 ## Bonus
 
-- Install livereload plugin for your browser ( http://feedback.livereload.com/knowledgebase/articles/86242-how-do-i-install-and-use-the-browser-extensions- )
 - Under OSX it will be helpfull if you install brew: http://brew.sh/
 - Install the `Jade` and `SCSS` Sublime Text packages to get syntax highlighting
 - Quick Jade syntax tour: http://www.learnjade.com/
-
-
-## JS Good to know
-- The ajaxLinks.js class is pretty complex, open the file to understand how it works.
-- there is an event that is called on every successfull ajax call.
-
-        $(document).on("ajaxLinksComplete", function(event,$context){
-          //$context is the partial that was reloaded.
-        });
-
-- We use a jQuery queue called `window.queue` where the CQ Devs can queue events that will be called when the document is ready (and all classes where initialized)
