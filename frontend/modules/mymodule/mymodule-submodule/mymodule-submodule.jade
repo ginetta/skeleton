@@ -1,4 +1,8 @@
-article.mymodule.mymodule--submodule
-    h1 Hello
-    h2 Submodule
-    h4 (#{mymoduleMymoduleSubmodule.data.age}) #{mymoduleMymoduleSubmodule.data.firstname}
+mixin mymodule-submodule(name, age)
+  //- Use this space for default arguments handling
+  - name = name || mymoduleMymoduleSubmodule.data.firstname
+  - age  = age  || translation.hello
+
+  article.mymodule.mymodule--submodule
+    h1 My Module Header
+    h4 (#{name}) #{age}
