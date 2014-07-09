@@ -139,6 +139,19 @@
     }
 }
 
+$gridWidths: (
+    "one-whole"         : 100%,
+    "one-half"          : 50%,
+    "one-quarter"       : 25%,
+    "three-quarters"    : 75%,
+    "one-third"         : 33.333%,
+    "two-thirds"        : 66.666%,
+    "one-fifth"         : 20%,
+    "four-fifths"       : 80%,
+    "one-sixth"         : 16.666%,
+    "five-sixths"       : 83.333%
+);
+
 /* generic classes for grid cells*/
 @mixin gridClasses( $device: false ){
     $deviceString: null;
@@ -147,44 +160,21 @@
         $deviceString: "#{$device}-";
     }
 
-    .l-#{$deviceString}one-whole {
-        width: 100%;
-    }
-    .l-#{$deviceString}one-half {
-        width: 50%;
-    }
-    .l-#{$deviceString}one-quarter {
-        width: 25%;
-    }
-    .l-#{$deviceString}three-quarters {
-        width: 75%;
-    }
-    .l-#{$deviceString}one-third {
-        width: 33.333%;
-    }
-    .l-#{$deviceString}two-thirds {
-        width: 66.666%;
-    }
-    .l-#{$deviceString}one-fifth {
-        width: 20%;
-    }
-    .l-#{$deviceString}four-fifths {
-        width: 80%;
-    }
-    .l-#{$deviceString}one-sixth {
-        width: 16.666%;
-    }
-    .l-#{$deviceString}five-sixths {
-        width: 83.333%;
+    @each $gridWidth, $width in $gridWidths {
+        .l-#{$deviceString}#{$gridWidth} {
+            width: $width;
+        }
     }
 }
 
-@include gridClasses();
-
 $gridbreakpoints: "mobile-portrait" "mobile" "not-mobile" "tablet-portrait" "tablet" "not-tablet"  "print";
 
+@include gridClasses();
+
 @each $breakpoint in $gridbreakpoints {
-    @include gridClasses( $breakpoint );
+    @include breakpoint( $breakpoint ) {
+        @include gridClasses( $breakpoint );
+    }
 }
 
 
