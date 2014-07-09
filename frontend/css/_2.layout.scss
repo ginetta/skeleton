@@ -172,7 +172,9 @@ $gridbreakpoints: "mobile-portrait" "mobile" "not-mobile" "tablet-portrait" "tab
 @include gridClasses();
 
 @each $breakpoint in $gridbreakpoints {
-    @include gridClasses( $breakpoint );
+    @include breakpoint( $breakpoint ) {
+        @include gridClasses( $breakpoint );
+    }
 }
 
 
