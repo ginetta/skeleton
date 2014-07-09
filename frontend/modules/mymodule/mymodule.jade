@@ -1,0 +1,11 @@
+//- This component is a "parentable" component
+mixin mymodule()
+  article.mymodule
+    h1 #{translation.hello}
+    h2 Card List
+    .mymodule--content
+      //- "Transcluded" content goes here
+      if block
+        block
+      else
+        p Transcluded content goes here

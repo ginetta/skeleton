@@ -1,0 +1,40 @@
+default:
+  - work
+
+work:
+  - build-dev
+  - server
+
+
+build-dev:
+  - css
+  - markup
+  - js
+
+good-code:
+  - jshint
+  - eslint
+  - scsslint
+  - plato
+
+markup:
+  - componentPages
+  - translatedPages
+  # TODO: minification and optimization
+
+css:
+  - grunticon
+  - compass
+  # TODO: minification and optimization
+
+js:
+  - requirejs
+  # TODO: minification and optimization
+
+prepare:
+  - clean # this cleans *generated*     files in dist/
+  - copy  # this copies *not-generated* files to dist/
+
+server:
+  - connect
+  - watch
