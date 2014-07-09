@@ -181,21 +181,12 @@
 
 @include gridClasses();
 
-@include print {
-    @include gridClasses( "print" );
+$gridbreakpoints: "mobile-portrait" "mobile" "not-mobile" "tablet-portrait" "tablet" "not-tablet"  "print";
+
+@each $breakpoint in $gridbreakpoints {
+    @include gridClasses( $breakpoint );
 }
-@include tablet {
-    @include gridClasses( "tablet" );
-}
-@include tablet-portrait {
-    @include gridClasses( "tablet-portrait" );
-}
-@include mobile {
-    @include gridClasses( "mobile" );
-}
-@include mobile-portrait {
-    @include gridClasses( "mobile-portrait" );
-}
+
 
 /* default boxes */
 .l-continent {

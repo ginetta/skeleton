@@ -79,7 +79,7 @@
     display: none;
 }
 
-@include tablet {
+@include breakpoint(tablet) {
     .is-hidden-desktop {
         display: inherit !important;
     }
@@ -96,7 +96,8 @@
         display: none !important;
     }
 }
-@include tablet-portrait {
+
+@include breakpoint(tablet-portrait) {
     .is-visible-tablet {
         display: none !important;
     }
@@ -108,7 +109,7 @@
     }
 }
 
-@include mobile {
+@include breakpoint(mobile) {
     .is-visible-mobile {
         display: inherit !important;
     }
@@ -117,7 +118,7 @@
     }
 }
 
-@include mobile-portrait {
+@include breakpoint(mobile-portrait) {
     .is-visible-mobile-portrait {
         display: inherit !important;
     }
@@ -126,7 +127,7 @@
     }
 }
 
-@include print {
+@include breakpoint(print) {
     .is-visible-print {
         display: inherit !important;
     }
@@ -143,7 +144,7 @@
     left: -9999px;
 }
 
-
+/* icon helpers */
 
 .icon {
     display: inline-block;

@@ -17,3 +17,9 @@
     "5.print",
     "6.states",
     "7.shame";
+
+@include breakpoint(mobile) {
+    body {
+        background: red;
+    }
+}

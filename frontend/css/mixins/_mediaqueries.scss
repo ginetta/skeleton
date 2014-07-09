@@ -12,6 +12,54 @@
 //
 // http://thesassway.com/intermediate/responsive-web-design-in-sass-using-media-queries-in-sass-32
 
+
+$breakpoints: (
+  "mobile-portrait"     : "only screen and (max-width:400px)",
+  "mobile"              : "only screen and (max-width:740px)",
+  "not-mobile"          : "only screen and (min-width:741px)",
+  "tablet-portrait"     : "only screen and (max-width:850px)",
+  "tablet"              : "only screen and (max-width:1050px)",
+  "not-tablet"          : "only screen and (min-width:1051px)",
+  "desktop"             : "only screen and (min-width:1051px)",
+  "retina"              : "only screen and (-webkit-min-device-pixel-ratio : 1.5), only screen and (min-device-pixel-ratio : 1.5)",
+  "highres"             : "print, (-o-min-device-pixel-ratio: 5/4), (-webkit-min-device-pixel-ratio: 1.25), (min-resolution: 120dpi)",
+  "print"               : "print"
+);
+
+@mixin breakpoint($breakpoint) {
+  // Get the width from the keyword `$breakpoint`
+  // Or `null` if the keyword doesn't exist in `$breakpoints` map
+  $value: map-get($breakpoints, $breakpoint);
+
+  // If `$breakpoint` exists as a key in `$breakpoints`
+  @if $value != null {
+    // Open a media query block
+    @media #{$value} {
+      // Let the user dump content
+      @content;
+    }
+  }
+
+  // If `$breakpoint` doesn't exist in `$breakpoints`,
+  // Warn the user and do nothing
+  @else {
+    @warn "Invalid breakpoint `#{$breakpoint}`.";
+  }
+}
+
+@each $breakpoint in $breakpoints {
+    $name: nth($breakpoint, 1);
+    @include breakpoint(#{$name}){
+        .js-breakpoint {
+            content: "#{$name}";
+        }
+    }
+}
+/*
+@include breakpoint(not-mobile) {
+    margin: 20px;
+}
+
 $mq-mobile-portrait     : 400px !default;
 $mq-mobile-landscape    : 740px !default;
 $mq-tablet-portrait     : 850px !default;
@@ -56,6 +104,7 @@ $mq-desktop             : 1382px !default;
     }
 }
 
+
 // All high resolution devices (inc printer)
 @mixin highres {
     @media print, (-o-min-device-pixel-ratio: 5/4), (-webkit-min-device-pixel-ratio: 1.25), (min-resolution: 120dpi) {
@@ -76,3 +125,4 @@ $mq-desktop             : 1382px !default;
         @content;
     }
 }
+*/

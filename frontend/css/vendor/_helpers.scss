@@ -78,32 +78,3 @@
 %invisible {
     visibility: hidden;
 }
-
-%inner {
-    z-index: 2;
-    position: relative;
-    padding: 200px 0;
-
-    max-width: 700px;
-    margin: auto;
-
-    &--small {
-        padding: 100px 0;
-    }
-    &--very-small {
-        padding: 30px 0;
-    }
-
-    @include mobile {
-        padding: 25px 20px;
-    }
-}
-
-%title {
-    font-size: 30px;
-    font-weight: 300;
-    margin-bottom: 0.5em;
-    @include mobile {
-        font-size: 24px;
-    }
-}
