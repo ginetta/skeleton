@@ -40,16 +40,16 @@ $breakpoints: (
   }
 }
 
-// https://gist.github.com/usaphp/42133e78aa5f8f760a3f
+
+$mediaJSON: '{';
 @each $breakpoint in $breakpoints {
     $name: nth($breakpoint, 1);
-    @include breakpoint(#{$name}){
-        .js-breakpoint {
-            content: "#{$name}";
-        }
-    }
+    $value: nth($breakpoint, 2);
+    $mediaJSON: $mediaJSON + '"#{$name}":"#{$value}",' !global;
 }
+$mediaJSON: str-slice( $mediaJSON, 1, str-length($mediaJSON) - 1);
+$mediaJSON: $mediaJSON + '}';
 
-// if($('.display-type').css('content') == "tablet"){
-    // Actions for tablets
-// }
+.js-breakpoint {
+  content: "#{$mediaJSON}";
+}
