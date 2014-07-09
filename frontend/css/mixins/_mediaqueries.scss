@@ -1,3 +1,11 @@
+/*
+  usage:
+
+  @include breakpoint(mobile) {
+    margin: 20px;
+  }
+*/
+
 $breakpoints: (
   "mobile-portrait"     : "only screen and (max-width:400px)",
   "mobile"              : "only screen and (max-width:740px)",
@@ -32,6 +40,7 @@ $breakpoints: (
   }
 }
 
+// https://gist.github.com/usaphp/42133e78aa5f8f760a3f
 @each $breakpoint in $breakpoints {
     $name: nth($breakpoint, 1);
     @include breakpoint(#{$name}){
@@ -40,74 +49,7 @@ $breakpoints: (
         }
     }
 }
-/*
-@include breakpoint(not-mobile) {
-    margin: 20px;
-}
 
-$mq-mobile-portrait     : 400px !default;
-$mq-mobile-landscape    : 740px !default;
-$mq-tablet-portrait     : 850px !default;
-$mq-tablet-landscape    : 1050px !default;
-$mq-desktop             : 1382px !default;
-
-// Both portrait and landscape
-@mixin mobile {
-    @media (max-width : $mq-mobile-landscape) {
-        @content;
-    }
-}
-@mixin not-mobile {
-    @media (min-width : ($mq-mobile-landscape+1px)) {
-        @content;
-    }
-}
-// Both portrait and landscape
-@mixin mobile-portrait {
-    @media (max-width : $mq-mobile-portrait) {
-        @content;
-    }
-}
-
-@mixin not-tablet {
-    @media (min-width : ($mq-tablet-landscape+1px)) {
-        @content;
-    }
-}
-
-// Up to and including the tablet landscape
-@mixin tablet {
-    @media only screen and (max-width : $mq-tablet-landscape) {
-        @content;
-    }
-}
-
-// Everything below and including the portrait width of the tablet
-@mixin tablet-portrait {
-    @media only screen and (max-width : $mq-tablet-portrait) {
-        @content;
-    }
-}
-
-
-// All high resolution devices (inc printer)
-@mixin highres {
-    @media print, (-o-min-device-pixel-ratio: 5/4), (-webkit-min-device-pixel-ratio: 1.25), (min-resolution: 120dpi) {
-        @content;
-    }
-}
-
-// Retina screens have a 1.5 pixel ratio, not 2
-@mixin retina {
-    @media only screen and (-webkit-min-device-pixel-ratio : 1.5), only screen and (min-device-pixel-ratio : 1.5) {
-        @content;
-    }
-}
-
-// printer
-@mixin print {
-    @media print {
-        @content;
-    }
-}
-*/
+// if($('.display-type').css('content') == "tablet"){
+    // Actions for tablets
+// }
