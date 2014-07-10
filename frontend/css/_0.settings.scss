@@ -12,8 +12,8 @@
 
 // Fonts
 
-    @include font-face("AkkuratWeb", font-files("Akkurat/AkkuratRegular/akkrg.woff", "Akkurat/AkkuratRegular/akkrg.ttf", "Akkurat/AkkuratRegular/akkrg.svg"), "Akkurat/AkkuratRegular/akkrg.eot", 400);
-    @include font-face("AkkuratWeb", font-files("Akkurat/AkkuratLightRegular/akklg.woff", "Akkurat/AkkuratLightRegular/akklg.ttf", "Akkurat/AkkuratLightRegular/akklg.svg"), "Akkurat/AkkuratLightRegular/akklg.eot", 300);
+    //@include font-face("AkkuratWeb", font-files("Akkurat/AkkuratRegular/akkrg.woff", "Akkurat/AkkuratRegular/akkrg.ttf", "Akkurat/AkkuratRegular/akkrg.svg"), "Akkurat/AkkuratRegular/akkrg.eot", 400);
+    //@include font-face("AkkuratWeb", font-files("Akkurat/AkkuratLightRegular/akklg.woff", "Akkurat/AkkuratLightRegular/akklg.ttf", "Akkurat/AkkuratLightRegular/akklg.svg"), "Akkurat/AkkuratLightRegular/akklg.eot", 300);
     //@include font-face("AkkuratWeb", font-files("Akkurat/AkkuratBoldRegular/akkbd.woff", "Akkurat/AkkuratBoldRegular/akkbd.ttf", "Akkurat/AkkuratBoldRegular/akkbd.svg"), "Akkurat/AkkuratBoldRegular/akkbd.eot", 700);
 
     $base-font-size: 20px;
