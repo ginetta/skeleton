@@ -7,6 +7,7 @@ var config  = {
 
 module.exports = function (grunt) {
     'use strict';
+
     require('time-grunt')(grunt);
 
     // Loads grunt tasks found on package.json automatically

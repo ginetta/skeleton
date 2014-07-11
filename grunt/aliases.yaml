@@ -41,8 +41,3 @@ prepare:
 server:
   - connect
   - watch
-
-temp:
-  - clean
-  - copy
-  - translatedPages
