@@ -4,20 +4,21 @@
 (function(){
     'use strict';
 
-    function isTouchDevice() {
-      try {
-        document.createEvent('TouchEvent');
-        return true;
-      } catch (e) {
-        return false;
-      }
-    }
-
-    $('body').addClass('js');
-
     require(['mymodule'], function () {
         console.log('mymodule is loaded');
-        isTouchDevice(); // TODO: remove this, is just to pass eslint
+    });
+
+    require(['lib/browser/mediaTrigger'], function ( mediaTrigger ) {
+
+      mediaTrigger.onEnter('mobile tablet', function(querry){
+        console.log(querry);
+      },true);
+
+      mediaTrigger.onLeave('mobile', function(querry){
+        //test on leave
+        console.log(querry,this);
+      },true);
+
     });
 
 })();

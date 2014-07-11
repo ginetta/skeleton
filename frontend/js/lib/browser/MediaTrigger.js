@@ -12,82 +12,113 @@
     mediaTrigger.on('desktop', function(querry){
       console.log(querry);
     });
+
+    mediaTrigger( $('.js-breakpoint').css('content') );
+
+    mediaTrigger.onEnter('mobile tablet', function(querry){
+      console.log(querry);
+    },true);
+
+    mediaTrigger.onLeave('mobile', function(querry){
+      console.log(querry);
+    },true);
 */
 
-define(function(){
-    'use strict';
+define(['jquery'],function($){
+  'use strict';
 
-    //  todo:
-    //    debaunce
-    //    only call when change of querry
-    //    onEnter / onLeave
-    //    does not need to be a singleton
+  //  todo:
+  //    debounce
+  //    only call when change of query
+  //    does not need to be a singleton
+
+  // main function
+  var mediaTrigger,
+  // misc
+      querryJSONString, querries, events, currentMatches, $ref,
+  // helpers
+      parseJSONString, addEvent, match;
+
+  querries = {};
+  events = {
+    'enter': {},
+    'leave': {}
+  };
 
 
-    var MediaTrigger = function( querryString ){
-      this.querryString = querryString;
-      this.querries = {};
-      this.events = {};
-      this.currentMatch = '';
-    };
+  currentMatches = [];
 
-    MediaTrigger.prototype = {
-      add: function( triggerString,callback,callOnInit ){
-        var i, triggers = triggerString.split(" ");
+  parseJSONString = function( querryJSONString ){
+    return $.parseJSON( querryJSONString.substring(1, querryJSONString.length-1) );
+  };
 
-        for (i = 0; i < triggers.length; ++i ){
-          var trigger = triggers[i];
-          if( !(trigger in this.events) ) {
-            this.events[trigger] = [];
-          }
+  match = function(type, callback){
+    var eventsTyped, wasCalled = [];
 
-          this.events[trigger].push(callback);
-        }
+    eventsTyped = type ? events[type] : $.extend({},events['enter'],events['leave']);
 
-        if(callOnInit) {
-          this._match(callback);
-        }
-      },
-      _match: function(callback){
-        var self = this;
-        var wasCalled = [];
+    $.each(eventsTyped, function(key,callbacks){
+      if(key in querries){
+        if ( window.matchMedia( querries[key] ).matches ){
 
-        $.each(this.events, function(key,callbacks){
-          if(key in self.querries){
-            if ( window.matchMedia( self.querries[key] ).matches ){
-                $.each(callbacks, function(){
-                    if(callback && callback !== this) {
-                      return;
-                    }
+          currentMatches.push( key );
 
-                    if ($.inArray(this,wasCalled)){
-                      return;
-                    }
-
-                    this(key);
-                    wasCalled.push(this);
-
-                });
+          $.each(callbacks, function(){
+            if(callback && callback !== this) {
+              return;
             }
-          }
-        });
-      },
-      _parseQuerry: function(){
-        this.querries = $.parseJSON( this.querryString.substring(1, this.querryString.length-1) );
-      },
-      init: function(){
-        var self = this;
-        self._parseQuerry();
-        $(window).on('resize.mediaTrigger', function(){
-          self._match();
-        });
-      },
-      destroy: function(){
-        $(window).off('resize.mediaTrigger');
-        this.events = {};
-        this.currentMatch = '';
-      }
-    };
 
-    return new MediaTrigger();
+            if ($.inArray(this,wasCalled) !== -1){
+              return;
+            }
+
+            this(key);
+
+            wasCalled.push(this);
+          });
+        }
+      }
+    });
+  };
+
+  addEvent = function( type,triggerString,callback,callOnAdd ){
+    var i, triggers, trigger, eventsTyped;
+
+    triggers = triggerString.split(" ");
+    eventsTyped = events[type];
+
+    for (i = 0; i < triggers.length; ++i ){
+      trigger = triggers[i];
+      if( !(trigger in eventsTyped) ) {
+        eventsTyped[trigger] = [];
+      }
+      eventsTyped[trigger].push(callback);
+    }
+
+    if( callOnAdd ) {
+      match(type, callback);
+    }
+  };
+
+  $(window).on('resize.mediaTrigger', function(){
+    match();
+  });
+
+  //creationg a dom element to read the content set by the CSS
+  $ref = $('<div />', {class:'js-breakpoint', css:{'display': 'none'}});
+  $ref.appendTo($('body'));
+
+  querryJSONString = $ref.css('content');
+  querries = parseJSONString( querryJSONString );
+
+  mediaTrigger = {
+    onEnter: function( triggerString,callback,callOnRegister ){
+      addEvent( 'enter',triggerString,callback,callOnRegister );
+    },
+    onLeave: function( triggerString,callback,callOnRegister ){
+      addEvent( 'leave',triggerString,callback,callOnRegister );
+    }
+  };
+
+  return mediaTrigger;
 });
