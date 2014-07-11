@@ -28,7 +28,6 @@
     "grunt-grunticon": "^1.2.9",
     "grunt-modernizr": "^0.5.2",
     "grunt-plato": "^1.0.0",
-    "grunt-relative-root": "^0.2.1",
     "grunt-scss-lint": "^0.1.12",
     "grunt-shared-config": "^0.3.0",
     "grunt-usemin": "^2.3.0",
@@ -37,6 +36,7 @@
     "load-grunt-config": "^0.10.0",
     "load-grunt-tasks": "^0.6.0",
     "lodash": "^2.4.1",
+    "path": "^0.4.9",
     "time-grunt": "^0.3.2"
   }
 }

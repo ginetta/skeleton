@@ -46,4 +46,3 @@ temp:
   - clean
   - copy
   - translatedPages
-  - relativeRoot
