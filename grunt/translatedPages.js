@@ -1,6 +1,6 @@
 module.exports = function (grunt, options) {
   var _           = require('lodash'),
-      chalk         = require('chalk'),
+      chalk       = require('chalk'),
       srcDir      = options.config.srcDir,
       targetDir   = options.config.targetDir,
       changeCase  = require('change-case'),
