@@ -13,7 +13,7 @@ html.no-js(lang='en')
 
     block htmlhead
 
-    link(rel='stylesheet', href='../css/main.css')
+    link(rel='stylesheet', href='#{relativePath}/css/main.css')
 
   body
     include /modules/modules
@@ -23,9 +23,12 @@ html.no-js(lang='en')
       script(src='//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js')
       script.
         window.jQuery || document.write('<script src="../bower_components/jquery/jquery.js"><\/script>')
-      script(src='../bower_components/requirejs/require.js')
-      script(src='../js/config-require.js')
-      script(src='../js/main.js')
+
+      script(src='#{relativePath}/bower_components/requirejs/require.js')
+      script(src='#{relativePath}/js/config-require.js')
+
+      script(src='#{relativePath}/js/main.js')
+
 
       //
         Google Analytics: change UA-XXXXX-X to be your sites ID.

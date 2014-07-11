@@ -28,6 +28,9 @@ css:
   # TODO: minification and optimization
 
 js:
+  - copy:vendorjs
+  - copy:modulesjs
+  - copy:js
   - requirejs
   # TODO: minification and optimization
 
@@ -38,3 +41,8 @@ prepare:
 server:
   - connect
   - watch
+
+temp:
+  - clean
+  - copy
+  - translatedPages

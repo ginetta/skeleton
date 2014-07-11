@@ -11,7 +11,7 @@ module.exports = {
     },
     jade: {
         files: ['<%= config.srcDir %>' + '/**/*.jade'],
-        tasks: ['buildComponentList']
+        tasks: ['translatedPages', 'componentPages']
     },
     js: {
         files: ['<%= config.srcDir %>' + '/**/*.js'],
