@@ -8,17 +8,23 @@
         console.log('mymodule is loaded');
     });
 
-    require(['lib/browser/mediaTrigger'], function ( mediaTrigger ) {
+    require(['lib/browser/mediaQuery'], function ( mediaQuery ) {
 
-      mediaTrigger.onEnter('mobile tablet', function(querry){
-        console.log(querry);
+      mediaQuery.onEnter('mobile tablet', function(querry){
+        console.log('enter mobile tablet:', querry);
       },true);
 
-      mediaTrigger.onLeave('mobile', function(querry){
+      mediaQuery.onEnter('tablet', function(querry){
+        console.log('enter tablet:', querry);
+      },true);
+
+      mediaQuery.onLeave('mobile', function(querry){
         //test on leave
-        console.log(querry,this);
+        console.log('leave moble:',querry,this);
       },true);
 
+      console.log( "is mobile:", mediaQuery.is('mobile') );
+      console.log( "is not mobile:", mediaQuery.isNot('mobile') );
     });
 
 })();
