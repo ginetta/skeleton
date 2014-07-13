@@ -26,7 +26,7 @@ define(['jquery'],function($){
 
   var mediaQuery,
   // vars
-      querryJSONString, querries, events, currentMatches, $ref,
+      querryJSONString, querries, events, $ref,
   // functions
       parseJSONString, addEvent, match, callEvents;
 
@@ -36,9 +36,6 @@ define(['jquery'],function($){
 
   // callbacks for enter and leave
   events = {};
-
-  // currently matching querries
-  currentMatches = [];
 
   // parses the JSON given fromt the CSS
   parseJSONString = function (querryJSONString) {
