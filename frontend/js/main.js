@@ -14,11 +14,9 @@
         console.log('enter mobile & tablet:', querry);
       },true);
 
-
       mediaQuery.onEnter('tablet', function(querry){
         console.log('enter tablet:', querry);
       },true);
-
 
       mediaQuery.onLeave('mobile', function(querry){
         //test on leave

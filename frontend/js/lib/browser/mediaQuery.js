@@ -21,14 +21,15 @@
       - optional debounce
 */
 
+
 (function (root, factory) {
-    if (typeof define === 'function' && define.amd) {
-        // AMD. Register as an anonymous module.
-        define(['jquery'], factory);
-    } else {
-        // Browser globals
-        root.mediaQuery = factory(root.$);
-    }
+  if (typeof define === 'function' && define.amd) {
+    // AMD. Register as an anonymous module.
+    define(['jquery'], factory);
+  } else {
+    // Browser globals
+    root.mediaQuery = factory(root.$);
+  }
 }(this, function ($) {
   'use strict';
 
