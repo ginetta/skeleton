@@ -19,7 +19,6 @@
 
     todo:
       - debounce
-      - only call event when change of query
 */
 
 define(['jquery'],function($){
@@ -29,17 +28,14 @@ define(['jquery'],function($){
   // vars
       querryJSONString, querries, events, currentMatches, $ref,
   // functions
-      parseJSONString, addEvent, match, updateMatches, callEvents;
+      parseJSONString, addEvent, match, callEvents;
 
   // will contain all the media queries:
   // {'mobile': 'only screen and (min-width: 500px)', ...}
   querries = {};
 
   // callbacks for enter and leave
-  events = {
-    'enter': {},
-    'leave': {}
-  };
+  events = {};
 
   // currently matching querries
   currentMatches = [];
@@ -54,26 +50,12 @@ define(['jquery'],function($){
     return querries.hasOwnProperty(queryKey) && window.matchMedia( querries[queryKey] ).matches;
   };
 
-  updateMatches = function(){
-    currentMatches = [];
-    $.each(querries,function(queryKey){
-      if ( match(queryKey) ){
-        currentMatches.push(queryKey);
-      }
-    });
-  };
-
-  updateMatches();
-
   //triggers the callbacks and updates the current matches
+
   callEvents = function (callback) {
-    var allEvents, wasCalled = [];
+    var wasCalled = [];
 
-    updateMatches();
-
-    allEvents = $.extend({},events.enter,events.leave);
-
-    $.each(allEvents, function (queryKey, callbacks) {
+    $.each(events, function (queryKey, callbacks) {
 
       $.each(callbacks, function () {
         if (callback && callback !== this) {
@@ -84,39 +66,30 @@ define(['jquery'],function($){
           return;
         }
 
-        if( !callback && $.inArray(queryKey, currentMatches) !== -1 ){
+        if ((match(queryKey) && this.type === "enter" && !this.current) || (!match(queryKey) && this.type === "leave" && !this.current)) {
+          this.current = true;
+          this.callback(queryKey);
+          wasCalled.push(this);
+        } else if ((!match(queryKey) && this.type === "enter" && this.current) || (match(queryKey) && this.type === "leave" && this.current)) {
+          this.current = false;
           return;
         }
 
-        if (match(queryKey) && $.inArray(queryKey, currentMatches) !== -1) {
-          return;
-        }
-
-        if (!match(queryKey) && $.inArray(queryKey, currentMatches) !== -1) {
-          return;
-        }
-
-        this(queryKey);
-
-        wasCalled.push(this);
       });
-
     });
   };
 
   //adds an event to the callbacks to the events object
   addEvent = function( type,queryKey,callback,callOnAdd ){
-    var i, triggers, trigger, eventsTyped;
+    var i, triggers, trigger;
 
     triggers = queryKey.split(" ");
-    eventsTyped = events[type];
-
     for (i = 0; i < triggers.length; ++i ){
       trigger = triggers[i];
-      if( !(trigger in eventsTyped) ) {
-        eventsTyped[trigger] = [];
+      if( !events.hasOwnProperty(trigger) ) {
+        events[trigger] = [];
       }
-      eventsTyped[trigger].push(callback);
+      events[trigger].push({callback: callback, type: type, current: match(queryKey)});
     }
 
     if( callOnAdd ) {
