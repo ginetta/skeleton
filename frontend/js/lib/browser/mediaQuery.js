@@ -18,10 +18,18 @@
     }
 
     todo:
-      - debounce
+      - optional debounce
 */
 
-define(['jquery'],function($){
+(function (root, factory) {
+    if (typeof define === 'function' && define.amd) {
+        // AMD. Register as an anonymous module.
+        define(['jquery'], factory);
+    } else {
+        // Browser globals
+        root.mediaQuery = factory(root.$);
+    }
+}(this, function ($) {
   'use strict';
 
   var mediaQuery,
@@ -108,10 +116,13 @@ define(['jquery'],function($){
   $ref = $('<div />', {class:'js-breakpoint', css:{'display': 'none'}});
   $ref.appendTo($('body'));
 
+  //get the json from the css
   querryJSONString = $ref.css('content');
 
+  // parse the the json from the css
   querries = parseJSONString(querryJSONString);
 
+  // expose main functions
   mediaQuery = {
     onEnter: function (queryKey,callback,callOnRegister) {
       addEvent( 'enter',queryKey,callback,callOnRegister );
@@ -128,4 +139,4 @@ define(['jquery'],function($){
   };
 
   return mediaQuery;
-});
+}));
