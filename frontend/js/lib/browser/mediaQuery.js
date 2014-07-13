@@ -26,9 +26,12 @@ define(['jquery'],function($){
 
   var mediaQuery,
   // vars
-      querryJSONString, querries, events, $ref,
+      nameSpace, querryJSONString, querries, events, $ref,
   // functions
       parseJSONString, addEvent, match, callEvents;
+
+  //  namespace for jQueryevents
+  nameSpace = 'mediaQuery';
 
   // will contain all the media queries:
   // {'mobile': 'only screen and (min-width: 500px)', ...}
@@ -47,7 +50,7 @@ define(['jquery'],function($){
     return querries.hasOwnProperty(queryKey) && window.matchMedia( querries[queryKey] ).matches;
   };
 
-  //triggers the callbacks and updates the current matches
+  // triggers the callbacks and updates the current matches
 
   callEvents = function (callback) {
     var wasCalled = [];
@@ -55,14 +58,17 @@ define(['jquery'],function($){
     $.each(events, function (queryKey, callbacks) {
 
       $.each(callbacks, function () {
+        // used for the callOnRegister option in addEvent
         if (callback && callback !== this) {
           return;
         }
 
+        // makes sure callback was not already called
         if ($.inArray(this, wasCalled) !== -1) {
           return;
         }
 
+        // handles the actual callback
         if ((match(queryKey) && this.type === "enter" && !this.current) || (!match(queryKey) && this.type === "leave" && !this.current)) {
           this.current = true;
           this.callback(queryKey);
@@ -94,7 +100,7 @@ define(['jquery'],function($){
     }
   };
 
-  $(window).on('resize.mediaQuery', function(){
+  $(window).on('resize.' + nameSpace, function(){
     callEvents();
   });
 
