@@ -188,7 +188,7 @@ $link-visited-color: $link-color;
 // spacings
     $m-golden: 1.61803398875;
 
-    $s-gutter: 20px;
+    $s-gutter: 20px !default;
     $s-gutter-double: $s-gutter * 2;
     $s-gutter-triple: $s-gutter * 3;
     $s-gutter-half: $s-gutter * 0.5;
