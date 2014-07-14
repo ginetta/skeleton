@@ -7,7 +7,7 @@ module.exports = {
             '<%= config.srcDir %>' + '/css/**',
             '<%= config.srcDir %>' + '/**/*.scss'
         ],
-        tasks: ['css']
+        tasks: ['compass', 'autoprefixer']
     },
     jade: {
         files: ['<%= config.srcDir %>' + '/**/*.jade'],
