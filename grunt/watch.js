@@ -16,6 +16,10 @@ module.exports = {
     js: {
         files: ['<%= config.srcDir %>' + '/**/*.js'],
         tasks: ['copy:js','copy:modulesjs']
+    },
+    translation: {
+        files: ['<%= config.localesDir %>' + '/**/*.json'],
+        tasks: ['translatedPages','componentPages']
     }
 };
 
