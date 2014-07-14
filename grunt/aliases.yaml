@@ -27,6 +27,7 @@ markup:
 css:
   - grunticon
   - compass
+  - autoprefixer
   # TODO: minification and optimization
 
 js:
