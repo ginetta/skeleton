@@ -49,6 +49,8 @@
     margin-top: $s-gutter;
 }
 
+@include sensibleGrid();
+
 .l-no-gap {
     margin: 0;
 }
@@ -101,19 +103,10 @@
     }
 }
 
-// column layouts
-// http://csswizardry.com/2013/02/responsive-grid-systems-a-solution/
 
-.l-grid-wrap {
-    padding-right: $s-gutter;
-}
 
 .l-grid, .l-grid-double, .l-grid-triple {
     font-size: 0.0000001px;
-}
-
-.l-grid {
-    margin-right: -$s-gutter;
 }
 
 .l-grid-double {
@@ -138,45 +131,6 @@
         padding-right: $s-gutter/2;
     }
 }
-
-$gridWidths: (
-    "one-whole"         : 100%,
-    "one-half"          : 50%,
-    "one-quarter"       : 25%,
-    "three-quarters"    : 75%,
-    "one-third"         : 33.333%,
-    "two-thirds"        : 66.666%,
-    "one-fifth"         : 20%,
-    "four-fifths"       : 80%,
-    "one-sixth"         : 16.666%,
-    "five-sixths"       : 83.333%
-);
-
-/* generic classes for grid cells*/
-@mixin gridClasses( $device: false ){
-    $deviceString: null;
-
-    @if $device {
-        $deviceString: "#{$device}-";
-    }
-
-    @each $gridWidth, $width in $gridWidths {
-        .l-#{$deviceString}#{$gridWidth} {
-            width: $width;
-        }
-    }
-}
-
-$gridbreakpoints: "mobile-portrait" "mobile" "not-mobile" "tablet-portrait" "tablet" "not-tablet"  "print";
-
-@include gridClasses();
-
-@each $breakpoint in $gridbreakpoints {
-    @include breakpoint( $breakpoint ) {
-        @include gridClasses( $breakpoint );
-    }
-}
-
 
 /* default boxes */
 .l-continent {

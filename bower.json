@@ -14,7 +14,10 @@
     "tests"
   ],
   "dependencies": {
-    "jquery": "~1.11.1",
     "requirejs": "~2.1.8"
+  },
+  "devDependencies": {
+    "jquery": "~1.11.1",
+    "sensible": "~0.2.0"
   }
 }

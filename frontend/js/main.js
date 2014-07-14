@@ -8,7 +8,7 @@
         console.log('mymodule is loaded');
     });
 
-    require(['lib/browser/mediaQuery'], function ( mediaQuery ) {
+    require(['mediaQuery'], function ( mediaQuery ) {
 
       mediaQuery.onEnter('mobile tablet', function(querry){
         console.log('enter mobile & tablet:', querry);

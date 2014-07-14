@@ -6,7 +6,7 @@ module.exports = {
             fontsDir       : '<%= config.targetDir %>' + "/fonts",
             imagesDir      : '<%= config.srcDir %>' + "/img",
             javascriptsDir : '<%= config.srcDir %>' + "/js",
-            importPath     : ['<%= config.srcDir %>'],
+            importPath     : ['<%= config.srcDir %>', '<%= config.srcDir %>' + "/bower_components"],
             relativeAssets : true,
             noLineComments : true
         }

@@ -3,8 +3,8 @@ requirejs.config({
     baseUrl: '../../js/',
     paths: {
         jquery: '../bower_components/jquery/dist/jquery',
-        mymodule: '../modules/mymodule/mymodule'
-
+        mymodule: '../modules/mymodule/mymodule',
+        mediaQuery: '../bower_components/sensible/dist/mediaQuery'
     },
     shim: {
 
