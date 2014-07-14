@@ -1,0 +1,233 @@
+.l-clearfix {
+    @extend %clearfix;
+}
+
+.l-site-width {
+    position: relative;
+    margin: 0 auto;
+    max-width: $s-design-width;
+}
+
+// lists
+.l-horizontal-list {
+    list-style: none;
+    margin: 0; padding: 0;
+    > li {
+        @include inline-block(top);
+    }
+}
+
+.l-horizontal {
+    @include webkit-inline-block-fix;
+    > * {
+        @include inline-block(top);
+    }
+}
+
+.l-horizontal-samewidth-list {
+    list-style: none;
+    margin: 0; padding: 0;
+    width: 100%;
+    display: table;
+    table-layout: fixed;
+    > li {
+        height: 100%;
+        display: table-cell;
+    }
+}
+
+.l-gap, .l-grid.l-gap > .l-column {
+    margin-bottom: $s-gutter;
+}
+.l-gap-double {
+    margin-bottom: $s-gutter-double;
+}
+.l-gap-triple {
+    margin-bottom: $s-gutter-triple;
+}
+.l-gap-above {
+    margin-top: $s-gutter;
+}
+
+.l-no-gap {
+    margin: 0;
+}
+
+.l-left-right {
+    @extend %clearfix;
+    .l-left {
+        float: left;
+    }
+    .l-right {
+        float: right;
+    }
+}
+
+.l-table {
+    display: table;
+    width: 100%;
+    box-sizing: border-box;
+
+    .l-table-row {
+        display: table-row;
+    }
+    .l-table-cell {
+        display: table-cell;
+        vertical-align: middle;
+        &.t-nowrap {
+            white-space: nowrap;
+        }
+        &.max {
+            width: 100%;
+        }
+        &.min {
+            width: 1%;
+        }
+    }
+    &.l-gap {
+        margin-bottom: -$s-gutter;
+        .l-table-cell {
+            padding-bottom: $s-gutter;
+        }
+        .l-table-cell + .l-table-cell {
+            padding-left: $s-gutter;
+        }
+    }
+    &.l-gap-small {
+        margin-bottom: -10px;
+        .l-table-cell {
+            padding-bottom: 10px;
+        }
+    }
+}
+
+// column layouts
+// http://csswizardry.com/2013/02/responsive-grid-systems-a-solution/
+
+.l-grid-wrap {
+    padding-right: $s-gutter;
+}
+
+.l-grid, .l-grid-double, .l-grid-triple {
+    font-size: 0.0000001px;
+}
+
+.l-grid {
+    margin-right: -$s-gutter;
+}
+
+.l-grid-double {
+    margin-right: -($s-gutter * 2);
+    .l-grid-cell {
+        padding-right: 2 * $s-gutter;
+    }
+}
+
+.l-grid-cell {
+    box-sizing: border-box;
+    display: inline-block;
+    vertical-align: top;
+    padding-right: $s-gutter;
+    @include font-size($base-font-size);
+}
+
+
+.l-grid.l-grid-narrow {
+    margin-right: -$s-gutter/2;
+    .l-column {
+        padding-right: $s-gutter/2;
+    }
+}
+
+$gridWidths: (
+    "one-whole"         : 100%,
+    "one-half"          : 50%,
+    "one-quarter"       : 25%,
+    "three-quarters"    : 75%,
+    "one-third"         : 33.333%,
+    "two-thirds"        : 66.666%,
+    "one-fifth"         : 20%,
+    "four-fifths"       : 80%,
+    "one-sixth"         : 16.666%,
+    "five-sixths"       : 83.333%
+);
+
+/* generic classes for grid cells*/
+@mixin gridClasses( $device: false ){
+    $deviceString: null;
+
+    @if $device {
+        $deviceString: "#{$device}-";
+    }
+
+    @each $gridWidth, $width in $gridWidths {
+        .l-#{$deviceString}#{$gridWidth} {
+            width: $width;
+        }
+    }
+}
+
+$gridbreakpoints: "mobile-portrait" "mobile" "not-mobile" "tablet-portrait" "tablet" "not-tablet"  "print";
+
+@include gridClasses();
+
+@each $breakpoint in $gridbreakpoints {
+    @include breakpoint( $breakpoint ) {
+        @include gridClasses( $breakpoint );
+    }
+}
+
+
+/* default boxes */
+.l-continent {
+    padding: $s-gutter + ($s-gutter / 2);
+}
+.l-island {
+    padding: $s-gutter;
+}
+.l-islet {
+    padding: $s-gutter / 2;
+}
+
+/* centers with complicated table layout */
+.l-centered {
+
+}
+
+.l-centered-container {
+    position: absolute;
+    top: 0; right: 0; bottom: 0; left: 0;
+}
+
+.l-centered-inner {
+    display: table;
+    vertical-align: middle;
+    text-align: center;
+    height: 100%; width: 100%;
+}
+
+.l-centered-content {
+    display: table-cell;
+    vertical-align: middle;
+}
+.l-centered-body {
+    position: relative;
+    display: inline-block;
+    max-width: 90%;
+    text-align: left;
+}
+
+/* generic lading class */
+.is-loading {
+    pointer-events: none;
+    opacity: 0.5;
+
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0%   { opacity: 0.2; }
+  50%  { opacity: 0.6; }
+  100% { opacity: 0.2; }
+}
+

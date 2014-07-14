@@ -1,12 +1,11 @@
 @import
     "compass",
-    "mixins/mediaqueries",
-    "mixins/sizetools",
-    "mixins/triangle",
-    "mixins/webkit_inline_block_fix",
-
-    "vendor/reset",
-    "vendor/helpers";
+    "skeleton/mixins/mediaqueries",
+    "skeleton/mixins/sizetools",
+    "skeleton/mixins/triangle",
+    "skeleton/mixins/webkit_inline_block_fix",
+    "skeleton/vendor/reset",
+    "skeleton/vendor/helpers";
 
 @import
     "0.settings",
