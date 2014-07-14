@@ -2,6 +2,7 @@ default:
   - work
 
 work:
+  - prepare
   - build-dev
   - server
 
@@ -10,6 +11,7 @@ build-dev:
   - css
   - markup
   - js
+  - assets
 
 good-code:
   - jshint
@@ -34,9 +36,14 @@ js:
   - requirejs
   # TODO: minification and optimization
 
+assets:
+  - copy:fonts
+
 prepare:
   - clean # this cleans *generated*     files in dist/
-  - copy  # this copies *not-generated* files to dist/
+  - copy:images
+  - copy:meta
+  - copy:fonts
 
 server:
   - connect
