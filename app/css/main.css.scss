@@ -1,19 +1,15 @@
 @import
     "compass",
-    "default/mixins/sizetools",
-    "default/mixins/triangle",
-    "default/mixins/webkit_inline_block_fix",
-    "default/vendor/reset",
-    "default/vendor/helpers",
     "sensible/dist/mediaqueries",
-    "sensible/dist/grid";
+    "sensible/dist/grid",
+    "default/main";
 
 @import
     "0.settings",
     "1.base",
     "2.layout",
     "3.helpers",
-    "4.modules",
-    "5.print",
-    "6.states",
+    "4.print",
+    "5.states",
+    "6.modules",
     "7.shame";
