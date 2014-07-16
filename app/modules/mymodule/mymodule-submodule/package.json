@@ -4,7 +4,7 @@
   "description": "example submodule",
   "author": "ginetta",
   "data": {
-    "firstname": "John Doe",
+    "title": "Submodule Title",
     "age":       12
   }
 }

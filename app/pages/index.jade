@@ -2,15 +2,13 @@ extends /layout/layout
 
 block htmlhead
     title skeleton-project
-    meta(name='format-detection', content='telephone=no')
     meta(name='description', content='')
 
 block htmlbody
-    include /modules/site/site-header/site-header
-    h1 #{data.hello}
+    h1 #{data.title}
+    h1 #{data.subtitle}
     +mymodule
-      //- Example with arguments
-      +mymodule-submodule("Super Card")
       //- Example with default arguments
       +mymodule-submodule
-    +mymodule-submodule
+      //- Example with arguments
+      +mymodule-submodule("A transcluded title")

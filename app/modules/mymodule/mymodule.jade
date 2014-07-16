@@ -1,8 +1,7 @@
 //- This component is a "parentable" component
 mixin mymodule()
   article.mymodule
-    h1 #{data.hello}
-    h2 Card List
+    h1 #{mymodule.data.title}
     .mymodule--content
       //- "Transcluded" content goes here
       if block
