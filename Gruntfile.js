@@ -15,6 +15,11 @@ module.exports = function (grunt) {
     // Loads grunt tasks found on package.json automatically
     require('load-grunt-tasks')(grunt, {pattern: 'grunt-*'});
 
+    // Requiring our custom grunt tasks from the toolset
+    // TODO: move to npm
+    require('./lib/toolset/grunt-tasks/assembler/pagesAssembler.js')(grunt, { config: config });
+    require('./lib/toolset/grunt-tasks/assembler/styleguideAssembler.js')(grunt, { config: config });
+
     // Loads grunt tasks' configuration in lib/grunt-tasks/<task-name>.js
     require('load-grunt-config')(grunt, {
         data: { config: config },
