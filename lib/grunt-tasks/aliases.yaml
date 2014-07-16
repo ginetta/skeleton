@@ -13,12 +13,6 @@ build-dev:
   - js
   - assets
 
-good-code:
-  - jshint
-  - eslint
-  - scsslint
-  - plato
-
 markup:
   - componentPages
   - translatedPages
