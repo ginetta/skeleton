@@ -1,0 +1,9 @@
+extends /layout/layout
+
+block htmlhead
+    title Design Palette
+    meta(name='format-detection', content='telephone=no')
+    meta(name='description', content='')
+
+block htmlbody
+    +styleguide-color("$c-some-color", "#df0000", "colorClass", "colorClassTitle")

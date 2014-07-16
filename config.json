@@ -1,0 +1,51 @@
+{
+    "sizes":
+    {
+        "base":
+        {
+            "value": "24px",
+            "description": "the base value used for like everything, if you don't use it i will kill you, DAVID"
+        },
+        "base-double":
+        {
+            "value": "(sizes.base * 2)"
+        },
+        "base-font": {
+            "value": "16px",
+            "description": "base font dude"
+        }
+    },
+    "colors":
+    {
+        "black":
+        {
+            "value": "rgba(0,0,0,.9)",
+            "description":  "just like knight riders car",
+            "labels": "base colors, fonts"
+        },
+        "blue":
+        {
+            "value": "blue",
+            "description":  "just like your mom's eyes",
+            "labels": "base colors"
+        },
+        "grey":
+        {
+            "value": "#ccc",
+            "description": "mainly used for gradients",
+            "labels": "gray palette"
+        },
+        "grey-dark":
+        {
+            "value": "#999",
+            "description": "mainly used for very dark fonts",
+            "labels": "gray palette, fonts"
+        }
+    },
+    "typography":
+    {
+
+    }
+}
+
+
