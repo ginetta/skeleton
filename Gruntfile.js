@@ -1,5 +1,5 @@
 var config  = {
-    srcDir: 'frontend',
+    srcDir: 'app',
     targetDir: 'dist',
     componentListDir: 'styleguide',
     localesDir: 'data'
