@@ -1,10 +1,10 @@
 @import
     "compass",
-    "skeleton/mixins/sizetools",
-    "skeleton/mixins/triangle",
-    "skeleton/mixins/webkit_inline_block_fix",
-    "skeleton/vendor/reset",
-    "skeleton/vendor/helpers",
+    "default/mixins/sizetools",
+    "default/mixins/triangle",
+    "default/mixins/webkit_inline_block_fix",
+    "default/vendor/reset",
+    "default/vendor/helpers",
     "sensible/dist/mediaqueries",
     "sensible/dist/grid";
 
@@ -12,8 +12,8 @@
     "0.settings",
     "1.base",
     "2.layout",
-    "3.modules",
-    "4.helpers",
+    "3.helpers",
+    "4.modules",
     "5.print",
     "6.states",
     "7.shame";
