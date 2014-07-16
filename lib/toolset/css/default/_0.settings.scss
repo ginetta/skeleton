@@ -12,98 +12,98 @@
 
 // Fonts
 
-    //@include font-face("AkkuratWeb", font-files("Akkurat/AkkuratRegular/akkrg.woff", "Akkurat/AkkuratRegular/akkrg.ttf", "Akkurat/AkkuratRegular/akkrg.svg"), "Akkurat/AkkuratRegular/akkrg.eot", 400);
-    //@include font-face("AkkuratWeb", font-files("Akkurat/AkkuratLightRegular/akklg.woff", "Akkurat/AkkuratLightRegular/akklg.ttf", "Akkurat/AkkuratLightRegular/akklg.svg"), "Akkurat/AkkuratLightRegular/akklg.eot", 300);
-    //@include font-face("AkkuratWeb", font-files("Akkurat/AkkuratBoldRegular/akkbd.woff", "Akkurat/AkkuratBoldRegular/akkbd.ttf", "Akkurat/AkkuratBoldRegular/akkbd.svg"), "Akkurat/AkkuratBoldRegular/akkbd.eot", 700);
+    //@include font-face("AkkuratWeb", font-files("Akkurat/AkkuratRegular/akkrg.woff", "Akkurat/AkkuratRegular/akkrg.ttf", "Akkurat/AkkuratRegular/akkrg.svg"), "Akkurat/AkkuratRegular/akkrg.eot", 400) !default;
+    //@include font-face("AkkuratWeb", font-files("Akkurat/AkkuratLightRegular/akklg.woff", "Akkurat/AkkuratLightRegular/akklg.ttf", "Akkurat/AkkuratLightRegular/akklg.svg"), "Akkurat/AkkuratLightRegular/akklg.eot", 300) !default;
+    //@include font-face("AkkuratWeb", font-files("Akkurat/AkkuratBoldRegular/akkbd.woff", "Akkurat/AkkuratBoldRegular/akkbd.ttf", "Akkurat/AkkuratBoldRegular/akkbd.svg"), "Akkurat/AkkuratBoldRegular/akkbd.eot", 700) !default;
 
-    $base-font-size: 20px;
+    $base-font-size: 20px !default;
 
     $f-default: "AkkuratWeb", Helvetica, Arial, sans-serif !default;
 
-    $f-weight-normal: normal;
-    $f-weight-bold: bold;
+    $f-weight-normal: normal !default;
+    $f-weight-bold: bold !default;
 
-    $f-title-weight-normal: $f-weight-normal;
-    $f-title-weight-bold: $f-weight-bold;
+    $f-title-weight-normal: $f-weight-normal !default;
+    $f-title-weight-bold: $f-weight-bold !default;
 
-    $f-text-weight-normal: $f-weight-normal;
-    $f-text-weight-bold: $f-weight-bold;
+    $f-text-weight-normal: $f-weight-normal !default;
+    $f-text-weight-bold: $f-weight-bold !default;
 
-    $f-title-1: 20px;
-    $f-title-2: 16px;
-    $f-title-3: 14px;
+    $f-title-1: 20px !default;
+    $f-title-2: 16px !default;
+    $f-title-3: 14px !default;
 
-    $f-size-xtra-small: 12px;
-    $f-size-smaller: 14px;
-    $f-size-small: 16px;
-    $f-size-mid: 20px;
-    $f-size-large: 30px;
-    $f-size-largest: 40px;
+    $f-size-xtra-small: 12px !default;
+    $f-size-smaller: 14px !default;
+    $f-size-small: 16px !default;
+    $f-size-mid: 20px !default;
+    $f-size-large: 30px !default;
+    $f-size-largest: 40px !default;
 
     %antialiased {
-        -webkit-font-smooting: antialiased;
+        -webkit-font-smooting: antialiased !default;
     }
 
 
     %font-text {
-        font-family: $f-default;
-        -webkit-font-smoothing: antialiased;
-        font-weight: $f-text-weight-normal;
+        font-family: $f-default !default;
+        -webkit-font-smoothing: antialiased !default;
+        font-weight: $f-text-weight-normal !default;
         @extend %antialiased;
     }
 
 // Colors
-    $c-white: #fff;
+    $c-white: #fff !default;
 
 // Colors defined in the google doc
-  $helsana-red: #ae1946;
-  $helsana-green: #b3ba12;
-  $helsana-blue: #8296c4;
-  $helsana-orange: #f08100;
-  $helsana-ecru: #cab790;
-  $helsana-light-red: #d35186;
-  $dark-green: #7d8701;
-  $dark-blue: #425896;
-  $dark-orange: #e24700;
-  $dark-ecru: #8f7445;
-  $dark-red: #9a0941;
+  $helsana-red: #ae1946 !default;
+  $helsana-green: #b3ba12 !default;
+  $helsana-blue: #8296c4 !default;
+  $helsana-orange: #f08100 !default;
+  $helsana-ecru: #cab790 !default;
+  $helsana-light-red: #d35186 !default;
+  $dark-green: #7d8701 !default;
+  $dark-blue: #425896 !default;
+  $dark-orange: #e24700 !default;
+  $dark-ecru: #8f7445 !default;
+  $dark-red: #9a0941 !default;
 
-  $c-grey-darkest: #333;
-  $c-grey-dark: #666;
-  $c-grey-mid: #999;
-  $c-grey-light: #ccc;
-  $c-grey-lightest: #e5e5e5;
+  $c-grey-darkest: #333 !default;
+  $c-grey-dark: #666 !default;
+  $c-grey-mid: #999 !default;
+  $c-grey-light: #ccc !default;
+  $c-grey-lightest: #e5e5e5 !default;
 
 // Custom colors
-  $black: #000;
-  $white: #fff;
-  $gray: #f4f1e9;
+  $black: #000 !default;
+  $white: #fff !default;
+  $gray: #f4f1e9 !default;
 
 
-  $blue_lighter: #f2f4f9;
-  $blue_light: #9aaad0;
-  $blue: $helsana-blue;
-  $blue_darker: $dark-blue;
+  $blue_lighter: #f2f4f9 !default;
+  $blue_light: #9aaad0 !default;
+  $blue: $helsana-blue !default;
+  $blue_darker: $dark-blue !default;
 
-  $green_lighter: #f7f8e6;
-  $green_light: #c2c832;
-  $green: $helsana-green;
-  $green_darker: $dark-green;
+  $green_lighter: #f7f8e6 !default;
+  $green_light: #c2c832 !default;
+  $green: $helsana-green !default;
+  $green_darker: $dark-green !default;
 
-  $orange_lighter: #fcf0e1;
-  $orange_light: #f5a43b;
-  $orange: $helsana-orange;
-  $orange_darker: $dark-orange;
+  $orange_lighter: #fcf0e1 !default;
+  $orange_light: #f5a43b !default;
+  $orange: $helsana-orange !default;
+  $orange_darker: $dark-orange !default;
 
-  $brown_lighter: #f4f1e9;
-  $brown_light: #d4c5a4;
-  $brown: $helsana-ecru;
-  $brown_darker: $dark-ecru;
+  $brown_lighter: #f4f1e9 !default;
+  $brown_light: #d4c5a4 !default;
+  $brown: $helsana-ecru !default;
+  $brown_darker: $dark-ecru !default;
 
-  $red_lighter: #f7dce7;
-  $red_light: $helsana-light-red;
-  $red: $helsana-red;
-  $red_darker: $dark-red;
+  $red_lighter: #f7dce7 !default;
+  $red_light: $helsana-light-red !default;
+  $red: $helsana-red !default;
+  $red_darker: $dark-red !default;
 
 // Maps
 $colors: (
@@ -155,48 +155,48 @@ $colors: (
 
 
 
-$gray_light: #f0f0f0;
+$gray_light: #f0f0f0 !default;
 
 // Shortcuts
-$primary: color(red, dark);
-$background: #fff;
+$primary: color(red, dark) !default;
+$background: #fff !default;
 
 
 // Blueprint colors
-$font-color: $black;
-$header-color: $font-color - #111;
+$font-color: $black !default;
+$header-color: $font-color - #111 !default;
 
-$link-color: $primary;
-$link-hover-color: $black;
-$link-focus-color: $link-hover-color;
-$link-active-color: $link-color;
-$link-visited-color: $link-color;
+$link-color: $primary !default;
+$link-hover-color: $black !default;
+$link-focus-color: $link-hover-color !default;
+$link-active-color: $link-color !default;
+$link-visited-color: $link-color !default;
 
 
 
 // Animation stuff
-    $a-speed-base: 200ms;
-    $a-speed-fast: $a-speed-base;
-    $a-speed-normal: $a-speed-base * 2;
-    $a-speed-slow: $a-speed-base * 3;
+    $a-speed-base: 200ms !default;
+    $a-speed-fast: $a-speed-base !default;
+    $a-speed-normal: $a-speed-base * 2 !default;
+    $a-speed-slow: $a-speed-base * 3 !default;
 
-    $a-ease: ease-in-out;
+    $a-ease: ease-in-out !default;
 
 
-    $s-design-width: 1024px;
+    $s-design-width: 1024px !default;
 
 // spacings
-    $m-golden: 1.61803398875;
+    $m-golden: 1.61803398875 !default;
 
-    $s-gutter: 20px !default;
-    $s-gutter-double: $s-gutter * 2;
-    $s-gutter-triple: $s-gutter * 3;
-    $s-gutter-half: $s-gutter * 0.5;
-    $s-gutter-golden: $s-gutter * $m-golden;
+    $s-gutter: 20px !default !default;
+    $s-gutter-double: $s-gutter * 2 !default;
+    $s-gutter-triple: $s-gutter * 3 !default;
+    $s-gutter-half: $s-gutter * 0.5 !default;
+    $s-gutter-golden: $s-gutter * $m-golden !default;
 
 // sizes
-    $s-header-height: 54px;
+    $s-header-height: 54px !default;
 
 // sprites & icons
-    $i-spacing:10px;
-    $i-2x-spacing:10px;
+    $i-spacing:10px !default;
+    $i-2x-spacing:10px !default;
