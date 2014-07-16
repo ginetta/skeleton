@@ -5,10 +5,11 @@ block htmlhead
     meta(name='description', content='')
 
 block htmlbody
-    h1 #{data.title}
-    h1 #{data.subtitle}
-    +mymodule
-      //- Example with default arguments
-      +mymodule-submodule
-      //- Example with arguments
-      +mymodule-submodule("A transcluded title")
+    .l-site-width
+        h1 #{data.title}
+        h2 #{data.subtitle}
+        +mymodule
+          //- Example with default arguments
+          +mymodule-submodule
+          //- Example with arguments
+          +mymodule-submodule("A transcluded title")
