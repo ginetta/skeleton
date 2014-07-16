@@ -6,7 +6,6 @@ work:
   - build-dev
   - server
 
-
 build-dev:
   - css
   - markup
@@ -14,8 +13,8 @@ build-dev:
   - assets
 
 markup:
-  - componentPages
-  - translatedPages
+  # - styleguideAssembler
+  - pagesAssembler
   # TODO: minification and optimization
 
 css:
