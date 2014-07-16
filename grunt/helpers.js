@@ -114,8 +114,8 @@ Helper = (function() {
 
   Helper.prototype.getLocales = function () {
     var locales = {};
-    grunt.file.glob.sync(localesDir + '/*.json').forEach(function (localePath) {
-      var localeName = localePath.split('/')[1].replace('.json', '');
+    grunt.file.glob.sync(srcDir + '/' + localesDir + '/*.json').forEach(function (localePath) {
+      var localeName = _.last(localePath.split('/')).replace('.json', '');
       locales[localeName] = grunt.file.readJSON(localePath);
     });
     return locales;

@@ -2,7 +2,7 @@ var config  = {
     srcDir: 'frontend',
     targetDir: 'dist',
     componentListDir: 'styleguide',
-    localesDir: 'locales'
+    localesDir: 'data'
 };
 
 module.exports = function (grunt) {
