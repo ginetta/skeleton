@@ -16,6 +16,7 @@ module.exports = function (grunt, options) {
   var chalk         = require('chalk'),
       srcDir        = options.config.srcDir,
       targetDir     = options.config.targetDir,
+      libDir        = options.config.libDir,
       styleguideDir = options.config.componentListDir,
       Helper        = new (require('./helpers'))(grunt, options),
       _             = require('lodash');

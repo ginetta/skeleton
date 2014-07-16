@@ -38,7 +38,7 @@ module.exports = {
             expand: true,
             src: ['bower_components/**/*.js'],
             dest: '<%= config.targetDir %>',
-            cwd: '<%= config.srcDir %>'
+            cwd: '<%= config.libDir %>'
         }]
     }
 };

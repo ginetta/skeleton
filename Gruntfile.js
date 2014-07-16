@@ -1,6 +1,7 @@
 var config  = {
     srcDir: 'app',
     targetDir: 'dist',
+    libDir: 'lib',
     componentListDir: 'styleguide',
     localesDir: 'data'
 };
