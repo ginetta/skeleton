@@ -41,14 +41,14 @@
     $f-size-largest: 40px !default;
 
     %antialiased {
-        -webkit-font-smooting: antialiased !default;
+        -webkit-font-smooting: antialiased;
     }
 
 
     %font-text {
-        font-family: $f-default !default;
-        -webkit-font-smoothing: antialiased !default;
-        font-weight: $f-text-weight-normal !default;
+        font-family: $f-default;
+        -webkit-font-smoothing: antialiased;
+        font-weight: $f-text-weight-normal;
         @extend %antialiased;
     }
 
