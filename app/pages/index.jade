@@ -7,7 +7,7 @@ block htmlhead
 
 block htmlbody
     include /modules/site/site-header/site-header
-    h1 #{translation.hello}
+    h1 #{data.hello}
     +mymodule
       //- Example with arguments
       +mymodule-submodule("Super Card")
