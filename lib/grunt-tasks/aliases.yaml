@@ -13,6 +13,7 @@ build-dev:
   - assets
 
 build-prod:
+  - css-prod
 
 markup:
   # - styleguideAssembler
@@ -21,6 +22,7 @@ markup:
 
 css-prod:
   - css-dev
+  - uncss
   - cssmin
 
 css-dev:
