@@ -32,7 +32,7 @@ Find and replace "skeleton-project" by your "project-name" in the whole project 
 #### Prerequisites
 You will need 
   - [node.js](http://nodejs.org/) to run the skeleton.
-  - [Ruby](https://www.ruby-lang.org/en/) to compile the css
+  - [Ruby](https://www.ruby-lang.org/en/) and [Compass](http://compass-style.org/install/) to compile the css
   - [grunt-cli](https://github.com/gruntjs/grunt-cli) to run the grunt commands
 
 #### Installation
@@ -45,13 +45,6 @@ Install all the project dependencies:
     
     npm install
 
-Install bower dependencies by using the
-
-    bower install
-
-Install ruby dependencies by using
-
-    bundle install
 
 ### Generate the app
 
@@ -64,11 +57,14 @@ It will generate all the files, start a server and open your browser with the pr
 
 ## Folder structure
 
+
+## Jade templates, Data and translation
+
+
 ## Reusable Modules
 ### Concept
 ### How to create a new module
 
-## Jade templates, Data and translation
 
 ## JS / CSS Toolset
 
