@@ -7,29 +7,33 @@ work:
   - server
 
 build-dev:
+  - prepare
   - css-dev
-  - markup
+  - markup-dev
   - js
-  - assets
+  - assets-dev
 
 build-prod:
   - css-prod
+  - assets-prod
 
-markup:
+markup-dev:
   # - styleguideAssembler
   - pagesAssembler
-  # TODO: minification and optimization
+
+markup-prod:
+  - markup-dev
+
+css-dev:
+  - grunticon
+  - compass
+  - autoprefixer
 
 css-prod:
   - css-dev
   - uncss
   - cssmin
 
-css-dev:
-  - grunticon
-  - compass
-  - autoprefixer
-  # TODO: minification and optimization
 
 js:
   - copy:vendorjs
@@ -38,8 +42,12 @@ js:
   - requirejs
   # TODO: minification and optimization
 
-assets:
+assets-dev:
   - copy:fonts
+
+assets-prod:
+  - assets
+  - imagemin
 
 prepare:
   - clean # this cleans *generated*     files in dist/
