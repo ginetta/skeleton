@@ -7,22 +7,24 @@ work:
   - server
 
 build-dev:
-  - prepare
   - css-dev
-  - markup-dev
+  - html-dev
   - js
   - assets-dev
 
 build-prod:
-  - css-prod
+  - prepare
+  - html-prod
+  - css-prod # css needs to run after html because uncss uses generated html pages
   - assets-prod
 
-markup-dev:
+html-dev:
   # - styleguideAssembler
   - pagesAssembler
 
-markup-prod:
-  - markup-dev
+html-prod:
+  - html-dev
+  - htmlmin
 
 css-dev:
   - grunticon
@@ -46,7 +48,7 @@ assets-dev:
   - copy:fonts
 
 assets-prod:
-  - assets
+  - assets-dev
   - imagemin
 
 prepare:
