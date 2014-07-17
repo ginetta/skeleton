@@ -15,8 +15,8 @@ build-dev:
 build-prod:
   - prepare
   - html-prod
+  - assets-prod # assets runs before css because grunticon will use optimized svgs
   - css-prod # css needs to run after html because uncss uses generated html pages
-  - assets-prod
 
 html-dev:
   # - styleguideAssembler
@@ -27,12 +27,14 @@ html-prod:
   - htmlmin
 
 css-dev:
-  - grunticon
+  - grunticon:dev
   - compass
   - autoprefixer
 
 css-prod:
-  - css-dev
+  - grunticon:prod
+  - compass
+  - autoprefixer
   - uncss
   - cssmin
 
@@ -50,6 +52,7 @@ assets-dev:
 assets-prod:
   - assets-dev
   - imagemin
+  - svgmin
 
 prepare:
   - clean # this cleans *generated*     files in dist/
