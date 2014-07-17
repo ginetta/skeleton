@@ -7,17 +7,23 @@ work:
   - server
 
 build-dev:
-  - css
+  - css-dev
   - markup
   - js
   - assets
+
+build-prod:
 
 markup:
   # - styleguideAssembler
   - pagesAssembler
   # TODO: minification and optimization
 
-css:
+css-prod:
+  - css-dev
+  - cssmin
+
+css-dev:
   - grunticon
   - compass
   - autoprefixer
