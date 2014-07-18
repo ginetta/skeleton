@@ -27,6 +27,7 @@
     "grunt-contrib-watch": "^0.6.1",
     "grunt-grunticon": "^1.2.9",
     "grunt-modernizr": "^0.5.2",
+    "grunt-phantomas": "^0.8.0",
     "grunt-shared-config": "^0.3.0",
     "grunt-svgmin": "^0.4.0",
     "grunt-uncss": "^0.3.5",
@@ -34,6 +35,7 @@
     "load-grunt-config": "^0.10.0",
     "load-grunt-tasks": "^0.6.0",
     "lodash": "^2.4.1",
+    "marked": "^0.3.2",
     "path": "^0.4.9",
     "time-grunt": "^0.3.2"
   }
