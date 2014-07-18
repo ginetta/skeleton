@@ -1,4 +1,4 @@
-<img align="right" height="60" style="margin: 0 0 20px 20px" src="http://imgh.us/skeleton.svg">
+<img id="logo" align="right" height="90" style="margin: 0 0 20px 20px" src="http://imgh.us/skeleton.svg">
 
 # Skeleton
 
