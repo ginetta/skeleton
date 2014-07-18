@@ -1,0 +1,24 @@
+mixin skeleton-docs()
+  h2 What is skeleton
+  img(src="http://imgh.us/skeleton.svg", style="float: right;")
+  p Skeleton is a static site generator that can serve as a boilerplate for different frontend projects. It includes:
+  ul
+    li defines a folder structure to develop a web app
+    li defines a way to write reusable web modules (HTML / CSS / JS)
+    li includes a grunt task to compile jade and translated data files
+    li makes use of some custom CSS & JS we often reuse on projects
+    li generates a styleguide for the defaults styles and documenting the modules
+  h2 Guides
+    ul
+      li
+        a(href="#folder-structure") Folder Structure
+      li
+        a(href="#reusable-modules") Reusable Modules
+      li
+        a(href="#templates") Templates
+      li
+        a(href="#toolset") Toolset
+  +folder-structure
+  +reusable-modules
+  +templates
+  +toolset

@@ -1,0 +1,10 @@
+{
+  "name": "folder-structure",
+  "version": "0.0.1",
+  "description": "This module describes skeleton folder structure",
+  "author": "Ginetta",
+  "data": {
+    "title": "Module title",
+    "age":       12
+  }
+}
