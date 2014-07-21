@@ -9,19 +9,28 @@
  *  i: icons & sprites
  *  a: animations & transitions
  */
+@import "bonescss/0.settings";
 
 // Fonts
 // @import url(http://fonts.googleapis.com/css?family=Libre+Baskerville:400,700,400italic);
 @import url(http://fonts.googleapis.com/css?family=Lora);
-$base-font-size: 18px;
-// $f-default: 'Libre Baskerville', Baskerville, serif;
-$f-default: 'Lora', serif;
+$base-font-size: 16px;
+$line-height-ratio: 1.5;
+
+$base-font-family: 'Lora', serif;
+$f-default: $base-font-family;
+
 
 $s-design-width: 980px;
 
 // Colors
+$c-grey-lightest: #f7f7f7;
+$c-grey-light: #ddd;
 
 // spacings
+$s-gutter-half: $s-gutter * .5;
+$s-gutter: 20px;
+$s-gutter-double: $s-gutter * 2;
 
 // sizes
 

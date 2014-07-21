@@ -19,6 +19,7 @@
   "devDependencies": {
     "jquery": "~2.1.1",
     "sensible": "~0.2.5",
-    "requestAnimationFrame": "~0.0.20"
+    "requestAnimationFrame": "~0.0.20",
+    "bonescss": "*"
   }
 }
