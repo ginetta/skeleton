@@ -44,7 +44,7 @@ js:
   - copy:vendorjs
   - copy:modulesjs
   - copy:js
-  - requirejs
+  # - requirejs
   # TODO: minification and optimization
 
 assets-dev:
