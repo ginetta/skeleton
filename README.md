@@ -1,4 +1,4 @@
-<img align="right" height="60" style="margin: 0 0 20px 20px" src="http://imgh.us/skeleton.svg">
+<img id="logo" align="right" height="90" style="margin: 0 0 20px 20px" src="http://imgh.us/skeleton.svg">
 
 # Skeleton
 
@@ -10,7 +10,16 @@ Skeleton is a static site generator that can serve as a boilerplate for differen
 - makes use of some custom CSS & JS we often reuse on projects
 - generates a styleguide for the defaults styles and documenting the modules
 
-## Getting started
+## Guides
+
+- [Getting Started](#getting-started)
+- [Folder Structure](#folder-structure)
+- [Reusable Modules](#reusable-modules)
+- [Jade templates, Data and translation](#templates)
+- [JS / CSS Toolset](#toolset)
+- [Styleguide](#styleguide)
+
+## <a id="getting-started">Getting started</a>
 
 ### Setting up a new project
 To start a new project, create a new repository on git and add the skeleton repository as remote:
@@ -55,21 +64,22 @@ To build the project, just run
 It will generate all the files, start a server and open your browser with the project index
 
 
-## Folder structure
+## <a id="folder-structure">Folder Structure</a>
+## <a id="reusable-modules">Reusable Modules</a>
 
 
-## Jade templates, Data and translation
+## <a id="templates">Jade templates, Data and translation</a>
 
 
-## Reusable Modules
+## <a id="reusable-modules">Reusable Modules</a>
 ### Concept
 ### How to create a new module
 
 
-## JS / CSS Toolset
+## <a id="toolset">JS / CSS Toolset</a>
 
 
-## Styleguide
+## <a id="styleguide">Styleguide</a>
 
 ## Bonus
 
