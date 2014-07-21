@@ -1,0 +1,39 @@
+.docs-skeleton {
+  padding: $s-gutter-double 0;
+  line-height: 1.45;
+  #logo {
+    float: left;
+    margin: 10px 20px 0 0 !important; // overrides style on github
+    height: 65px;
+  }
+
+  // Typography scale by http://type-scale.com/
+  // with 20px as base size and 1.414 as a scale
+
+  p {margin-bottom: 1.3em;}
+
+  h1, h2, h3, h4 {
+    margin: 1.414em 0 0.5em;
+    font-weight: inherit;
+    line-height: 1.2;
+  }
+
+  h1 {
+    margin-top: 0;
+    font-size: 3.998em;
+  }
+
+  h2 {font-size: 2.827em;}
+
+  h3 {font-size: 1.999em;}
+
+  h4 {font-size: 1.414em;}
+
+
+  // "Nice" looking terminal commands
+  pre {
+    background: $c-grey-lightest;
+    border: 1px solid $c-grey-light;
+    padding: $s-gutter-half;
+  }
+}

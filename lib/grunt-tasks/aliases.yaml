@@ -7,31 +7,53 @@ work:
   - server
 
 build-dev:
-  - css
-  - markup
+  - css-dev
+  - html-dev
   - js
-  - assets
+  - assets-dev
 
-markup:
+build-prod:
+  - prepare
+  - html-prod
+  - assets-prod # assets runs before css because grunticon will use optimized svgs
+  - css-prod # css needs to run after html because uncss uses generated html pages
+  - clean:bower
+
+html-dev:
   # - styleguideAssembler
   - pagesAssembler
-  # TODO: minification and optimization
 
-css:
-  - grunticon
+html-prod:
+  - html-dev
+  - htmlmin
+
+css-dev:
+  - grunticon:dev
   - compass
   - autoprefixer
-  # TODO: minification and optimization
+
+css-prod:
+  - grunticon:prod
+  - compass
+  - autoprefixer
+  - uncss
+  - cssmin
+
 
 js:
   - copy:vendorjs
   - copy:modulesjs
   - copy:js
-  - requirejs
+  # - requirejs
   # TODO: minification and optimization
 
-assets:
+assets-dev:
   - copy:fonts
+
+assets-prod:
+  - assets-dev
+  - imagemin
+  - svgmin
 
 prepare:
   - clean # this cleans *generated*     files in dist/

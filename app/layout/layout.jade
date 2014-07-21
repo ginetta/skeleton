@@ -8,7 +8,7 @@ html.no-js(lang='en')
 
     meta(name='viewport', content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no')
     meta(name='format-detection', content='telephone=no')
-      
+
     block htmlhead
 
     link(rel='stylesheet', href='#{relativePath}/css/main.css')
@@ -19,8 +19,21 @@ html.no-js(lang='en')
 
     block js
       script(src='#{relativePath}/bower_components/requirejs/require.js')
-      script(src='#{relativePath}/js/config-require.js')
+      //- script(src='#{relativePath}/js/config-require.js')
       script(src='#{relativePath}/js/main.js')
+
+      script.
+        requirejs.config({
+          //waitSeconds: 12,
+          baseUrl: '#{relativePath}/js/',
+          paths: {
+            jquery: '#{relativePath}bower_components/jquery/dist/jquery',
+            mymodule: '#{relativePath}modules/mymodule/mymodule',
+            mediaQuery: '#{relativePath}bower_components/sensible/mediaQuery'
+          },
+          shim: {}
+        });
+
 
 
       //
