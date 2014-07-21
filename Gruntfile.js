@@ -3,7 +3,8 @@ var config  = {
     targetDir: 'dist',
     libDir: 'lib',
     componentListDir: 'styleguide',
-    localesDir: 'data'
+    localesDir: 'data',
+    assetsDir: 'assets'
 };
 
 module.exports = function (grunt) {
