@@ -1,0 +1,10 @@
+{
+  "name": "docs-skeleton",
+  "version": "0.0.1",
+  "description": "This component acts as a documentation tool for skeleton newcomers.",
+  "author": "Ginetta",
+  "data": {
+    "title": "Component title",
+    "age":       12
+  }
+}

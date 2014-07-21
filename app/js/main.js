@@ -4,8 +4,8 @@
 (function(){
     'use strict';
 
-    require(['mymodule'], function () {
-        console.log('mymodule is loaded');
+    require(['mycomponent'], function () {
+        console.log('mycomponent is loaded');
     });
 
     require(['mediaQuery'], function ( mediaQuery ) {

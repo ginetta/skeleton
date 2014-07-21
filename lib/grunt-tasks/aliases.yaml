@@ -42,7 +42,7 @@ css-prod:
 
 js:
   - copy:vendorjs
-  - copy:modulesjs
+  - copy:componentsjs
   - copy:js
   # - requirejs
   # TODO: minification and optimization
