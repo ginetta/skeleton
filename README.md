@@ -5,16 +5,16 @@
 ## What is skeleton
 Skeleton is a static site generator that can serve as a boilerplate for different frontend projects. It includes:
 - defines a folder structure to develop a web app
-- defines a way to write reusable web modules (HTML / CSS / JS)
+- defines a way to write reusable web components (HTML / CSS / JS)
 - includes a grunt task to compile jade and translated data files
 - makes use of some custom CSS & JS we often reuse on projects
-- generates a styleguide for the defaults styles and documenting the modules
+- generates a styleguide for the defaults styles and documenting the components
 
 ## Guides
 
 - [Getting Started](#getting-started)
 - [Folder Structure](#folder-structure)
-- [Reusable Modules](#reusable-modules)
+- [Reusable Components](#reusable-components)
 - [Jade templates, Data and translation](#templates)
 - [JS / CSS Toolset](#toolset)
 - [Styleguide](#styleguide)
@@ -65,15 +65,15 @@ It will generate all the files, start a server and open your browser with the pr
 
 
 ## <a id="folder-structure">Folder Structure</a>
-## <a id="reusable-modules">Reusable Modules</a>
+## <a id="reusable-components">Reusable Components</a>
 
 
 ## <a id="templates">Jade templates, Data and translation</a>
 
 
-## <a id="reusable-modules">Reusable Modules</a>
+## <a id="reusable-components">Reusable Components</a>
 ### Concept
-### How to create a new module
+### How to create a new component
 
 
 ## <a id="toolset">JS / CSS Toolset</a>

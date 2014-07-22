@@ -14,7 +14,7 @@ html.no-js(lang='en')
     link(rel='stylesheet', href='#{relativePath}/css/main.css')
 
   body
-    include /modules/modules
+    include /components/components
     block htmlbody
 
     block js
@@ -26,7 +26,7 @@ html.no-js(lang='en')
           baseUrl: '#{relativePath}/js/',
           paths: {
             jquery: '#{relativePath}bower_components/jquery/dist/jquery',
-            mymodule: '#{relativePath}modules/mymodule/mymodule',
+            mycomponent: '#{relativePath}components/mycomponent/mycomponent',
             mediaQuery: '#{relativePath}bower_components/sensible/mediaQuery'
           },
           shim: {}

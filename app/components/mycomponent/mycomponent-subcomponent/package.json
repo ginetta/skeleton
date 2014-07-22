@@ -1,0 +1,10 @@
+{
+  "name": "mycomponent-subcomponent",
+  "version": "0.0.1",
+  "description": "example subcomponent",
+  "author": "ginetta",
+  "data": {
+    "title": "Subcomponent Title",
+    "age":       12
+  }
+}
