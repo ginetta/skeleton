@@ -4,28 +4,15 @@
 (function(){
     'use strict';
 
-    require(['mycomponent'], function () {
-        console.log('mycomponent is loaded');
-    });
-
-    require(['mediaQuery'], function ( mediaQuery ) {
-
-      mediaQuery.onEnter('mobile tablet', function(querry){
-        console.log('enter mobile & tablet:', querry);
-      },true);
-
-      mediaQuery.onEnter('tablet', function(querry){
-        console.log('enter tablet:', querry);
-      },true);
-
-      mediaQuery.onLeave('mobile', function(querry){
-        //test on leave
-        console.log('leave moble:',querry);
-      },true);
-
-      console.log( "is mobile:", mediaQuery.is('mobile') );
-      console.log( "is not mobile:", mediaQuery.isNot('mobile') );
-    });
+    /*
+      This is how you should require a component:
+      make sure `mycomponent` in the require-config situated in layout/layout.jade
+     */
+    /*
+      require(['mycomponent'], function () {
+          console.log('mycomponent is loaded');
+      });
+    */
 
 })();
 
