@@ -74,6 +74,12 @@ It will generate all the files, start a server and open your browser with the pr
 ## <a id="reusable-components">Reusable Components</a>
 ### Concept
 ### How to create a new component
+  
+    grunt addComponent --name=foo
+creates a new component called foo
+
+    grunt addComponent --name=bar --parent=foo
+creates a new component named bar that is a sub component of foo
 
 
 ## <a id="toolset">JS / CSS Toolset</a>
