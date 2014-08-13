@@ -21,10 +21,10 @@ build-prod:
 
 html-dev:
   # - styleguideAssembler
-  - pagesAssembler
+  - pagesAssembler:dev
 
 html-prod:
-  - html-dev
+  - pagesAssembler:prod
   - htmlmin
 
 css-dev:
