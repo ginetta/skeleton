@@ -8,7 +8,7 @@ Skeleton is a static site generator that can serve as a boilerplate for differen
 - defines a way to write reusable web components (HTML / CSS / JS)
 - includes a grunt task to compile jade and translated data files
 - makes use of some custom CSS & JS we often reuse on projects
-- generates a styleguide for the defaults styles and documenting the components
+- generates a style guide for the defaults styles and documenting the components
 
 ## Guides
 
@@ -46,7 +46,7 @@ You will need
 
 #### Installation
 
-Make sure you use the lastest gems and compass:
+Make sure you use the latest gems and compass:
 
     (sudo) gem update --system && gem install compass
 
@@ -75,11 +75,11 @@ It will generate all the files, start a server and open your browser with the pr
     │   │   ├── components.jade		Includes all the components jade mixins check "Reusable Components" for more information
     │   │   ├── components.scss		Includes all the components SCSS/SASS files
     │   │   ├── docs-skeleton			Documentation also used as example
-    │   │   └── mycomponent			Example compontent
+    │   │   └── mycomponent			Example component
     │   │       ├── ...				Component files
-    │   │       └── package.json		compontent meta information
+    │   │       └── package.json		component meta information
     │   ├── css						App specific CSS
-    │   ├── data						Data that will be avalibe in JADE
+    │   ├── data						Data that will be available in JADE
     │   │   ├── en.json				Data can be language specific
     │   │   └── ...
     │   ├── js						
@@ -89,7 +89,7 @@ It will generate all the files, start a server and open your browser with the pr
     │   ├── meta						Favicons, humans.txt etc..
     │   └── pages						Contains Pages/View of your app
     │       ├── docs					Documentation, can be removed
-    │       └── index.jade			Used as a starting poit
+    │       └── index.jade			Used as a starting point
     │
     ├── bower.json					Bower packages are registered here
     │
@@ -120,7 +120,15 @@ creates a new component called foo
 creates a new component named bar that is a sub component of foo
 
 
-## <a id="toolset">JS / CSS Toolset</a>
+## <a id="toolset">JS / SCSS / CSS Toolset</a>
+
+All frontend dependancys are managed truth bower and are optional. We have decided to include a few by default, because we use them all the time. Feel free to remove them for your own app
+- [H5BP](http://html5boilerplate.com/) layout.jade and the CSS base structure is from HTML5 Boilerplate
+- [compass](http://compass-style.org/) We use compass with all its nice little helpers
+- [bonescss](https://github.com/meodai/bonescss) Includes lots of helpers classes from H5BP and useful mixins
+- [sensible](https://github.com/meodai/sensible) Handles responsiveness and provides a very simple grid
+- [require.js](http://requirejs.org/) Is used to require the JS components, also encourages a modular way of writing your code
 
 
-## <a id="styleguide">Styleguide</a>
+## <a id="styleguide">Style-guide</a>
+Some time in the future a style-guide will be automatically generated with all the components
