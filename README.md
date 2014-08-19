@@ -124,9 +124,3 @@ creates a new component named bar that is a sub component of foo
 
 
 ## <a id="styleguide">Styleguide</a>
-
-## Bonus
-
-- Under OSX it will be helpfull if you install brew: http://brew.sh/
-- Install the `Jade` and `SCSS` Sublime Text packages to get syntax highlighting
-- Quick Jade syntax tour: http://www.learnjade.com/
