@@ -77,6 +77,18 @@ Optionally you can store Data, even languages specific in, a JSON file. This dat
 
 ## <a id="reusable-components">Reusable Components</a>
 ### Concept
+In order to write maintainable, generic and reusable code we like to write our code in components. Where a component consits of one of each: 
+
+- jade file that contains the markup
+- SCSS containes the specifc styles
+- JS file as requirejs module
+- JSON file to store metadata 
+
+Every component can have sub-components.
+
+It is up to you, how granular you want your components to be, but keep in mind that skeleton will be able to automaitically build a styleguide out of the component collection. 
+
+
 ### How to create a new component
   
     grunt addComponent --name=foo
