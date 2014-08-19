@@ -41,7 +41,7 @@ Find and replace "skeleton-project" by your "project-name" in the whole project 
 #### Prerequisites
 You will need 
   - [node.js](http://nodejs.org/) to run the skeleton.
-  - [Ruby](https://www.ruby-lang.org/en/) and [Compass](http://compass-style.org/install/) to compile the css
+  - [Ruby](https://www.ruby-lang.org/en/) to compile the css and [bundler](http://bundler.io/) to install GEM dependencies
   - [grunt-cli](https://github.com/gruntjs/grunt-cli) to run the grunt commands
 
 #### Installation
@@ -64,7 +64,45 @@ To build the project, just run
 It will generate all the files, start a server and open your browser with the project index
 
 
-## <a id="folder-structure">Folder Structure</a>
+## <a id="folder-structure">Structure</a>
+
+    .
+    ├── Gemfile 						List of used rubygames (used for bundle)
+    ├── Gruntfile.js 					Grunt base file
+    ├── app							App specific files
+    │   ├── assets					Images, video
+    │   ├── components		
+    │   │   ├── components.jade		Includes all the components jade mixins check "Reusable Components" for more information
+    │   │   ├── components.scss		Includes all the components SCSS/SASS files
+    │   │   ├── docs-skeleton			Documentation also used as example
+    │   │   └── mycomponent			Example compontent
+    │   │       ├── ...				Component files
+    │   │       └── package.json		compontent meta information
+    │   ├── css						App specific CSS
+    │   ├── data						Data that will be avalibe in JADE
+    │   │   ├── en.json				Data can be language specific
+    │   │   └── ...
+    │   ├── js						
+    │   │   ├── globals.js			Used to store globals if needed
+    │   │   └── main.js				JS gets initialized here
+    │   ├── layout					Layouts that can be extended in JADE pages
+    │   ├── meta						Favicons, humans.txt etc..
+    │   └── pages						Contains Pages/View of your app
+    │       ├── docs					Documentation, can be removed
+    │       └── index.jade			Used as a starting poit
+    │
+    ├── bower.json					Bower packages are registered here
+    │
+    ├── lib							Library used for the build
+    │   ├── grunt-tasks				Grunt tasks add your here
+    │   │   ├── aliases.yaml			Named tasks
+    │   │   └── ...
+    │   └── toolset					Skeleton specific tasks
+    │
+    ├── dist							Builded app (HTML,CSS,JS etc..) 
+    
+
+
 ## <a id="reusable-components">Reusable Components</a>
 
 
