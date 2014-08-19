@@ -13,11 +13,11 @@ Skeleton is a static site generator that can serve as a boilerplate for differen
 ## Guides
 
 - [Getting Started](#getting-started)
-- [Folder Structure](#folder-structure)
-- [Reusable Components](#reusable-components)
 - [Jade templates, Data and translation](#templates)
+- [Reusable Components](#reusable-components)
 - [JS / CSS Toolset](#toolset)
 - [Styleguide](#styleguide)
+- [Folder Structure](#folder-structure)
 
 ## <a id="getting-started">Getting started</a>
 
@@ -63,49 +63,6 @@ To build the project, just run
 
 It will generate all the files, start a server and open your browser with the project index
 
-
-## <a id="folder-structure">Structure</a>
-
-    .
-    ├── Gemfile 						List of used rubygames (used for bundle)
-    ├── Gruntfile.js 					Grunt base file
-    ├── app							App specific files
-    │   ├── assets					Images, video
-    │   ├── components		
-    │   │   ├── components.jade		Includes all the components jade mixins check "Reusable Components" for more information
-    │   │   ├── components.scss		Includes all the components SCSS/SASS files
-    │   │   ├── docs-skeleton			Documentation also used as example
-    │   │   └── mycomponent			Example component
-    │   │       ├── ...				Component files
-    │   │       └── package.json		component meta information
-    │   ├── css						App specific CSS
-    │   ├── data						Data that will be available in JADE
-    │   │   ├── en.json				Data can be language specific
-    │   │   └── ...
-    │   ├── js						
-    │   │   ├── globals.js			Used to store globals if needed
-    │   │   └── main.js				JS gets initialized here
-    │   ├── layout					Layouts that can be extended in JADE pages
-    │   ├── meta						Favicons, humans.txt etc..
-    │   └── pages						Contains Pages/View of your app
-    │       ├── docs					Documentation, can be removed
-    │       └── index.jade			Used as a starting point
-    │
-    ├── bower.json					Bower packages are registered here
-    │
-    ├── lib							Library used for the build
-    │   ├── grunt-tasks				Grunt tasks add your here
-    │   │   ├── aliases.yaml			Named tasks
-    │   │   └── ...
-    │   └── toolset					Skeleton specific tasks
-    │
-    ├── dist							Builded app (HTML,CSS,JS etc..) 
-    
-
-
-## <a id="reusable-components">Reusable Components</a>
-
-
 ## <a id="templates">Jade templates, Data and translation</a>
 
 
@@ -129,6 +86,44 @@ All frontend dependancys are managed truth bower and are optional. We have decid
 - [sensible](https://github.com/meodai/sensible) Handles responsiveness and provides a very simple grid
 - [require.js](http://requirejs.org/) Is used to require the JS components, also encourages a modular way of writing your code
 
-
 ## <a id="styleguide">Style-guide</a>
 Some time in the future a style-guide will be automatically generated with all the components
+
+
+## <a id="folder-structure">Structure</a>
+
+    .
+    ├── Gemfile             List of used rubygames (used for bundle)
+    ├── Gruntfile.js          Grunt base file
+    ├── app             App specific files
+    │   ├── assets          Images, video
+    │   ├── components    
+    │   │   ├── components.jade   Includes all the components jade mixins check "Reusable Components" for more information
+    │   │   ├── components.scss   Includes all the components SCSS/SASS files
+    │   │   ├── docs-skeleton     Documentation also used as example
+    │   │   └── mycomponent     Example component
+    │   │       ├── ...       Component files
+    │   │       └── package.json    component meta information
+    │   ├── css           App specific CSS
+    │   ├── data            Data that will be available in JADE
+    │   │   ├── en.json       Data can be language specific
+    │   │   └── ...
+    │   ├── js            
+    │   │   ├── globals.js      Used to store globals if needed
+    │   │   └── main.js       JS gets initialized here
+    │   ├── layout          Layouts that can be extended in JADE pages
+    │   ├── meta            Favicons, humans.txt etc..
+    │   └── pages           Contains Pages/View of your app
+    │       ├── docs          Documentation, can be removed
+    │       └── index.jade      Used as a starting point
+    │
+    ├── bower.json          Bower packages are registered here
+    │
+    ├── lib             Library used for the build
+    │   ├── grunt-tasks       Grunt tasks add your here
+    │   │   ├── aliases.yaml      Named tasks
+    │   │   └── ...
+    │   └── toolset         Skeleton specific tasks
+    │
+    ├── dist              Builded app (HTML,CSS,JS etc..) 
+    
