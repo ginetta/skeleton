@@ -64,6 +64,11 @@ To build the project, just run
 It will generate all the files, start a server and open your browser with the project index
 
 ## <a id="templates">Jade templates, Data and translation</a>
+### Jade
+We choose jade because it always renders valid HTML and it makes it easy to work in a modular way. 
+It brings some key features like mixins and blocks promotes code reuse and maintainability.
+### Data & Translations
+Optionally you can store Data, even languages specific in, a JSON file. This data will be available in all jade files
 
 
 ## <a id="reusable-components">Reusable Components</a>
@@ -80,50 +85,51 @@ creates a new component named bar that is a sub component of foo
 ## <a id="toolset">JS / SCSS / CSS Toolset</a>
 
 All frontend dependancys are managed truth bower and are optional. We have decided to include a few by default, because we use them all the time. Feel free to remove them for your own app
+
 - [H5BP](http://html5boilerplate.com/) layout.jade and the CSS base structure is from HTML5 Boilerplate
 - [compass](http://compass-style.org/) We use compass with all its nice little helpers
 - [bonescss](https://github.com/meodai/bonescss) Includes lots of helpers classes from H5BP and useful mixins
 - [sensible](https://github.com/meodai/sensible) Handles responsiveness and provides a very simple grid
 - [require.js](http://requirejs.org/) Is used to require the JS components, also encourages a modular way of writing your code
-
-## <a id="styleguide">Style-guide</a>
-Some time in the future a style-guide will be automatically generated with all the components
+- [jquery](http://jquery.org/) jQuery, you know
 
 
 ## <a id="folder-structure">Structure</a>
 
     .
-    ├── Gemfile             List of used rubygames (used for bundle)
-    ├── Gruntfile.js          Grunt base file
-    ├── app             App specific files
-    │   ├── assets          Images, video
+    ├── Gemfile             		List of used ruby gems (used for bundle)
+    ├── Gruntfile.js          	Grunt base file
+    ├── app             			App specific files
+    │   ├── assets          		Images, video
     │   ├── components    
     │   │   ├── components.jade   Includes all the components jade mixins check "Reusable Components" for more information
     │   │   ├── components.scss   Includes all the components SCSS/SASS files
     │   │   ├── docs-skeleton     Documentation also used as example
-    │   │   └── mycomponent     Example component
-    │   │       ├── ...       Component files
-    │   │       └── package.json    component meta information
-    │   ├── css           App specific CSS
-    │   ├── data            Data that will be available in JADE
-    │   │   ├── en.json       Data can be language specific
+    │   │   └── mycomponent     	Example component
+    │   │       ├── ...       	Component files
+    │   │       └── package.json  component meta information
+    │   ├── css           		App specific CSS
+    │   ├── data            		Data that will be available in JADE
+    │   │   ├── en.json       	Data can be language specific
     │   │   └── ...
     │   ├── js            
-    │   │   ├── globals.js      Used to store globals if needed
-    │   │   └── main.js       JS gets initialized here
-    │   ├── layout          Layouts that can be extended in JADE pages
-    │   ├── meta            Favicons, humans.txt etc..
-    │   └── pages           Contains Pages/View of your app
-    │       ├── docs          Documentation, can be removed
-    │       └── index.jade      Used as a starting point
+    │   │   ├── globals.js     	Used to store globals if needed
+    │   │   └── main.js			JS gets initialized here
+    │   ├── layout				Layouts that can be extended in JADE pages
+    │   ├── meta					Favicons, humans.txt etc..
+    │   └── pages					Contains Pages/View of your app
+    │       ├── docs				Documentation, can be removed
+    │       └── index.jade      	Used as a starting point
     │
-    ├── bower.json          Bower packages are registered here
+    ├── bower.json          		Bower packages are registered here
     │
-    ├── lib             Library used for the build
-    │   ├── grunt-tasks       Grunt tasks add your here
+    ├── lib             			Library used for the build
+    │   ├── grunt-tasks       	Grunt tasks add your here
     │   │   ├── aliases.yaml      Named tasks
     │   │   └── ...
-    │   └── toolset         Skeleton specific tasks
+    │   └── toolset         		Skeleton specific tasks
     │
-    ├── dist              Builded app (HTML,CSS,JS etc..) 
+    ├── dist              		Builded app (HTML,CSS,JS etc..) 
     
+## <a id="styleguide">Style-guide</a>
+Some time in the future a style-guide will be automatically generated with all the components
