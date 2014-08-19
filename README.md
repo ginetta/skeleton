@@ -46,9 +46,13 @@ You will need
 
 #### Installation
 
-Make sure you use the latest gems and compass:
+Make sure you use the latest gems:
 
-    (sudo) gem update --system && gem install compass
+    (sudo) gem update --system
+
+Install and run bundler:
+    
+    gem install bundler && bundle install
 
 Install all the project dependencies:
     
