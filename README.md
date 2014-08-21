@@ -70,9 +70,10 @@ It will generate all the files, start a server and open your browser with the pr
 ## <a id="templates">Jade templates, Data and translation</a>
 ### Jade
 We choose jade because it always renders valid HTML and it makes it easy to work in a modular way. 
-It brings some key features like mixins and blocks promotes code reuse and maintainability.
+It brings some key features (e.g. mixins and blocks) that promotes code reuse and maintainability.
 ### Data & Translations
-Optionally you can store Data, even languages specific in, a JSON file. This data will be available in all jade files
+Optionally you can store data (even languages specific data) in a JSON file. This file is located under app/data/<language>.js. The data stored in this file will be available in all jade files under the data variable. If you have more that one language file will generate each page per data file.
+For instance, if you have a en.json and de.json container the language specific data for both english and german, skeleton will generate two html files for each page, each with their own specific language data.
 
 
 ## <a id="reusable-components">Reusable Components</a>
