@@ -8,6 +8,8 @@ Skeleton is a static site generator that can serve as a boilerplate for differen
 - defines a way to write reusable web components (HTML / CSS / JS)
 - includes a grunt task to compile jade and translated data files
 - makes use of some custom CSS & JS we often reuse on projects
+
+## Future plans:
 - generates a style guide for the defaults styles and documenting the components
 
 ## Guides
