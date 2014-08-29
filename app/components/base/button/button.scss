@@ -1,0 +1,37 @@
+.button {
+  border-radius: 5px;
+  display: block;
+  margin: 15px 0;
+  text-align: center;
+  font-size: 12px;
+  box-sizing: border-box;
+
+  // Color Variations
+  &, &--green {
+    background: green;
+  }
+
+  &--red {
+    background: red;
+  }
+
+  &--blue {
+    background: blue;
+  }
+
+  // Size Variations
+  &, &--medium {
+    padding: 15px 20px;
+    width: 120px;
+  }
+
+  &--small {
+    padding: 5px 10px;
+    width: 80px;
+  }
+
+  &--big {
+    padding: 30px 40px;
+    width: 140px;
+  }
+}

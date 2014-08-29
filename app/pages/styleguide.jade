@@ -1,0 +1,37 @@
+extends /layout/layout
+
+block htmlhead
+    title skeleton-project
+    meta(name='description', content='')
+
+block htmlbody
+  h2 Button Component
+  h3 Default
+  p default button is green and medium
+  +button("default")
+
+  h3 Color Variations
+  +button("red"   , {color: "red"    })
+  +button("green" , {color: "green"  })
+  +button("blue"  , {color: "blue"   })
+
+  h3 Size Variations
+  +button("small"  , {size: "small"  })
+  +button("medium" , {size: "medium" })
+  +button("big"    , {size: "big"    })
+
+  h3 All Combinations
+  +button("g1" , {color: "green", size: "small" })
+  +button("g2" , {color: "green", size: "medium" })
+  +button("g3" , {color: "green", size: "big" })
+
+  +button("g1" , {color: "red", size: "small" })
+  +button("g2" , {color: "red", size: "medium" })
+  +button("g3" , {color: "red", size: "big" })
+
+  +button("g1" , {color: "blue", size: "small" })
+  +button("g2" , {color: "blue", size: "medium" })
+  +button("g3" , {color: "blye", size: "big" })
+
+
+
