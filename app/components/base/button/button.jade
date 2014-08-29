@@ -1,7 +1,7 @@
 mixin button (text, options)
   - var options = options || {}
   - var classes = "button"
-  - for val, key in baseButton.options
-    - classes = classes + " button--" + (options[key] || baseButton.options[key].default)
+  - for val, key in components.baseButton.options
+    - classes = classes + " button--" + (options[key] || components.baseButton.options[key].default)
   a(class=classes) #{text}
 

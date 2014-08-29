@@ -1,10 +1,12 @@
 .button {
   border-radius: 5px;
-  display: block;
-  margin: 15px 0;
+  margin: 15px 15px;
   text-align: center;
   font-size: 12px;
-  box-sizing: border-box;
+  display: block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 
   // Color Variations
   &, &--green {
@@ -21,17 +23,17 @@
 
   // Size Variations
   &, &--medium {
-    padding: 15px 20px;
-    width: 120px;
+    padding: 5px 20px;
+    width: 150px;
   }
 
   &--small {
     padding: 5px 10px;
-    width: 80px;
+    width: 100px;
   }
 
   &--big {
-    padding: 30px 40px;
-    width: 140px;
+    padding: 5px 40px;
+    width: 200px;
   }
 }

@@ -1,7 +1,7 @@
 //- This component is a "parentable" component
 mixin mycomponent()
   article.mycomponent
-    h3 #{mycomponent.data.title}
+    h3 #{components.mycomponent.data.title}
     .mycomponent--content
       //- "Transcluded" content goes here
       if block
