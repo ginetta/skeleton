@@ -1,7 +1,7 @@
 {
-  "name": "button",
+  "name": "card",
   "version":"0.0.1",
-  "description":"All the skeleton's buttons",
+  "description":"Example component",
   "author":"Ginetta",
   "data": {
     "title":"Component title",
@@ -9,11 +9,11 @@
   },
   "arguments": [
     {
-      "name": "text",
+      "name": "title",
       "type": "string"
     },
     {
-      "name": "uiClasses",
+      "name": "buttonText",
       "type": "string"
     },
     {
@@ -23,11 +23,11 @@
   ],
   "options": {
     "size": {
-      "values": ["big", "medium", "small"],
+      "values": ["small", "medium", "big"],
       "default": "medium"
     },
     "color": {
-      "values": ["red", "blue", "green"],
+      "values": ["red", "green", "yellow"],
       "default": "green"
     }
   }

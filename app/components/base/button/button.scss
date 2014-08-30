@@ -1,9 +1,7 @@
 .button {
   border-radius: 5px;
-  margin: 15px 15px;
   text-align: center;
   font-size: 12px;
-  display: block;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -24,16 +22,13 @@
   // Size Variations
   &, &--medium {
     padding: 5px 20px;
-    width: 150px;
   }
 
   &--small {
     padding: 5px 10px;
-    width: 100px;
   }
 
   &--big {
     padding: 5px 40px;
-    width: 200px;
   }
 }

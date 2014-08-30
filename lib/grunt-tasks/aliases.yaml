@@ -20,7 +20,7 @@ build-prod:
   - clean:bower
 
 html-dev:
-  # - styleguideAssembler
+  - styleguideAssembler
   - pagesAssembler:dev
 
 html-prod:

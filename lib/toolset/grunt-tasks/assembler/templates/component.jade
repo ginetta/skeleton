@@ -1,0 +1,40 @@
+extends /layout/layout
+
+block htmlhead
+    title skeleton-project
+    meta(name='description', content='')
+
+block htmlbody
+    .l-site-width
+      a(href="../component-list.html") < Back to Component List
+      h1 #{component.name}
+      p
+        strong description:
+        | #{component.description}
+      p
+        strong version:
+        | #{component.version}
+      p
+        strong author:
+        | #{component.author}
+
+      hr
+
+      h2 Combinations
+
+      - var argumentsDefault = {}
+      if component.arguments
+        each argument in component.arguments
+          if argument.type == "string"
+            - argumentsDefault[argument.name] = "default-string"
+
+      if component.combinations
+        each combination in component.combinations
+          - var combinationArguments = argumentsDefault
+          - combinationArguments['options'] = combination
+          p
+            strong options:
+          pre #{JSON.stringify(combination, null, 2)}
+          .component-rendering
+            +#{component.name}(combinationArguments)
+          hr

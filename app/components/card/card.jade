@@ -1,0 +1,20 @@
+mixin card (arguments)
+  - var title      = arguments ? arguments.title || "" : ""
+  - var buttonText = arguments ? arguments.buttonText || "" : ""
+  - var options    = arguments ? arguments.options || {} : {}
+
+  - var classes = "card"
+  - for val, key in components.card.options
+    - classes = classes + " card--" + (options[key] || components.baseButton.options[key].default)
+  .card(class=classes)
+    h1.card-title #{title}
+    .card-content
+      block
+    +button({
+      text: buttonText,
+      uiClasses: "card-button",
+      options: {
+        size: options["size"]   || components.card.options["size"].default,
+        color: options["color"] || components.card.options["color"].default
+      }
+    })
