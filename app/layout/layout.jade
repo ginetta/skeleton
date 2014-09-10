@@ -34,7 +34,16 @@ html.no-js(lang='en')
           shim: {}
         });
 
-
+      if environment == 'dev'
+        //- Configures and Inits Github Issue Reporter
+        script.
+          define('REPORTER_CONFIG', function () {
+            return {
+              REPO: 'ginetta/skeleton',
+              URL:  'http://www.ginetta.net'
+            }
+          });
+          require(['./reporter']);
 
       //
         Google Analytics: change UA-XXXXX-X to be your sites ID.
