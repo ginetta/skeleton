@@ -7,27 +7,17 @@
     "title":"Component title",
     "age":12
   },
-  "arguments": [
-    {
-      "name": "title",
-      "type": "string"
-    },
-    {
-      "name": "buttonText",
-      "type": "string"
-    },
-    {
-      "name": "options",
-      "type": "options"
-    }
-  ],
+  "arguments": {
+      "title": "card title",
+      "buttonText": "click card here"
+  },
   "options": {
     "size": {
       "values": ["small", "medium", "big"],
       "default": "medium"
     },
     "color": {
-      "values": ["red", "green", "yellow"],
+      "values": ["red", "green", "blue"],
       "default": "green"
     }
   }

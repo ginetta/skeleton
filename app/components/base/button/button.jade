@@ -1,11 +1,8 @@
-mixin button (arguments)
-  - var text      = arguments ? arguments.text || "" : ""
-  - var uiClasses = arguments ? arguments.uiClasses || "" : ""
-  - var options   = arguments ? arguments.options || {} : {}
+mixin button (data, options)
+  - var label     = data.label || ""
+  - var options   = options || {}
 
-  - var classes = "button " + uiClasses
+  - var classes = "button "
   - for val, key in components.baseButton.options
     - classes = classes + " button--" + (options[key] || components.baseButton.options[key].default)
-
-  a(class=classes) #{text}
-
+  a(class=classes) #{label}

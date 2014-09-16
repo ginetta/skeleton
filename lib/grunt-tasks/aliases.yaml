@@ -64,3 +64,9 @@ prepare:
 server:
   - connect
   - watch
+
+styleguide:
+  - prepare
+  - styleguideAssembler
+  - copy:styleguide
+

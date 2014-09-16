@@ -1,0 +1,55 @@
+$base-spacing-unit: 20px;
+
+// Helpers
+.reset-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+// Sections
+.component-section {
+  // background: rgba(0,0,0,0.1);
+  margin: 3*$base-spacing-unit 0;
+}
+
+.component-section-title {
+  margin: 0 0 $base-spacing-unit;
+}
+
+.component-section-container {
+  margin-left: 2 * $base-spacing-unit;
+}
+
+
+// Options and Arguments Lists
+.component-option-list {
+  li {
+    margin-bottom: $base-spacing-unit;
+  }
+}
+
+.component-option-title {
+  display: inline;
+}
+
+.component-option-value {
+  margin-left: $base-spacing-unit;
+}
+
+
+// Examples
+.component-option-example {
+  margin-bottom: $base-spacing-unit;
+}
+
+.component-option-example-value {
+  // margin: 0;
+}
+
+.component-option-example-render {
+  display: list-item !important;
+}
+
+
+pre { margin: 0; }

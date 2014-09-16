@@ -1,12 +1,19 @@
 extends /layout/layout
 
 block htmlhead
-    title skeleton-project
+    title Styleguide — #{component.name} component
     meta(name='description', content='')
+    link(rel='stylesheet', href='#{relativePath}/css/styleguide.css')
+
+mixin component-section(name)
+  .component-section
+    h2.component-section-title #{name}
+    .component-section-container
+      block
 
 block htmlbody
     .l-site-width
-      a(href="../component-list.html") < Back to Component List
+      a(href="../") < Back to Component List
       h1 #{component.name}
       p
         strong description:
@@ -18,23 +25,31 @@ block htmlbody
         strong author:
         | #{component.author}
 
-      hr
+      +component-section("How to use it")
+          pre +#{component.name}(data, options)
 
-      h2 Combinations
+      +component-section("Data")
+        ul.reset-list.component-option-list
+          - for(var argumentName in component.arguments)
+            li
+              - var value = component.arguments[argumentName]
+                h3.component-option-title #{argumentName}:
+                span.component-option-value #{value}
 
-      - var argumentsDefault = {}
-      if component.arguments
-        each argument in component.arguments
-          if argument.type == "string"
-            - argumentsDefault[argument.name] = "default-string"
-
-      if component.combinations
-        each combination in component.combinations
-          - var combinationArguments = argumentsDefault
-          - combinationArguments['options'] = combination
-          p
-            strong options:
-          pre #{JSON.stringify(combination, null, 2)}
-          .component-rendering
-            +#{component.name}(combinationArguments)
-          hr
+      +component-section("Options")
+        ul.reset-list.component-option-list
+          - for(var key in component.options)
+            li.l-grid
+              - var option = component.options[key]
+                .component-info-section.l-grid-cell.l-one-half
+                  h3.component-option-title #{key}
+                  span.component-option-value (#{option.type || "string"})
+                .component-outputs-section.l-grid-cell.l-one-half
+                  - for (var index in option.values)
+                    - var value = option.values[index]
+                    .l-grid.component-option-example
+                      p.l-grid-cell.l-one-half.component-option-example-value #{value}
+                      .l-grid-cell.l-one-half.component-option-example-render
+                        - var optionValue = {}
+                        - optionValue[key] = value
+                        +#{component.name}(component.arguments, optionValue)

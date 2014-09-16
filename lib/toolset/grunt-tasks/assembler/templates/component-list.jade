@@ -1,7 +1,16 @@
-ul
-  - each component in componentsData.components
-    if component.hideInStyleguide
+extends /layout/layout
 
-    else
-      li
-        a(href="components/#{component.name}.html") #{component.name}
+block htmlhead
+    title Styleguide
+    meta(name='description', content='')
+    link(rel='stylesheet', href='#{relativePath}/css/styleguide.css')
+
+block htmlbody
+    .l-site-width
+      h1 Components List
+      ul.components-list.l-grid
+        - each component in componentsData.components
+          if component.hideInStyleguide
+          else
+            li.component-thumbnail.l-one-third
+              a(href="components/#{component.name}.html") #{component.name}

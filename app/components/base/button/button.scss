@@ -1,10 +1,10 @@
 .button {
-  border-radius: 5px;
   text-align: center;
   font-size: 12px;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+  color: white;
 
   // Color Variations
   &, &--green {
@@ -21,7 +21,7 @@
 
   // Size Variations
   &, &--medium {
-    padding: 5px 20px;
+    padding: 10px 40px;
   }
 
   &--small {
@@ -29,6 +29,21 @@
   }
 
   &--big {
-    padding: 5px 40px;
+    padding: 20px 80px;
+  }
+
+  // Corners Variations
+  &, &--rounded {
+    border-radius: 5px;
+  }
+
+  &--circle {
+    border-radius: 100%;
+    box-sizing: border-box;
+    &.button--medium { padding: 10px; }
+  }
+
+  &--square {
+    border-radius: 0;
   }
 }

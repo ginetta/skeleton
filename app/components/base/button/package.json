@@ -7,20 +7,9 @@
     "title":"Component title",
     "age":12
   },
-  "arguments": [
-    {
-      "name": "text",
-      "type": "string"
-    },
-    {
-      "name": "uiClasses",
-      "type": "string"
-    },
-    {
-      "name": "options",
-      "type": "options"
-    }
-  ],
+  "arguments": {
+      "label": "default label"
+  },
   "options": {
     "size": {
       "values": ["big", "medium", "small"],
@@ -29,6 +18,10 @@
     "color": {
       "values": ["red", "blue", "green"],
       "default": "green"
+    },
+    "corners": {
+      "values": ["rounded", "circle", "square"],
+      "default": "rounded"
     }
   }
 }

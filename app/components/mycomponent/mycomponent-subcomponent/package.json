@@ -3,6 +3,7 @@
   "version": "0.0.1",
   "description": "example subcomponent",
   "author": "ginetta",
+  "hideInStyleguide": true,
   "data": {
     "title": "Subcomponent Title",
     "age":       12
