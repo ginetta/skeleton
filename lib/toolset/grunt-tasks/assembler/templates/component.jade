@@ -44,12 +44,18 @@ block htmlbody
                 .component-info-section.l-grid-cell.l-one-half
                   h3.component-option-title #{key}
                   span.component-option-value (#{option.type || "string"})
-                .component-outputs-section.l-grid-cell.l-one-half
+                .component-option-fields.l-grid-cell.l-one-half
                   - for (var index in option.values)
                     - var value = option.values[index]
-                    .l-grid.component-option-example
-                      p.l-grid-cell.l-one-half.component-option-example-value #{value}
-                      .l-grid-cell.l-one-half.component-option-example-render
-                        - var optionValue = {}
-                        - optionValue[key] = value
-                        +#{component.name}(component.arguments, optionValue)
+                    input.js-option-value(type="radio", name="#{key}", value="#{value}", checked=index==0)
+                    label(for="#{key}") #{value}
+      +component-section("Combinations")
+        .component-combinations.l-grid
+          each combination, index in component.combinations
+            - var klass = index === 0 ? 'is-active' : ''
+            iframe.component-combination-iframe.l-grid-cell.l-one-whole(
+              src="#{component.name}/c#{index}.html",
+              class="component-combination-iframe-#{index} #{klass}",
+              frameBorder="0",
+              data-options="#{JSON.stringify(combination)}"
+            )

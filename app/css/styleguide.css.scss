@@ -51,5 +51,27 @@ $base-spacing-unit: 20px;
   display: list-item !important;
 }
 
+// Combinations
+.component-combination-iframe {
+  width: 100%;
+  display: none !important;
+  &.is-active {
+    display: block !important;
+  }
+}
+
+
 
 pre { margin: 0; }
+
+
+
+// Combination Page
+.component-combination-render {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+
