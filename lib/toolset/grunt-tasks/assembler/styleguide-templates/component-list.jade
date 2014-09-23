@@ -1,18 +1,19 @@
 extends /layout/layout
 
 block htmlhead
-    title Styleguide
-    meta(name='description', content='')
-    link(rel='stylesheet', href='#{relativePath}/css/styleguide.css')
+  title Styleguide
+  meta(name='description', content='')
+  link(rel='stylesheet', href='#{relativePath}/css/styleguide.css')
 
 block htmlbody
-    .l-site-width
-      h1 Components List
-      ul.components-list.l-grid
-        - each component in componentsData.components
-          if component.hideInStyleguide
-          else
-            li.component-thumbnail.l-one-third
-              a(href="components/#{component.name}.html")
-                h2 #{component.name}
+  .l-site-width
+    h1 Components List
+    ul.components-list
+      - each component in componentsData.components
+        if component.hideInStyleguide
+        else
+          li.component-thumbnail.l-one-third
+            .component-name
+              a(href="components/#{component.name}.html") #{component.name}
+            .component-preview
               iframe(src="components/#{component.name}/c0.html")
