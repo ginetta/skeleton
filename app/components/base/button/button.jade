@@ -1,8 +1,0 @@
-mixin button (data, options)
-  - var label     = data.label || ""
-  - var options   = options || {}
-
-  - var classes = "button "
-  - for val, key in components.baseButton.options
-    - classes = classes + " button--" + (options[key] || components.baseButton.options[key].default)
-  a(class=classes) #{label}

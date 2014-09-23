@@ -1,0 +1,5 @@
+mixin button (data, options)
+  - setOptionsDefaults(options, "button")
+  - var classes = getOptionsModifier(options, "button")
+
+  a(class=classes) #{data.label}

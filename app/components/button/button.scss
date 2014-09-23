@@ -7,43 +7,43 @@
   color: white;
 
   // Color Variations
-  &, &--green {
+  &, &--color-green {
     background: green;
   }
 
-  &--red {
+  &--color-red {
     background: red;
   }
 
-  &--blue {
+  &--color-blue {
     background: blue;
   }
 
   // Size Variations
-  &, &--medium {
+  &, &--size-medium {
     padding: 10px 40px;
   }
 
-  &--small {
+  &--size-small {
     padding: 5px 10px;
   }
 
-  &--big {
+  &--size-big {
     padding: 20px 80px;
   }
 
   // Corners Variations
-  &, &--rounded {
+  &, &--corners-rounded {
     border-radius: 5px;
   }
 
-  &--circle {
+  &--corners-circle {
     border-radius: 100%;
     box-sizing: border-box;
     &.button--medium { padding: 10px; }
   }
 
-  &--square {
+  &--corners-square {
     border-radius: 0;
   }
 }

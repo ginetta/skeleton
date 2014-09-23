@@ -4,10 +4,6 @@
   "description":"All the skeleton's buttons",
   "author":"Ginetta",
   "data": {
-    "title":"Component title",
-    "age":12
-  },
-  "arguments": {
       "label": "default label"
   },
   "options": {
