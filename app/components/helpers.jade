@@ -1,0 +1,19 @@
+- function setOptionsDefaults(options, componentName) {
+  - options = options || {}
+  - for val, key in components[componentName].options
+    - options[key] = options[key] || components[componentName].options[key].default
+  -   return options
+- }
+
+- function getOptionsModifier(options, componentName, filters) {
+  - var classes = "" + componentName
+  - if (filters) {
+    - for key in filters
+      - classes = classes + " " + componentName + "--" + key + "-" + (options[key] || components[componentName].options[key].default)
+  - } else {
+    - for val, key in components[componentName].options
+      - classes = classes + " " + componentName + "--" + key + "-" + (options[key] || components[componentName].options[key].default)
+  - }
+
+  - return classes
+- }
