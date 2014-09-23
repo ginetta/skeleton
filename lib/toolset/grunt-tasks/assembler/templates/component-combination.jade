@@ -7,4 +7,4 @@ block htmlhead
 
 block htmlbody
   .component-combination-render
-    +#{component.name}(component.arguments, combination)
+    +#{component.name}(component.data || component.dataObject.example, combination)

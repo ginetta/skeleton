@@ -55,6 +55,7 @@ $base-spacing-unit: 20px;
 .component-combination-iframe {
   width: 100%;
   display: none !important;
+  height: 100%;
   &.is-active {
     display: block !important;
   }
@@ -62,16 +63,19 @@ $base-spacing-unit: 20px;
 
 
 
-pre { margin: 0; }
+pre {
+  margin: 0;
+  overflow: scroll;
+  padding: $base-spacing-unit/2;
+  background: rgba(0,0,0,.1);
+}
 
 
 
 // Combination Page
 .component-combination-render {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  // position: fixed;
+  // width: 100%;
 }
 
 

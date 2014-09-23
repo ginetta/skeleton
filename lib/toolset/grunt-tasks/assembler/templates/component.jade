@@ -12,50 +12,57 @@ mixin component-section(name)
       block
 
 block htmlbody
-    .l-site-width
-      a(href="../") < Back to Component List
-      h1 #{component.name}
-      p
-        strong description:
-        | #{component.description}
-      p
-        strong version:
-        | #{component.version}
-      p
-        strong author:
-        | #{component.author}
+  .l-site-width
+    a(href="../") < Back to Component List
+    h1 #{component.name}
+    p
+      strong description:
+      | #{component.description}
+    p
+      strong version:
+      | #{component.version}
+    p
+      strong author:
+      | #{component.author}
 
-      +component-section("How to use it")
-          pre +#{component.name}(data, options)
+    +component-section("How to use it")
+        pre +#{component.name}(data, options)
 
-      +component-section("Data")
+    +component-section("Data")
+      if component.data
         ul.reset-list.component-option-list
-          - for(var argumentName in component.arguments)
+          - for(var argumentName in component.data)
             li
-              - var value = component.arguments[argumentName]
+              - var value = component.data[argumentName]
                 h3.component-option-title #{argumentName}:
                 span.component-option-value #{value}
-
-      +component-section("Options")
+      else if component.dataObject
         ul.reset-list.component-option-list
-          - for(var key in component.options)
-            li.l-grid
-              - var option = component.options[key]
-                .component-info-section.l-grid-cell.l-one-half
-                  h3.component-option-title #{key}
-                  span.component-option-value (#{option.type || "string"})
-                .component-option-fields.l-grid-cell.l-one-half
-                  - for (var index in option.values)
-                    - var value = option.values[index]
-                    input.js-option-value(type="radio", name="#{key}", value="#{value}", checked=index==0)
-                    label(for="#{key}") #{value}
-      +component-section("Combinations")
-        .component-combinations.l-grid
-          each combination, index in component.combinations
-            - var klass = index === 0 ? 'is-active' : ''
-            iframe.component-combination-iframe.l-grid-cell.l-one-whole(
-              src="#{component.name}/c#{index}.html",
-              class="component-combination-iframe-#{index} #{klass}",
-              frameBorder="0",
-              data-options="#{JSON.stringify(combination)}"
-            )
+          li
+            h3.component-option-title #{component.dataObject.name}
+            span.component-option-value #{component.dataObject.description}
+            pre #{JSON.stringify(component.dataObject.example)}
+
+    +component-section("Options")
+      ul.reset-list.component-option-list
+        - for(var key in component.options)
+          li.l-grid
+            - var option = component.options[key]
+              .component-info-section.l-grid-cell.l-one-half
+                h3.component-option-title #{key}
+                span.component-option-value (#{option.type || "string"})
+              .component-option-fields.l-grid-cell.l-one-half
+                - for (var index in option.values)
+                  - var value = option.values[index]
+                  input.js-option-value(type="radio", name="#{key}", value="#{value}", checked=index==0)
+                  label(for="#{key}") #{value}
+    +component-section("Combinations")
+      .component-combinations.l-grid
+        each combination, index in component.combinations
+          - var klass = index === 0 ? 'is-active' : ''
+          iframe.component-combination-iframe.l-grid-cell.l-one-whole(
+            src="#{component.name}/c#{index}.html",
+            class="component-combination-iframe-#{index} #{klass}",
+            frameBorder="0",
+            data-options="#{JSON.stringify(combination)}"
+          )
