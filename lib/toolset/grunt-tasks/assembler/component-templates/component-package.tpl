@@ -1,5 +1,5 @@
 {
-  "name": {{componentName}},
+  "name": "{{componentName}}",
   "version":"0.0.1",
   "description":"Example component",
   "author":"Ginetta",
