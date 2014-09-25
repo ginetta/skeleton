@@ -1,0 +1,21 @@
+extends /layout/layout
+
+include navigation-bar/navigation-bar
+include component-info-bar/component-info-bar
+include main-view/main-view
+
+block htmlhead
+    title Styleguide — #{component.name} component
+    meta(name='description', content='')
+    link(rel='stylesheet', href='#{relativePath}/css/styleguide.css')
+
+mixin component-section(name)
+  .component-section
+    h2.component-section-title #{name}
+    .component-section-container
+      block
+
+block htmlbody
+  +navigation-bar
+  +component-info-bar
+  +main-view
