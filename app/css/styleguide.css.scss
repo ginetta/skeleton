@@ -1,5 +1,9 @@
 $base-spacing-unit: 20px;
 
+@import "navigation-bar/navigation-bar",
+        "component-info-bar/component-info-bar",
+        "main-view/main-view";
+
 // Helpers
 .reset-list {
   margin: 0;

@@ -1,0 +1,41 @@
+mixin component-info-bar()
+  .styleguide-component-info-bar
+    h1.styleguide-component-name
+      | #{component.name}
+      span.styleguide-component-version #{component.version}
+    p.styleguide-component-description #{component.description}
+    p
+      strong author:
+      | #{component.author}
+
+
+    //- -------------
+    h2 Data
+    if component.data
+      ul.reset-list.component-option-list
+        - for(var argumentName in component.data)
+          li
+            - var value = component.data[argumentName]
+              h3.component-option-title #{argumentName}:
+              span.component-option-value #{value}
+    else if component.dataObject
+      ul.reset-list.component-option-list
+        li
+          h3.component-option-title #{component.dataObject.name}
+          span.component-option-value #{component.dataObject.description}
+          pre #{JSON.stringify(component.dataObject.example)}
+
+    //- -------------
+    h2 Options
+    ul.reset-list.component-option-list
+      - for(var key in component.options)
+        li.l-grid
+          - var option = component.options[key]
+            .component-info-section.l-grid-cell.l-one-half
+              h3.component-option-title #{key}
+              span.component-option-value (#{option.type || "string"})
+            .component-option-fields.l-grid-cell.l-one-half
+              - for (var index in option.values)
+                - var value = option.values[index]
+                input.js-option-value(type="radio", name="#{key}", value="#{value}", checked=index==0)
+                label(for="#{key}") #{value}

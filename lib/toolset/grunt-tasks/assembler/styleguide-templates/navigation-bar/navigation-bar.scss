@@ -1,0 +1,15 @@
+$sidebar-width: 20%;
+$sidebar-bg-color: rgba(0,0,0,.1);
+
+.styleguide-navigation-bar {
+  box-sizing: border-box;
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: $sidebar-width;
+  background: $sidebar-bg-color;
+  border-right: darken($sidebar-bg-color, 10%) 1px solid;
+
+  padding: $base-spacing-unit;
+}

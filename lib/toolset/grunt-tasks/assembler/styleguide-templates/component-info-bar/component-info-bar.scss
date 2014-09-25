@@ -1,0 +1,26 @@
+$infobar-width: 30%;
+$infobar-bg-color: rgba(0,0,0,.1);
+
+.styleguide-component-info-bar {
+  box-sizing: border-box;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  width: $infobar-width;
+  background: $infobar-bg-color;
+  border-left: darken($infobar-bg-color, 10%) 1px solid;
+
+  padding: $base-spacing-unit;
+}
+
+
+.styleguide-component-name {
+
+}
+
+.styleguide-component-version {
+  color: #999;
+  font-size: .5em;
+  margin-left: $base-spacing-unit;
+}
