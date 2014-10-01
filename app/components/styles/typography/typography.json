@@ -1,0 +1,38 @@
+{
+  "title": {
+    "value": "Colors",
+    "fontFamily": "Avenir",
+    "color": "wet-asphalt",
+    "fontSize" : "2.2rem",
+    "lineHeight": "1.4"
+  },
+  "subtitle": {
+    "value": "Version 0.1",
+    "fontFamily": "Avenir",
+    "color": "wisteria",
+    "fontSize" : ".9rem",
+    "lineHeight": "1.4"
+  },
+  "nav-item": {
+    "value": "Dropdown",
+    "fontFamily": "Avenir",
+    "color": "amethyst",
+    "fontSize" : "1.125rem",
+    "lineHeight": "1.4"
+  },
+  "label": {
+    "value": "Label",
+    "fontFamily": "Avenir",
+    "fontWeight": "bold",
+    "color": "belize-hole",
+    "fontSize" : ".8rem",
+    "textTransform": "uppercase",
+    "lineHeight": "1.4"
+  },
+  "body": {
+    "fontFamily": "Avenir",
+    "color": "peter-river",
+    "fontSize" : "1rem",
+    "lineHeight": "1.4"
+  }
+}
