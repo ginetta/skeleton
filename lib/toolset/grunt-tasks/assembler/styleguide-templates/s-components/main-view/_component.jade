@@ -1,0 +1,15 @@
+mixin main-view--component ()
+  .styleguide-mainview
+    h1.styleguide-title #{component.name}
+    span.styleguide-subtitle Version #{component.version}
+    span.styleguide-subtitle -
+    span.styleguide-subtitle Author: #{component.version}
+    .component-combinations.l-grid
+      each combination, index in component.combinations
+        - var klass = index === 0 ? 'is-active' : ''
+        iframe.component-combination-iframe.l-grid-cell.l-one-whole(
+          src="#{component.name}/c#{index}.html",
+          class="component-combination-iframe-#{index} #{klass}",
+          frameBorder="0",
+          data-options="#{JSON.stringify(combination)}"
+        )

@@ -26,28 +26,32 @@ define(['jquery'], function($) {
   }
 
   $(document).ready(function () {
-    $('.js-option-value').on('change', function () {
-      var $el = $(this);
-      var $checkedOptions = $el.parents('.component-option-list').find('.js-option-value:checked');
+    $('.styleguide-select').on('change', function () {
+      var $el = $(this).find('select');
+      var $checkedOptions = $el.parents('.component-option-list').find('.styleguide-select select');
       var options = {};
 
       $checkedOptions.each(function (index, option) {
         var $option = $(option);
         var optionName  = $option.attr('name');
-        var optionValue = $option.attr('value');
+        var optionValue = $option.val();
         options[optionName] = optionValue;
       });
 
       var $iframes = $('.component-combination-iframe');
+      var $usage   = $('.styleguide-combination-usage');
       $iframes.removeClass('is-active');
-      $iframes.each(function (index, iframe) {
-        var $iframe = $(iframe);
-        var iframeOptions = $iframe.data('options');
-        if (isEquivalent(iframeOptions, options)) {
-          $iframe.addClass('is-active');
+      $usage.removeClass('is-active')
+      function selectActive (index, item) {
+        var $item = $(item);
+        var itemOptions = $item.data('options');
+        if ( isEquivalent(itemOptions, options) ) {
+          $item.addClass('is-active');
           return false;
         }
-      });
+      }
+      $usage.each(selectActive);
+      $iframes.each(selectActive);
     });
   });
 });

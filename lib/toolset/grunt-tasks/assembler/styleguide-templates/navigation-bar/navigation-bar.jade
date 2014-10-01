@@ -1,7 +1,0 @@
-mixin navigation-bar()
-  .styleguide-navigation-bar
-    ul
-    - each component in components
-      if component.hideInStyleguide
-      else
-        li: a(href="../components/#{component.name}.html") #{component.name}

@@ -1,0 +1,29 @@
+mixin main-view--typography ()
+  .styleguide-mainview.styleguide-mainview--full-width
+    h1.styleguide-title Typography
+    each spec, index in typography
+      - var style = ""
+      - style += "font-family:  " + spec.fontFamily + " !important;"
+      - style += "color:  " + spec.colorValue + " !important;"
+      - style += "font-size:  " + spec.fontSize + " !important;"
+      - style += "lineHeight:  " + spec.lineHeight + " !important;"
+      - style += "font-weight:  " + spec.fontWeight + " !important;"
+      - style += "text-transform:  " + spec.textTransform + " !important;"
+      .l-grid.styleguide-spacing-bottom--large(class=index === 0 ? "styleguide-spacing-top--large" : "")
+        .l-grid-cell.l-one-fifth
+          h3.styleguide-label-main #{spec.name}
+          if spec.fontFamily
+            span.styleguide-element-info #{spec.fontFamily}
+          if spec.fontWeight
+            span.styleguide-element-info #{spec.fontWeight}
+          if spec.fontSize
+            span.styleguide-element-info #{spec.fontSize}
+          if spec.lineHeight
+            span.styleguide-element-info #{spec.lineHeight}
+          if spec.color
+            span.styleguide-element-info #{spec.color}
+          if spec.textTranform
+            span.styleguide-element-info #{spec.textTranform}
+        .l-grid-cell.l-four-fifths
+          .styleguide-typography-example
+            span(style=style) #{spec.value}

@@ -1,0 +1,38 @@
+.styleguide-mainview {
+  box-sizing: border-box;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: $sidebar-width;
+  right: $infobar-width;
+  overflow: scroll;
+  padding: $base-spacing-unit;
+  &--full-width {
+    right: 0;
+  }
+}
+
+
+
+.styleguide-color-example {
+  padding: 50% 0;
+}
+
+.styleguide-typography-example {
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 4*$base-spacing-unit $base-spacing-unit;
+  position: relative;
+  span {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+}
+
+.styleguide-icon-example.icon {
+  width: 40%;
+  height: auto;
+  padding-top: 30%;
+  padding-left: 50%;
+}

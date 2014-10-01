@@ -1,0 +1,12 @@
+extends /layout/layout
+
+include ../../s-components/components
+
+block htmlhead
+    title Styleguide — Color Styles
+    meta(name='description', content='')
+    link(rel='stylesheet', href='#{relativePath}/css/styleguide.css')
+
+block htmlbody
+  +navigation-bar
+  +main-view('colors')

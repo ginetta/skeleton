@@ -7,8 +7,8 @@ work:
   - server
 
 build-dev:
-  - css-dev
   - html-dev
+  - css-dev
   - js
   - assets-dev
 
@@ -28,6 +28,7 @@ html-prod:
   - htmlmin
 
 css-dev:
+  - stylesAssembler
   - grunticon:dev
   - compass
   - autoprefixer
