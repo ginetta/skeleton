@@ -25,7 +25,7 @@
     "grunt-contrib-imagemin": "^0.7.1",
     "grunt-contrib-requirejs": "^0.4.4",
     "grunt-contrib-watch": "^0.6.1",
-    "grunt-grunticon": "^1.2.9",
+    "grunt-grunticon": "^1.2.13",
     "grunt-modernizr": "^0.5.2",
     "grunt-shared-config": "^0.3.0",
     "grunt-svgmin": "^0.4.0",
@@ -37,6 +37,7 @@
     "lodash": "^2.4.1",
     "marked": "^0.3.2",
     "path": "^0.4.9",
+    "theo": "^2.0.2",
     "time-grunt": "^0.3.2"
   }
 }
