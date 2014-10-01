@@ -1,8 +1,7 @@
 $base-spacing-unit: 20px;
 
-@import "navigation-bar/navigation-bar",
-        "component-info-bar/component-info-bar",
-        "main-view/main-view";
+@import "styleguide-templates/css/typography",
+        "styleguide-templates/s-components/components";
 
 // Helpers
 .reset-list {
@@ -11,49 +10,6 @@ $base-spacing-unit: 20px;
   list-style: none;
 }
 
-// Sections
-.component-section {
-  // background: rgba(0,0,0,0.1);
-  margin: 3*$base-spacing-unit 0;
-}
-
-.component-section-title {
-  margin: 0 0 $base-spacing-unit;
-}
-
-.component-section-container {
-  margin-left: 2 * $base-spacing-unit;
-}
-
-
-// Options and Arguments Lists
-.component-option-list {
-  li {
-    margin-bottom: $base-spacing-unit;
-  }
-}
-
-.component-option-title {
-  display: inline;
-}
-
-.component-option-value {
-  margin-left: $base-spacing-unit;
-}
-
-
-// Examples
-.component-option-example {
-  margin-bottom: $base-spacing-unit;
-}
-
-.component-option-example-value {
-  // margin: 0;
-}
-
-.component-option-example-render {
-  display: list-item !important;
-}
 
 // Combinations
 .component-combination-iframe {
@@ -65,21 +21,9 @@ $base-spacing-unit: 20px;
   }
 }
 
-
-
 pre {
   margin: 0;
   overflow: scroll;
   padding: $base-spacing-unit/2;
   background: rgba(0,0,0,.1);
 }
-
-
-
-// Combination Page
-.component-combination-render {
-  // position: fixed;
-  // width: 100%;
-}
-
-
