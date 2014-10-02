@@ -38,7 +38,7 @@ define(['jquery'], function($) {
         options[optionName] = optionValue;
       });
 
-      var $iframes = $('.component-combination-iframe');
+      var $iframes = $('.styleguide-component-views');
       var $usage   = $('.styleguide-combination-usage');
       $iframes.removeClass('is-active');
       $usage.removeClass('is-active')
@@ -52,6 +52,15 @@ define(['jquery'], function($) {
       }
       $usage.each(selectActive);
       $iframes.each(selectActive);
+    });
+
+    $('.styleguide-view-item').on('click', function (evt) {
+      var $view = $(evt.currentTarget);
+      var viewToOpen = $view.data('view-type');
+      $('.styleguide-component-view').removeClass('is-active');
+      $('.styleguide-component-view--' + viewToOpen).addClass('is-active');
+      $('.styleguide-view-item').removeClass('is-active');
+      $view.addClass('is-active');
     });
   });
 });
