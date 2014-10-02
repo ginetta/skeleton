@@ -3,11 +3,17 @@
 # Skeleton
 
 ## What is skeleton
-Skeleton is a static site generator that can serve as a boilerplate for different frontend projects. It includes:
-- defines a folder structure to develop a web app
-- defines a way to write reusable web components (HTML / CSS / JS)
+
+Skeleton facilitates the communication between the parties involved in your development process. It is a **static site generator** that **embraces modularity**. A **style-guide** containing all components and theme styles will be generated automatically while you develop and design. It creates a **common language** for all project members and a quick overview over your projects components and explains their usage.
+
+It includes:
+
+- defined folder structure to develop a web app
+- defined way to write reusable web components (HTML / CSS / JS)
 - includes a grunt task to compile jade and translated data files
 - makes use of some custom CSS & JS we often reuse on projects
+
+Any specific frontend technology & framework can easily be swapped out since we use NPM and Bower packages.
 
 ## Future plans:
 - generates a style guide for the defaults styles and documenting the components
