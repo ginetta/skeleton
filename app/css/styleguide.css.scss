@@ -1,7 +1,5 @@
 $base-spacing-unit: 20px;
-
-@import "styleguide-templates/css/typography",
-        "styleguide-templates/s-components/components";
+$styleguide-code-bg: #EAEAEA;
 
 // Helpers
 .reset-list {
@@ -11,19 +9,12 @@ $base-spacing-unit: 20px;
 }
 
 
-// Combinations
-.component-combination-iframe {
-  width: 100%;
-  display: none !important;
-  height: 100%;
-  &.is-active {
-    display: block !important;
-  }
-}
-
 pre {
   margin: 0;
   overflow: scroll;
   padding: $base-spacing-unit/2;
-  background: rgba(0,0,0,.1);
+  background: $styleguide-code-bg;
 }
+
+@import "styleguide-templates/css/typography",
+        "styleguide-templates/s-components/components";

@@ -1,7 +1,7 @@
 @import "select";
 
 $infobar-width: 30%;
-$infobar-bg-color: rgba(0,0,0,.1);
+$infobar-bg-color: #F4F4F4;
 
 .styleguide-component-info-bar {
   box-sizing: border-box;
@@ -10,7 +10,7 @@ $infobar-bg-color: rgba(0,0,0,.1);
   bottom: 0;
   right: 0;
   width: $infobar-width;
-  background: #fff;
+  background: $infobar-bg-color;
   border-left: darken($infobar-bg-color, 10%) 1px solid;
 
   padding: $base-spacing-unit;

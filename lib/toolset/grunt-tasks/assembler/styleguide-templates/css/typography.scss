@@ -62,6 +62,12 @@ body {
   font-size: 1.2rem;
   font-weight: normal;
 }
+a.styleguide-label-main {
+  text-decoration: none;
+  &:hover {
+    text-decoration: underline;
+  }
+}
 
 .styleguide-element-info {
   display: block;
@@ -71,12 +77,30 @@ body {
   margin: 0;
 }
 
+.styleguide-view-item {
+  color: $label-color;
+  text-decoration: none;
+  margin-right: $base-spacing-unit / 2;
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: .9rem;
+
+  &.is-active {
+    color: #6173B1;
+    border-bottom: 2px solid #6173B1;
+  }
+}
+
 
 .styleguide-spacing-bottom--large {
   margin-bottom: 2*$base-spacing-unit;
 }
 
 .styleguide-spacing-bottom--medium {
+  margin-bottom: $base-spacing-unit;
+}
+
+.styleguide-spacing-bottom--small {
   margin-bottom: $base-spacing-unit;
 }
 
