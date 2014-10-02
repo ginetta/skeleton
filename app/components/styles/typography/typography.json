@@ -1,16 +1,14 @@
 {
   "title": {
-    "value": "Colors",
     "fontFamily": "Avenir",
-    "color": "wet-asphalt",
-    "fontSize" : "2.2rem",
+    "color": "midnight-blue",
+    "fontSize" : "3rem",
     "lineHeight": "1.4"
   },
   "subtitle": {
-    "value": "Version 0.1",
     "fontFamily": "Avenir",
-    "color": "wisteria",
-    "fontSize" : ".9rem",
+    "color": "wet-asphalt",
+    "fontSize" : "2.4rem",
     "lineHeight": "1.4"
   },
   "nav-item": {
