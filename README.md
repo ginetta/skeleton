@@ -3,30 +3,43 @@
 # Skeleton
 
 ## What is skeleton
-Skeleton is a static site generator that can serve as a boilerplate for different frontend projects. It includes:
-- defines a folder structure to develop a web app
-- defines a way to write reusable web components (HTML / CSS / JS)
-- includes a grunt task to compile jade and translated data files
-- makes use of some custom CSS & JS we often reuse on projects
 
-## Future plans:
-- generates a style guide for the defaults styles and documenting the components
+Skeleton is a frontend boilerplate.
+It **embraces modularity** and generates a living styleguide that facilitates the communication between the parties involved in the development process.
 
-## Guides
 
-- [Getting Started](#getting-started)
-- [Jade templates, Data and translation](#templates)
-- [Reusable Components](#reusable-components)
-- [JS / CSS Toolset](#toolset)
-- [Styleguide](#styleguide)
-- [Folder Structure](#folder-structure)
+### Skeleton features:
+#### [A JS / SCSS / CSS / Grunt toolset](#toolset)
+The skeleton includes some CSS and JS helpers/libraries to help you.
+It also includes a set of grunt tasks that are pre-configured to get you going.
+
+#### [A defined files/folders structure](#structure)
+To unify all the projects you work on, skeleton defines a folder structure to put your files in.
+
+#### [A reusable components convention](#reusable-components)
+Skeleton also defines a way to write components that you can re-use in your project.
+
+#### [A styleguide generator](#styleguide)
+A style-guide containing all components and theme styles will be generated automatically while you develop and design.
+It creates a *common language* for all project members and a quick overview over your projects components and explains their usage.
+
+#### [A static site generator](#site-generator)
+The skeleton includes grunt tasks to compile jade templates with data files.
+
+
+
+### Design principles:
+- We value convention over configuration
+- We try to abstract convention when possible
+- We strive to impose as few tools as possible to make it easy to swap them as you like
+
 
 ## <a id="getting-started">Getting started</a>
 
 ### Setting up a new project
 To start a new project, create a new repository on git and add the skeleton repository as remote:
 
-    git remote add skeleton https://github.com/ginetta/skeleton.git 
+    git remote add skeleton https://github.com/ginetta/skeleton.git
 
 Fetch the data from skeleton:
 
@@ -69,39 +82,7 @@ To build the project, just run
 
 It will generate all the files, start a server and open your browser with the project index
 
-## <a id="templates">Jade templates, Data and translation</a>
-### Jade
-We choose jade because it always renders valid HTML and it makes it easy to work in a modular way. 
-It brings some key features (e.g. mixins and blocks) that promotes code reuse and maintainability.
-### Data & Translations
-Optionally you can store data (even languages specific data) in a JSON file. This file is located under app/data/<language>.js. The data stored in this file will be available in all jade files under the data variable. If you have more that one language file will generate each page per data file.
-For instance, if you have a en.json and de.json container the language specific data for both english and german, skeleton will generate two html files for each page, each with their own specific language data.
-
-
-## <a id="reusable-components">Reusable Components</a>
-### Concept
-In order to write maintainable, generic and reusable code we like to write our code in components. Where a component consits of one of each: 
-
-- jade file that contains the markup
-- SCSS containes the specifc styles
-- JS file as requirejs module
-- JSON file to store metadata 
-
-Every component can have sub-components.
-
-It is up to you, how granular you want your components to be, but keep in mind that skeleton will be able to automaitically build a styleguide out of the component collection. 
-
-
-### How to create a new component
-  
-    grunt addComponent --name=foo
-creates a new component called foo
-
-    grunt addComponent --name=bar --parent=foo
-creates a new component named bar that is a sub component of foo
-
-
-## <a id="toolset">JS / SCSS / CSS Toolset</a>
+## <a id="toolset">JS / SCSS / CSS / Grunt toolset</a>
 
 All frontend dependancys are managed truth bower and are optional. We have decided to include a few by default, because we use them all the time. Feel free to remove them for your own app
 
@@ -112,43 +93,77 @@ All frontend dependancys are managed truth bower and are optional. We have decid
 - [require.js](http://requirejs.org/) Is used to require the JS components, also encourages a modular way of writing your code
 - [jquery](http://jquery.org/) jQuery, you know
 
+<!-- TODO: Describe our grunt setup -->
 
-## <a id="folder-structure">Structure</a>
+## <a id="structure">Files / Folders structure</a>
 
     .
-    ├── Gemfile             		List of used ruby gems (used for bundle)
-    ├── Gruntfile.js          	Grunt base file
-    ├── app             			App specific files
-    │   ├── assets          		Images, video
-    │   ├── components    
+    ├── Gemfile                 List of used ruby gems (used for bundle)
+    ├── Gruntfile.js            Grunt base file
+    ├── app                   App specific files
+    │   ├── assets              Images, video
+    │   ├── components
     │   │   ├── components.jade   Includes all the components jade mixins check "Reusable Components" for more information
     │   │   ├── components.scss   Includes all the components SCSS/SASS files
     │   │   ├── docs-skeleton     Documentation also used as example
-    │   │   └── mycomponent     	Example component
-    │   │       ├── ...       	Component files
+    │   │   └── mycomponent       Example component
+    │   │       ├── ...         Component files
     │   │       └── package.json  component meta information
-    │   ├── css           		App specific CSS
-    │   ├── data            		Data that will be available in JADE
-    │   │   ├── en.json       	Data can be language specific
+    │   ├── css               App specific CSS
+    │   ├── data                Data that will be available in JADE
+    │   │   ├── en.json         Data can be language specific
     │   │   └── ...
-    │   ├── js            
-    │   │   ├── globals.js     	Used to store globals if needed
-    │   │   └── main.js			JS gets initialized here
-    │   ├── layout				Layouts that can be extended in JADE pages
-    │   ├── meta					Favicons, humans.txt etc..
-    │   └── pages					Contains Pages/View of your app
-    │       ├── docs				Documentation, can be removed
-    │       └── index.jade      	Used as a starting point
+    │   ├── js
+    │   │   ├── globals.js      Used to store globals if needed
+    │   │   └── main.js     JS gets initialized here
+    │   ├── layout        Layouts that can be extended in JADE pages
+    │   ├── meta          Favicons, humans.txt etc..
+    │   └── pages         Contains Pages/View of your app
+    │       ├── docs        Documentation, can be removed
+    │       └── index.jade        Used as a starting point
     │
-    ├── bower.json          		Bower packages are registered here
+    ├── bower.json              Bower packages are registered here
     │
-    ├── lib             			Library used for the build
-    │   ├── grunt-tasks       	Grunt tasks add your here
+    ├── lib                   Library used for the build
+    │   ├── grunt-tasks         Grunt tasks add your here
     │   │   ├── aliases.yaml      Named tasks
     │   │   └── ...
-    │   └── toolset         		Skeleton specific tasks
+    │   └── toolset             Skeleton specific tasks
     │
-    ├── dist              		Builded app (HTML,CSS,JS etc..) 
-    
-## <a id="styleguide">Style-guide</a>
-Some time in the future a style-guide will be automatically generated with all the components
+    ├── dist                  Builded app (HTML,CSS,JS etc..)
+
+
+## <a id="reusable-components">Reusable Components</a>
+### Concept
+In order to write maintainable, generic and reusable code we like to write our code in components. Where a component consits of one of each: 
+
+- jade file that contains the markup
+- SCSS containes the specifc styles
+- JS file as requirejs module
+- JSON file to store metadata
+
+Every component can have sub-components. We recommend to limit the encapsulation to reduce the complexity (dependencies).
+
+### How to create a new component
+  
+    grunt addComponent --name=foo
+creates a new component called foo
+
+    grunt addComponent --name=bar --parent=foo
+creates a new component named bar that is a sub component of foo
+
+
+## <a id="styleguide-generator">Styleguide generator</a>
+** *This is in development in the styleguide branch* **
+
+<!-- TODO: Document the styleguide generator -->
+
+
+## <a id="site-generator">Static site generator</a>
+### Jade
+We choose jade because it always renders valid HTML and it makes it easy to work in a modular way. 
+It brings some key features (e.g. mixins and blocks) that promotes code reuse and maintainability.
+
+### Data & Translations
+Optionally you can store data (even languages specific data) in a JSON file. This file is located under app/data/<language>.js. The data stored in this file will be available in all jade files under the data variable. If you have more that one language file, it will generate each page per data file.
+For instance, if you have a en.json and de.json container the language specific data for both english and german, skeleton will generate two html files for each page, each with their own specific language data.
