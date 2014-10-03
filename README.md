@@ -4,24 +4,24 @@
 
 ## What is skeleton
 
-Skeleton is a frontend project boilerplate.  
+Skeleton is a frontend boilerplate.
 It **embraces modularity** and generates a living styleguide that facilitates the communication between the parties involved in the development process.
 
 
 ### Skeleton features:
 #### [A JS / SCSS / CSS / Grunt toolset](#toolset)
-The skeleton includes some CSS and JS helpers/libraries to help you.  
-It also includes a set of grunt tasks that are pre-configured to get you going.  
+The skeleton includes some CSS and JS helpers/libraries to help you.
+It also includes a set of grunt tasks that are pre-configured to get you going.
 
 #### [A defined files/folders structure](#structure)
-To unify all the projects you work on, skeleton defines a folder structure to put your files in.  
+To unify all the projects you work on, skeleton defines a folder structure to put your files in.
 
 #### [A reusable components convention](#reusable-components)
-Skeleton also defines a way to write components that you can re-use in your project.  
+Skeleton also defines a way to write components that you can re-use in your project.
 
 #### [A styleguide generator](#styleguide)
-A style-guide containing all components and theme styles will be generated automatically while you develop and design.  
-It creates a *common language* for all project members and a quick overview over your projects components and explains their usage.  
+A style-guide containing all components and theme styles will be generated automatically while you develop and design.
+It creates a *common language* for all project members and a quick overview over your projects components and explains their usage.
 
 #### [A static site generator](#site-generator)
 The skeleton includes grunt tasks to compile jade templates with data files.
@@ -31,7 +31,7 @@ The skeleton includes grunt tasks to compile jade templates with data files.
 ### Design principles:
 - We value convention over configuration
 - We try to abstract convention when possible
-- We strive to impose as tools as possible to make it easy to swap tools to your liking
+- We strive to impose as few tools as possible to make it easy to swap them as you like
 
 
 ## <a id="getting-started">Getting started</a>
@@ -39,7 +39,7 @@ The skeleton includes grunt tasks to compile jade templates with data files.
 ### Setting up a new project
 To start a new project, create a new repository on git and add the skeleton repository as remote:
 
-    git remote add skeleton https://github.com/ginetta/skeleton.git 
+    git remote add skeleton https://github.com/ginetta/skeleton.git
 
 Fetch the data from skeleton:
 
@@ -102,7 +102,7 @@ All frontend dependancys are managed truth bower and are optional. We have decid
     ├── Gruntfile.js            Grunt base file
     ├── app                   App specific files
     │   ├── assets              Images, video
-    │   ├── components    
+    │   ├── components
     │   │   ├── components.jade   Includes all the components jade mixins check "Reusable Components" for more information
     │   │   ├── components.scss   Includes all the components SCSS/SASS files
     │   │   ├── docs-skeleton     Documentation also used as example
@@ -113,7 +113,7 @@ All frontend dependancys are managed truth bower and are optional. We have decid
     │   ├── data                Data that will be available in JADE
     │   │   ├── en.json         Data can be language specific
     │   │   └── ...
-    │   ├── js            
+    │   ├── js
     │   │   ├── globals.js      Used to store globals if needed
     │   │   └── main.js     JS gets initialized here
     │   ├── layout        Layouts that can be extended in JADE pages
@@ -130,7 +130,7 @@ All frontend dependancys are managed truth bower and are optional. We have decid
     │   │   └── ...
     │   └── toolset             Skeleton specific tasks
     │
-    ├── dist                  Builded app (HTML,CSS,JS etc..) 
+    ├── dist                  Builded app (HTML,CSS,JS etc..)
 
 
 ## <a id="reusable-components">Reusable Components</a>
@@ -140,7 +140,7 @@ In order to write maintainable, generic and reusable code we like to write our c
 - jade file that contains the markup
 - SCSS containes the specifc styles
 - JS file as requirejs module
-- JSON file to store metadata 
+- JSON file to store metadata
 
 Every component can have sub-components. We recommend to limit the encapsulation to reduce the complexity (dependencies).
 
