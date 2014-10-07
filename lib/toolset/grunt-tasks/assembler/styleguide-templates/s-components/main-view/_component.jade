@@ -27,7 +27,9 @@ mixin main-view--component ()
             pre
               |+#{component.name}(#{JSON.stringify(component.data || component.dataObject.example, undefined, 2)} , #{JSON.stringify(combination, undefined, 2)})
           .styleguide-component-view.styleguide-component-view--html
-            pre.
-               <html>
-                 TODO
-               </html>
+            pre
+              //- TODO: xmp is deprecated, we should find another solution
+              //- It seems like jade can't escape the result of a mixin
+              //- perhaps use something like http://prismjs.com/ ?
+              xmp
+                +#{component.name}(component.data || component.dataObject.example, combination)
