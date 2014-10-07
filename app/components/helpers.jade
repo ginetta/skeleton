@@ -1,8 +1,9 @@
 - function setOptionsDefaults(options, componentName) {
   - options = options || {}
-  - for val, key in components[componentName].options
+  - for (key in components[componentName].options) {
     - options[key] = options[key] || components[componentName].options[key].default
-  -   return options
+  - }
+  - return options
 - }
 
 - function getOptionsModifier(options, componentName, filters) {

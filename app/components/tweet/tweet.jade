@@ -1,5 +1,5 @@
 mixin tweet (data, options)
-  - setOptionsDefaults(options, "tweet")
+  - options = setOptionsDefaults(options, "tweet")
   - var classes = getOptionsModifier(options, "tweet", ["display"])
 
   .tweet(class=classes)
