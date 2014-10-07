@@ -18,6 +18,10 @@
     "corners": {
       "values": ["rounded", "circle", "square"],
       "default": "rounded"
+    },
+    "disabled": {
+      "values": [true, false],
+      "default": false
     }
   }
 }

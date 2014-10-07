@@ -13,6 +13,12 @@ define(['jquery'], function($) {
     for (var i = 0; i < aProps.length; i++) {
       var propName = aProps[i];
 
+      // If the option is not a string
+      // convert it to a string before
+      if (typeof a[propName] != typeof b[propName] ) {
+        a[propName] += "";
+      }
+
       // If values of same property are not equal,
       // objects are not equivalent
       if (a[propName] !== b[propName]) {

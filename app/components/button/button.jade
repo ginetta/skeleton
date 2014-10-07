@@ -2,4 +2,4 @@ mixin button (data, options)
   - options = setOptionsDefaults(options, "button")
   - var classes = getOptionsModifier(options, "button")
 
-  a(class=classes) #{data.label}
+  a(class=classes, disabled=options['disabled']) #{data.label}
