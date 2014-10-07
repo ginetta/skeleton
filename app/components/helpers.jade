@@ -10,11 +10,21 @@
   - var classes = "" + componentName
   - if (filters) {
     - for key in filters
-      - classes = classes + " " + componentName + "--" + key + "-" + (options[key] || components[componentName].options[key].default)
+      - classes = classes + " " + getClassModifier(componentName, key, options)
   - } else {
     - for val, key in components[componentName].options
-      - classes = classes + " " + componentName + "--" + key + "-" + (options[key] || components[componentName].options[key].default)
+      - classes = classes + " " + getClassModifier(componentName, key, options)
   - }
-
   - return classes
+- }
+
+- function getClassModifier(componentName, key, options) {
+  - var defaultOption = components[componentName].options[key].default
+  - var option = options[key] || defaultOption
+
+  - if (typeof option === "boolean") {
+      - return option ?  componentName + "--" + key : ""
+  - } else {
+      - return option !== "" ?  componentName + "--" + key + "-" + option : ""
+  - }
 - }
