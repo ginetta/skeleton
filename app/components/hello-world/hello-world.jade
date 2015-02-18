@@ -1,6 +1,4 @@
-mixin hello-world(data, options)
-  - options = setOptionsDefaults(options, "hello-world")
-
-  .hello-world
-    h1 hello component
+.hello-world
+  pre {{ data    | json }}
+  pre {{ options | json }}
 

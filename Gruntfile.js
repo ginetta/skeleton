@@ -35,6 +35,10 @@ module.exports = function(grunt) {
         config: config
     });
 
+    require('./lib/toolset/grunt-tasks/styleguide/styleguide-angular/task.coffee')(grunt, {
+        config: config
+    });
+
     // Loads grunt tasks' configuration in lib/grunt-tasks/<task-name>.js
     require('load-grunt-config')(grunt, {
         data: {

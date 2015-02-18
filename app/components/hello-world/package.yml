@@ -3,6 +3,7 @@
   version: "0.0.1"
   description: "Example component"
   author: "Ginetta"
+  type: "angular"
   data:
     title: "Component title"
     age: 12

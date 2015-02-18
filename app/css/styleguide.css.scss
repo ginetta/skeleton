@@ -16,5 +16,6 @@ pre {
   background: $styleguide-code-bg;
 }
 
-@import "styleguide-templates/css/typography",
-        "styleguide-templates/s-components/components";
+// Styles (includes colors, typography, margins)
+@import "styles/colors/colors",
+        "styles/typography/typography";
