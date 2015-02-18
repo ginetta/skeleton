@@ -69,5 +69,4 @@ server:
 styleguide:
   - prepare
   - styleguideAssembler
-  - copy:styleguide
 

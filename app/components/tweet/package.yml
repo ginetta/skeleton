@@ -1,0 +1,40 @@
+---
+  name: "tweet"
+  version: "0.0.1"
+  description: "Element that shows a given twwet"
+  author: "Ginetta"
+  dataObject:
+    name: "tweet"
+    description: "object representing a tweet"
+    example:
+      username: "João Figueiredo"
+      handle: "@lucalanca"
+      text: "Look, ma, this is my first tweet. I can only use 140 characters, you know? But I don't have lots to say anyway."
+      sent: "9:33 AM - 23 Sep 2014"
+      retweetsCount: 12
+      favouritesCount: 2
+      avatarUrl: "https://s3.amazonaws.com/uifaces/faces/twitter/brad_frost/128.jpg"
+      favourites:
+        -
+          avatarUrl: "https://s3.amazonaws.com/uifaces/faces/twitter/whale/128.jpg"
+        -
+          avatarUrl: "https://s3.amazonaws.com/uifaces/faces/twitter/adellecharles/128.jpg"
+        -
+          avatarUrl: "https://s3.amazonaws.com/uifaces/faces/twitter/flamekaizar/128.jpg"
+  options:
+    display:
+      values:
+        - "item"
+        - "list"
+        - "chat"
+      default: "item"
+    actions:
+      values:
+        - "visible"
+        - "hidden"
+      default: "visible"
+    social:
+      values:
+        - "visible"
+        - "hidden"
+      default: "visible"
