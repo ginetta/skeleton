@@ -1,0 +1,25 @@
+<div ng-if="ready">
+  <hello-world data="data" options="options"></hello-world>
+
+
+  <form no-validate>
+    <p>Data:</p>
+    <div ng-repeat="(name, value) in component.data">
+      <label>{{ name }}</label>
+      <input type="text" ng-model="data[name]">
+    </div>
+  </form>
+
+  <form no-validate>
+    <p>options:</p>
+    <div ng-repeat="(name, optionData) in component.options">
+      <label>{{ name }}</label>
+      <input type="text" ng-model="options[name]">
+    </div>
+  </form>
+
+
+  <pre>{{data | json}}</pre>
+  <pre>{{options | json}}</pre>
+</div>
+

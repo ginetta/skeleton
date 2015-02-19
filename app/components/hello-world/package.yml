@@ -5,9 +5,9 @@
   author: "Ginetta"
   type: "angular"
   data:
-    title: "Component title"
-    age: 12
+    greeting: "hello"
+    name: "world"
   options:
-    size:
-      values: ["big", "medium", "small"]
-      default: "medium"
+    color:
+      values: ["blue", "red", "yellow"]
+      default: "blue"

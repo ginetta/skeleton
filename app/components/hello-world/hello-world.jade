@@ -1,4 +1,5 @@
-.hello-world
-  pre {{ data    | json }}
-  pre {{ options | json }}
+.hello-world(data-ng-class="{ 'is-active': options.isActive }")
+  h1(style="color: {{ options.color }}")  {{ data.greeting }}
+  h2  {{ data.name }}
+
 
