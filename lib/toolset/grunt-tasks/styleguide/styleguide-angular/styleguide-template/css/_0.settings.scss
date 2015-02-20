@@ -1,0 +1,46 @@
+/*
+ * Variables that are used on the project.
+ * Never use a color that is not in here
+ *
+ * Namespace:
+ *  f: font
+ *  c: color
+ *  s: size
+ *  i: icons & sprites
+ *  a: animations & transitions
+ */
+@import "bonescss/0.settings";
+
+// Fonts
+$base-font-size: 14px;
+$line-height-ratio: 1.5;
+
+$base-font-family: Helvetica, sans-serif;
+$f-default: $base-font-family;
+
+
+$s-design-width: 980px;
+
+// Colors
+$c-grey-darkest  : #333;
+$c-grey-dark     : #666;
+$c-grey-medium   : #999;
+$c-grey-light    : #BBB;
+$c-grey-lightest : #ddd;
+
+$c-blue: #8296C4;
+
+// spacings
+$s-gutter-half: $s-gutter * .5;
+$s-gutter: 20px;
+$s-gutter-double: $s-gutter * 2;
+
+
+
+
+// sizes
+
+// sprites & icons
+
+// animations
+

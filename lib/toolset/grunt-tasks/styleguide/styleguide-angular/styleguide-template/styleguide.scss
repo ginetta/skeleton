@@ -1,43 +1,23 @@
-$base-spacing-unit: 20px;
-$styleguide-code-bg: #EAEAEA;
+@import
+  "bonescss/mixins",
+  "bonescss/vendor/normalize",
+  "sensible/mediaqueries";
 
-// Helpers
-.reset-list {
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
-
-
-pre {
-  margin: 0;
-  overflow: scroll;
-  padding: $base-spacing-unit/2;
-  background: $styleguide-code-bg;
-}
 
 
 
 @import
-    "0.settings",
-    "bonescss/mixins",
-    "sensible/mediaqueries";
+  "css/0.settings",
+  "css/1.base",
+  "css/2.layout",
+  "layout/**/*",
+  "dashboard/**/*",
+  "colors/**/*",
+  "typography/**/*",
+  "component/**/*",
+  "css/3.helpers",
+  "css/4.print",
+  "css/5.states",
+  "css/6.shame";
 
-
-// Styles (includes colors, typography, margins)
-@import "styles/colors/colors",
-        "styles/typography/typography";
-
-@import
-    "1.base",
-    "2.layout",
-    "3.helpers",
-    "../components/**/*",
-    "4.print",
-    "5.states",
-    "6.shame";
-
-
-@import "styleguide-templates/s-components/components.scss";
-
-
+body { margin: 0; }

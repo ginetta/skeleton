@@ -1,21 +1,3 @@
-angular
-  .module('app.widgets.templates', []);
-angular
-  .module('app.widgets', ["app.widgets.templates","app.widgets.hello-world"]);
-
-angular
-  .module('app.widgets.hello-world', [])
-  .directive('helloWorld', function () {
-    return {
-      restrict: 'E',
-      templateUrl: 'widgets/hello-world/template.html',
-      scope: {
-        data   : '=',
-        options: '='
-      }
-    }
-  })
-
 angular.module('app.widgets.templates').run(['$templateCache', function($templateCache) {
   'use strict';
 

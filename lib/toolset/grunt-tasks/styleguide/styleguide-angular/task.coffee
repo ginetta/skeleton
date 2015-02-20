@@ -6,7 +6,7 @@ module.exports = (grunt, options)  ->
   srcDir     = options.config.srcDir
   targetDir  = options.config.targetDir
 
-  baseWidgetsDst         = '.tmp/styleguide/widgets/dist/'
+  baseWidgetsDst         = 'styleguide/widgets/'
   finalArtifactDst       = 'styleguide/widgets.js'
   finalArtifactDstStyles = 'styleguide/widgets.css'
 
@@ -66,7 +66,7 @@ module.exports = (grunt, options)  ->
     config =
       concat:
         widgetsArtifact:
-          src:  [ baseWidgetsDst + '**/*.js' ]
+          src:  [ baseWidgetsDst + '**/*.js', 'styleguide/templates.js' ]
           dest: finalArtifactDst
 
     grunt.config.merge(config)
@@ -87,27 +87,54 @@ module.exports = (grunt, options)  ->
   createComponentsDataFile = (components) ->
     grunt.file.write('styleguide/data/components.json', JSON.stringify(components));
 
-  createArtifact = (components) ->
+  createStylesDataFile = () ->
+    baseStylesPath = srcDir + '/css/styles/'
+    console.log baseStylesPath
+
+    config =
+      copy:
+        typographyConfig:
+          cwd: baseStylesPath + 'typography'
+          expand: true
+          src: '*.json'
+          dest: 'styleguide/data'
+        colorsConfig:
+          cwd: baseStylesPath + 'colors'
+          expand: true
+          src: '*.json'
+          dest: 'styleguide/data'
+
+    grunt.config.merge(config)
+    grunt.task.run(['copy:typographyConfig', 'copy:colorsConfig'])
+
+  createArtifacts = (components) ->
     compileStyles()
     cacheTemplates()
     copyScripts(components)
     createMainModule(components)
     concatScripts()
-    # createComponentsDataFile(components)
+    createComponentsDataFile(components)
+    createStylesDataFile()
 
 
 
   copyStyleguideTemplate = () ->
+    console.log('copyStyleguideTemplate')
     config =
       copy:
         styleguideTemplate:
-          src: '**'
+          src: '**/*.js'
           dest: 'styleguide/'
           expand: true
           cwd: 'lib/toolset/grunt-tasks/styleguide/styleguide-angular/styleguide-template/'
 
     grunt.config.merge(config)
     grunt.task.run(['copy:styleguideTemplate'])
+    styleguideTemplateBase = 'lib/toolset/grunt-tasks/styleguide/styleguide-angular/styleguide-template/'
+    grunt.file.glob.sync(styleguideTemplateBase + '**/*.jade').forEach  (path) ->
+      dest = 'styleguide/' + path.replace(styleguideTemplateBase, '').replace('.jade', '.html')
+      templateContent = jade.renderFile(path, { pretty: true })
+      grunt.file.write(dest, templateContent)
 
 
 
@@ -119,7 +146,7 @@ module.exports = (grunt, options)  ->
     compileTemplates(components)
 
     # create artifacts into styleguide/dist folder
-    createArtifact(components)
+    createArtifacts(components)
 
 
-    # copyStyleguideTemplate()
+    copyStyleguideTemplate()

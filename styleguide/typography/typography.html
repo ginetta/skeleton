@@ -1,0 +1,18 @@
+
+<div ng-if="ready">
+  <div ng-repeat="(name, specs) in typographyData" class="styleguide-typography-item">
+    <div class="l-grid">
+      <div class="l-grid-cell l-one-quarter">
+        <h1 class="t-styleguide-title">{{ name }}</h1>
+        <ul class="list-reset">
+          <li ng-repeat="( property, value) in specs" ng-if="property !== 'value'">
+            <p class="t-styleguide-caption">{{ value }}</p>
+          </li>
+        </ul>
+      </div>
+      <div class="l-grid-cell l-three-quarters">
+        <p style="{{ getCssStyleFor(specs) }}" class="styleguide-typography-preview">{{ specs.value || "Lorem ipsum is the best" }}</p>
+      </div>
+    </div>
+  </div>
+</div>

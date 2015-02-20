@@ -1,0 +1,42 @@
+
+<div ng-if="ready">
+  <div class="l-grid">
+    <div class="l-grid-cell l-one-whole styleguide-component-header">
+      <h1 class="t-styleguide-title">{{component.name}}</h1>
+      <p class="t-styleguide-caption">Version {{component.version}} — Author: {{component.author}}</p>
+    </div>
+  </div>
+  <div class="l-grid">
+    <div class="l-grid-cell l-one-half styleguide-component-main">
+      <div class="styleguide-tabs">
+        <ul class="styleguide-tabs-list">
+          <li ng-repeat="tab in tabs"><a ng-click="selectTab($index)" ng-class="{ 'is-active': tabIdx == $index }" class="t-styleguide-sidebar-link">{{ tab }}</a></li>
+        </ul>
+        <div ng-show="tabIdx == 0" class="styleguide-tab-container">
+          <hello-world data="data" options="options"></hello-world>
+        </div>
+        <div ng-show="tabIdx == 1" class="styleguide-tab-container">
+          <pre>some html here</pre>
+        </div>
+        <div ng-show="tabIdx == 2" class="styleguide-tab-container">
+          <pre>some jade in here</pre>
+        </div>
+      </div>
+    </div>
+    <div class="l-grid-cell l-one-half styleguide-component-drawer">
+      <h3 class="t-styleguide-sidebar-group-label">Data</h3>
+      <fieldset ng-repeat="(name, value) in component.data" class="styleguide-field l-grid">
+        <label class="l-grid-cell l-one-sixth t-styleguide-caption">{{ name }}</label>
+        <input type="text" ng-model="data[name]" class="l-grid-cell l-five-sixths"/>
+      </fieldset>
+      <h3 class="t-styleguide-sidebar-group-label">Options</h3>
+      <fieldset ng-repeat="(name, optionData) in component.options" class="styleguide-field l-grid">
+        <label class="l-grid-cell l-one-sixth t-styleguide-caption">{{ name }}</label>
+        <select ng-model="options[name]" class="l-grid-cell l-five-sixths">
+          <option value="{{ optionData.default }}" selected="selected">{{optionData.default}} (default)</option>
+          <option ng-repeat="option in optionData.values" ng-if="option !== optionData.default" value="{{ option }}">{{option}}</option>
+        </select>
+      </fieldset>
+    </div>
+  </div>
+</div>

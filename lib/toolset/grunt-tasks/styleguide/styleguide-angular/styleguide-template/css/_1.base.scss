@@ -1,0 +1,104 @@
+html {
+  min-height:100%;
+  font:#{($base-font-size/16px)*1em}/#{$line-height-ratio} $base-font-family;
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+  overflow-y:scroll;
+}
+html, body, .l-body {
+  min-height:100%;
+}
+
+strong {
+  font-weight: 700;
+}
+
+/*
+ * Remove text-shadow in selection highlight: h5bp.com/i
+ * These selection rule sets have to be separate.
+ * Customize the background color to match your design.
+ */
+::-moz-selection {
+  background: #b3d4fc;
+  text-shadow: none;
+}
+
+::selection {
+  background: #b3d4fc;
+  text-shadow: none;
+}
+
+
+/*
+ * Remove the gap between images, videos, audio and canvas and the bottom of
+ * their containers: h5bp.com/i/440
+ */
+audio,
+canvas,
+img,
+svg,
+video {
+  vertical-align: middle;
+}
+
+/*
+ * Remove default fieldset styles.
+ */
+
+fieldset {
+  border: 0;
+  margin: 0;
+  padding: 0;
+}
+
+/*
+ * Allow only vertical resizing of textareas.
+ */
+textarea {
+  resize: vertical;
+}
+
+
+
+
+// TYPOGRAPHY GOES HERE
+.t-styleguide-sidebar-group-label {
+  font-family: $base-font-family;
+  font-weight: bold;
+  font-size: .85rem;
+  color: $c-grey-dark;
+  text-transform: uppercase;
+  margin-top: 2em;
+  margin-bottom: .5em;
+  padding: 0 $s-gutter;
+}
+
+.t-styleguide-sidebar-link {
+  text-decoration: none;
+  font-family: $base-font-family;
+  font-weight: normal;
+  font-size: 1rem;
+  color: $c-grey-medium;
+  padding: $s-gutter/2 $s-gutter;
+  display: block;
+  &.is-active {
+    background: rgba(#fff, 0.1);
+    color: $c-blue;
+  }
+}
+
+.t-styleguide-title {
+  font-family: $base-font-family;
+  font-weight: normal;
+  color: $c-grey-darkest;
+  font-size: 1.71rem;
+  margin: 0 0 .3em 0;
+}
+
+.t-styleguide-caption {
+  font-family: $base-font-family;
+  font-weight: normal;
+  color: $c-grey-light;
+  font-size: 0.85rem;
+  margin: 0;
+}

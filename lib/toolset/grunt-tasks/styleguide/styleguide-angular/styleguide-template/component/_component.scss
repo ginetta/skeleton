@@ -1,0 +1,58 @@
+// .styleguide-component-header,
+// .styleguide-component-main {
+//   padding: $s-gutter;
+// }
+
+
+.styleguide-component-header {
+  height: 5*$s-gutter;
+}
+
+.styleguide-component-main {
+  // background: rgba(red, 0.1);
+}
+
+.styleguide-component-drawer {
+  overflow: hidden;
+  // background: rgba(green, 0.1);
+}
+
+
+
+// TABS
+.styleguide-tabs {
+  overflow: scroll;
+}
+
+.styleguide-tabs-list {
+  @extend .l-horizontal-list;
+  border-bottom: 1px solid $c-grey-lightest;
+  a {
+    display: inline-block;
+    padding: $s-gutter/4 $s-gutter/2;
+    cursor: pointer;
+    text-transform: uppercase;
+    font-weight: bold;
+    margin-bottom: -1px;
+    &.is-active {
+      border-bottom: 4px solid $c-blue;
+    }
+  }
+}
+
+
+
+// SELECTS
+.styleguide-field {
+  // background: rgba(blue, 0.1);
+  margin-bottom: $s-gutter/2;
+
+  label {
+    vertical-align: middle;
+  }
+
+  select,
+  input {
+    padding: $s-gutter/4 $s-gutter/2;
+  }
+}

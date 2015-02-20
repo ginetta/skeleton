@@ -1,0 +1,19 @@
+.styleguide-sidebar(ng-controller="SidebarCtrl")
+  a.t-styleguide-sidebar-link(
+    ui-sref='dashboard',
+    ui-sref-active="active"
+  ) Overview
+
+
+  h2.t-styleguide-sidebar-group-label Base Styles
+  ul.list-reset
+    li(ng-repeat="page in ['colors', 'typography']")
+      a.t-styleguide-sidebar-link(ui-sref="{{page}}", ui-sref-active="is-active") {{ page | ucfirst }}
+
+  h2.t-styleguide-sidebar-group-label Components
+  ul.list-reset
+    li(ng-repeat='component in components')
+      a.t-styleguide-sidebar-link(
+        ui-sref='component( { name: component.name} )',
+        ui-sref-active="is-active"
+      ) {{ component.name | ucfirst }}
