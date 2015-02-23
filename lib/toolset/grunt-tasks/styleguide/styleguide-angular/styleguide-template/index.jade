@@ -1,0 +1,26 @@
+doctype html
+head
+  meta(charset='utf-8')
+  title Styleguide
+  meta(name='description', content='')
+  meta(name='viewport', content='width=device-width')
+
+  link(rel='stylesheet', href='css/styleguide.css')
+  link(rel='stylesheet', href='widgets.css')
+
+  body(ng-app='styleguide')
+    div.l-styleguide-container(ng-controller='MainCtrl')
+      div.l-styleguide-sidebar-container(ng-include="'layout/sidebar/sidebar.html'")
+      div.l-styleguide-main-container(ui-view)
+
+    script(src='../lib/bower_components/angular/angular.js')
+    script(src='../lib/bower_components/ui-router/release/angular-ui-router.js')
+    script(src='../lib/bower_components/lodash/lodash.js')
+    script(src='../lib/bower_components/angular-filter/dist/angular-filter.js')
+    script(src='main.js')
+    script(src='layout/sidebar/sidebar.controller.js')
+    script(src='dashboard/dashboard.controller.js')
+    script(src='component/component.controller.js')
+    script(src='colors/colors.controller.js')
+    script(src='typography/typography.controller.js')
+    script(src='widgets.js')

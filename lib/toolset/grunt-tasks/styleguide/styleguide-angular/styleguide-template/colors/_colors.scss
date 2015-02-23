@@ -1,0 +1,21 @@
+.styleguide-palette-container {
+  margin-bottom: 2*$s-gutter;
+}
+
+.styleguide-color-item-container {
+  margin-bottom: $s-gutter;
+}
+
+.styleguide-color-item {
+  height: 14*$s-gutter;
+  position: relative;
+}
+
+.styleguide-color-data {
+  position: absolute;
+  bottom: $s-gutter/4;
+  left: $s-gutter/4;
+  right: $s-gutter/4;
+  background: white;
+  padding: $s-gutter/4 $s-gutter/2;
+}

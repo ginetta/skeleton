@@ -1,0 +1,11 @@
+
+<div ng-controller="SidebarCtrl" class="styleguide-sidebar"><a ui-sref="dashboard" ui-sref-active="active" class="t-styleguide-sidebar-link">Overview</a>
+  <h2 class="t-styleguide-sidebar-group-label">Base Styles</h2>
+  <ul class="list-reset">
+    <li ng-repeat="page in ['colors', 'typography']"><a ui-sref="{{page}}" ui-sref-active="is-active" class="t-styleguide-sidebar-link">{{ page | ucfirst }}</a></li>
+  </ul>
+  <h2 class="t-styleguide-sidebar-group-label">Components</h2>
+  <ul class="list-reset">
+    <li ng-repeat="component in components"><a ui-sref="component( { name: component.name} )" ui-sref-active="is-active" class="t-styleguide-sidebar-link">{{ component.name | ucfirst }}</a></li>
+  </ul>
+</div>

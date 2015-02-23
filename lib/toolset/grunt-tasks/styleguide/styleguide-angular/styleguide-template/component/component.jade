@@ -1,0 +1,32 @@
+div(ng-if='ready')
+  .l-grid
+    .l-grid-cell.l-one-whole.styleguide-component-header
+      h1.t-styleguide-title {{component.name}}
+      p.t-styleguide-caption Version {{component.version}} — Author: {{component.author}}
+
+  .l-grid
+    .l-grid-cell.l-one-half.styleguide-component-main
+      .styleguide-tabs
+        ul.styleguide-tabs-list
+          li(ng-repeat="tab in tabs")
+            a.t-styleguide-sidebar-link(ng-click="selectTab($index)", ng-class="{ 'is-active': tabIdx == $index }") {{ tab }}
+        .styleguide-tab-container(ng-show="tabIdx == 0")
+          hello-world(data='data', options='options')
+        .styleguide-tab-container(ng-show="tabIdx == 1")
+          pre some html here
+        .styleguide-tab-container(ng-show="tabIdx == 2")
+          pre some jade in here
+
+
+    .l-grid-cell.l-one-half.styleguide-component-drawer
+      h3.t-styleguide-sidebar-group-label Data
+      fieldset.styleguide-field.l-grid(ng-repeat='(name, value) in component.data')
+        label.l-grid-cell.l-one-sixth.t-styleguide-caption {{ name }}
+        input.l-grid-cell.l-five-sixths(type='text', ng-model='data[name]')
+
+      h3.t-styleguide-sidebar-group-label Options
+      fieldset.styleguide-field.l-grid(ng-repeat='(name, optionData) in component.options')
+        label.l-grid-cell.l-one-sixth.t-styleguide-caption {{ name }}
+        select.l-grid-cell.l-five-sixths(ng-model='options[name]')
+          option(value='{{ optionData.default }}', selected) {{optionData.default}} (default)
+          option(ng-repeat='option in optionData.values', ng-if="option !== optionData.default", value='{{ option }}') {{option}}
