@@ -41,7 +41,13 @@ module.exports = (grunt, options)  ->
     grunt.config.merge(config)
     grunt.task.run(['copy:typographyConfig', 'copy:colorsConfig'])
 
-
+  generateStyleguideComponentPreview = (components) ->
+    jadeTemplate = _.map(components, (component) ->
+      return component.name + '(data="data", options="options", ng-if="component.name === ' + "'" + component.name + "'" + '")'
+    ).join('\n')
+    htmlresult = jade.render(jadeTemplate, { pretty: true })
+    previewTemplateDest = destBase + 'component/component-preview.html'
+    grunt.file.write(previewTemplateDest, htmlresult)
 
 
   compileStyleguideTemplates = () ->
@@ -86,3 +92,4 @@ module.exports = (grunt, options)  ->
 
     compileStyleguideTemplates()
     compileStyleguideStyles()
+    generateStyleguideComponentPreview(components)

@@ -11,7 +11,7 @@ div(ng-if='ready')
           li(ng-repeat="tab in tabs")
             a.t-styleguide-sidebar-link(ng-click="selectTab($index)", ng-class="{ 'is-active': tabIdx == $index }") {{ tab }}
         .styleguide-tab-container(ng-show="tabIdx == 0")
-          hello-world(data='data', options='options')
+          div(ng-include="'component/component-preview.html'")
         .styleguide-tab-container(ng-show="tabIdx == 1")
           pre some html here
         .styleguide-tab-container(ng-show="tabIdx == 2")
