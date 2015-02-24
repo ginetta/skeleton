@@ -70,3 +70,12 @@ styleguide:
   - prepare
   - styleguideAssembler
 
+
+
+styleguide-dev:
+  - clean:styleguideAngular
+  - stylesAssembler
+  - build-angular-widgets
+  - styleguide-angular
+  - copy:fontsStyleguide
+  - copy:assetsStyleguide
