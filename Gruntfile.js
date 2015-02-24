@@ -35,9 +35,6 @@ module.exports = function(grunt) {
         config: config
     });
 
-    require('./lib/toolset/grunt-tasks/styleguide/styleguide-angular/task.coffee')(grunt, {
-        config: config
-    });
 
     require('./lib/toolset/grunt-tasks/build-angular-widgets/task.coffee')(grunt, {
         config: config

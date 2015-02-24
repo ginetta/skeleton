@@ -76,6 +76,6 @@ styleguide-dev:
   - clean:styleguideAngular
   - stylesAssembler
   - build-angular-widgets
-  - styleguide-angular
+  - skeleton_angular_styleguide
   - copy:fontsStyleguide
   - copy:assetsStyleguide
