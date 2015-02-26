@@ -12,12 +12,4 @@ module.exports =
       dest: '<%= config.targetDir %>/css'
       ext: '.css'
     }]
-  styleguideTemplate:
-    files: [{
-      expand: true
-      cwd: 'lib/toolset/grunt-tasks/styleguide/styleguide-angular/styleguide-template'
-      src: ['**/*.scss']
-      dest: 'styleguide/css'
-      ext: '.css'
-    }]
 

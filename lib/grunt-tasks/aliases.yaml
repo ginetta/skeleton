@@ -74,8 +74,9 @@ styleguide:
 
 styleguide-dev:
   - clean:styleguideAngular
-  - stylesAssembler
-  - build-angular-widgets
+  - skeleton_assembler_colors
+  - skeleton_assembler_typography
+  - skeleton_assembler_widgets:styleguide
   - skeleton_angular_styleguide
-  - copy:fontsStyleguide
-  - copy:assetsStyleguide
+  - copy:fontsStyleguide   # todo: move this to styleguide assembler
+  - copy:assetsStyleguide  # todo: move this to styleguide assembler
