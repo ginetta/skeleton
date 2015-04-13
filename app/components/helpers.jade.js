@@ -1,8 +1,7 @@
-function setOptionsDefaults(options, componentName, components) {
-
+function setOptionsDefaults(options, componentName, component) {
   options = options || {};
-  for ( var key in components[componentName].options ) {
-    options[key] = options[key] || components[componentName].options[key].default;
+  for ( var key in component.options ) {
+    options[key] = options[key] || component.options[key].default;
   }
 
   return options;
@@ -10,28 +9,27 @@ function setOptionsDefaults(options, componentName, components) {
 
 module.exports.setOptionsDefaults = setOptionsDefaults;
 
-function getOptionsModifier(options, componentName, filters, components) {
+function getOptionsModifier(options, componentName, filters, component) {
   var classes = "" + componentName;
   if (filters) {
-    for ( var key in filters) {
-      classes = classes + " " + getClassModifier(componentName, key, options);
+    for ( var index in filters) {
+      classes = classes + " " + getClassModifier(componentName, filters[index], options, component);
     }
   } else {
-    for ( var key in components[componentName].options ) {
-      classes = classes + " " + getClassModifier(componentName, key, options);
+    for ( var key in component.options ) {
+      classes = classes + " " + getClassModifier(componentName, key, options, component);
     }
   }
-  
+
   return classes;
 }
 
 module.exports.getOptionsModifier = getOptionsModifier;
 
-function getClassModifier(componentName, key, options, components) {
-  var defaultOption = components[componentName].options[key].default;
+function getClassModifier(componentName, key, options, component) {
+  var defaultOption = component.options[key].default;
   var option = options[key] || defaultOption;
 
-  console.log(option, componentName)
   if (typeof option === "boolean") {
       return option ?  componentName + "--" + key : "";
   } else {

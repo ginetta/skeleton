@@ -1,6 +1,6 @@
 mixin tweet (data, options)
-  - options = setOptionsDefaults(options, "tweet")
-  - var classes = getOptionsModifier(options, "tweet", ["display"])
+  - options = setOptionsDefaults(options, "tweet", components.tweet)
+  - var classes = getOptionsModifier(options, "tweet", ["display"], components.tweet)
 
   .tweet(class=classes)
     img.tweet-avatar(src=data.avatarUrl)
