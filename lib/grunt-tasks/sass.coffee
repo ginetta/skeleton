@@ -1,9 +1,6 @@
 module.exports =
   options:
-    bundleExec: true
-    style: 'expanded'
-    require: 'sass-globbing'
-    loadPath: ['lib/bower_components', '<%= config.libDir %>/toolset/grunt-tasks/assembler', '<%= config.srcDir %>/css']
+    includePaths: ['lib/bower_components', '<%= config.libDir %>/toolset/grunt-tasks/assembler', '<%= config.srcDir %>/css']
   dev:
     files: [{
       expand: true
@@ -12,4 +9,3 @@ module.exports =
       dest: '<%= config.targetDir %>/css'
       ext: '.css'
     }]
-
