@@ -5,8 +5,8 @@
   "main": "index.js",
   "dependencies": {},
   "scripts": {
-    "postinstall": "node_modules/bower/bin/bower install && bundle install",
-    "postupdate": "node_modules/bower/bin/bower install && bundle install"
+    "postinstall": "node_modules/bower/bin/bower install",
+    "postupdate": "node_modules/bower/bin/bower install"
   },
   "author": "",
   "license": "",
