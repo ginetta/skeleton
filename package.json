@@ -40,7 +40,7 @@
     "jade": "^1.9.2",
     "js-combinatorics": "^0.3.0",
     "load-grunt-config": "^0.10.0",
-    "load-grunt-tasks": "^0.6.0",
+    "jit-grunt": "^0.9.1",
     "lodash": "^2.4.1",
     "marked": "^0.3.2",
     "path": "^0.4.9",
