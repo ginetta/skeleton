@@ -1,0 +1,13 @@
+---
+  name: "hello-world"
+  version: "0.0.1"
+  description: "Example component"
+  author: "Ginetta"
+  type: "angular"
+  data:
+    greeting: "hello"
+    name: "world"
+  options:
+    color:
+      values: ["blue", "red", "yellow"]
+      default: "blue"

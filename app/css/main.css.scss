@@ -1,14 +1,18 @@
 @import
-    "compass",
     "0.settings",
     "bonescss/mixins",
     "sensible/mediaqueries";
+
+
+// Styles (includes colors, typography, margins)
+@import "styles/colors/colors",
+        "styles/typography/typography";
 
 @import
     "1.base",
     "2.layout",
     "3.helpers",
-    "../components/components",
+    "../components/**/*",
     "4.print",
     "5.states",
     "6.shame";

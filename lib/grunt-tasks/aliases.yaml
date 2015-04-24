@@ -7,8 +7,8 @@ work:
   - server
 
 build-dev:
-  - css-dev
   - html-dev
+  - css-dev
   - js
   - assets-dev
 
@@ -21,7 +21,7 @@ build-prod:
   # - clean:bower
 
 html-dev:
-  # - styleguideAssembler
+  - styleguideAssembler
   - pagesAssembler:dev
 
 html-prod:
@@ -29,13 +29,14 @@ html-prod:
   - htmlmin
 
 css-dev:
+  - stylesAssembler
   - grunticon:dev
-  - compass
+  - sass
   - autoprefixer
 
 css-prod:
   - grunticon:prod
-  - compass
+  - sass
   - autoprefixer
   # uncss is removing javascript triggered styles.
   # - uncss
@@ -66,3 +67,18 @@ prepare:
 server:
   - connect
   - watch
+
+styleguide:
+  - prepare
+  - styleguideAssembler
+
+
+
+styleguide-dev:
+  - clean:styleguideAngular
+  - skeleton_assembler_colors
+  - skeleton_assembler_typography
+  - skeleton_assembler_widgets:styleguide
+  - skeleton_angular_styleguide
+  - copy:fontsStyleguide   # todo: move this to styleguide assembler
+  - copy:assetsStyleguide  # todo: move this to styleguide assembler

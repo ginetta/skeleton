@@ -1,0 +1,33 @@
+mixin tweet (data, options)
+  - options = setOptionsDefaults(options, "tweet", components.tweet)
+  - var classes = getOptionsModifier(options, "tweet", ["display"], components.tweet)
+
+  .tweet(class=classes)
+    img.tweet-avatar(src=data.avatarUrl)
+    .tweet-user
+      p.tweet-username #{data.username}
+      p.tweet-handle   #{data.handle}
+    p.tweet-text #{data.text}
+    span.tweet-sent #{data.sent}
+    if options.actions == "visible"
+      .tweet-actions
+        span.tweet-action.tweet-action--reply     Reply
+        span.tweet-action.tweet-action--retweet   Retweet
+        span.tweet-action.tweet-action--favourite Favourite
+
+    if options.social == "visible"
+      .tweet-social-container
+        .tweet-social-stat.tweet-retweets
+          span.tweet-social-stat-title  Retweets
+          span.tweet-social-stat-number #{data.retweetsCount}
+        .tweet-social-stat.tweet-favourites
+          span.tweet-social-stat-title  Favourites
+          span.tweet-social-stat-number #{data.favouritesCount}
+        .tweet-social-stat.tweet-favourites-avatar
+          each fav in data.favourites
+            img.tweet-favourite(src=fav.avatarUrl)
+
+
+mixin icon-retweet()
+  svg(version='1.1', xmlns='http://www.w3.org/2000/svg', xmlns:xlink='http://www.w3.org/1999/xlink', x='0px', y='0px', viewbox='0 0 512 512', enable-background='new 0 0 512 512', xml:space='preserve')
+    path.retweet-icon(d='M151.236,202.05v127.81h120.796l54.07,54.071H97.165V202.05H50l73.613-73.98l73.984,73.98H151.236z M414.781,309.406V128.069h-228.96l54.071,54.071H360.71v127.266h-46.308l73.984,73.984L462,309.406H414.781z')

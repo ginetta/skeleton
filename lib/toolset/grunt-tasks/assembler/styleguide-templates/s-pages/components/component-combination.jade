@@ -1,0 +1,10 @@
+extends /layout/layout
+
+block htmlhead
+    title Styleguide — #{component.name} component combination
+    meta(name='description', content='')
+    link(rel='stylesheet', href='#{relativePath}/css/styleguide.css')
+
+block htmlbody
+  .component-combination-render
+    +#{component.name}(component.data || component.dataObject.example, combination)

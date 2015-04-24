@@ -1,0 +1,5 @@
+mixin button (data, options)
+  - options = setOptionsDefaults(options, "button", components.button)
+  - var classes = getOptionsModifier(options, "button", null, components.button)
+
+  a(class=classes, disabled=options['disabled']) #{data.label}

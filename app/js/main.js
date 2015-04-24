@@ -13,6 +13,7 @@
           console.log('mycomponent is loaded');
       });
     */
+   require(['styleguide']);
 
 })();
 

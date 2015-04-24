@@ -1,0 +1,29 @@
+@import "select";
+
+$infobar-width: 30%;
+$infobar-bg-color: #F4F4F4;
+
+.styleguide-component-info-bar {
+  box-sizing: border-box;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  width: $infobar-width;
+  background: $infobar-bg-color;
+  border-left: darken($infobar-bg-color, 10%) 1px solid;
+
+  padding: $base-spacing-unit;
+}
+
+.styleguide-select {
+  border: 1px solid #bbb;
+  border-radius: .3em;
+  background: #fff;
+}
+
+
+.styleguide-combination-usage {
+  display: none;
+  &.is-active { display: block; }
+}

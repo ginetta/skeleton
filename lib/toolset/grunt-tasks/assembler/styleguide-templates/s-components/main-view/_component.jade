@@ -1,0 +1,35 @@
+mixin main-view--component ()
+  .styleguide-mainview
+    h1.styleguide-title.l-one-whole #{component.name}
+    .l-one-whole.styleguide-spacing-bottom--medium
+      span.styleguide-subtitle Version #{component.version}
+      span.styleguide-subtitle -
+      span.styleguide-subtitle Author: #{component.version}
+    ul.l-horizontal-list
+      li: a.styleguide-view-item.is-active(href="#", data-view-type="render") View
+      li: a.styleguide-view-item(href="#", data-view-type="jade") Source
+      li: a.styleguide-view-item(href="#", data-view-type="html") Html
+    .styleguide-spacing-top--medium
+      each combination, index in component.combinations
+        - var klass = index === 0 ? 'is-active' : ''
+        .styleguide-component-views(
+          class=klass,
+          data-options="#{JSON.stringify(combination)}",
+        )
+          .styleguide-component-view.styleguide-component-view--render.is-active
+            .component-combinations.l-grid
+                iframe.component-combination-iframe.l-grid-cell.l-one-whole(
+                  src="#{component.name}/c#{index}.html",
+                  class="component-combination-iframe-#{index}",
+                  frameBorder="0",
+                )
+          .styleguide-component-view.styleguide-component-view--jade
+            pre
+              |+#{component.name}(#{JSON.stringify(component.data || component.dataObject.example, undefined, 2)} , #{JSON.stringify(combination, undefined, 2)})
+          .styleguide-component-view.styleguide-component-view--html
+            pre
+              //- TODO: xmp is deprecated, we should find another solution
+              //- It seems like jade can't escape the result of a mixin
+              //- perhaps use something like http://prismjs.com/ ?
+              xmp
+                +#{component.name}(component.data || component.dataObject.example, combination)

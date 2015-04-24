@@ -26,9 +26,19 @@ module.exports = function(grunt) {
     require('./lib/toolset/grunt-tasks/assembler/styleguideAssembler.js')(grunt, {
         config: config
     });
+
+    require('./lib/toolset/grunt-tasks/assembler/stylesAssembler.js')(grunt, {
+        config: config
+    });
+
     require('./lib/toolset/grunt-tasks/assembler/addComponent.js')(grunt, {
         config: config
     });
+
+
+    // require('./lib/toolset/grunt-tasks/build-angular-widgets/task.coffee')(grunt, {
+    //     config: config
+    // });
 
     // Loads grunt tasks' configuration in lib/grunt-tasks/<task-name>.js
     require('load-grunt-config')(grunt, {

@@ -1,0 +1,34 @@
+mixin main-view--components-overview
+  .styleguide-mainview.styleguide-mainview--full-width
+    .styleguide-spacing-bottom--large
+      h2.styleguide-label.styleguide-spacing-bottom--medium Styles
+      .l-grid
+        ul.reset-list
+          li.l-grid-cell.l-one-quarter.styleguide-overview-item
+            a.styleguide-overview-link.styleguide-label-main(href="#{relativePath}styleguide/styles/colors.html")
+              span.styleguide-nav-item colors
+            .styleguide-overview-iframe-container
+              iframe.styleguide-overview-iframe(src="#{relativePath}/styleguide/styles/colors.html", frameBorder="0")
+          li.l-grid-cell.l-one-quarter.styleguide-overview-item
+            a.styleguide-overview-link.styleguide-label-main(href="#{relativePath}styleguide/styles/typography.html")
+              span.styleguide-nav-item typography
+            .styleguide-overview-iframe-container
+              iframe.styleguide-overview-iframe(src="#{relativePath}/styleguide/styles/typography.html", frameBorder="0")
+          li.l-grid-cell.l-one-quarter.styleguide-overview-item
+            a.styleguide-overview-link.styleguide-label-main(href="#{relativePath}styleguide/styles/icons.html")
+              span.styleguide-nav-item icons
+            .styleguide-overview-iframe-container
+              iframe.styleguide-overview-iframe(src="#{relativePath}/styleguide/styles/icons.html", frameBorder="0")
+    .styleguide-spacing-bottom--large
+      h2.styleguide-label.styleguide-spacing-bottom--medium Components
+      .l-grid
+        ul.reset-list
+          - each component in components
+            if component.hideInStyleguide
+            else
+              li.l-grid-cell.l-one-quarter.styleguide-overview-item
+                a.styleguide-overview-link.styleguide-label-main(href="#{relativePath}styleguide/components/#{component.name}.html")
+                  span.styleguide-nav-item #{component.name}
+                .styleguide-overview-iframe-container
+                  iframe.styleguide-overview-iframe(src="#{relativePath}/styleguide/components/#{component.name}/c0.html", frameBorder="0")
+
