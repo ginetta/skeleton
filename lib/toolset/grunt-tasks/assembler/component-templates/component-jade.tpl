@@ -1,6 +1,7 @@
 mixin {{componentName}}(data, options)
   - options = setOptionsDefaults(options, "{{componentName}}")
+  - var classes = getOptionsModifier(options, "{{componentName}}")
 
   .{{componentName}}
-    h1 hello component
+    Your HTML(Jade) code for the component goes here
 

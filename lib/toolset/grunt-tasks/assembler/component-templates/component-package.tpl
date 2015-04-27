@@ -1,7 +1,7 @@
 ---
   name: "{{componentName}}"
   version: "0.0.1"
-  description: "Example Component"
+  description: "{{componentName}} description"
   author: "Ginetta"
   data:
     title: "Component Title"
