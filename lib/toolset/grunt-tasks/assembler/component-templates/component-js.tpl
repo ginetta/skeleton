@@ -1,4 +1,4 @@
 define(function(){
   'use strict';
-  <!-- Your JS code for the component goes here -->
+  // Your JS code for the component goes here
 });
