@@ -10,7 +10,7 @@ function setOptionsDefaults(options, componentName, component) {
 module.exports.setOptionsDefaults = setOptionsDefaults;
 
 function getOptionsModifier(options, componentName, filters, component) {
-  var classes = ["componentName"];
+  var classes = [componentName];
   if (filters) {
     for ( var index in filters) {
       classes.push(getClassModifier(componentName, filters[index], options, component));
