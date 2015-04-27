@@ -3,5 +3,5 @@ mixin {{componentName}}(data, options)
   - var classes = getOptionsModifier(options, "{{componentName}}", null, components.{{componentName}})
 
   .{{componentName}}(class=classes)
-    Your HTML(Jade) code for the component goes here
+    | Your HTML(Jade) code for the component goes here
 
