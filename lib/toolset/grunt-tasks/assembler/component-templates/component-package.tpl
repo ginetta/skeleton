@@ -5,7 +5,6 @@
   author: "Ginetta"
   data:
     title: "Component Title"
-    age: 12
   options:
     size:
       values: ["big", "medium", "small"]
