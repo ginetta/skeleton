@@ -10,14 +10,14 @@ function setOptionsDefaults(options, componentName, component) {
 module.exports.setOptionsDefaults = setOptionsDefaults;
 
 function getOptionsModifier(options, componentName, filters, component) {
-  var classes = "" + componentName;
+  var classes = [componentName];
   if (filters) {
     for ( var index in filters) {
-      classes = classes + " " + getClassModifier(componentName, filters[index], options, component);
+      classes.push(getClassModifier(componentName, filters[index], options, component));
     }
   } else {
     for ( var key in component.options ) {
-      classes = classes + " " + getClassModifier(componentName, key, options, component);
+      classes.push(getClassModifier(componentName, key, options, component));
     }
   }
 
