@@ -1,4 +1,4 @@
 define(function(){
   'use strict';
-  console.log('BIP BOOP! [{{componentName}}] is running]');
+  // Your JS code for the component goes here
 });

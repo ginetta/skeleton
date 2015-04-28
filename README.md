@@ -108,7 +108,7 @@ All frontend dependancys are managed truth bower and are optional. We have decid
     │   │   ├── docs-skeleton     Documentation also used as example
     │   │   └── mycomponent       Example component
     │   │       ├── ...         Component files
-    │   │       └── package.json  component meta information
+    │   │       └── package.yml  component meta information
     │   ├── css               App specific CSS
     │   ├── data                Data that will be available in JADE
     │   │   ├── en.json         Data can be language specific
@@ -140,7 +140,7 @@ In order to write maintainable, generic and reusable code we like to write our c
 - jade file that contains the markup
 - SCSS containes the specifc styles
 - JS file as requirejs module
-- JSON file to store metadata
+- YML file to store metadata
 
 Every component can have sub-components. We recommend to limit the encapsulation to reduce the complexity (dependencies).
 
