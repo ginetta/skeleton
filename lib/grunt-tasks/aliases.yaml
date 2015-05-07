@@ -1,18 +1,23 @@
 default:
-  - work
+  - serve
 
-work:
-  - prepare
+serve:
   - build-dev
   - server
 
+serve-build:
+  - build
+  - server
+
+
 build-dev:
+  - prepare
   - html-dev
   - css-dev
   - js
   - assets-dev
 
-build-prod:
+build:
   - prepare
   - html-prod
   - assets-prod # assets runs before css because grunticon will use optimized svgs
