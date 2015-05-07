@@ -56,7 +56,7 @@ assets-dev:
 assets-prod:
   - assets-dev
   - imagemin
-  - svgmin
+  # - svgmin
 
 prepare:
   - clean # this cleans *generated*     files in dist/
