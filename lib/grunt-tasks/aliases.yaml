@@ -22,7 +22,8 @@ build:
   - html-prod
   - assets-prod # assets runs before css because grunticon will use optimized svgs
   - css-prod # css needs to run after html because uncss uses generated html pages
-  - js
+  - js-prod
+  - server
   # - clean:bower
 
 html-dev:
@@ -48,12 +49,19 @@ css-prod:
   - cssmin
 
 
-js:
+js-dev:
   - copy:vendorjs
   - copy:componentsjs
   - copy:js
-  # - requirejs
-  # TODO: minification and optimization
+
+js-prod:
+  - js-dev
+  - requirejs
+  - copy:requireJs
+  - clean:js
+  - clean:bower
+  - clean:components
+
 
 assets-dev:
   - copy:fonts
