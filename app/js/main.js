@@ -13,7 +13,10 @@
           console.log('mycomponent is loaded');
       });
     */
-   require(['styleguide']);
+   require([
+      'globals',
+      'button'
+    ]);
 
 })();
 
