@@ -17,5 +17,8 @@ pre {
   margin: 0;
   overflow: scroll;
   padding: $base-spacing-unit/2;
-  background: $styleguide-code-bg;
+}
+
+html, body, iframe, pre {
+  background: $styleguide-code-bg !important;
 }
