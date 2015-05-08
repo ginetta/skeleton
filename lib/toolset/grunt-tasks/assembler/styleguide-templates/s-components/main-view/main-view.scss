@@ -41,27 +41,18 @@
 
 
 
-$iframe-scale-factor: 2.5;
-$iframe-height: 150px;
+$iframe-scale-factor: 2;
+$iframe-height: 200px;
 
 .styleguide-overview-item {
-  position: relative;
-}
-
-.styleguide-overview-iframe-container,
-.styleguide-overview-link {
-  position: relative;
-  top: 0; left: 0; right: 20px;
+  padding-bottom: 2*$base-spacing-unit
 }
 
 .styleguide-overview-iframe-container {
-  position: absolute;
+  position: relative;
+  height: $iframe-height;
 }
 
-.styleguide-overview-link {
-  z-index: 2;
-  padding-top: 66.666%;
-}
 
 .styleguide-overview-iframe {
   width: 100% * $iframe-scale-factor;
