@@ -14,7 +14,7 @@ build-dev:
   - prepare
   - html-dev
   - css-dev
-  - js:dev
+  - js-dev
   - assets-dev
 
 build:
