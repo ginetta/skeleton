@@ -19,7 +19,8 @@ mixin main-view--component ()
           .styleguide-component-view.styleguide-component-view--render.is-active
             .component-combinations.l-grid
                 iframe.component-combination-iframe.l-grid-cell.l-one-whole(
-                  src="#{component.name}/c#{index}.html",
+                  data-src="#{component.name}/c#{index}.html",
+                  src=index === 0 ? "#{component.name}/c#{index}.html" : "",
                   class="component-combination-iframe-#{index}",
                   frameBorder="0",
                 )
