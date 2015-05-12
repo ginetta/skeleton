@@ -19,7 +19,7 @@ html.no-js(lang='en')
 
     block js
 
-      if environment == "dev"
+      if environment == "dev" || environment == "styleguide"
         script(
           src='#{relativePath}/bower_components/requirejs/require.js',
           data-main='#{relativePath}/js/main.js')
@@ -45,10 +45,16 @@ html.no-js(lang='en')
               tweet:  '#{relativePath}components/tweet/tweet',
 
 
+
               /* finally, the main file */
               main: '#{relativePath}js/main'
             }
           });
+        if environment == "styleguide"
+          script.
+            require([
+                '#{relativePath}js/styleguide'
+              ]);
       else if environment == "prod"
         script(
           src='#{relativePath}/js-bundle/require.js',
