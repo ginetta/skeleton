@@ -19,40 +19,29 @@ html.no-js(lang='en')
 
     block js
 
-      if environment == "dev"
-        script(
-          src='#{relativePath}/bower_components/requirejs/require.js',
-          data-main='#{relativePath}/js/main.js')
-
+      if environment == "dev" || environment == "styleguide"
+        script(src='#{relativePath}/bower_components/requirejs/require.js')
         script.
-          /*
-             Note: for the dev environment we need to reference javascript files with
-                   the relativePath as each file is individually downloaded asynchronously.
-          */
-          requirejs.config({
-            baseUrl: '#{relativePath}/js/',
-            paths: {
-              /* bower components you need */
-              jquery: '#{relativePath}bower_components/jquery/dist/jquery',
-              mediaQuery: '#{relativePath}bower_components/sensible/mediaQuery',
+          requirejs.config({baseUrl: '#{relativePath}'});
 
-
-              /* global utilities you need */
-              globals: '#{relativePath}js/globals',
-
-              /* your components */
-              button: '#{relativePath}components/button/button',
-              tweet:  '#{relativePath}components/tweet/tweet',
-
-
-              /* finally, the main file */
-              main: '#{relativePath}js/main'
-            }
-          });
+        if environment == "dev"
+          //- dev enviroment only loads main.js
+          //- and only after the configurations
+          script.
+            require(['js/config-require'], function () {
+              require(['main']);
+            });
+        else if environment == "styleguide"
+          //- styleguide enviroment only styleguide.js
+          //- and only after the configurations
+          script.
+            require(['js/config-require'], function () {
+              require(['js/styleguide']);
+            });
       else if environment == "prod"
         script(
-          src='#{relativePath}/js-bundle/require.js',
-          data-main='#{relativePath}/js-bundle/main.js')
+          src='#{relativePath}js-bundle/require.js',
+          data-main='#{relativePath}js-bundle/main.js')
 
 
 

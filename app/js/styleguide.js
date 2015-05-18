@@ -1,4 +1,5 @@
 define(['jquery'], function($) {
+  console.log('styleguide is running');
   function isEquivalent(a, b) {
     // Create arrays of property names
     var aProps = Object.getOwnPropertyNames(a);
@@ -53,6 +54,11 @@ define(['jquery'], function($) {
         var itemOptions = $item.data('options');
         if ( isEquivalent(itemOptions, options) ) {
           $item.addClass('is-active');
+          var $iframe = $item.find('iframe');
+          if ($iframe.length) {
+            var iframeSrc = $iframe.data('src');
+            $iframe.attr('src', iframeSrc);
+          }
           return false;
         }
       }
