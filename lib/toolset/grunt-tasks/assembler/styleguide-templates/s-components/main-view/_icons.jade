@@ -6,6 +6,6 @@ mixin main-view--icons ()
         each icon in icons
           li.l-grid-cell.l-one-sixth.styleguide-spacing-bottom--medium
             .styleguide-icon-container
-              span.icon.styleguide-icon-example(class="icon-#{icon}")
+              span(data-grunticon-embed, class="icon styleguide-icon-example icon-" + icon)
               span.styleguide-label-main.styleguide-spacing-top--medium.t-centered #{icon}
 
