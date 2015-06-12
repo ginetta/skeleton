@@ -26,6 +26,10 @@ gulp.task('serve',
           ['build'],
           t.getTask('serve'));
 
+gulp.task('deploy',
+          'Deploys to testing',
+          t.getTask('deploy'));
+
 
 ///////////////
 // Secondary //

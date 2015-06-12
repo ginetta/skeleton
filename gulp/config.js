@@ -1,4 +1,6 @@
 'use strict';
+var argv = require('yargs').argv;
+
 module.exports = function () {
 
   var basePaths = {
@@ -68,15 +70,26 @@ module.exports = function () {
     'gulpfile.js'
   ];
 
+  var environments = {
+    testing: {
+      host:        argv.host,
+      username:    argv.username,
+      projectPath: 'ginetta/website/',
+      releasePath: argv.path,
+      privateKey:  argv.privateKey
+    }
+  };
+
 
 
   return {
-    basePaths:  basePaths,
-    languages:  languages,
-    paths:      paths,
-    appFiles:   appFiles,
-    components: components,
-    gulpFiles:  gulpFiles
+    basePaths:    basePaths,
+    languages:    languages,
+    paths:        paths,
+    appFiles:     appFiles,
+    components:   components,
+    gulpFiles:    gulpFiles,
+    environments: environments
   };
 };
 

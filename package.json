@@ -28,11 +28,14 @@
     "gulp-sass": "^2.0.1",
     "gulp-sourcemaps": "^1.5.2",
     "gulp-sync": "^0.1.4",
+    "gulp-util": "^3.0.4",
     "jade-glob-include": "^1.0.1",
     "lodash": "^3.7.0",
     "marked": "^0.3.3",
     "merge-stream": "^0.1.7",
+    "rsyncwrapper": "^0.4.2",
     "run-sequence": "^1.1.0",
-    "yamljs": "^0.2.1"
+    "yamljs": "^0.2.1",
+    "yargs": "^3.9.1"
   }
 }
