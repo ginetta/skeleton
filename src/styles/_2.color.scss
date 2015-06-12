@@ -10,16 +10,4 @@ $c-red:            #E00202;
 
 $c-cover:          rgba(0,0,0,0.5);
 
-// http://codepen.io/meodai/pen/QwdGYZ
-$c-ginetta-cd: #e296a5 #e3979a #e4988c #e49979 #de9d6c #d2a26b #c7a76b #beaa6b #b5ad6b #abb06b #a0b36b #92b66b #80ba6b #6bbd72 #6dbb89 #6eba96 #6fb9a0 #70b9a8 #70b8af #71b7b6 #72b6bc #72b5c3 #74b4cb #75b3d4 #7bb0df #8facdf #9ea8df #aba4de #b8a0de #c59cde #d296de #de90db #e092ce #e093c3 #e194b9 #e295af;
-
-@for $i from 1 through length($c-ginetta-cd) {
-  $c: nth($c-ginetta-cd, $i);
-  .c-#{$i} {
-    background: $c;
-  }
-}
-
-
-
 

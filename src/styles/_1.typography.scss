@@ -2,7 +2,7 @@
  * Typography settings
  */
 $base-font-size   : 1em;
-$base-font-family : 'Avenir Roman', serif;
+$base-font-family : sans-serif;
 $base-font-weight : 300;
 $base-font-style  : normal;
 $base-line-height : 1.5;
@@ -20,7 +20,7 @@ $base-line-height : 1.5;
 
 .t-title {
   @include base-font;
-  font-size: 5em;
+  font-size: 5rem;
   line-height: 1.25;
   margin: 0;
 }

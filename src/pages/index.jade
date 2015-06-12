@@ -3,14 +3,10 @@ include ../elements/**/*.jade
 
 extends ../layouts/default
 
+block meta
+  //- TODO: add you page meta tags
+
 block body
-
-  - var p = data.index.project
-
-  header.l-grid.area.area--white.area--narrow
-    +title(p)
-
-  section.area
-    img(src=relativePath + p.logo, alt=p.title)
-
-
+  .about.l-absolute-centered
+    +header(data.index.header)
+      p!= helpers.markdown(data.index.content)

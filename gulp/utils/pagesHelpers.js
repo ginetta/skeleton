@@ -1,6 +1,7 @@
 'use strict';
 var yamljs      = require('yamljs');
 var _           = require('lodash');
+var markdown    = require('marked');
 
 module.exports = function (config) {
   var srcDir = config.basePaths.src;
@@ -61,6 +62,7 @@ module.exports = function (config) {
   };
 
   return {
-    mergeDefaultOptions: mergeDefaultOptions
+    mergeDefaultOptions: mergeDefaultOptions,
+    markdown: markdown
   };
 };
