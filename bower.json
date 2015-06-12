@@ -1,5 +1,5 @@
 {
-  "name": "skeleton",
+  "name": "project-name",
   "private": true,
   "dependencies": {
     "sensible": "~0.5.2"
