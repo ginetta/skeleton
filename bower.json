@@ -1,0 +1,7 @@
+{
+  "name": "skeleton",
+  "private": true,
+  "dependencies": {
+    "sensible": "~0.5.2"
+  }
+}

@@ -1,0 +1,24 @@
+mixin card(data, options)
+  - var data = data || {}
+  - var options = helpers.mergeDefaultOptions(options, 'modules/card');
+
+  - var classes = [attributes.class];
+  - classes.push('card');
+
+  each o, breakpoint in  options.size
+    - classes.push('l-' + o + breakpoint);
+
+  each o, breakpoint in  options.ratio
+    - classes.push('l-' + o + breakpoint);
+
+  if options.border == true
+    - classes.push('card--with-border');
+
+  if options.float
+    - classes.push('card--' + options.float);
+
+  div(class=classes)
+    if data.background
+      img(src=relativePath + data.background.image, alt=data.background.alt).card-background
+    .l-absolute-centered.card-content
+      block

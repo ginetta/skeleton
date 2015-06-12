@@ -1,0 +1,21 @@
+body, html {
+  margin: 0;
+  padding: 0;
+
+  @include base-font;
+
+  color: $c-white;
+  text-align: center;
+  line-height: 1.5;
+
+  background: $c-eigengrau;
+
+  @include breakpoint(desktop){
+    font-size: 1.5vw;
+  }
+}
+
+a {
+  color: $c-white;
+  text-decoration: none;
+}

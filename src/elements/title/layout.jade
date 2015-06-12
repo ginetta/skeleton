@@ -1,0 +1,12 @@
+mixin title(data, options)
+  - var options = helpers.mergeDefaultOptions(options, 'elements/title');
+
+
+  +card({},{
+    size: {
+      all: 'one-whole',
+      mobile: 'one-whole'},
+    ratio: {
+      all: 'square'},
+  })
+    h1= data.title
