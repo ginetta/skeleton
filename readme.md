@@ -1,4 +1,4 @@
-# skeleton
+# project-name
 ---
 
 
@@ -21,4 +21,4 @@ This will, by default run ```gulp build```, generate the project in ```/build```
 
 
 ## Project setup
-For more infos, check out [the skeleton documentation](https://github.com/ginetta/skeleton/wiki)
+This project using the skeleton boiler plate. Check out [the skeleton documentation](https://github.com/ginetta/skeleton/wiki) for more infos
