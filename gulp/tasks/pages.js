@@ -15,9 +15,19 @@ module.exports = function (gulp, $, config) {
   var moduleHelpers      = pageshelpers(config);
 
 
+
+  // Put the default language at the root
+  var getLanguagePath = function(language) {
+    if (language === config.languages[0]) {
+      return '';
+    } else {
+      return language + '/';
+    }
+  };
+
   // Returns the relative path between the page and the root of the web server
   var getRelativePath = function(file, language) {
-    var destPath = config.paths.pages.src + language;
+    var destPath = config.paths.pages.src + getLanguagePath(language);
     var filePath = path.dirname(file.path);
 
     return (path.relative(destPath, filePath) || '.') + '/';
@@ -32,11 +42,7 @@ module.exports = function (gulp, $, config) {
     }
 
     function getDestPath(language) {
-      var destPath = destFiles + language;
-      // Put the default language at the root
-      if (language === config.languages[0]) {
-        destPath = destFiles;
-      }
+      var destPath = destFiles + getLanguagePath(language);
       return destPath;
     }
 
