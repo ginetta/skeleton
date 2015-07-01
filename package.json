@@ -29,6 +29,7 @@
     "gulp-sourcemaps": "^1.5.2",
     "gulp-sync": "^0.1.4",
     "gulp-util": "^3.0.4",
+    "jade": "^1.11.0",
     "jade-glob-include": "^1.0.1",
     "lodash": "^3.7.0",
     "marked": "^0.3.3",

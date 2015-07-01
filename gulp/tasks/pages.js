@@ -1,5 +1,6 @@
 'use strict';
 var yamljs        = require('yamljs');
+var jade          = require('jade');
 var merge         = require('merge-stream');
 var path          = require('path');
 var pageshelpers  = require('../utils/pagesHelpers');
@@ -61,6 +62,7 @@ module.exports = function (gulp, $, config) {
                 };
               }))
               .pipe($.jade({
+                jade: jade,
                 pretty:  true,
                 client:  false,
                 basedir: baseDir
