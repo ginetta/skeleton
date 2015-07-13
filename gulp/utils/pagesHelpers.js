@@ -95,7 +95,7 @@ module.exports = function (config) {
         return mergeSimpleOptionDefault(options[oKey], o);
       }
 
-      return mergeComplexOptionDefault(options[oKey], o);
+      return mergeComplexOptionDefault(options[oKey] || {}, o);
     });
   };
 
