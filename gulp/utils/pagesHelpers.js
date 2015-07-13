@@ -8,6 +8,64 @@ module.exports = function (config) {
 
   // TODO: Rewrite and document this helper function
 
+  /**
+   * Helper doesn't validates if a user specifies a value
+   */
+  function hasValue (value) {
+    return value !== null && value !== undefined;
+  }
+
+  /**
+   * Merges a simple component option with its default
+   *
+   * *optionValue* the value of the option, as called by the user.
+   *
+   * *optionSchema* the schema of the option, as defined in definition.yml
+   * (e.g. ['foo', 'bar'])
+   *
+   * If the user doesn't pass any value, take the default from the schema
+   */
+  function mergeSimpleOptionDefault (optionValue, optionSchema) {
+    // if the passed options has any value for this option
+    // just take that value
+    if (hasValue(optionValue)) {
+      return optionValue;
+    }
+    // otherwise take the default value (first value)
+    return optionSchema[0];
+  }
+
+  /**
+   * Merges a complex component option with its default
+   *
+   * *optionValue* the value of the complex option, has called by the user
+   * (e.g. { all: 'foo', mobile: 'bar' })
+   *
+   * *optionSchema* the schema of the complex option, has defined in definition.yml
+   * (e.g. { all: ['bar', 'foo'], mobile: ['foo', 'bar'] } )
+   *
+   * This function, for all suboptions, takes the default value if the user
+   * doesn't specify any value
+   */
+  function mergeComplexOptionDefault(optionValue, optionSchema) {
+    var transformedOption = {};
+
+    // For each sub-option of the schema
+    _.forEach(optionSchema, function(subO, subOKey) {
+      var subOptionValue = mergeSimpleOptionDefault(optionValue[subOKey], subO);
+
+      // process the suboption transformed key
+      if (subOKey === 'all') {
+        subOKey = '';
+      } else {
+        subOKey = '-' + subOKey;
+      }
+
+      transformedOption[subOKey] = subOptionValue;
+    });
+    return transformedOption;
+  }
+
   // In short, it transforms this object:
   // options:
   //   size:
@@ -27,38 +85,18 @@ module.exports = function (config) {
   //     '': value3
   //   border: true
   var mergeDefaultOptions = function(options, path) {
-    var optionsSchema, schema, transformedOptions;
+    var optionsSchema, schema;
     options = options || {};
-    transformedOptions = {};
     schema = yamljs.load(srcDir + path + '/definition.yml');
     optionsSchema = schema.options;
-    _.forEach(optionsSchema, function(o, oKey) {
-      transformedOptions[oKey] = {};
+    return _.mapValues(optionsSchema, function(o, oKey) {
+      // Handle simple option (options that are just an array)
       if (Array.isArray(o)) {
-        if (options[oKey] != null) {
-          transformedOptions[oKey] = options[oKey];
-        } else {
-          transformedOptions[oKey] = o[0];
-        }
-        return transformedOptions[oKey];
-      } else {
-        _.forEach(o, function(subO, subOKey) {
-          var ref;
-          o = subO[0];
-          if (((ref = options[oKey]) != null ? ref[subOKey] : void 0) != null) {
-            o = options[oKey][subOKey];
-          }
-          if (subOKey === 'all') {
-            subOKey = '';
-          } else {
-            subOKey = '-' + subOKey;
-          }
-          transformedOptions[oKey][subOKey] = o;
-          return transformedOptions[oKey][subOKey];
-        });
+        return mergeSimpleOptionDefault(options[oKey], o);
       }
+
+      return mergeComplexOptionDefault(options[oKey], o);
     });
-    return transformedOptions;
   };
 
   return {
