@@ -120,12 +120,12 @@ module.exports = function (config) {
     }
 
     return _.mapValues(optionsSchema, function(o, oKey) {
-        // Handle simple option (options that are just an array)
-        if (Array.isArray(o)) {
-          return mergeSimpleOptionDefault(options[oKey], o);
-        }
+      // Handle simple option (options that are just an array)
+      if (Array.isArray(o)) {
+        return mergeSimpleOptionDefault(options[oKey], o);
+      }
 
-        return mergeComplexOptionDefault(options[oKey] || {}, o);
+      return mergeComplexOptionDefault(options[oKey] || {}, o);
     });
   };
 
