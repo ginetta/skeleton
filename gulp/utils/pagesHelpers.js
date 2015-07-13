@@ -29,6 +29,12 @@ module.exports = function (config) {
     // if the passed options has any value for this option
     // just take that value
     if (hasValue(optionValue)) {
+      if (optionSchema.indexOf(optionValue) === -1) {
+        throw new Error(
+          '\'' + optionValue + '\' is not one of the following \'' +
+          optionSchema.join('\', \'') + '\'.\n'
+        );
+      }
       return optionValue;
     }
     // otherwise take the default value (first value)
@@ -89,13 +95,21 @@ module.exports = function (config) {
     options = options || {};
     schema = yamljs.load(srcDir + path + '/definition.yml');
     optionsSchema = schema.options;
-    return _.mapValues(optionsSchema, function(o, oKey) {
-      // Handle simple option (options that are just an array)
-      if (Array.isArray(o)) {
-        return mergeSimpleOptionDefault(options[oKey], o);
-      }
 
-      return mergeComplexOptionDefault(options[oKey] || {}, o);
+    return _.mapValues(optionsSchema, function(o, oKey) {
+      try {
+        // Handle simple option (options that are just an array)
+        if (Array.isArray(o)) {
+          return mergeSimpleOptionDefault(options[oKey], o);
+        }
+
+        return mergeComplexOptionDefault(options[oKey] || {}, o);
+      } catch (e) {
+        throw new Error(
+          'ERROR Invalid instanciation of ' + path + '.\n' +
+          'Option \'' + oKey + '\': ' + e.message
+        );
+      }
     });
   };
 
