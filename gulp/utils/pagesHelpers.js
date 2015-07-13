@@ -2,6 +2,7 @@
 var yamljs      = require('yamljs');
 var _           = require('lodash');
 var markdown    = require('marked');
+var chalk       = require('chalk');
 
 module.exports = function (config) {
   var srcDir = config.basePaths.src;
@@ -13,6 +14,25 @@ module.exports = function (config) {
    */
   function hasValue (value) {
     return value !== null && value !== undefined;
+  }
+
+  function generateExtraOptionsError (extraOptions) {
+    throw new Error(
+      'Option' + (extraOptions.length > 1 ? 's ' : ' ')
+      + '\'' + chalk.blue(extraOptions.join('\', \'')) + '\' '
+      +  (extraOptions.length > 1 ? 'aren\'t' : 'isn\'t') + ' defined.'
+    );
+  }
+
+  function validatesOptionsKeysPresentOnSchema(options, optionsSchema) {
+    var optionsKeys       = Object.keys(options || {});
+    var optionsSchemaKeys = Object.keys(optionsSchema || {});
+
+    var extraKeys     = _.difference(optionsKeys, optionsSchemaKeys);
+
+    if (extraKeys.length > 0) {
+      generateExtraOptionsError(extraKeys);
+    }
   }
 
   /**
@@ -29,12 +49,6 @@ module.exports = function (config) {
     // if the passed options has any value for this option
     // just take that value
     if (hasValue(optionValue)) {
-      if (optionSchema.indexOf(optionValue) === -1) {
-        throw new Error(
-          '\'' + optionValue + '\' is not one of the following \'' +
-          optionSchema.join('\', \'') + '\'.\n'
-        );
-      }
       return optionValue;
     }
     // otherwise take the default value (first value)
@@ -96,20 +110,22 @@ module.exports = function (config) {
     schema = yamljs.load(srcDir + path + '/definition.yml');
     optionsSchema = schema.options;
 
+    try {
+      validatesOptionsKeysPresentOnSchema(options, optionsSchema);
+    } catch (e) {
+      console.warn(
+        chalk.yellow('Error while instanciating ') + chalk.blue(path)
+        + chalk.yellow('. ' + e.message)
+      );
+    }
+
     return _.mapValues(optionsSchema, function(o, oKey) {
-      try {
         // Handle simple option (options that are just an array)
         if (Array.isArray(o)) {
           return mergeSimpleOptionDefault(options[oKey], o);
         }
 
         return mergeComplexOptionDefault(options[oKey] || {}, o);
-      } catch (e) {
-        throw new Error(
-          'ERROR Invalid instanciation of ' + path + '.\n' +
-          'Option \'' + oKey + '\': ' + e.message
-        );
-      }
     });
   };
 
