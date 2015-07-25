@@ -74,7 +74,7 @@ module.exports = function () {
     testing: {
       host:        argv.host,
       username:    argv.username,
-      projectPath: 'ginetta/website/',
+      projectPath: 'client/project-name/',
       releasePath: argv.path,
       privateKey:  argv.privateKey
     }
