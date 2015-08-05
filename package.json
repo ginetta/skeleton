@@ -4,8 +4,8 @@
   "version": "0.0.0",
   "main": "dist/index.html",
   "scripts": {
-    "postinstall": "node_modules/bower/bin/bower install",
-    "postupdate": "node_modules/bower/bin/bower install"
+    "postinstall": "bower install",
+    "postupdate": "bower install"
   },
   "dependencies": {},
   "devDependencies": {
