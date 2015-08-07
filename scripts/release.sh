@@ -1,9 +1,32 @@
 #!/bin/bash
-echo "Releasing"
-npm version minor --no-git-tag-version
+command -v github-release >/dev/null 2>&1 || { echo >&2 "This requires github-release from https://github.com/aktau/github-release - please install and try again"; exit 1; }
+
+echo "What sort of release? (major|minor|patch)"
+while true; do
+  read TYPE
+  case $TYPE in
+    "major" ) break;;
+    "minor" ) break;;
+    "patch" ) break;;
+    * ) echo "Please answer major, minor or patch";;
+  esac
+done
+
+read -p "Release Title:" TITLE
+read -p "Release Description:" DESCRIPTION
+echo "\n Release $TITLE ($TYPE): $DESCRIPTION"
+
+npm version $(TYPE)
 VERSION=$(node -e 'console.log(require("./package.json").version)')
+REPO=$(node -e 'console.log(require("./package.json").name)')
 zip -r build-$VERSION.zip build
 
-curl https://api.github.com/repos/ORGANISATION/REPO/releases?access_token=$GITHUB_ACCESS_TOKEN \
-  --data "{\"tag_name\": \"v$VERSION\",\"target_commitish\": \"master\", \"name\": \"v$VERSION\", \"body\": \"Release of version $VERSION\",\"draft\": false,\"prerelease\": false}" 
+github-release release \
+    --user "ginetta" \
+    --repo $REPO \
+    --tag v$VERSION \
+    --name $TITLE \
+    --description $DESCRIPTION \
+    --file build-$VERSION.zip \
+
 
