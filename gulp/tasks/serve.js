@@ -1,5 +1,6 @@
 'use strict';
 var browserSync = require('../utils/browserSync');
+var reload      = browserSync.reload;
 var _           = require('lodash');
 
 module.exports = function (gulp, $, config) {
@@ -37,10 +38,10 @@ module.exports = function (gulp, $, config) {
     gulp.watch(stylesFiles, ['build:styles']);
 
     // Watching Pages
-    gulp.watch(pagesFiles, ['build:pages']);
+    gulp.watch(pagesFiles, ['build:pages', reload]);
 
     // Watching Content
-    gulp.watch(contentSrcFiles, ['build:pages']);
+    gulp.watch(contentSrcFiles, ['build:pages', reload]);
 
     // Watching Assets
     gulp.watch(logosFiles, ['build:assets']);

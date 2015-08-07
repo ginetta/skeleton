@@ -14,5 +14,6 @@ module.exports = {
     }
   },
   notify: browserSync.notify,
-  stream: browserSync.stream
+  stream: browserSync.stream,
+  reload: browserSync.reload
 };
