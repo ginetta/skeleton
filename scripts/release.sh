@@ -25,8 +25,14 @@ github-release release \
     --user "ginetta" \
     --repo $REPO \
     --tag v$VERSION \
-    --name $TITLE \
-    --description $DESCRIPTION \
-    --file build-$VERSION.zip \
+    --name "$TITLE" \
+    --description "$DESCRIPTION"
+
+github-release upload \
+    --user "ginetta" \
+    --repo $REPO \
+    --tag v$VERSION \
+    --name build-$VERSION.zip \
+    --file build-$VERSION.zip
 
 
