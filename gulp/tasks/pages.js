@@ -5,7 +5,6 @@ var merge         = require('merge-stream');
 var path          = require('path');
 var pageshelpers  = require('../utils/pagesHelpers');
 var handleError   = require('../utils/handleError');
-var stream        = require('../utils/browserSync').stream;
 
 module.exports = function (gulp, $, config) {
   var srcFiles           = config.appFiles.pages;
@@ -73,6 +72,6 @@ module.exports = function (gulp, $, config) {
     // Generate the pages for each language
     var pagesStreams = languages.map(compilePages);
 
-    return merge(pagesStreams).pipe(stream());
+    return merge(pagesStreams);
   };
 };
