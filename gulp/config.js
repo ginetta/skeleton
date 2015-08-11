@@ -5,6 +5,7 @@ module.exports = function () {
 
   var basePaths = {
     src:     'src/',
+    generatedsrc: 'src_generated/',
     content: 'content/',
     assets:  'assets/',
     dest:    'build/',
@@ -21,7 +22,8 @@ module.exports = function () {
     },
     styles: {
       src:  basePaths.src + 'styles/',
-      dest: basePaths.dest + 'css/'
+      dest: basePaths.dest + 'css/',
+      generated:  basePaths.generatedsrc + 'styles/'
     },
     content: {
       src:  basePaths.content + 'texts/',
@@ -49,6 +51,16 @@ module.exports = function () {
     }
   };
 
+  var icons = {
+    scsstpl:  paths.styles.src + 'tpl/sprite-template.scss.tpl',
+    src:  paths.images.src + 'icons/*.svg',
+    dest: {
+      svgFile: paths.images.dest + 'icons/icons.svg',
+      svg: paths.images.dest + 'icons/',
+      scss: paths.styles.generated + '_icons.scss'
+    }
+  };
+
   var appFiles = {
     scripts:  paths.scripts.src + '**/*.js',
     styles:   paths.styles.src + '**/*.scss',
@@ -57,7 +69,8 @@ module.exports = function () {
     images:   paths.images.src + '**/*',
     logos:    paths.logos.src + '**/*',
     favicons: paths.favicons.src + '**/*',
-    fonts:    paths.fonts.src + '**/*'
+    fonts:    paths.fonts.src + '**/*',
+    icons:    icons.src + '**/*.svg'
   };
 
   var components = [
@@ -89,7 +102,8 @@ module.exports = function () {
     appFiles:     appFiles,
     components:   components,
     gulpFiles:    gulpFiles,
-    environments: environments
+    environments: environments,
+    icons:        icons
   };
 };
 

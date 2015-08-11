@@ -35,6 +35,12 @@ gulp.task('deploy',
 // Secondary //
 ///////////////
 
+// Generate all SVG Sprites
+gulp.task('build:icons',
+          false,
+          t.getTask('icons'));
+
+
 // Move all javscript files to the build
 gulp.task('build:scripts',
           false,
@@ -43,6 +49,7 @@ gulp.task('build:scripts',
 // Generate all stylesheets from the sass files
 gulp.task('build:styles',
           false,
+          ['build:icons'],
           t.getTask('styles'));
 
 // Concatenates all the content files

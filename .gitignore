@@ -5,3 +5,4 @@ node_modules
 *.orig
 bower_components
 .tmp
+src_generated
