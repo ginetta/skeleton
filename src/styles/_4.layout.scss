@@ -1,0 +1,96 @@
+/* basic structure */
+.l-grid {
+  overflow: hidden;
+}
+
+.l-clear {
+  clear: both;
+}
+
+.l-one-whole {
+  width: 100%;
+}
+
+.l-one-half {
+  width: 50%;
+}
+
+.l-one-third {
+  width: 33.333%;
+}
+
+.l-one-quarter {
+  width: 25%;
+}
+
+.l-panorama,
+.l-square,
+.l-landscape {
+  &:before {
+    content: "";
+    display: block;
+  }
+}
+
+.l-panorama {
+  &:before {
+    padding-top: 50%;
+  }
+}
+
+.l-square {
+  &:before {
+    padding-top: 100%;
+  }
+}
+
+.l-landscape {
+  &:before {
+    padding-top: 75%;
+  }
+}
+
+
+
+@include breakpoint(mobile) {
+  .l-one-whole-mobile {
+    width: 100%;
+  }
+
+  .l-one-half-mobile {
+    width: 50%;
+  }
+
+  .l-one-third-mobile {
+    width: 33.333%;
+  }
+
+  .l-one-quarter-mobile {
+    width: 25%;
+  }
+
+  .l-panorama-mobile {
+    &:before{
+      padding-top: 50%;
+    }
+  }
+
+  .l-square-mobile {
+    &:before {
+      padding-top: 100%;
+    }
+  }
+
+  .l-landscape-mobile {
+    &:before {
+      padding-top: 75%;
+    }
+  }
+}
+
+.l-absolute-centered {
+  position: absolute;
+  top: 50%; left: 10%; right: 10%;
+  max-height: 80%;
+  transform: translate(0, -50%);
+}

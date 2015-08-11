@@ -1,0 +1,26 @@
+/**
+ * Typography settings
+ */
+$base-font-size   : 1em;
+$base-font-family : sans-serif;
+$base-font-weight : 300;
+$base-font-style  : normal;
+$base-line-height : 1.5;
+
+@mixin base-font() {
+  font-family: $base-font-family;
+  font-weight: $base-font-weight;
+  font-style : $base-font-style;
+}
+
+
+/**
+ * Typography classes
+ */
+
+.t-title {
+  @include base-font;
+  font-size: 5rem;
+  line-height: 1.25;
+  margin: 0;
+}

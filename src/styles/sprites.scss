@@ -1,0 +1,43 @@
+@import "icons";
+
+@mixin i($name, $hover: null, $parent: null, $autoSize: true) {
+  display: inline-block;
+  @if map-has-key($icons, $name) {
+    $icon: map-get($icons, $name);
+    background: url(../content/images/icons/icons.svg);
+    background-size: 100% auto;
+    background-position: map-get($icon, 'x') map-get($icon, 'y');
+    @if $autoSize {
+      width: px2rel(map-get($icon, 'width'));
+      height: px2rel(map-get($icon, 'height'));
+    }
+  } @else {
+    background-color: pink;
+    @if $autoSize {
+      width: 1.25rem; height: 1.25rem;
+    }
+  }
+
+  @if $hover {
+    $hoverSelector: '&';
+    $self: '';
+
+    @if $parent {
+      $hoverSelector: $parent;
+      $self: '&';
+    }
+
+    opacity: 1;
+    will-change: opacity;
+    transition: 100ms opacity linear;
+    #{$hoverSelector}:hover #{$self} {
+      opacity: 0.5;
+    }
+  }
+}
+
+@each $icon in map-keys($icons) {
+  .icon--#{$icon} {
+    @include i($icon, $parent: 'a');
+  }
+}
