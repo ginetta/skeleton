@@ -10,3 +10,13 @@ block body
   .about.l-absolute-centered
     +header(data.index.header)
       p!= helpers.markdown(data.index.content)
+
+  .links.container
+    .content.l-grid
+      .l-one-third.t-base
+        a(href="https://github.com/ginetta/skeleton/wiki") Documentation
+      .l-one-third.t-base
+        a(href="https://github.com/ginetta/skeleton") Source Code
+      .l-one-third.t-base
+        a(href="https://github.com/ginetta/skeleton/issues") Issues
+

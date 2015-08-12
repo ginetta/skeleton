@@ -1,7 +1,7 @@
 /**
  * Typography settings
  */
-$base-font-size   : 1em;
+$base-font-size   : 1rem;
 $base-font-family : sans-serif;
 $base-font-weight : 300;
 $base-font-style  : normal;
@@ -17,6 +17,11 @@ $base-line-height : 1.5;
 /**
  * Typography classes
  */
+
+.t-base {
+  @include base-font;
+  font-size: $base-font-size;
+}
 
 .t-title {
   @include base-font;

@@ -1,3 +1,16 @@
+@include sensibleGrid($modern: true);
+
+/* Terminology for a responsive center column */
+.container {
+  padding: 0 5px;
+}
+
+.content {
+  margin:0 auto;
+  max-width: 1051px;
+}
+
+
 /* basic structure */
 .l-grid {
   overflow: hidden;
