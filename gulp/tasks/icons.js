@@ -14,9 +14,6 @@ module.exports = function (gulp, $, config) {
       .pipe($.svgSprite({
         'shape': {
           transform: ['svgo'],
-          maxWidth: 24,
-          maxHeight: 24,
-          padding: 10,
           // makes sure the optimized icons are copied into the assets folder
           dest: svgDest
         },
