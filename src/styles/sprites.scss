@@ -8,8 +8,8 @@
     background-size: 100% auto;
     background-position: map-get($icon, 'x') map-get($icon, 'y');
     @if $autoSize {
-      width: px2rel(map-get($icon, 'width'));
-      height: px2rel(map-get($icon, 'height'));
+      width: map-get($icon, 'width');
+      height: map-get($icon, 'height');
     }
   } @else {
     background-color: pink;
