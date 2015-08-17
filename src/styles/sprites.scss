@@ -5,7 +5,7 @@
   @if map-has-key($icons, $name) {
     $icon: map-get($icons, $name);
     background: url(../content/images/icons/icons.svg);
-    background-size: initial;
+    background-size: map-get($icon-sprite, 'width') map-get($icon-sprite, 'height');
     background-position: map-get($icon, 'x') map-get($icon, 'y');
     @if $autoSize {
       width: map-get($icon, 'width');
