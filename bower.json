@@ -1,22 +1,7 @@
 {
-  "name": "skeleton-project",
-  "version": "0.0.0",
-  "homepage": "",
-  "authors": [],
-  "license": "-",
+  "name": "project-name",
   "private": true,
-  "ignore": [
-    "**/.*",
-    "node_modules",
-    "bower_components",
-    "./frontend/js/bower_components",
-    "test",
-    "tests"
-  ],
   "dependencies": {
-    "requirejs": "~2.1.8",
-    "jquery": "~2.1.1",
-    "sensible": "~0.4.5",
-    "bonescss": "~0.4.1"
+    "sensible": "~0.5.2"
   }
 }

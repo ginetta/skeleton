@@ -1,0 +1,40 @@
+body, html {
+  margin: 0;
+  padding: 0;
+
+  color: $c-white;
+  text-align: center;
+  line-height: 1.5;
+
+  background: $c-eigengrau;
+
+  /**
+   * PX fallback for IE8, Opera Mini and older Androids
+   * (px and not REM because of IE8)
+   */
+  font-size: 12px;
+  font-size: 1vw; /* 10% of the browser width */
+
+  @include breakpoint(tablet) {
+    font-size: 16px;
+    font-size: 1.5vw; /* 15% of the browser width */
+  }
+
+  @include breakpoint(mobile) {
+    font-size: 20px;
+    font-size: 2vw; /* 30% of the browser width */
+  }
+}
+
+a {
+  color: $c-graphite;
+  text-decoration: none;
+}
+
+.about {
+  // overflow: hidden;
+  // background-color: #16161D;
+  // height: 100vh;
+  //   position: relative;
+  overflow: hidden;   position: relative; padding: 5% 10%;
+}

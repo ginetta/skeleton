@@ -1,6 +1,0 @@
-mixin hello-world (data, options)
-  - options = setOptionsDefaults(options, "button")
-
-  .hello-world(data-ng-class="{ 'is-active': options.isActive }")
-    h1(style="color: {{ options.color }}")  {{ data.greeting }}
-    h2  {{ data.name }}
