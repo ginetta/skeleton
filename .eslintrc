@@ -1,0 +1,33 @@
+rules:
+  # specify whether double or single quotes should be used
+  quotes: [2, "single", "avoid-escape"]
+
+  # controls location of Use Strict Directives
+  strict: [2, "global"]
+
+  # disallow use of multiple spaces
+  no-multi-spaces: [0]
+
+  # enforces spacing between keys and values in object literal properties
+  key-spacing: [0]
+
+  # allow just one var statement per function (off by default)
+  one-var: [2, {uninitialized: "always", initialized: "never"}]
+
+  # specify the maximum number of statement allowed in a function
+  # (off by default)
+  max-statements: [1, 15]
+
+  # specify the maximum depth that blocks can be nested (off by default)
+  max-depth: [1, 2]
+
+  # specify the maximum cyclomatic complexity allowed in a program
+  # (off by default)
+  complexity: [1, 5]
+
+  # limits the number of parameters that can be used in the function
+  # declaration. (off by default)
+  max-params: [1, 3]
+
+  # specify the maximum depth callbacks can be nested (off by default)
+  max-nested-callbacks: [1, 2]

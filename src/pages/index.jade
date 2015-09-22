@@ -1,0 +1,12 @@
+include ../modules/**/*.jade
+include ../elements/**/*.jade
+
+extends ../layouts/default
+
+block meta
+  //- TODO: add you page meta tags
+
+block body
+  .about.l-absolute-centered
+    +header(data.index.header)
+      p!= helpers.markdown(data.index.content)
