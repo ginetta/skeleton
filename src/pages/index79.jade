@@ -11,8 +11,6 @@ block body
     +header(data.index.header)
       p!= helpers.markdown(data.index.content)
 
-  pre #{JSON.stringify(definitions)}
-
   +card({background: {image: "/images/background.jpg", alt:  "Alt text"}})
   - for (var i = 1; i < 100; ++i) {
     +#{'card' + i}({background: {image: "/images/background.jpg", alt:  "Alt text"}})
