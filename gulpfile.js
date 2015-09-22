@@ -53,7 +53,7 @@ gulp.task('build:content',
 // Generate all pages from the jade files
 gulp.task('build:pages',
           false,
-          ['build:content'],
+          ['build:content', 'build:definitions'],
           t.getTask('pages'));
 
 // Moves all the assets to the build
@@ -70,3 +70,4 @@ gulp.task('clean',
 gulp.task('tasks',
           false,
           t.getTask('tasks'));
+;

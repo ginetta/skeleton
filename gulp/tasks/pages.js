@@ -3,8 +3,14 @@ var yamljs        = require('yamljs');
 var jade          = require('jade');
 var merge         = require('merge-stream');
 var path          = require('path');
-var pageshelpers  = require('../utils/pagesHelpers');
+var pagesHelpers  = require('../utils/pagesHelpers');
 var handleError   = require('../utils/handleError');
+
+
+var vinylYamlData = require('vinyl-yaml-data');
+var deepExtend    = require('deep-extend-stream');
+
+
 
 module.exports = function (gulp, $, config) {
   var srcFiles           = config.appFiles.pages;
@@ -12,8 +18,16 @@ module.exports = function (gulp, $, config) {
   var languages          = config.languages;
   var contentPath        = config.paths.content.dest;
   var baseDir            = config.basePaths.src;
-  var moduleHelpers      = pageshelpers(config);
 
+  var definitions;
+
+  gulp.task('build:definitions', function () {
+    definitions = {};
+
+    return gulp.src('src/**/*.y{,a}ml')
+      .pipe(vinylYamlData())
+      .pipe(deepExtend(definitions));
+  });
 
 
   // Put the default language at the root
@@ -32,6 +46,7 @@ module.exports = function (gulp, $, config) {
 
     return (path.relative(destPath, filePath) || '.') + '/';
   };
+
 
   return function () {
 
@@ -57,7 +72,8 @@ module.exports = function (gulp, $, config) {
                 return {
                   data:         loadContent(language),
                   relativePath: getRelativePath(file, language),
-                  helpers:      moduleHelpers
+                  helpers:      pagesHelpers(config, definitions),
+                  definitions:  definitions
                 };
               }))
               .pipe($.jade({

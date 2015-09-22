@@ -2,8 +2,10 @@
 var yamljs      = require('yamljs');
 var _           = require('lodash');
 var markdown    = require('marked');
+var objectPath  = require("object-path");
 
-module.exports = function (config) {
+
+module.exports = function (config, definitions) {
   var srcDir = config.basePaths.src;
 
   // TODO: Rewrite and document this helper function
@@ -85,11 +87,11 @@ module.exports = function (config) {
   //     '': value3
   //   border: true
   var mergeDefaultOptions = function(options, path) {
-    var optionsSchema, schema;
+    var moduleDefinitionPath = path.replace('/', '.') + '.definition';
+    var moduleDefinition     = objectPath.get(definitions, moduleDefinitionPath);
     options = options || {};
-    schema = yamljs.load(srcDir + path + '/definition.yml');
-    optionsSchema = schema.options;
-    return _.mapValues(optionsSchema, function(o, oKey) {
+
+    return _.mapValues(moduleDefinition.options, function(o, oKey) {
       // Handle simple option (options that are just an array)
       if (Array.isArray(o)) {
         return mergeSimpleOptionDefault(options[oKey], o);
