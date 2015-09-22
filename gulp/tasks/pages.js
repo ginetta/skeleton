@@ -72,7 +72,7 @@ module.exports = function (gulp, $, config) {
                 return {
                   data:         loadContent(language),
                   relativePath: getRelativePath(file, language),
-                  helpers:      pagesHelpers(config, definitions),
+                  helpers:      pagesHelpers(definitions),
                   definitions:  definitions
                 };
               }))

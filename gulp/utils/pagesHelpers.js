@@ -1,13 +1,10 @@
 'use strict';
-var yamljs      = require('yamljs');
 var _           = require('lodash');
 var markdown    = require('marked');
-var objectPath  = require("object-path");
+var objectPath  = require('object-path');
 
 
-module.exports = function (config, definitions) {
-  var srcDir = config.basePaths.src;
-
+module.exports = function (definitions) {
   // TODO: Rewrite and document this helper function
 
   /**
