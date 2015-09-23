@@ -31,6 +31,11 @@ gulp.task('deploy',
           t.getTask('deploy'));
 
 
+gulp.task('test',
+          'Tests the built project in terms of accessibility.',
+          ['test:accessibility']);
+
+
 ///////////////
 // Secondary //
 ///////////////
@@ -63,9 +68,9 @@ gulp.task('build:assets',
 
 
 // Moves all the assets to the build
-gulp.task('build:accessibility',
+gulp.task('test:accessibility',
           false,
-          ['build:pages'],
+          ['build'],
           t.getTask('accessibility'));
 
 // Cleans the build folder
