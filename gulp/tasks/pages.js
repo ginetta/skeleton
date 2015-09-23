@@ -58,7 +58,8 @@ module.exports = function (gulp, $, config) {
                 return {
                   data:         loadContent(language),
                   relativePath: getRelativePath(file, language),
-                  helpers:      moduleHelpers
+                  helpers:      moduleHelpers,
+                  language:     language
                 };
               }))
               .pipe($.jade({
