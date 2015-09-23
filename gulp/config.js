@@ -54,7 +54,6 @@ module.exports = function () {
     styles:    paths.styles.src + '**/*.scss',
     content:   paths.content.src + '**/*.yml',
     pages:     paths.pages.src + '**/*.jade',
-    pagesHtml: paths.pages.dest + '**/*.html',
     images:    paths.images.src + '**/*',
     logos:     paths.logos.src + '**/*',
     favicons:  paths.favicons.src + '**/*',
