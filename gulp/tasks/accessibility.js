@@ -6,6 +6,10 @@ module.exports = function (gulp, $, config) {
     return gulp.src(srcFiles)
       .pipe($.a11y())
       .pipe($.a11y.reporter())
-      .pipe($.accessibility());
+      .pipe($.accessibility({
+        reportLevels: {
+          notice: false
+        }
+      }));
   };
 };
