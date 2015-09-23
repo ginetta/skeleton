@@ -3,7 +3,7 @@
 module.exports = function (gulp, $, config) {
 
   var srcFiles = config.paths.pages.dest + '**/*.html';
-  console.log('srcFiles', srcFiles);
+
   return function () {
     return gulp.src(srcFiles)
       .pipe($.a11y())
