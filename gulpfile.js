@@ -61,6 +61,13 @@ gulp.task('build:assets',
           false,
           t.getTask('assets'));
 
+
+// Moves all the assets to the build
+gulp.task('build:accessibility',
+          false,
+          ['build:pages'],
+          t.getTask('accessibility'));
+
 // Cleans the build folder
 gulp.task('clean',
           false,

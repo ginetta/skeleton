@@ -50,14 +50,15 @@ module.exports = function () {
   };
 
   var appFiles = {
-    scripts:  paths.scripts.src + '**/*.js',
-    styles:   paths.styles.src + '**/*.scss',
-    content:  paths.content.src + '**/*.yml',
-    pages:    paths.pages.src + '**/*.jade',
-    images:   paths.images.src + '**/*',
-    logos:    paths.logos.src + '**/*',
-    favicons: paths.favicons.src + '**/*',
-    fonts:    paths.fonts.src + '**/*'
+    scripts:   paths.scripts.src + '**/*.js',
+    styles:    paths.styles.src + '**/*.scss',
+    content:   paths.content.src + '**/*.yml',
+    pages:     paths.pages.src + '**/*.jade',
+    pagesHtml: paths.pages.dest + '**/*.html',
+    images:    paths.images.src + '**/*',
+    logos:     paths.logos.src + '**/*',
+    favicons:  paths.favicons.src + '**/*',
+    fonts:     paths.fonts.src + '**/*'
   };
 
   var components = [
