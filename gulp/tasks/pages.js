@@ -3,7 +3,6 @@ var yamljs        = require('yamljs');
 var jade          = require('jade');
 var merge         = require('merge-stream');
 var path          = require('path');
-var a11y          = require('a11y');
 var pageshelpers  = require('../utils/pagesHelpers');
 var handleError   = require('../utils/handleError');
 
