@@ -4,9 +4,10 @@ include ../elements/**/*.jade
 extends ../layouts/default
 
 block meta
+  title project-name
   //- TODO: add you page meta tags
 
 block body
   .about.l-absolute-centered
     +header(data.index.header)
-      p!= helpers.markdown(data.index.content)
+      != helpers.markdown(data.index.content)
