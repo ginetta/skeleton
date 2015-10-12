@@ -3,5 +3,4 @@ node_modules
 .sass-cache
 .DS_Store
 *.orig
-bower_components
 .tmp

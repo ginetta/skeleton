@@ -8,8 +8,7 @@ module.exports = function () {
     content: 'content/',
     assets:  'assets/',
     dest:    'build/',
-    tmp:     '.tmp/',
-    bower:   'bower_components/'
+    tmp:     '.tmp/'
   };
 
   var languages = ['en'];
