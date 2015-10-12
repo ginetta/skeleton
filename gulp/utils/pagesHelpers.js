@@ -2,6 +2,7 @@
 var yamljs      = require('yamljs');
 var _           = require('lodash');
 var markdown    = require('marked');
+var chalk       = require('chalk');
 
 module.exports = function (config) {
   var srcDir = config.basePaths.src;
@@ -13,6 +14,25 @@ module.exports = function (config) {
    */
   function hasValue (value) {
     return value !== null && value !== undefined;
+  }
+
+  function generateExtraOptionsError (extraOptions) {
+    throw new Error(
+      'Option' + (extraOptions.length > 1 ? 's ' : ' ')
+      + '\'' + chalk.blue(extraOptions.join('\', \'')) + '\' '
+      +  (extraOptions.length > 1 ? 'aren\'t' : 'isn\'t') + ' defined.'
+    );
+  }
+
+  function validatesOptionsKeysPresentOnSchema(options, optionsSchema) {
+    var optionsKeys       = Object.keys(options || {});
+    var optionsSchemaKeys = Object.keys(optionsSchema || {});
+
+    var extraKeys     = _.difference(optionsKeys, optionsSchemaKeys);
+
+    if (extraKeys.length > 0) {
+      generateExtraOptionsError(extraKeys);
+    }
   }
 
   /**
@@ -89,6 +109,16 @@ module.exports = function (config) {
     options = options || {};
     schema = yamljs.load(srcDir + path + '/definition.yml');
     optionsSchema = schema.options;
+
+    try {
+      validatesOptionsKeysPresentOnSchema(options, optionsSchema);
+    } catch (e) {
+      console.warn(
+        chalk.yellow('Error while instanciating ') + chalk.blue(path)
+        + chalk.yellow('. ' + e.message)
+      );
+    }
+
     return _.mapValues(optionsSchema, function(o, oKey) {
       // Handle simple option (options that are just an array)
       if (Array.isArray(o)) {
