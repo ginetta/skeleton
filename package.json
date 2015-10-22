@@ -7,7 +7,6 @@
     "postinstall": "node_modules/bower/bin/bower install",
     "postupdate": "node_modules/bower/bin/bower install"
   },
-  "dependencies": {},
   "devDependencies": {
     "bower": "^1.3.12",
     "browser-sync": "^2.6.5",
@@ -33,6 +32,7 @@
     "gulp-util": "^3.0.4",
     "jade": "^1.11.0",
     "jade-glob-include": "^1.0.1",
+    "jade-inline-file": "^0.1.0",
     "lodash": "^3.7.0",
     "marked": "^0.3.3",
     "merge-stream": "^0.1.7",
