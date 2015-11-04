@@ -8,14 +8,6 @@ var handleError   = require('../utils/handleError');
 
 
 module.exports = function (gulp, $, config) {
-  var srcFiles           = config.appFiles.pages;
-  var destFiles          = config.paths.pages.dest;
-  var languages          = config.languages;
-  var contentPath        = config.paths.content.dest;
-  var baseDir            = config.basePaths.src;
-  var moduleHelpers      = pageshelpers(config);
-
-
 
   // Put the default language at the root
   var getLanguagePath = function(language) {
@@ -35,6 +27,12 @@ module.exports = function (gulp, $, config) {
   };
 
   return function () {
+    var srcFiles           = config.appFiles.pages;
+    var destFiles          = config.paths.pages.dest;
+    var languages          = config.languages;
+    var contentPath        = config.paths.content.dest;
+    var baseDir            = config.basePaths.src;
+    var moduleHelpers      = pageshelpers(config);
 
     // Load the content for the page
     function loadContent(language) {

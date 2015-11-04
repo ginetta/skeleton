@@ -3,11 +3,12 @@ var stream        = require('../utils/browserSync').stream;
 var handleError   = require('../utils/handleError');
 
 module.exports = function (gulp, $, config) {
-  var srcFiles   = config.appFiles.styles;
-  var destFiles  = config.paths.styles.dest;
-  var bowerFiles = config.basePaths.bower;
 
   return function () {
+    var srcFiles   = config.appFiles.styles;
+    var destFiles  = config.paths.styles.dest;
+    var bowerFiles = config.basePaths.bower;
+
     return gulp.src(srcFiles)
       .pipe($.plumber(handleError))
       .pipe($.cssGlobbing({

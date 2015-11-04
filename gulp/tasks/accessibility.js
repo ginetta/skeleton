@@ -1,10 +1,9 @@
 'use strict';
 
 module.exports = function (gulp, $, config) {
-
-  var srcFiles = config.paths.pages.dest + '**/*.html';
-
   return function () {
+    var srcFiles = config.paths.pages.dest + '**/*.html';
+
     return gulp.src(srcFiles)
       .pipe($.a11y())
       .pipe($.a11y.reporter())

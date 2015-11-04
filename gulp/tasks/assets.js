@@ -2,16 +2,16 @@
 var merge = require('merge-stream');
 
 module.exports = function (gulp, $, config) {
-  var imagesSrc    = config.appFiles.images;
-  var imagesDest   = config.paths.images.dest;
-  var logosSrc     = config.appFiles.logos;
-  var logosDest    = config.paths.logos.dest;
-  var faviconsSrc  = config.appFiles.favicons;
-  var faviconsDest = config.paths.favicons.dest;
-  var fontsSrc     = config.appFiles.fonts;
-  var fontsDest    = config.paths.fonts.dest;
-
   return function () {
+    var imagesSrc    = config.appFiles.images;
+    var imagesDest   = config.paths.images.dest;
+    var logosSrc     = config.appFiles.logos;
+    var logosDest    = config.paths.logos.dest;
+    var faviconsSrc  = config.appFiles.favicons;
+    var faviconsDest = config.paths.favicons.dest;
+    var fontsSrc     = config.appFiles.fonts;
+    var fontsDest    = config.paths.fonts.dest;
+
     var imagesSt = gulp.src(imagesSrc)
       .pipe($.changed(imagesDest))
       .pipe(gulp.dest(imagesDest));

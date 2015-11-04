@@ -4,14 +4,13 @@ var rsync = require('rsyncwrapper').rsync;
 
 
 module.exports = function (gulp, $, config) {
-  var environment = config.environments.testing;
-  var defaultPath = '/home/www-clients/';
-  var serverPath = environment.username + '@' + environment.host;
-  var deploySrc = config.basePaths.dest;
-  var deployDest = serverPath + ':' + defaultPath + environment.projectPath + environment.releasePath;
-
-
   return function (done) {
+    var environment = config.environments.testing;
+    var defaultPath = '/home/www-clients/';
+    var serverPath = environment.username + '@' + environment.host;
+    var deploySrc = config.basePaths.dest;
+    var deployDest = serverPath + ':' + defaultPath + environment.projectPath + environment.releasePath;
+
     var rsyncOptions = {
       ssh: true,
       src: deploySrc,
