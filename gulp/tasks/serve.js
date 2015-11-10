@@ -4,31 +4,31 @@ var reload      = browserSync.reload;
 var _           = require('lodash');
 
 module.exports = function (gulp, $, config) {
+  var serverBase       = config.basePaths.dest;
+  var scriptFiles      = [config.appFiles.scripts];
+  var stylesFiles      = [config.appFiles.styles];
+  var pagesFiles       = [config.appFiles.pages];
+  var layoutFiles      = config.appFiles.layouts;
+  var contentSrcFiles  = config.appFiles.content;
+  var gulpFiles        = config.gulpFiles;
+  var logosFiles       = config.appFiles.logos;
+  var faviconsFiles    = config.appFiles.favicon;
+  var imagesFiles      = config.appFiles.images;
+  var fontsFiles       = config.appFiles.fonts;
+
+  var componentsDirs   = config.components;
+
+  _.map(componentsDirs, function(componentDir) {
+                              stylesFiles.push(componentDir + '**/*.scss');
+                            });
+  _.map(componentsDirs, function(componentDir) {
+                              pagesFiles.push(componentDir + '**/*.jade');
+                            });
+  _.map(componentsDirs, function(componentDir) {
+                              pagesFiles.push(componentDir + '**/*.yml');
+                            });
+
   return function () {
-    var serverBase       = config.basePaths.dest;
-    var scriptFiles      = [config.appFiles.scripts];
-    var stylesFiles      = [config.appFiles.styles];
-    var pagesFiles       = [config.appFiles.pages];
-    var layoutFiles      = config.appFiles.layouts;
-    var contentSrcFiles  = config.appFiles.content;
-    var gulpFiles        = config.gulpFiles;
-    var logosFiles       = config.appFiles.logos;
-    var faviconsFiles    = config.appFiles.favicon;
-    var imagesFiles      = config.appFiles.images;
-    var fontsFiles       = config.appFiles.fonts;
-
-    var componentsDirs   = config.components;
-
-    _.map(componentsDirs, function(componentDir) {
-                                stylesFiles.push(componentDir + '**/*.scss');
-                              });
-    _.map(componentsDirs, function(componentDir) {
-                                pagesFiles.push(componentDir + '**/*.jade');
-                              });
-    _.map(componentsDirs, function(componentDir) {
-                                pagesFiles.push(componentDir + '**/*.yml');
-                              });
-
     // Initialising the server
     browserSync.start(serverBase);
 
