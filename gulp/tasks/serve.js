@@ -12,7 +12,7 @@ module.exports = function (gulp, $, config) {
   var contentSrcFiles  = config.appFiles.content;
   var gulpFiles        = config.gulpFiles;
   var logosFiles       = config.appFiles.logos;
-  var faviconsFiles    = config.appFiles.favicon;
+  var faviconsFiles    = config.appFiles.favicons;
   var imagesFiles      = config.appFiles.images;
   var fontsFiles       = config.appFiles.fonts;
 
