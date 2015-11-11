@@ -1,9 +1,7 @@
 'use strict';
 var gulp        = require('gulp');
 var config      = require('./gulp/config')();
-var t           = require('./gulp/utils/tasksHelpers')(gulp);
-
-t.configure(config);
+var t           = require('./gulp/utils/tasksHelpers')(gulp, config);
 
 ///////////////
 //   Build   //
