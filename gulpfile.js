@@ -1,84 +1,88 @@
 'use strict';
 var gulp        = require('gulp');
 var config      = require('./gulp/config')();
-var runSequence = require('run-sequence');
 var t           = require('./gulp/utils/tasksHelpers')(gulp);
 
 t.configure(config);
 
-//////////
-// Main //
-//////////
-gulp.task('default',
-          'Build and serve the app',
-          ['serve', 'tasks']);
-
-gulp.task('build',
-          'Build the app',
-          function(cb) {
-            runSequence('clean',
-                        ['build:pages', 'build:assets', 'build:styles', 'build:scripts'],
-                        cb);
-          });
-
-gulp.task('serve',
-          'Serve the build folder',
-          ['build'],
-          t.getTask('serve'));
-
-gulp.task('deploy',
-          'Deploys to testing',
-          t.getTask('deploy'));
-
-
-gulp.task('test',
-          'Tests the built project in terms of accessibility.',
-          ['test:accessibility']);
-
-
 ///////////////
-// Secondary //
+//   Build   //
 ///////////////
-
-// Move all javscript files to the build
-gulp.task('build:scripts',
-          false,
-          t.getTask('scripts'));
-
-// Generate all stylesheets from the sass files
-gulp.task('build:styles',
-          false,
-          t.getTask('styles'));
-
-// Concatenates all the content files
-gulp.task('build:content',
-          false,
-          t.getTask('content'));
-
-// Generate all pages from the jade files
-gulp.task('build:pages',
-          false,
-          ['build:content'],
-          t.getTask('pages'));
-
-// Moves all the assets to the build
-gulp.task('build:assets',
-          false,
-          t.getTask('assets'));
-
-
-// Moves all the assets to the build
-gulp.task('test:accessibility',
-          false,
-          ['build'],
-          t.getTask('accessibility'));
 
 // Cleans the build folder
-gulp.task('clean',
-          false,
-          t.getTask('clean'));
+gulp.task('clean', t.getTask('clean'));
+
+// Moves all the assets to the build
+gulp.task('build:assets', t.getTask('assets'));
+
+// Concatenates all the content files
+gulp.task('build:content', t.getTask('content'));
+
+// Generate all pages from the jade files
+gulp.task('build:pages', t.getTask('pages'));
+
+// Generate all stylesheets from the sass files
+gulp.task('build:styles', t.getTask('styles'));
+
+// Move all javscript files to the build
+gulp.task('build:scripts', t.getTask('scripts'));
+
+gulp.task(
+  'build',
+  gulp.series(
+    'clean',
+    gulp.parallel(
+      gulp.series(
+        'build:content',
+        'build:pages'
+      ),
+      'build:assets',
+      'build:styles',
+      'build:scripts'
+    )
+  )
+);
+
+
+//////////
+// Test //
+//////////
+
+// Moves all the assets to the build
+gulp.task('test:accessibility', t.getTask('accessibility'));
+
+// Tests the built project in terms of accessibility.
+gulp.task(
+  'test',
+  gulp.series(
+    'build',
+    'test:accessibility'
+  )
+);
+
+
+////////////
+// Deploy //
+////////////
+
+gulp.task('deploy', t.getTask('deploy'));
+
+
+/////////////
+//  Others  //
+/////////////
+
+// Serve the build folder
+gulp.task('serve', t.getTask('serve'));
 
 // Lints the gulp tasks
-gulp.task('tasks',
-          false,
-          t.getTask('tasks'));
+gulp.task('tasks', t.getTask('tasks'));
+
+// What happens when just running 'gulp'
+gulp.task(
+  'default',
+  gulp.series(
+    'build',
+    'serve'
+  )
+);
