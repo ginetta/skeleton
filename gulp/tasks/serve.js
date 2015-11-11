@@ -28,7 +28,7 @@ module.exports = function (gulp, $, config) {
                               pagesFiles.push(componentDir + '**/*.yml');
                             });
 
-  return function () {
+  var task = function () {
     // Initialising the server
     browserSync.start(serverBase);
 
@@ -53,4 +53,7 @@ module.exports = function (gulp, $, config) {
     // Watch Gulp tasks
     gulp.watch(gulpFiles, ['serve']);
   };
+
+  task.description = 'Serve the build folder';
+  return task;
 };

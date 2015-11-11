@@ -1,5 +1,5 @@
 'use strict';
-var gulp        = require('gulp-help')(require('gulp'), {description: false});
+var gulp        = require('gulp');
 var config      = require('./gulp/config')();
 var runSequence = require('run-sequence');
 var t           = require('./gulp/utils/tasksHelpers')(gulp);

@@ -7,7 +7,7 @@ module.exports = function (gulp, $, config) {
   var destFiles  = config.paths.styles.dest;
   var bowerFiles = config.basePaths.bower;
 
-  return function () {
+  var task = function () {
     return gulp.src(srcFiles)
       .pipe($.plumber(handleError))
       .pipe($.cssGlobbing({
@@ -20,4 +20,7 @@ module.exports = function (gulp, $, config) {
       .pipe(gulp.dest(destFiles))
       .pipe(stream({match: '**/*.css'}));
   };
+
+  task.description = 'Generate all stylesheets from the sass files';
+  return task;
 };

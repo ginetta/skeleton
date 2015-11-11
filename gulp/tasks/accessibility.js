@@ -4,7 +4,7 @@ module.exports = function (gulp, $, config) {
 
   var srcFiles = config.paths.pages.dest + '**/*.html';
 
-  return function () {
+  var task = function () {
     return gulp.src(srcFiles)
       .pipe($.a11y())
       .pipe($.a11y.reporter())
@@ -14,4 +14,7 @@ module.exports = function (gulp, $, config) {
         }
       }));
   };
+
+  task.description = 'Tests the built project in terms of accessibility.';
+  return task;
 };

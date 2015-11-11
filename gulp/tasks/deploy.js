@@ -11,7 +11,7 @@ module.exports = function (gulp, $, config) {
   var deployDest = serverPath + ':' + defaultPath + environment.projectPath + environment.releasePath;
 
 
-  return function (done) {
+  var task = function (done) {
     var rsyncOptions = {
       ssh: true,
       src: deploySrc,
@@ -61,6 +61,9 @@ module.exports = function (gulp, $, config) {
         done();
     });
   };
+
+  task.description = 'Deploys to testing';
+  return task;
 };
 
 

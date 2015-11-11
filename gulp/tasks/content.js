@@ -6,7 +6,7 @@ module.exports = function (gulp, $, config) {
   var languages = config.languages;
   var destFiles = config.paths.content.dest;
 
-  return function () {
+  var task = function () {
     // Generate the language file for each language
     var contentStreams = languages.map(function(language) {
       return gulp.src(srcFiles + language + '/**/*.yml')
@@ -17,4 +17,7 @@ module.exports = function (gulp, $, config) {
 
     return merge(contentStreams);
   };
+
+  task.description = 'Concatenates all the content files';
+  return task;
 };

@@ -34,7 +34,7 @@ module.exports = function (gulp, $, config) {
     return (path.relative(destPath, filePath) || '.') + '/';
   };
 
-  return function () {
+  var task = function () {
 
     // Load the content for the page
     function loadContent(language) {
@@ -76,4 +76,7 @@ module.exports = function (gulp, $, config) {
 
     return merge(pagesStreams);
   };
+
+  task.description = 'Generate all pages from the jade files';
+  return task;
 };
