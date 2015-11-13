@@ -8,6 +8,7 @@ module.exports = function (gulp, $, config) {
   var scriptFiles      = [config.appFiles.scripts];
   var stylesFiles      = [config.appFiles.styles];
   var pagesFiles       = [config.appFiles.pages];
+  var layoutFiles      = config.appFiles.layouts;
   var contentSrcFiles  = config.appFiles.content;
   var gulpFiles        = config.gulpFiles;
   var logosFiles       = config.appFiles.logos;
@@ -38,7 +39,7 @@ module.exports = function (gulp, $, config) {
     gulp.watch(stylesFiles, ['build:styles']);
 
     // Watching Pages
-    gulp.watch(pagesFiles, ['build:pages', reload]);
+    gulp.watch([pagesFiles, layoutFiles], ['build:pages', reload]);
 
     // Watching Content
     gulp.watch(contentSrcFiles, ['build:pages', reload]);

@@ -30,6 +30,9 @@ module.exports = function () {
       src:  basePaths.src + 'pages/',
       dest: basePaths.dest
     },
+    layouts: {
+      src:  basePaths.src + 'layouts/'
+    },
     images: {
       src:  basePaths.content + 'images/',
       dest: basePaths.dest + 'content/images/'
@@ -53,6 +56,7 @@ module.exports = function () {
     styles:    paths.styles.src + '**/*.scss',
     content:   paths.content.src + '**/*.yml',
     pages:     paths.pages.src + '**/*.jade',
+    layouts:   paths.layouts.src + '**/*.jade',
     images:    paths.images.src + '**/*',
     logos:     paths.logos.src + '**/*',
     favicons:  paths.favicons.src + '**/*',
@@ -73,7 +77,7 @@ module.exports = function () {
     testing: {
       host:        argv.host,
       username:    argv.username,
-      projectPath: 'client/project-name/',
+      projectPath: 'preview.ginetta.net/skeleton/', // 'client.ginetta.net/project-name/'
       releasePath: argv.path,
       privateKey:  argv.privateKey
     }
