@@ -13,7 +13,7 @@ module.exports = function (gulp, $, config) {
         extensions: ['.scss']
       }))
       .pipe($.sourcemaps.init())
-      .pipe($.sass({includePaths: []}))
+      .pipe($.sass({includePaths: ['node_modules']}))
       .pipe($.autoprefixer({browsers: ['last 2 versions', 'ie 9']}))
       .pipe($.sourcemaps.write({includeContent: true}))
       .pipe(gulp.dest(destFiles))
