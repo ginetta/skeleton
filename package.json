@@ -4,6 +4,11 @@
   "version": "0.0.0",
   "main": "dist/index.html",
   "scripts": {
+    "start": "gulp",
+    "build": "gulp build",
+    "test": "gulp test",
+    "serve": "gulp serve",
+    "deploy": "gulp deploy"
   },
   "dependencies": {
     "sensible": "0.5.4"
