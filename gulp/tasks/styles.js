@@ -5,7 +5,6 @@ var handleError   = require('../utils/handleError');
 module.exports = function (gulp, $, config) {
   var srcFiles   = config.appFiles.styles;
   var destFiles  = config.paths.styles.dest;
-  var bowerFiles = config.basePaths.bower;
 
   var task = function () {
     return gulp.src(srcFiles)
@@ -14,7 +13,7 @@ module.exports = function (gulp, $, config) {
         extensions: ['.scss']
       }))
       .pipe($.sourcemaps.init())
-      .pipe($.sass({includePaths: [bowerFiles]}))
+      .pipe($.sass({includePaths: []}))
       .pipe($.autoprefixer({browsers: ['last 2 versions', 'ie 9']}))
       .pipe($.sourcemaps.write({includeContent: true}))
       .pipe(gulp.dest(destFiles))
