@@ -11,7 +11,7 @@ module.exports = function (gulp, $, config) {
   var fontsSrc     = config.appFiles.fonts;
   var fontsDest    = config.paths.fonts.dest;
 
-  return function () {
+  var task =  function () {
     var imagesSt = gulp.src(imagesSrc)
       .pipe($.changed(imagesDest))
       .pipe(gulp.dest(imagesDest));
@@ -30,4 +30,7 @@ module.exports = function (gulp, $, config) {
 
     return merge(imagesSt, logosSt, faviconsSt, fontsSt);
   };
+
+  task.description = 'Moves all the assets to the build';
+  return task;
 };

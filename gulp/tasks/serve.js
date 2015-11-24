@@ -7,12 +7,11 @@ module.exports = function (gulp, $, config) {
   var serverBase       = config.basePaths.dest;
   var scriptFiles      = [config.appFiles.scripts];
   var stylesFiles      = [config.appFiles.styles];
-  var pagesFiles       = [config.appFiles.pages];
-  var layoutFiles      = config.appFiles.layouts;
+  var pagesFiles       = [config.appFiles.pages, config.appFiles.layouts];
   var contentSrcFiles  = config.appFiles.content;
   var gulpFiles        = config.gulpFiles;
   var logosFiles       = config.appFiles.logos;
-  var faviconsFiles    = config.appFiles.favicon;
+  var faviconsFiles    = config.appFiles.favicons;
   var imagesFiles      = config.appFiles.images;
   var fontsFiles       = config.appFiles.fonts;
 
@@ -28,29 +27,26 @@ module.exports = function (gulp, $, config) {
                               pagesFiles.push(componentDir + '**/*.yml');
                             });
 
-  return function () {
+  var task = function () {
     // Initialising the server
     browserSync.start(serverBase);
 
     // Watching Scripts
-    gulp.watch(scriptFiles, ['build:scripts']);
+    gulp.watch(scriptFiles, gulp.parallel('build:scripts'));
 
     // Watching Styles
-    gulp.watch(stylesFiles, ['build:styles']);
+    gulp.watch(stylesFiles, gulp.parallel('build:styles'));
 
     // Watching Pages
-    gulp.watch([pagesFiles, layoutFiles], ['build:pages', reload]);
+    gulp.watch(pagesFiles, gulp.series('build:pages', reload));
 
     // Watching Content
-    gulp.watch(contentSrcFiles, ['build:pages', reload]);
+    gulp.watch(contentSrcFiles, gulp.series('build:content', 'build:pages', reload));
 
-    // Watching Assets
-    gulp.watch(logosFiles, ['build:assets']);
-    gulp.watch(faviconsFiles, ['build:assets']);
-    gulp.watch(imagesFiles, ['build:assets']);
-    gulp.watch(fontsFiles, ['build:assets']);
-
-    // Watch Gulp tasks
-    gulp.watch(gulpFiles, ['serve']);
+    // // Watching Assets
+    gulp.watch([logosFiles, faviconsFiles, imagesFiles, fontsFiles], gulp.parallel('build:assets'));
   };
+
+  task.description = 'Serve the build folder';
+  return task;
 };
