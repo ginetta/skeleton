@@ -1,14 +1,45 @@
 'use strict';
-var stream        = require('../utils/browserSync').stream;
+var stream  = require('../utils/browserSync').stream;
+var webpack = require('webpack');
+var gulpWebpack = require('webpack-stream');
+var glob = require('glob');
 
 module.exports = function (gulp, $, config) {
-  var srcFiles   = config.appFiles.scripts;
+  var tasksHelper  = require('../utils/tasksHelpers')(gulp, config);
+  var scriptsFiles = config.appFiles.scripts;
+  var srcFiles = glob.sync(scriptsFiles);
   var destPath   = config.paths.scripts.dest;
+  var skeletonRoot = config.basePaths.root;
+  var srcRoot = config.basePaths.src;
 
   var task = function () {
-    return gulp.src(srcFiles)
+    return gulp.src(scriptsFiles)
       .pipe($.eslint({envs: ['browser']}))
       .pipe($.eslint.format())
+      .pipe(gulpWebpack({
+        debug: true, //TODO improve this one we have env depending builds
+        entry: {
+          main: srcFiles,
+          // Add modules you want to load from vendors here so they are put in a seperate file
+          vendor: ['jquery']
+        },
+        output: {
+          filename: 'main.js'
+        },
+        loaders: [
+          { test: /\.js$/, loader: 'babel?presets[]=es2015', exclude: /node_modules/}
+        ],
+        resolve: {
+          // Makes sure the paths are relative to the root and not this file
+          root: skeletonRoot,
+          // Makes sure the compiler looks for modules in /src and node_modules
+          modulesDirectories: [srcRoot, 'node_modules']
+        },
+        plugins: [
+          // Makes sure the vendors are only imported once in this seperate file
+          new webpack.optimize.CommonsChunkPlugin('vendor', 'vendor.min.js')
+        ]
+      }))
       .pipe(gulp.dest(destPath))
       .pipe(stream());
   };
