@@ -9,3 +9,12 @@ before_script:
 
 script:
   - npm run build
+
+notifications:
+  slack:
+    rooms:
+      secure: "DEanO1BcJMMqdQJRh+cvz9+0VaFcTdKLa5qT2KY6cFMLaSNbLFrAv0aqs3qFD/CXUvBDtnil/Ugc0af7Y3qauDs03j4Cgu+mayW2TnfDZkW+3Ha0SljDEvzDYbL5L0iFJRxz2dNxugDOplfrsQkrnxDQXBmkX64Zq4GbYwbIYw0="
+  on_success: change
+  on_start: never
+
+
