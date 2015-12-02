@@ -7,7 +7,8 @@ var glob = require('glob');
 module.exports = function (gulp, $, config) {
   var tasksHelper  = require('../utils/tasksHelpers')(gulp, config);
   var scriptsFiles = config.appFiles.scripts;
-  var srcFiles = glob.sync(scriptsFiles);
+  var vendorFile = config.paths.scripts + 'vendor.js';
+  var srcFiles = glob.sync(scriptsFiles, {ignore: vendorFile});
   var destPath   = config.paths.scripts.dest;
   var skeletonRoot = config.basePaths.root;
   var srcRoot = config.basePaths.src;
@@ -20,8 +21,8 @@ module.exports = function (gulp, $, config) {
         debug: true, //TODO improve this one we have env depending builds
         entry: {
           main: srcFiles,
-          // Add modules you want to load from vendors here so they are put in a seperate file
-          vendor: ['jquery']
+          // Add modules you want to load from vendors to this file
+          vendor: vendorFile
         },
         output: {
           filename: 'main.js'
