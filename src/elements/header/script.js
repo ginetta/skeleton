@@ -1,5 +1,9 @@
 'use strict';
-var document, window;
-(function(){
-  // TODO: add your JS for this component here
-}(document, window));
+
+
+function foo(){
+  // The code for this module comes here
+}
+
+// export (expose) to other modules
+exports.foo = foo;

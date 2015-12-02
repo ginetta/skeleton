@@ -7,7 +7,4 @@ require('elements/header/script');
 // Make sure to add it to the vendors in /gulp/tasks/scripts
 var $ = require('jquery');
 
-var document, window;
-(function(){
-  // TODO: add your JS here
-}(document, window, $));
+// The code for the website comes here.
