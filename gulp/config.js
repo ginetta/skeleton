@@ -1,9 +1,11 @@
 'use strict';
 var argv = require('yargs').argv;
+var path = require('path');
 
 module.exports = function () {
 
   var basePaths = {
+    root:    path.join(__dirname, '..'),
     src:     'src/',
     content: 'content/',
     assets:  'assets/',
@@ -82,8 +84,6 @@ module.exports = function () {
       privateKey:  argv.privateKey
     }
   };
-
-
 
   return {
     basePaths:    basePaths,
