@@ -67,6 +67,13 @@ gulp.task('deploy', t.getTask('deploy'));
 
 
 /////////////
+// Release //
+/////////////
+
+gulp.task('release', t.getTask('release'));
+
+
+/////////////
 //  Others  //
 /////////////
 
