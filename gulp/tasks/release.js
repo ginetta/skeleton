@@ -18,13 +18,12 @@ var bumpTypeQuestion =  {
 // Makes sure we do this on the master branch
 var asserBranchAllowed = function(done) {
   $.git.revParse({args:'--abbrev-ref HEAD', quiet: true}, function(err, currentBranch)  {
-    // if (currentBranch != allowedBranch) {
-    //   logger.error('ERR: You need to be on the %s branch to be able to deploy', allowedBranch);
-    //   process.exit(1);
-    // }
+    if (currentBranch != allowedBranch) {
+      logger.error('ERR: You need to be on the %s branch to be able to deploy', allowedBranch);
+      process.exit(1);
+    }
     done();
   });
-
 }
 asserBranchAllowed.displayName = 'Verify branch';
 
