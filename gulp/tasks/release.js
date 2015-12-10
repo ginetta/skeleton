@@ -42,7 +42,6 @@ var askBumpType = function(done) {
 askBumpType.displayName = 'Ask bump type';
 
 // Bumps the version of the project
-var bumpVersion = function(bumpType, cb) {
   var options = { stdio: ['ignore', 'ignore',process.stderr], cwd: process.cwd()}
   var p = exec('npm', ['version', bumpType], options);
   p.on('close', function(code){
@@ -50,7 +49,7 @@ var bumpVersion = function(bumpType, cb) {
       logger.error('ERR: There was an error running \'npm version\' && git push && git push --tags.');
       process.exit(1);
     } else {
-      cb();
+      done();
     }
   });
 }
