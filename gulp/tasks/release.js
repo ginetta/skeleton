@@ -55,9 +55,20 @@ var bumpVersion = function(bumpType, done) {
 }
 bumpVersion.displayName = 'Bump Version';
 
+// Display the next release steps
+var displayNextReleaseSteps = function(done) {
+  logger.info('The project now has a new version and was pushed to master');
+  logger.info('Next steps:');
+  logger.info('  1. Got to github and create a pull request from master to release');
+  logger.info('  2. Somebody else should review the PR and merge it');
+  logger.info('  3. The CI will publish it and create a release on github');
+  done();
+}
+bumpVersion.displayName = 'Display next release steps';
+
 // Bumps the version on package.json and commits it locally and pushes to master
 var releaseTask = function(done) {
-  return new Promise(gulp.series(asserBranchAllowed, askBumpType));
+  return new Promise(gulp.series(asserBranchAllowed, askBumpType, displayNextReleaseSteps));
 }
 releaseTask.description = 'Bumps the npm version';
 
