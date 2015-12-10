@@ -32,12 +32,7 @@ asserBranchAllowed.displayName = 'Verify branch';
 var askBumpType = function(done) {
   inquirer.prompt([bumpTypeQuestion], function( answers ) {
     if (answers !== null && answers[bumpTypeQuestion.name] !== null) {
-      try {
-        bumpVersion(answers[bumpTypeQuestion.name], done);
-      } catch (e) {
-        done();
-      }
-
+      bumpVersion(answers[bumpTypeQuestion.name], done);
     } else {
       logger.error('ERR: There was an error with the provided bump type');
       process.exit(1);
