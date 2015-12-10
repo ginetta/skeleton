@@ -40,7 +40,7 @@ var askBumpType = function(done) {
 
     } else {
       logger.error('ERR: There was an error with the provided bump type');
-      done();
+      process.exit(1);
     }
   });
 }
@@ -53,6 +53,7 @@ var bumpVersion = function(bumpType, cb) {
   p.on('close', function(code){
     if (code !== 0) {
       logger.error('ERR: There was an error running \'npm version\' && git push && git push --tags.');
+      process.exit(1);
     } else {
       cb();
     }
