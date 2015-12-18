@@ -16,7 +16,7 @@ var bumpTypeQuestion =  {
 };
 
 // Makes sure we do this on the master branch
-var asserBranchAllowed = function(done) {
+var assertBranchAllowed = function(done) {
   $.git.revParse({args:'--abbrev-ref HEAD', quiet: true}, function(err, currentBranch)  {
     if (currentBranch != allowedBranch) {
       logger.error('ERR: You need to be on the %s branch to be able to deploy', allowedBranch);
@@ -25,7 +25,7 @@ var asserBranchAllowed = function(done) {
     done();
   });
 }
-asserBranchAllowed.displayName = 'Verify branch';
+assertBranchAllowed.displayName = 'Verify branch';
 
 // Asks for the bump type
 var askBumpType = function(done) {
@@ -75,7 +75,7 @@ bumpVersion.displayName = 'Display next release steps';
 
 // Bumps the version on package.json and commits it locally and pushes to master
 var releaseTask = function(done) {
-  return new Promise(gulp.series(asserBranchAllowed, askBumpType, displayNextReleaseSteps));
+  return new Promise(gulp.series(assertBranchAllowed, askBumpType, displayNextReleaseSteps));
 }
 releaseTask.description = 'Bumps the npm version';
 
