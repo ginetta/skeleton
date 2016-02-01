@@ -4,11 +4,12 @@
   "version": "0.0.0",
   "main": "dist/index.html",
   "scripts": {
-    "start": "./node_modules/.bin/gulp",
-    "build": "./node_modules/.bin/gulp build",
-    "test": "./node_modules/.bin/gulp test",
-    "serve": "./node_modules/.bin/gulp serve",
-    "deploy": "./node_modules/.bin/gulp deploy"
+    "gulp": "gulp",
+    "start": "npm run gulp",
+    "build": "npm run gulp -- build",
+    "test": "npm run gulp -- test",
+    "serve": "npm run gulp -- serve",
+    "deploy": "npm run gulp -- deploy"
   },
   "dependencies": {
     "sensible": "0.5.4"
