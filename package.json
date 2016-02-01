@@ -4,11 +4,12 @@
   "version": "0.0.0",
   "main": "dist/index.html",
   "scripts": {
-    "start": "./node_modules/.bin/gulp",
-    "build": "./node_modules/.bin/gulp build",
-    "test": "./node_modules/.bin/gulp test",
-    "serve": "./node_modules/.bin/gulp serve",
-    "deploy": "./node_modules/.bin/gulp deploy"
+    "gulp": "gulp",
+    "start": "npm run gulp",
+    "build": "npm run gulp -- build",
+    "test": "npm run gulp -- test",
+    "serve": "npm run gulp -- serve",
+    "deploy": "npm run gulp -- deploy"
   },
   "dependencies": {
     "sensible": "0.5.4"
@@ -19,12 +20,13 @@
     "babel-preset-es2015": "^6.1.18",
     "browser-sync": "^2.6.5",
     "del": "^1.1.1",
-    "gulp": "git://github.com/gulpjs/gulp.git#4.0",
+    "glob": "^6.0.4",
+    "gulp": "gulpjs/gulp.git#4.0",
     "gulp-a11y": "^0.1.1",
     "gulp-accessibility": "^1.2.1",
     "gulp-autoprefixer": "^2.2.0",
     "gulp-changed": "^1.2.1",
-    "gulp-cli": "github:gulpjs/gulp-cli#4.0",
+    "gulp-cli": "gulpjs/gulp-cli#4.0",
     "gulp-concat": "^2.5.2",
     "gulp-css-globbing": "^0.1.7",
     "gulp-data": "^1.2.0",
@@ -50,5 +52,9 @@
     "webpack-stream": "^2.1.1",
     "yamljs": "^0.2.1",
     "yargs": "^3.9.1"
+  },
+  "engines" : {
+    "npm" : ">=1.1.65",
+    "node" : ">=0.12.9"
   }
 }
