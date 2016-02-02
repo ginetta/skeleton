@@ -5,11 +5,11 @@
   "main": "dist/index.html",
   "scripts": {
     "gulp": "gulp",
-    "start": "npm run gulp",
-    "build": "npm run gulp -- build",
-    "test": "npm run gulp -- test",
-    "serve": "npm run gulp -- serve",
-    "deploy": "npm run gulp -- deploy"
+    "start": "gulp",
+    "build": "gulp build",
+    "test": "gulp test",
+    "serve": "gulp serve",
+    "deploy": "gulp deploy"
   },
   "dependencies": {
     "sensible": "0.5.4"
