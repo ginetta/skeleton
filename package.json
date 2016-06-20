@@ -26,7 +26,6 @@
     "gulp-accessibility": "^1.2.1",
     "gulp-autoprefixer": "^2.2.0",
     "gulp-changed": "^1.2.1",
-    "gulp-cli": "gulpjs/gulp-cli#4.0",
     "gulp-concat": "^2.5.2",
     "gulp-css-globbing": "^0.1.7",
     "gulp-data": "^1.2.0",
