@@ -1,6 +1,7 @@
 'use strict';
 var browserSync = require('../utils/browserSync');
-var reload      = browserSync.reload;
+var reload = browserSync.reload;
+
 var _           = require('lodash');
 
 module.exports = function (gulp, $, config) {
