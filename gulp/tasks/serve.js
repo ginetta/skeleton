@@ -1,10 +1,6 @@
 'use strict';
 var browserSync = require('../utils/browserSync');
-
-function reload(done) {
-  browserSync.reload();
-  done();
-}
+var reload = browserSync.reload;
 
 var _           = require('lodash');
 
