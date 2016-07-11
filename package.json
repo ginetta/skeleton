@@ -12,7 +12,7 @@
     "deploy": "gulp deploy"
   },
   "dependencies": {
-    "sensible": "0.5.4"
+    "sensible": "0.8.1"
   },
   "devDependencies": {
     "babel-core": "^6.10.4",
