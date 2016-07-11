@@ -42,23 +42,6 @@ gulp.task(
 );
 
 
-//////////
-// Test //
-//////////
-
-// Moves all the assets to the build
-gulp.task('test:accessibility', t.getTask('accessibility'));
-
-// Tests the built project in terms of accessibility.
-gulp.task(
-  'test',
-  gulp.series(
-    'build',
-    'test:accessibility'
-  )
-);
-
-
 ////////////
 // Deploy //
 ////////////
