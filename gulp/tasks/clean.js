@@ -5,7 +5,7 @@ module.exports = function (gulp, $, config) {
   var destFolder  = config.basePaths.dest + '*';
 
   var task = function (cb) {
-    del([destFolder], cb);
+    return del([destFolder]);
   };
 
   task.description = 'Cleans the build folder';
