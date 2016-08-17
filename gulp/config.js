@@ -17,11 +17,11 @@ module.exports = function () {
 
   var paths = {
     scripts: {
-      src:  basePaths.src + 'scripts/',
+      src:  basePaths.src + 'layouts/',
       dest: basePaths.dest + 'js/'
     },
     styles: {
-      src:  basePaths.src + 'styles/',
+      src:  [basePaths.src + 'layouts/', basePaths.src + 'pages/'],
       dest: basePaths.dest + 'css/'
     },
     content: {
@@ -55,7 +55,7 @@ module.exports = function () {
 
   var appFiles = {
     scripts:   paths.scripts.src + '**/*.js',
-    styles:    paths.styles.src + '**/*.scss',
+    styles:    paths.styles.src.map(function (p) { return p + '**/*.scss'; }),
     content:   paths.content.src + '**/*.yml',
     pages:     paths.pages.src + '**/*.jade',
     layouts:   paths.layouts.src + '**/*.jade',
@@ -64,11 +64,6 @@ module.exports = function () {
     favicons:  paths.favicons.src + '**/*',
     fonts:     paths.fonts.src + '**/*'
   };
-
-  var components = [
-    basePaths.src + 'modules/',
-    basePaths.src + 'elements/'
-  ];
 
   var gulpFiles = [
     'gulp/**/*.js',
@@ -90,10 +85,7 @@ module.exports = function () {
     languages:    languages,
     paths:        paths,
     appFiles:     appFiles,
-    components:   components,
     gulpFiles:    gulpFiles,
     environments: environments
   };
 };
-
-

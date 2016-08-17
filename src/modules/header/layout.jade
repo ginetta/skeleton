@@ -1,0 +1,18 @@
+mixin header(data, options)
+  - var options = helpers.mergeDefaultOptions(options, 'modules/header');
+
+  +card({},{
+    size: {
+      all: 'one-whole',
+      mobile: 'one-whole'},
+    ratio: {
+      all: 'landscape'},
+  })
+    h1.t-h1= data.title
+    h2= data.subtitle
+    .l-grid
+      .l-grid-cell
+        a.btn(href="https://github.com/ginetta/skeleton") Github
+      .l-grid-cell
+        a.btn.btn--ghost(href="http://www.ginetta.net/") Ginetta
+    block

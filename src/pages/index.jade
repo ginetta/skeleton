@@ -1,13 +1,13 @@
 include ../modules/**/*.jade
-include ../elements/**/*.jade
 
-extends ../layouts/default
+extends ../layouts/default/template
 
 block meta
   title project-name
   //- TODO: add you page meta tags
 
 block body
-  .about.l-absolute-centered
+  .l-container
     +header(data.index.header)
+    section
       != helpers.markdown(data.index.content)

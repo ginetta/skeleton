@@ -1,0 +1,66 @@
+/**
+ * Color variables
+ */
+$colors: (
+  neutral : (
+    black    : #16161D,
+    graphite : #666,
+    gray     : #ddd,
+    silver   : #FAFAFA,
+    white    : #FFF
+  ),
+  // this needs some prunning and thoughful renaming
+  ginetta: (
+    pink           : #FB9FB1,
+    salmon         : #F0A88B,
+    orange         : #e6ad7a,
+    green-olive    : #A4C46A,
+    green          : #73CB88,
+    green-lake     : #55CE9B,
+    teal           : #34CFAD,
+    cyan           : #0FCDD0,
+    blue           : #5EC5EB,
+    blue-sky       : #80bff4,
+    purple         : #9EB8F8,
+    violet         : #D0A9F6,
+  )
+);
+
+// @import "bonescss/mixins";
+// @TODO remove once bonescss supports nested maps and rename c(...) to color(...)
+/**
+ * Color functions
+ */
+@function c($palette, $name) {
+  @if map-has-key($colors, $palette) {
+    $paletteColors: map-get($colors, $palette);
+    @if map-has-key($paletteColors, $name) {
+      @return map-get($paletteColors, $name);
+    }
+    @warn 'no color named #{$name} in palette #{$palette}';
+    @return null;
+  }
+  @warn 'no palette named #{$palette} in $colors';
+  @return null;
+}
+
+/**
+ * Color classes
+ * Try to use only in the styleguide
+ */
+@each $palette, $colors in $colors {
+  @each $name, $value in $colors {
+
+    .c-#{$palette}-#{$name}--bg {
+      background-color: #{$value};
+    }
+
+    .c-#{$palette}-#{$name}--fill {
+      fill: #{$value};
+    }
+
+    .c-#{$palette}-#{$name}--color {
+      color: #{$value};
+    }
+  }
+}

@@ -12,7 +12,7 @@
   }
 
   &--with-border {
-    outline: 4px solid $c-white;
+    outline: 4px solid c(neutral, white);
   }
 
   &--without-border {
@@ -41,7 +41,7 @@
     }
 
     &--with-border-mobile {
-      outline: 4px solid $c-white;
+      outline: 4px solid c(neutral, white);
     }
 
     &--without-border-mobile {
