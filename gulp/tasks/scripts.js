@@ -1,5 +1,6 @@
 'use strict';
 var stream  = require('../utils/browserSync').stream;
+var handleError   = require('../utils/handleError');
 var webpack = require('webpack');
 var gulpWebpack = require('webpack-stream');
 var glob = require('glob');
@@ -15,6 +16,7 @@ module.exports = function (gulp, $, config) {
 
   var task = function () {
     return gulp.src(scriptsFiles)
+      .pipe($.plumber(handleError))
       .pipe($.eslint({envs: ['browser']}))
       .pipe($.eslint.format())
       .pipe(gulpWebpack({
