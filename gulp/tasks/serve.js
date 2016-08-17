@@ -19,6 +19,9 @@ module.exports = function (gulp, $, config) {
   var componentsDirs   = config.components;
 
   _.map(componentsDirs, function(componentDir) {
+                              scriptFiles.push(componentDir + '**/*.js');
+                            });
+  _.map(componentsDirs, function(componentDir) {
                               stylesFiles.push(componentDir + '**/*.scss');
                             });
   _.map(componentsDirs, function(componentDir) {
