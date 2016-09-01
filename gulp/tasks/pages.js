@@ -30,8 +30,7 @@ module.exports = function (gulp, $, config) {
   var getRelativePath = function(file, language) {
     var destPath = config.paths.pages.src + getLanguagePath(language);
     var filePath = path.dirname(file.path);
-
-    return (path.relative(destPath, filePath) || '.') + '/';
+    return (path.relative(filePath, destPath) || '.') + '/';
   };
 
   var task = function () {
