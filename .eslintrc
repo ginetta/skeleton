@@ -1,3 +1,4 @@
+extends: 'es2015'
 rules:
   # specify whether double or single quotes should be used
   quotes: [2, "single", "avoid-escape"]
