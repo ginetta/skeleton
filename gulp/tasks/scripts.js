@@ -31,7 +31,14 @@ module.exports = function (gulp, $, config) {
         },
         module: {
           loaders: [
-            { test: /\.js$/, loader: 'babel?presets[]=es2015', exclude: /node_modules/}
+            {
+              test: /\.js$/,
+              loader: 'babel',
+              exclude: /node_modules/,
+              query: {
+                presets: ['es2015'],
+              }
+            }
           ],
         },
         resolve: {
