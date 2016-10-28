@@ -29,9 +29,18 @@ module.exports = function (gulp, $, config) {
         output: {
           filename: 'main.js'
         },
-        loaders: [
-          { test: /\.js$/, loader: 'babel?presets[]=es2015', exclude: /node_modules/}
-        ],
+        module: {
+          loaders: [
+            {
+              test: /\.js$/,
+              loader: 'babel',
+              exclude: /node_modules/,
+              query: {
+                presets: ['es2015'],
+              }
+            }
+          ],
+        },
         resolve: {
           // Makes sure the paths are relative to the root and not this file
           root: skeletonRoot,
