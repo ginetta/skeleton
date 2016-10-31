@@ -1,14 +1,20 @@
 mixin card(data, options)
-  - var data = data || {}
-  - var options = helpers.mergeDefaultOptions(options, 'modules/card');
+  -
+    var data = data || {};
+    // extends the options with the ones defined in definition.yml
+    var options = helpers.mergeDefaultOptions(options, 'modules/card');
+    var classes = [attributes.class];
 
-  - var classes = [attributes.class];
-  - classes.push('card');
+    classes.push('card');
+    options.size.forEach(function(brakpoint){
+      console.log(brakpoint);
+    });
 
-  each o, breakpoint in  options.size
+
+  each o, breakpoint in options.size
     - classes.push('l-' + o + breakpoint);
 
-  each o, breakpoint in  options.ratio
+  each o, breakpoint in options.ratio
     - classes.push('l-' + o + breakpoint);
 
   if options.border == true
