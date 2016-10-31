@@ -17,7 +17,9 @@ mixin card(data, options)
   if options.float
     - classes.push('card--' + options.float);
 
-  div(class=classes)
+  - attributes.class = classes;
+
+  div&attributes(attributes)
     if data.background
       img(src=relativePath + data.background.image, alt=data.background.alt).card-background
     .l-absolute-centered.card-content
