@@ -1,8 +1,8 @@
 @import "bonescss/mixins";
 @import "bonescss/mixins/tools-typography";
 
-$t-weight-regular              : 400;
-$t-weight-bold                 : 800;
+$t-weight-regular       : 400;
+$t-weight-bold          : 800;
 
 $t-style-normal         : normal;
 $t-style-italic         : italic;
@@ -10,12 +10,12 @@ $t-style-italic         : italic;
 $t-family-sans-serif    : Avenir, Arial, sans-serif;
 $t-family-serif         : Georgia, Times New Roman, Palatino, Hoefler Text, Baskerville, serif;
 
-$t-default-font-size    : 16px;
+$t-default-font-size    : 100%;
 $t-default-font-family  : $t-family-sans-serif;
 $t-default-font-weight  : $t-weight-regular;
 $t-default-font-style   : $t-style-normal;
 $t-default-line-height  : 1.4;
-$t-default-color        : c(neutral, black);
+$t-default-color        : color(black);
 
 $types: (
   desktop: (
@@ -28,35 +28,7 @@ $types: (
       color         : $t-default-color
     ),
     h1: (
-      font-size     : px2rel(48)
-    ),
-    h2: (
-      font-size     : px2rel(32)
-    ),
-    h3: (
-      font-family   : $t-family-serif,
-      font-size     : px2rel(28)
-    ),
-    ui-button: (
-      font-family       : $t-default-font-family,
-      font-weight       : $t-weight-bold,
-      font-style        : $t-style-normal,
-      font-size         : px2rel(16),
-      text-transform    : uppercase,
-      letter-spacing    : 1px
-    )
-  ),
-  mobile: (
-    default: (
-    ),
-    h1: (
-      font-size     : px2rel(36)
-    ),
-    h2: (
-      font-size     : px2rel(28)
-    ),
-    h3: (
-      font-size     : px2rel(22)
+      font-size     : 3rem
     )
   )
 );
@@ -68,11 +40,8 @@ html {
   font-weight: $t-default-font-weight;
   font-style: $t-default-font-style;
   line-height: $t-default-line-height;
-  color: c(neutral, black);
-
+  color: color(black);
 }
-
-$breakpoint-default: desktop;
 
 // renders default text helper classes
 @include textClasses ($prefix: ".t-");

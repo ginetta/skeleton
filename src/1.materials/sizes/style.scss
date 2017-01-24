@@ -1,5 +1,8 @@
 @import "bonescss/mixins";
 
+/**
+ * Size variables
+ */
 $sizes: (
   huge        : 136px,
   x-large     : 64px,
@@ -9,11 +12,3 @@ $sizes: (
   small       : 12px,
   tiny        : 8px
 );
-
-/* Helpers for the styleguide to display the sizes */
-@each $size, $value in $sizes {
-  .s-#{$size} {
-    width: s($size);
-    height: s($size);
-  }
-}

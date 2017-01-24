@@ -45,7 +45,11 @@ module.exports = function (gulp, $, config) {
           // Makes sure the paths are relative to the root and not this file
           root: skeletonRoot,
           // Makes sure the compiler looks for modules in /src and node_modules
-          modulesDirectories: [srcRoot, 'node_modules']
+          modulesDirectories: [srcRoot, 'node_modules'],
+          alias: {
+            elements: config.paths.elements.src,
+            modules: config.paths.modules.src
+          }
         },
         plugins: [
           // Makes sure the vendors are only imported once in this seperate file

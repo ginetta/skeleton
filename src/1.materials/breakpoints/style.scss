@@ -12,4 +12,6 @@ $breakpoints: (
     "desktop"             : "only screen and (min-width:1051px)"
 );
 
+$breakpoint-default: desktop;
+
 @include responsive-visibility("desktop" "tablet" "mobile", true);

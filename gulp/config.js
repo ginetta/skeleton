@@ -17,11 +17,11 @@ module.exports = function () {
 
   var paths = {
     scripts: {
-      src:  basePaths.src + 'layouts/',
+      src:  basePaths.src + '4.layouts/',
       dest: basePaths.dest + 'js/'
     },
     styles: {
-      src:  [basePaths.src + 'layouts/', basePaths.src + 'pages/'],
+      src:  [basePaths.src + '4.layouts/', basePaths.src + '5.pages/'],
       dest: basePaths.dest + 'css/'
     },
     content: {
@@ -29,11 +29,17 @@ module.exports = function () {
       dest: basePaths.dest + 'content/texts/'
     },
     pages: {
-      src:  basePaths.src + 'pages/',
+      src:  basePaths.src + '5.pages/',
       dest: basePaths.dest
     },
     layouts: {
-      src:  basePaths.src + 'layouts/'
+      src:  basePaths.src + '4.layouts/'
+    },
+    elements: {
+      src:  basePaths.src + '2.elements/'
+    },
+    modules: {
+      src:  basePaths.src + '3.modules/'
     },
     images: {
       src:  basePaths.content + 'images/',
