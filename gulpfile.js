@@ -29,14 +29,14 @@ gulp.task(
   'build',
   gulp.series(
     'clean',
+    'build:assets',
     gulp.parallel(
-      gulp.series(
-        'build:content',
-        'build:pages'
-      ),
-      'build:assets',
       'build:styles',
       'build:scripts'
+    ),
+    gulp.series(
+      'build:content',
+      'build:pages'
     )
   )
 );
