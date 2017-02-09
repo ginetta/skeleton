@@ -1,11 +1,12 @@
+[![wercker status](https://app.wercker.com/status/0b69514873a64ce32a5976e252359809/s/master "wercker status")](https://app.wercker.com/project/byKey/0b69514873a64ce32a5976e252359809)
+
 # project-name
 ---
-
 
 ## Instructions to run the project
 
 ### Prerequisites
-You will need 
+You will need
   - [node.js](http://nodejs.org) to run the skeleton.
 
 ### Build
