@@ -9,8 +9,6 @@ module.exports = function (gulp, $, config) {
   var scriptsFiles = config.appFiles.scripts;
   var destPath     = config.paths.scripts.dest;
 
-  const isProd = process.env.NODE_ENV === 'production';
-
   var task = function () {
     return gulp.src(scriptsFiles)
       .pipe($.plumber(handleError))
@@ -18,10 +16,10 @@ module.exports = function (gulp, $, config) {
       .pipe($.eslint.format())
       .pipe(gulpWebpack(webpackConfig(config), webpack))
       .pipe(gulp.dest(destPath))
-      .pipe($.if(isProd, $.rev()))
-      .pipe($.if(isProd, gulp.dest(destPath)))
-      .pipe($.if(isProd, $.rev.manifest()))
-      .pipe($.if(isProd, gulp.dest(destPath)))
+      .pipe($.if(config.isProd, $.rev()))
+      .pipe($.if(config.isProd, gulp.dest(destPath)))
+      .pipe($.if(config.isProd, $.rev.manifest()))
+      .pipe($.if(config.isProd, gulp.dest(destPath)))
       .pipe(stream());
   };
 

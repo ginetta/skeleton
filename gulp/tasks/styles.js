@@ -8,8 +8,6 @@ module.exports = function (gulp, $, config) {
   var destFiles  = config.paths.styles.dest;
 
   var task = function () {
-    const isProd = process.env.NODE_ENV === 'production';
-
     return gulp.src(srcFiles)
       .pipe($.plumber(handleError))
       .pipe($.cssGlobbing({
@@ -19,10 +17,10 @@ module.exports = function (gulp, $, config) {
       .pipe($.sass({includePaths: ['node_modules']}))
       .pipe($.autoprefixer({browsers: ['last 2 versions', 'ie 9']}))
       .pipe($.sourcemaps.write({includeContent: true}))
-      .pipe($.if(isProd, $.rev()))
-      .pipe($.if(isProd, gulp.dest(destFiles)))
-      .pipe($.if(isProd, $.rev.manifest()))
-      .pipe($.if(isProd,gulp.dest(destFiles)))
+      .pipe($.if(config.isProd, $.rev()))
+      .pipe($.if(config.isProd, gulp.dest(destFiles)))
+      .pipe($.if(config.isProd, $.rev.manifest()))
+      .pipe($.if(config.isProd,gulp.dest(destFiles)))
       .pipe(stream({match: '**/*.css'}));
   };
 
