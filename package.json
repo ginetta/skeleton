@@ -6,7 +6,7 @@
   "scripts": {
     "gulp": "gulp",
     "start": "gulp",
-    "build": "gulp build",
+    "build": "NODE_ENV=production gulp build",
     "test": "gulp test",
     "serve": "gulp serve",
     "deploy": "gulp deploy"
