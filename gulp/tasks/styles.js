@@ -20,7 +20,7 @@ module.exports = function (gulp, $, config) {
       .pipe($.if(config.isProd, $.rev()))
       .pipe($.if(config.isProd, gulp.dest(destFiles)))
       .pipe($.if(config.isProd, $.rev.manifest()))
-      .pipe($.if(config.isProd,gulp.dest(destFiles)))
+      .pipe(gulp.dest(destFiles))
       .pipe(stream({match: '**/*.css'}));
   };
 
