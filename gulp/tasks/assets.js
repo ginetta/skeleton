@@ -14,10 +14,17 @@ module.exports = function (gulp, $, config) {
   var task =  function () {
     var imagesSt = gulp.src(imagesSrc)
       .pipe($.changed(imagesDest))
-      .pipe(gulp.dest(imagesDest));
+      .pipe($.if(config.isProd, $.rev()))
+      .pipe($.if(config.isProd, gulp.dest(imagesDest)))
+      .pipe($.if(config.isProd, $.rev.manifest()))
+      .pipe(gulp.dest(imagesDest))
+      ;
 
     var logosSt = gulp.src(logosSrc)
       .pipe($.changed(logosSrc))
+      .pipe($.if(config.isProd, $.rev()))
+      .pipe($.if(config.isProd, gulp.dest(logosSrc)))
+      .pipe($.if(config.isProd, $.rev.manifest()))
       .pipe(gulp.dest(logosDest));
 
     var faviconsSt = gulp.src(faviconsSrc)
