@@ -15,10 +15,6 @@ module.exports = function (gulp, $, config) {
   var baseDir            = config.basePaths.src;
   var moduleHelpers      = pageshelpers(config);
 
-  const isProd = process.env.NODE_ENV === 'production';
-
-
-
   // Put the default language at the root
   var getLanguagePath = function(language) {
     if (language === config.languages[0]) {
@@ -70,7 +66,7 @@ module.exports = function (gulp, $, config) {
                   pugIncludeGlob()
                 ]
               }))
-              .pipe($.if(isProd, $.revReplace({manifest: gulp.src(['build/**/rev-manifest.json'])})))
+              .pipe($.if(config.isProd, $.revReplace({manifest: gulp.src(['build/**/rev-manifest.json'])})))
               .pipe(gulp.dest(destPath));
     }
 

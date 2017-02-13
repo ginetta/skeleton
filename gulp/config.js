@@ -92,8 +92,7 @@ module.exports = function () {
     appFiles:     appFiles,
     components:   components,
     gulpFiles:    gulpFiles,
-    environments: environments
+    environments: environments,
+    isProd: process.env.NODE_ENV === 'production'
   };
 };
-
-
