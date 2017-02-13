@@ -15,11 +15,10 @@ module.exports = function (gulp, $, config) {
       .pipe($.eslint())
       .pipe($.eslint.format())
       .pipe(gulpWebpack(webpackConfig(config), webpack))
-      .pipe(gulp.dest(destPath))
       .pipe($.if(config.isProd, $.rev()))
       .pipe($.if(config.isProd, gulp.dest(destPath)))
       .pipe($.if(config.isProd, $.rev.manifest()))
-      .pipe($.if(config.isProd, gulp.dest(destPath)))
+      .pipe(gulp.dest(destPath))
       .pipe(stream());
   };
 
