@@ -50,21 +50,5 @@ deploy-master:
       user: $G_STAGING_USER
       sshkey: $G_STAGING_KEY
       source: $WERCKER_SOURCE_DIR/build/
-
-deploy-live:
-  steps:
-    - install-packages:
-      packages: rsync
-
-    - add-to-known_hosts:
-      hostname: $G_LIVE_HOST
-
-    - add-ssh-key:
-      keyname: G_LIVE_KEY
-
-    - sjoerdmulder/rsync-deploy:
-      host: $G_LIVE_HOST
-      directory: $G_LIVE_HOME_PATH/$G_LIVE_PROJECT_PATH
-      user: $G_LIVE_USER
       sshkey: $G_LIVE_KEY
       source: $WERCKER_SOURCE_DIR/build/
