@@ -16,7 +16,7 @@ gulp.task('build:assets', t.getTask('assets'));
 // Concatenates all the content files
 gulp.task('build:content', t.getTask('content'));
 
-// Generate all pages from the jade files
+// Generate all pages from the pug files
 gulp.task('build:pages', t.getTask('pages'));
 
 // Generate all stylesheets from the sass files

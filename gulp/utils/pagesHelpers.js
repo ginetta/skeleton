@@ -2,7 +2,7 @@
 var yamljs      = require('yamljs');
 var _           = require('lodash');
 var markdown    = require('marked');
-var jadeInline  = require('jade-inline-file');
+var pugInline   = require('jade-inline-file');
 
 module.exports = function (config) {
   var srcDir = config.basePaths.src;
@@ -103,6 +103,6 @@ module.exports = function (config) {
   return {
     mergeDefaultOptions: mergeDefaultOptions,
     markdown: markdown,
-    inline: jadeInline
+    inline: pugInline
   };
 };
