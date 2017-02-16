@@ -1,5 +1,4 @@
 'use strict';
-var merge         = require('merge-stream');
 var stream        = require('../utils/browserSync').stream;
 var handleError   = require('../utils/handleError');
 
