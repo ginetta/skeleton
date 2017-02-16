@@ -3,55 +3,18 @@ var stream  = require('../utils/browserSync').stream;
 var handleError   = require('../utils/handleError');
 var webpack = require('webpack');
 var gulpWebpack = require('webpack-stream');
-var glob = require('glob');
+var webpackConfig = require('../../webpack.config');
 
 module.exports = function (gulp, $, config) {
-  var tasksHelper  = require('../utils/tasksHelpers')(gulp, config);
   var scriptsFiles = config.appFiles.scripts;
-  var vendorFile = config.paths.scripts.src + 'vendor.js';
-  var srcFiles = glob.sync(scriptsFiles, {ignore: vendorFile});
-  var destPath   = config.paths.scripts.dest;
-  var skeletonRoot = config.basePaths.root;
-  var srcRoot = config.basePaths.src;
+  var destPath     = config.paths.scripts.dest;
 
   var task = function () {
     return gulp.src(scriptsFiles)
       .pipe($.plumber(handleError))
       .pipe($.eslint({envs: ['browser']}))
       .pipe($.eslint.format())
-      .pipe(gulpWebpack({
-        debug: true, //TODO improve this one we have env depending builds
-        entry: {
-          main: srcFiles,
-          // Add modules you want to load from vendors to this file
-          vendor: vendorFile
-        },
-        output: {
-          filename: 'main.js'
-        },
-        module: {
-          loaders: [
-            {
-              test: /\.js$/,
-              loader: 'babel',
-              exclude: /node_modules/,
-              query: {
-                presets: ['es2015'],
-              }
-            }
-          ],
-        },
-        resolve: {
-          // Makes sure the paths are relative to the root and not this file
-          root: skeletonRoot,
-          // Makes sure the compiler looks for modules in /src and node_modules
-          modulesDirectories: [srcRoot, 'node_modules']
-        },
-        plugins: [
-          // Makes sure the vendors are only imported once in this seperate file
-          new webpack.optimize.CommonsChunkPlugin('vendor', 'vendor.min.js')
-        ]
-      }))
+      .pipe(gulpWebpack(webpackConfig(config), webpack))
       .pipe(gulp.dest(destPath))
       .pipe(stream());
   };
