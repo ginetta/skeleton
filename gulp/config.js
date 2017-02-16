@@ -17,11 +17,11 @@ module.exports = function () {
 
   var paths = {
     scripts: {
-      src:  basePaths.src + 'scripts/',
+      src:  basePaths.src + '4.layouts/',
       dest: basePaths.dest + 'js/'
     },
     styles: {
-      src:  basePaths.src + 'styles/',
+      src:  [basePaths.src + '4.layouts/', basePaths.src + '5.pages/'],
       dest: basePaths.dest + 'css/'
     },
     content: {
@@ -29,11 +29,17 @@ module.exports = function () {
       dest: basePaths.dest + 'content/texts/'
     },
     pages: {
-      src:  basePaths.src + 'pages/',
+      src:  basePaths.src + '5.pages/',
       dest: basePaths.dest
     },
     layouts: {
-      src:  basePaths.src + 'layouts/'
+      src:  basePaths.src + '4.layouts/'
+    },
+    elements: {
+      src:  basePaths.src + '2.elements/'
+    },
+    modules: {
+      src:  basePaths.src + '3.modules/'
     },
     images: {
       src:  basePaths.content + 'images/',
@@ -55,7 +61,7 @@ module.exports = function () {
 
   var appFiles = {
     scripts:   paths.scripts.src + '**/*.js',
-    styles:    paths.styles.src + '**/*.scss',
+    styles:    paths.styles.src.map(function (p) { return p + '**/*.scss'; }),
     content:   paths.content.src + '**/*.yml',
     pages:     paths.pages.src + '**/*.pug',
     layouts:   paths.layouts.src + '**/*.pug',
@@ -64,11 +70,6 @@ module.exports = function () {
     favicons:  paths.favicons.src + '**/*',
     fonts:     paths.fonts.src + '**/*'
   };
-
-  var components = [
-    basePaths.src + 'modules/',
-    basePaths.src + 'elements/'
-  ];
 
   var gulpFiles = [
     'gulp/**/*.js',
@@ -90,10 +91,7 @@ module.exports = function () {
     languages:    languages,
     paths:        paths,
     appFiles:     appFiles,
-    components:   components,
     gulpFiles:    gulpFiles,
     environments: environments
   };
 };
-
-

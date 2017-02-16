@@ -1,0 +1,5 @@
+.intro {
+  &__title {
+    @include type(h1);
+  }
+}

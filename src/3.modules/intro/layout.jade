@@ -1,0 +1,9 @@
+mixin intro(data, options)
+  - data = data || {}
+  - var options = helpers.mergeDefaultOptions(options, '3.modules/intro');
+
+  section.intro
+    h1.intro__title= data.title
+    p.intro__subtitle= data.subtitle
+
+    block

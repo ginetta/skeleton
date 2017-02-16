@@ -8,7 +8,7 @@ var glob = require('glob');
 module.exports = function (gulp, $, config) {
   var tasksHelper  = require('../utils/tasksHelpers')(gulp, config);
   var scriptsFiles = config.appFiles.scripts;
-  var vendorFile = config.paths.scripts.src + 'vendor.js';
+  var vendorFile = config.paths.scripts.src + 'default/vendor.js';
   var srcFiles = glob.sync(scriptsFiles, {ignore: vendorFile});
   var destPath   = config.paths.scripts.dest;
   var skeletonRoot = config.basePaths.root;
@@ -45,7 +45,11 @@ module.exports = function (gulp, $, config) {
           // Makes sure the paths are relative to the root and not this file
           root: skeletonRoot,
           // Makes sure the compiler looks for modules in /src and node_modules
-          modulesDirectories: [srcRoot, 'node_modules']
+          modulesDirectories: [srcRoot, 'node_modules'],
+          alias: {
+            elements: config.paths.elements.src,
+            modules: config.paths.modules.src
+          }
         },
         plugins: [
           // Makes sure the vendors are only imported once in this seperate file

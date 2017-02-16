@@ -1,0 +1,13 @@
+include ../2.elements/**/*.jade
+include ../3.modules/**/*.jade
+
+extends ../4.layouts/default/layout.jade
+
+block meta
+  title project-name
+  //- TODO: add you page meta tags
+
+block body
+  main
+    +intro(data.index.header)
+      != helpers.markdown(data.index.content)

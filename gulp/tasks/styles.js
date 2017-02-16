@@ -5,7 +5,6 @@ var handleError   = require('../utils/handleError');
 module.exports = function (gulp, $, config) {
   var srcFiles   = config.appFiles.styles;
   var destFiles  = config.paths.styles.dest;
-
   var task = function () {
     return gulp.src(srcFiles)
       .pipe($.plumber(handleError))

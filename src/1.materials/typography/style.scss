@@ -1,0 +1,47 @@
+@import "bonescss/mixins";
+@import "bonescss/mixins/tools-typography";
+
+$t-weight-regular       : 400;
+$t-weight-bold          : 800;
+
+$t-style-normal         : normal;
+$t-style-italic         : italic;
+
+$t-family-sans-serif    : Avenir, Arial, sans-serif;
+$t-family-serif         : Georgia, Times New Roman, Palatino, Hoefler Text, Baskerville, serif;
+
+$t-default-font-size    : 100%;
+$t-default-font-family  : $t-family-sans-serif;
+$t-default-font-weight  : $t-weight-regular;
+$t-default-font-style   : $t-style-normal;
+$t-default-line-height  : 1.4;
+$t-default-color        : color(black);
+
+$types: (
+  desktop: (
+    default: (
+      font-family   : $t-default-font-family,
+      font-weight   : $t-weight-regular,
+      font-style    : $t-style-normal,
+      font-size     : $t-default-font-size,
+      line-height   : $t-default-line-height,
+      color         : $t-default-color
+    ),
+    h1: (
+      font-size     : 3rem
+    )
+  )
+);
+
+html {
+  @include antialiased;
+  font-size: $t-default-font-size;
+  font-family: $t-default-font-family;
+  font-weight: $t-default-font-weight;
+  font-style: $t-default-font-style;
+  line-height: $t-default-line-height;
+  color: color(black);
+}
+
+// renders default text helper classes
+@include textClasses ($prefix: ".t-");
