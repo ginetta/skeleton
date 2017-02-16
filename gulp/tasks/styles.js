@@ -1,4 +1,5 @@
 'use strict';
+var fs            = require('fs');
 var stream        = require('../utils/browserSync').stream;
 var handleError   = require('../utils/handleError');
 
@@ -19,7 +20,7 @@ module.exports = function (gulp, $, config) {
       .pipe($.sass({includePaths: ['node_modules']}))
       .pipe($.autoprefixer({browsers: ['last 2 versions', 'ie 9']}))
       .pipe($.sourcemaps.write({includeContent: true}))
-      .pipe($.if(config.isProd, $.revReplace({manifest: gulp.src(manifestFile)})))
+      .pipe($.if(config.isProd, $.revReplace({manifest: fs.existsSync(manifestFile) && gulp.src(manifestFile)})))
       .pipe($.if(config.isProd, $.rev()))
       .pipe($.if(config.isProd, gulp.dest(destFiles)))
       .pipe($.if(config.isProd, $.rev.manifest(manifestFile, { merge: true, base: destFiles })))
