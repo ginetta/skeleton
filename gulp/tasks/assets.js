@@ -10,13 +10,14 @@ module.exports = function (gulp, $, config) {
   var faviconsDest = config.paths.favicons.dest;
   var fontsSrc     = config.appFiles.fonts;
   var fontsDest    = config.paths.fonts.dest;
+  var manifestFile = config.paths.revManifest.dest;
 
   var task =  function () {
     var imagesSt = gulp.src(imagesSrc)
       .pipe($.changed(imagesDest))
       .pipe($.if(config.isProd, $.rev()))
       .pipe($.if(config.isProd, gulp.dest(imagesDest)))
-      .pipe($.if(config.isProd, $.rev.manifest()))
+      .pipe($.if(config.isProd, $.rev.manifest(manifestFile, { merge: true, base: imagesDest })))
       .pipe(gulp.dest(imagesDest))
       ;
 
@@ -24,7 +25,7 @@ module.exports = function (gulp, $, config) {
       .pipe($.changed(logosSrc))
       .pipe($.if(config.isProd, $.rev()))
       .pipe($.if(config.isProd, gulp.dest(logosSrc)))
-      .pipe($.if(config.isProd, $.rev.manifest()))
+      .pipe($.if(config.isProd, $.rev.manifest(manifestFile, { merge: true, base: logosDest })))
       .pipe(gulp.dest(logosDest));
 
     var faviconsSt = gulp.src(faviconsSrc)
