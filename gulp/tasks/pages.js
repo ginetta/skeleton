@@ -1,10 +1,11 @@
 'use strict';
-var yamljs          = require('yamljs');
+var fs            = require('fs');
+var yamljs        = require('yamljs');
 var pugIncludeGlob  = require('pug-include-glob');
-var merge           = require('merge-stream');
-var path            = require('path');
-var pageshelpers    = require('../utils/pagesHelpers');
-var handleError     = require('../utils/handleError');
+var merge         = require('merge-stream');
+var path          = require('path');
+var pageshelpers  = require('../utils/pagesHelpers');
+var handleError   = require('../utils/handleError');
 
 
 module.exports = function (gulp, $, config) {
@@ -67,7 +68,7 @@ module.exports = function (gulp, $, config) {
                   pugIncludeGlob()
                 ]
               }))
-              .pipe($.if(config.isProd, $.revReplace({manifest: gulp.src(manifestFile)})))
+              .pipe($.if(config.isProd, $.revReplace({manifest: fs.existsSync(manifestFile) && gulp.src([manifestFile])})))
               .pipe(gulp.dest(destPath));
     }
 
