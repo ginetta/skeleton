@@ -1,4 +1,8 @@
-extends: 'es2015'
+extends: 'airbnb-base'
+env:
+  node: false
+  browser: true
+  commonjs: true
 rules:
   # specify whether double or single quotes should be used
   quotes: [2, "single", "avoid-escape"]
@@ -32,3 +36,11 @@ rules:
 
   # specify the maximum depth callbacks can be nested (off by default)
   max-nested-callbacks: [1, 2]
+
+  # Forbid the import of external modules that are not declared in the
+  # package.json's dependencies, devDependencies, optionalDependencies or
+  # peerDependencies
+  # (note: we disable this rule because packages inside `src` behave like
+  # aliases: e.g.: require('elements/foo') works).
+  import/no-extraneous-dependencies: [0]
+  import/no-unresolved: [0]
