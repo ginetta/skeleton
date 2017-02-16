@@ -50,6 +50,9 @@ module.exports = function () {
     fonts: {
       src:  basePaths.assets + 'fonts/',
       dest: basePaths.dest + 'assets/fonts/'
+    },
+    revManifest: {
+      dest: basePaths.dest + 'rev-manifest.json'
     }
   };
 
