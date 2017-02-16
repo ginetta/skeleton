@@ -12,7 +12,7 @@ module.exports = function (gulp, $, config) {
   var task = function () {
     return gulp.src(scriptsFiles)
       .pipe($.plumber(handleError))
-      .pipe($.eslint({envs: ['browser']}))
+      .pipe($.eslint())
       .pipe($.eslint.format())
       .pipe(gulpWebpack(webpackConfig(config), webpack))
       .pipe(gulp.dest(destPath))
