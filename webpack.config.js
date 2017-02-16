@@ -42,7 +42,10 @@ module.exports = config => {
       // use. This results in pagespeed optimizations as the browser can quickly
       // serve the shared code from cache, rather than being forced to load a
       // larger bundle whenever a new page is visited.
-      new webpack.optimize.CommonsChunkPlugin('vendor')
+      new webpack.optimize.CommonsChunkPlugin({
+        name: 'vendor',
+        filename: 'vendor.min.js',
+      })
     ]
   };
 };
