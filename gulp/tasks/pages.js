@@ -1,10 +1,10 @@
 'use strict';
-var yamljs        = require('yamljs');
-var jade          = require('jade');
-var merge         = require('merge-stream');
-var path          = require('path');
-var pageshelpers  = require('../utils/pagesHelpers');
-var handleError   = require('../utils/handleError');
+var yamljs          = require('yamljs');
+var pugIncludeGlob  = require('pug-include-glob');
+var merge           = require('merge-stream');
+var path            = require('path');
+var pageshelpers    = require('../utils/pagesHelpers');
+var handleError     = require('../utils/handleError');
 
 
 module.exports = function (gulp, $, config) {
@@ -52,7 +52,6 @@ module.exports = function (gulp, $, config) {
 
       return gulp.src(srcFiles)
               .pipe($.plumber(handleError))
-              .pipe($.jadeGlobbing())
               .pipe($.data(function(file) {
                 return {
                   data:         loadContent(language),
@@ -61,11 +60,13 @@ module.exports = function (gulp, $, config) {
                   language:     language
                 };
               }))
-              .pipe($.jade({
-                jade: jade,
-                pretty:  true,
+              .pipe($.pug({
                 client:  false,
-                basedir: baseDir
+                pretty: true,
+                basedir: baseDir,
+                plugins: [
+                  pugIncludeGlob()
+                ]
               }))
               .pipe(gulp.dest(destPath));
     }
@@ -76,6 +77,6 @@ module.exports = function (gulp, $, config) {
     return merge(pagesStreams);
   };
 
-  task.description = 'Generate all pages from the jade files';
+  task.description = 'Generate all pages from the pug files';
   return task;
 };

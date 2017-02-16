@@ -25,7 +25,7 @@ module.exports = function (gulp, $, config) {
                               stylesFiles.push(componentDir + '**/*.scss');
                             });
   _.map(componentsDirs, function(componentDir) {
-                              pagesFiles.push(componentDir + '**/*.jade');
+                              pagesFiles.push(componentDir + '**/*.pug');
                             });
   _.map(componentsDirs, function(componentDir) {
                               pagesFiles.push(componentDir + '**/*.yml');
