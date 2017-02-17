@@ -30,10 +30,10 @@ rules:
   # transpilation)
   comma-dangle:
     - 2
-    - arrays: always
-      objects: always
-      imports: always
-      exports: always
+    - arrays: only-multiline
+      objects: only-multiline
+      imports: only-multiline
+      exports: only-multiline
       functions: never
 
 
