@@ -1,8 +1,7 @@
 extends: 'airbnb-base'
 env:
-  node: false
-  browser: true
-  commonjs: true
+  node: true
+  browser: false
 rules:
 
   # -------------------
