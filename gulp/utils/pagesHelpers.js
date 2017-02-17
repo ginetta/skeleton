@@ -3,7 +3,7 @@ const _ = require('lodash');
 const markdown = require('marked');
 const pugInline = require('jade-inline-file');
 
-module.exports = (config) => {
+module.exports = (config, mergedDefinitions) => {
   const srcDir = config.basePaths.src;
 
   // TODO: Rewrite and document this helper function
@@ -86,7 +86,7 @@ module.exports = (config) => {
   //     '': value3
   //   border: true
   const mergeDefaultOptions = (options = {}, path) => {
-    const schema = yamljs.load(`${srcDir}${path}/definition.yml`);
+    const schema = mergedDefinitions[path];
     const optionsSchema = schema.options;
 
     return _.mapValues(optionsSchema, (o, oKey) => {
