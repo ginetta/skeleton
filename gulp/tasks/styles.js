@@ -17,8 +17,8 @@ module.exports = (gulp, $, config) => {
       }))
       .pipe($.if(!config.isProd, $.sourcemaps.init()))
       .pipe($.sass({
-        includePaths : ['node_modules'],
-        outputStyle  : config.isProd ? 'compressed' : '',
+        includePaths: ['node_modules'],
+        outputStyle: config.isProd ? 'compressed' : '',
       }))
       .pipe($.autoprefixer({ browsers: ['last 2 versions', 'ie 9'] }))
       .pipe($.if(!config.isProd, $.sourcemaps.write({ includeContent: true })))
