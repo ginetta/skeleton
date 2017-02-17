@@ -1,11 +1,10 @@
-'use strict';
-var gulp        = require('gulp');
-var config      = require('./gulp/config')();
-var t           = require('./gulp/utils/tasksHelpers')(gulp, config);
+const gulp = require('gulp');
+const config = require('./gulp/config')();
+const t = require('./gulp/utils/tasksHelpers')(gulp, config);
 
-///////////////
+// ----------//
 //   Build   //
-///////////////
+// ----------//
 
 // Cleans the build folder
 gulp.task('clean', t.getTask('clean'));
@@ -32,26 +31,24 @@ gulp.task(
     'build:assets',
     gulp.parallel(
       'build:styles',
-      'build:scripts'
+      'build:scripts',
     ),
     gulp.series(
       'build:content',
-      'build:pages'
-    )
-  )
+      'build:pages',
+    ),
+  ),
 );
 
-
-////////////
+// -------//
 // Deploy //
-////////////
+// -------//
 
 gulp.task('deploy', t.getTask('deploy'));
 
-
-/////////////
+// ------- -//
 //  Others  //
-/////////////
+// ------ --//
 
 // Serve the build folder
 gulp.task('serve', t.getTask('serve'));
@@ -64,6 +61,6 @@ gulp.task(
   'default',
   gulp.series(
     'build',
-    'serve'
-  )
+    'serve',
+  ),
 );
