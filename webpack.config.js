@@ -56,7 +56,7 @@ module.exports = config => {
       // larger bundle whenever a new page is visited.
       new webpack.optimize.CommonsChunkPlugin({
         name: 'vendor',
-        filename: 'vendor.min.js',
+        filename: 'vendor.js',
       })
     ]
   };
