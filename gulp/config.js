@@ -3,67 +3,67 @@ const path = require('path');
 
 module.exports = () => {
   const basePaths = {
-    root    : path.join(__dirname, '..'),
-    src     : 'src/',
-    content : 'content/',
-    assets  : 'assets/',
-    dest    : 'build/',
-    tmp     : '.tmp/',
+    root: path.join(__dirname, '..'),
+    src: 'src/',
+    content: 'content/',
+    assets: 'assets/',
+    dest: 'build/',
+    tmp: '.tmp/',
   };
 
   const languages = ['en'];
 
   const paths = {
-    scripts : {
-      src  : `${basePaths.src}scripts/`,
-      dest : `${basePaths.dest}js/`,
+    scripts: {
+      src: `${basePaths.src}scripts/`,
+      dest: `${basePaths.dest}js/`,
     },
-    styles : {
-      src  : `${basePaths.src}styles/`,
-      dest : `${basePaths.dest}css/`,
+    styles: {
+      src: `${basePaths.src}styles/`,
+      dest: `${basePaths.dest}css/`,
     },
-    content : {
-      src  : `${basePaths.content}texts/`,
-      dest : `${basePaths.dest}content/texts/`,
+    content: {
+      src: `${basePaths.content}texts/`,
+      dest: `${basePaths.dest}content/texts/`,
     },
-    pages : {
-      src  : `${basePaths.src}pages/`,
-      dest : basePaths.dest,
+    pages: {
+      src: `${basePaths.src}pages/`,
+      dest: basePaths.dest,
     },
-    layouts : {
-      src : `${basePaths.src}layouts/`,
+    layouts: {
+      src: `${basePaths.src}layouts/`,
     },
-    images : {
-      src  : `${basePaths.content}images/`,
-      dest : `${basePaths.dest}content/images/`,
+    images: {
+      src: `${basePaths.content}images/`,
+      dest: `${basePaths.dest}content/images/`,
     },
-    logos : {
-      src  : `${basePaths.assets}logos/`,
-      dest : `${basePaths.dest}assets/logos/`,
+    logos: {
+      src: `${basePaths.assets}logos/`,
+      dest: `${basePaths.dest}assets/logos/`,
     },
-    favicons : {
-      src  : `${basePaths.assets}favicons/`,
-      dest : basePaths.dest,
+    favicons: {
+      src: `${basePaths.assets}favicons/`,
+      dest: basePaths.dest,
     },
-    fonts : {
-      src  : `${basePaths.assets}fonts/`,
-      dest : `${basePaths.dest}assets/fonts/`,
+    fonts: {
+      src: `${basePaths.assets}fonts/`,
+      dest: `${basePaths.dest}assets/fonts/`,
     },
-    revManifest : {
-      dest : `${basePaths.dest}rev-manifest.json`,
+    revManifest: {
+      dest: `${basePaths.dest}rev-manifest.json`,
     },
   };
 
   const appFiles = {
-    scripts  : `${paths.scripts.src}**/*.js`,
-    styles   : `${paths.styles.src}**/*.scss`,
-    content  : `${paths.content.src}**/*.yml`,
-    pages    : `${paths.pages.src}**/*.pug`,
-    layouts  : `${paths.layouts.src}**/*.pug`,
-    images   : `${paths.images.src}**/*`,
-    logos    : `${paths.logos.src}**/*`,
-    favicons : `${paths.favicons.src}**/*`,
-    fonts    : `${paths.fonts.src}**/*`,
+    scripts: `${paths.scripts.src}**/*.js`,
+    styles: `${paths.styles.src}**/*.scss`,
+    content: `${paths.content.src}**/*.yml`,
+    pages: `${paths.pages.src}**/*.pug`,
+    layouts: `${paths.layouts.src}**/*.pug`,
+    images: `${paths.images.src}**/*`,
+    logos: `${paths.logos.src}**/*`,
+    favicons: `${paths.favicons.src}**/*`,
+    fonts: `${paths.fonts.src}**/*`,
   };
 
   const components = [
@@ -77,12 +77,12 @@ module.exports = () => {
   ];
 
   const environments = {
-    testing : {
-      host        : argv.host,
-      username    : argv.username,
-      projectPath : 'preview.ginetta.net/skeleton/', // 'client.ginetta.net/project-name/'
-      releasePath : argv.path,
-      privateKey  : argv.privateKey,
+    testing: {
+      host: argv.host,
+      username: argv.username,
+      projectPath: 'preview.ginetta.net/skeleton/', // 'client.ginetta.net/project-name/'
+      releasePath: argv.path,
+      privateKey: argv.privateKey,
     },
   };
 
@@ -94,6 +94,6 @@ module.exports = () => {
     components,
     gulpFiles,
     environments,
-    isProd : process.env.NODE_ENV === 'production',
+    isProd: process.env.NODE_ENV === 'production',
   };
 };

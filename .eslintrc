@@ -4,18 +4,6 @@ env:
   browser: false
 rules:
 
-  # Forces alignment of objects values and colons of both single line objects
-  # and multiLine objects. This promotes smaller diffs.
-  key-spacing:
-    - 2
-    - singleLine:
-        beforeColon: false
-        afterColon: true
-      multiLine:
-        beforeColon: true
-        afterColon: true
-        align: colon
-
   no-multi-spaces:
     - 2
     - exceptions:

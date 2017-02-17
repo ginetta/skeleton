@@ -13,20 +13,20 @@ module.exports = (gulp, $, config) => {
     gulp.src(srcFiles)
       .pipe($.plumber(handleError))
       .pipe($.cssGlobbing({
-        extensions : ['.scss'],
+        extensions: ['.scss'],
       }))
       .pipe($.sourcemaps.init())
       .pipe($.sass({ includePaths: ['node_modules'] }))
       .pipe($.autoprefixer({ browsers: ['last 2 versions', 'ie 9'] }))
       .pipe($.sourcemaps.write({ includeContent: true }))
       .pipe($.if(config.isProd, $.revReplace({
-        manifest : fs.existsSync(manifestFile) && gulp.src(manifestFile),
+        manifest: fs.existsSync(manifestFile) && gulp.src(manifestFile),
       })))
       .pipe($.if(config.isProd, $.rev()))
       .pipe($.if(config.isProd, gulp.dest(destFiles)))
       .pipe($.if(config.isProd, $.rev.manifest(manifestFile, {
-        merge : true,
-        base  : destFiles,
+        merge: true,
+        base: destFiles,
       })))
       .pipe(gulp.dest(destFiles))
       .pipe(stream({ match: '**/*.css' }))

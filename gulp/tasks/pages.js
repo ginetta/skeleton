@@ -47,21 +47,21 @@ module.exports = (gulp, $, config) => {
       return gulp.src(srcFiles)
         .pipe($.plumber(handleError))
         .pipe($.data(file => ({
-          data         : loadContent(language),
-          relativePath : getRelativePath(file, language),
-          helpers      : moduleHelpers,
+          data: loadContent(language),
+          relativePath: getRelativePath(file, language),
+          helpers: moduleHelpers,
           language,
         })))
         .pipe($.pug({
-          client  : false,
-          pretty  : true,
-          basedir : baseDir,
-          plugins : [
+          client: false,
+          pretty: true,
+          basedir: baseDir,
+          plugins: [
             pugIncludeGlob(),
           ],
         }))
         .pipe($.if(config.isProd, $.revReplace({
-          manifest : fs.existsSync(manifestFile) && gulp.src([manifestFile]),
+          manifest: fs.existsSync(manifestFile) && gulp.src([manifestFile]),
         })))
         .pipe(gulp.dest(destPath));
     }

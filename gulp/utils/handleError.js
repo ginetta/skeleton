@@ -6,8 +6,8 @@ module.exports = () => {
 
   // Send error to the terminal with gulp-notify
   gNotify.onError({
-    title   : '<%= error.plugin %>',
-    message : '<%= error.message %>',
+    title: '<%= error.plugin %>',
+    message: '<%= error.message %>',
   }).apply(this, args);
 
   // Send error to the browser with Browserify
