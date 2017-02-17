@@ -1,7 +1,4 @@
-'use strict';
-
-
-function foo(){
+function foo() {
   // The code for this module comes here
 }
 
