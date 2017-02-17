@@ -1,17 +1,17 @@
 const merge = require('merge-stream');
 
 module.exports = (gulp, $, config) => {
-  const imagesSrc    = config.appFiles.images;
-  const imagesDest   = config.paths.images.dest;
-  const logosSrc     = config.appFiles.logos;
-  const logosDest    = config.paths.logos.dest;
-  const faviconsSrc  = config.appFiles.favicons;
+  const imagesSrc = config.appFiles.images;
+  const imagesDest = config.paths.images.dest;
+  const logosSrc = config.appFiles.logos;
+  const logosDest = config.paths.logos.dest;
+  const faviconsSrc = config.appFiles.favicons;
   const faviconsDest = config.paths.favicons.dest;
-  const fontsSrc     = config.appFiles.fonts;
-  const fontsDest    = config.paths.fonts.dest;
+  const fontsSrc = config.appFiles.fonts;
+  const fontsDest = config.paths.fonts.dest;
   const manifestFile = config.paths.revManifest.dest;
 
-  const task =  () => {
+  const task = () => {
     const imagesSt = gulp.src(imagesSrc)
       .pipe($.changed(imagesDest))
       .pipe($.if(config.isProd, $.rev()))

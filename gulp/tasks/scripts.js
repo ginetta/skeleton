@@ -1,12 +1,12 @@
-const stream        = require('../utils/browserSync').stream;
-const handleError   = require('../utils/handleError');
-const webpack       = require('webpack');
-const gulpWebpack   = require('webpack-stream');
+const stream = require('../utils/browserSync').stream;
+const handleError = require('../utils/handleError');
+const webpack = require('webpack');
+const gulpWebpack = require('webpack-stream');
 const webpackConfig = require('../../webpack.config');
 
 module.exports = (gulp, $, config) => {
   const scriptsFiles = config.appFiles.scripts;
-  const destPath     = config.paths.scripts.dest;
+  const destPath = config.paths.scripts.dest;
   const manifestFile = config.paths.revManifest.dest;
 
   const task = () =>

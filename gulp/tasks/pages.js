@@ -1,19 +1,19 @@
-const fs             = require('fs');
-const yamljs         = require('yamljs');
+const fs = require('fs');
+const yamljs = require('yamljs');
 const pugIncludeGlob = require('pug-include-glob');
-const merge          = require('merge-stream');
-const path           = require('path');
-const pageshelpers   = require('../utils/pagesHelpers');
-const handleError    = require('../utils/handleError');
+const merge = require('merge-stream');
+const path = require('path');
+const pageshelpers = require('../utils/pagesHelpers');
+const handleError = require('../utils/handleError');
 
 module.exports = (gulp, $, config) => {
-  const srcFiles      = config.appFiles.pages;
-  const destFiles     = config.paths.pages.dest;
-  const languages     = config.languages;
-  const contentPath   = config.paths.content.dest;
-  const baseDir       = config.basePaths.src;
+  const srcFiles = config.appFiles.pages;
+  const destFiles = config.paths.pages.dest;
+  const languages = config.languages;
+  const contentPath = config.paths.content.dest;
+  const baseDir = config.basePaths.src;
   const moduleHelpers = pageshelpers(config);
-  const manifestFile  = config.paths.revManifest.dest;
+  const manifestFile = config.paths.revManifest.dest;
 
   // Put the default language at the root
   const getLanguagePath = (language) => {

@@ -1,9 +1,9 @@
-const fs          = require('fs');
-const stream      = require('../utils/browserSync').stream;
+const fs = require('fs');
+const stream = require('../utils/browserSync').stream;
 const handleError = require('../utils/handleError');
 
 module.exports = (gulp, $, config) => {
-  const srcFiles  = config.appFiles.styles;
+  const srcFiles = config.appFiles.styles;
   const destFiles = config.paths.styles.dest;
   // previously rev files such as assets that might have been referenced
   // in the styles (and their path needs to be updated)

@@ -1,5 +1,5 @@
 module.exports = (gulp, $, config) => {
-  const gulpFiles   = config.gulpFiles;
+  const gulpFiles = config.gulpFiles;
 
   const task = () =>
     gulp.src(gulpFiles)

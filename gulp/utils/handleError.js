@@ -1,4 +1,4 @@
-const gNotify  = require('gulp-notify');
+const gNotify = require('gulp-notify');
 const bsNotify = require('./browserSync').notify;
 
 module.exports = () => {
