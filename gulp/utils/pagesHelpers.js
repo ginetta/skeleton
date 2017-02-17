@@ -1,11 +1,8 @@
-const yamljs = require('yamljs');
 const _ = require('lodash');
 const markdown = require('marked');
 const pugInline = require('jade-inline-file');
 
 module.exports = (config, mergedDefinitions) => {
-  const srcDir = config.basePaths.src;
-
   // TODO: Rewrite and document this helper function
 
   /**
