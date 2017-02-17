@@ -102,6 +102,6 @@ module.exports = (config) => {
   return {
     mergeDefaultOptions,
     markdown,
-    inline : pugInline,
+    inline: pugInline,
   };
 };

@@ -7,40 +7,40 @@ module.exports = config => ({
   // and webpack starts bundling
   // can be string | object {entryname: entrypath} | array
   // we are using an object here (result of `globEntries`)
-  entry : globEntries(config.appFiles.scripts),
+  entry: globEntries(config.appFiles.scripts),
 
   // options related to how webpack emits results
-  output : {
+  output: {
     // the filename template for entry chunks
-    filename : '[name].js',
+    filename: '[name].js',
 
     // the target directory for all output files
     // must be an absolute path (thus the `path.resolve`)
-    path : path.resolve(__dirname, 'build'),
+    path: path.resolve(__dirname, 'build'),
   },
 
-  module : {
-    rules : [
+  module: {
+    rules: [
       {
-        test    : /\.js$/,
-        exclude : /node_modules/,
-        use     : ['babel-loader'],
+        test: /\.js$/,
+        exclude: /node_modules/,
+        use: ['babel-loader'],
       },
     ],
   },
 
   // options for resolving module requests
-  resolve : {
+  resolve: {
 
     // directories where to look for modules
-    modules : [
+    modules: [
       'node_modules',
       path.join(__dirname, '.'),
       path.resolve(__dirname, 'src'),
     ],
   },
 
-  plugins : [
+  plugins: [
     // The CommonsChunkPlugin is an opt-in feature that creates a separate file
     // (known as a chunk), consisting of common modules shared between multiple
     // entry points. By separating common modules from bundles, the resulting
@@ -49,8 +49,8 @@ module.exports = config => ({
     // serve the shared code from cache, rather than being forced to load a
     // larger bundle whenever a new page is visited.
     new webpack.optimize.CommonsChunkPlugin({
-      name     : 'vendor',
-      filename : 'vendor.js',
+      name: 'vendor',
+      filename: 'vendor.js',
     }),
   ],
 });

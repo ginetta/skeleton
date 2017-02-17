@@ -18,8 +18,8 @@ module.exports = (gulp, $, config) => {
       .pipe($.if(config.isProd, $.rev()))
       .pipe($.if(config.isProd, gulp.dest(destPath)))
       .pipe($.if(config.isProd, $.rev.manifest(manifestFile, {
-        merge : true,
-        base  : destPath,
+        merge: true,
+        base: destPath,
       })))
       .pipe(gulp.dest(destPath))
       .pipe(stream())
