@@ -52,5 +52,30 @@ module.exports = config => ({
       name: 'vendor',
       filename: 'vendor.js',
     }),
-  ],
+
+  // Production-Only Plugins
+  // (they get concatenated only if we're building for production)
+  // See: https://webpack.js.org/guides/production-build/#the-manual-way-configuring-webpack-for-multiple-environments
+  ].concat(config.isProd ? [
+    new webpack.LoaderOptionsPlugin({
+      minimize : true,
+      debug    : false,
+    }),
+    new webpack.DefinePlugin({
+      'process.env' : {
+        NODE_ENV : JSON.stringify('production'),
+      },
+    }),
+    new webpack.optimize.UglifyJsPlugin({
+      beautify : false,
+      mangle   : {
+        screw_ie8   : true,
+        keep_fnames : true,
+      },
+      compress : {
+        screw_ie8 : true,
+      },
+      comments : false,
+    }),
+  ] : []),
 });
