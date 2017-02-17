@@ -1,37 +1,27 @@
-'use strict';
-var browserSync = require('../utils/browserSync');
-var reload = browserSync.reload;
+const _           = require('lodash');
+const browserSync = require('../utils/browserSync');
 
-var _           = require('lodash');
+const reload = browserSync.reload;
 
-module.exports = function (gulp, $, config) {
-  var serverBase       = config.basePaths.dest;
-  var scriptFiles      = [config.appFiles.scripts];
-  var stylesFiles      = [config.appFiles.styles];
-  var pagesFiles       = [config.appFiles.pages, config.appFiles.layouts];
-  var contentSrcFiles  = config.appFiles.content;
-  var gulpFiles        = config.gulpFiles;
-  var logosFiles       = config.appFiles.logos;
-  var faviconsFiles    = config.appFiles.favicons;
-  var imagesFiles      = config.appFiles.images;
-  var fontsFiles       = config.appFiles.fonts;
+// eslint-disable-next-line max-statements
+module.exports = (gulp, $, config) => {
+  const serverBase      = config.basePaths.dest;
+  const scriptFiles     = [config.appFiles.scripts];
+  const stylesFiles     = [config.appFiles.styles];
+  const pagesFiles      = [config.appFiles.pages, config.appFiles.layouts];
+  const contentSrcFiles = config.appFiles.content;
+  const logosFiles      = config.appFiles.logos;
+  const faviconsFiles   = config.appFiles.favicons;
+  const imagesFiles     = config.appFiles.images;
+  const fontsFiles      = config.appFiles.fonts;
+  const componentsDirs  = config.components;
 
-  var componentsDirs   = config.components;
+  _.map(componentsDirs, componentDir => scriptFiles.push(`${componentDir}**/*.js`));
+  _.map(componentsDirs, componentDir => stylesFiles.push(`${componentDir}**/*.scss`));
+  _.map(componentsDirs, componentDir => pagesFiles.push(`${componentDir}**/*.pug`));
+  _.map(componentsDirs, componentDir => pagesFiles.push(`${componentDir}**/*.yml`));
 
-  _.map(componentsDirs, function(componentDir) {
-                              scriptFiles.push(componentDir + '**/*.js');
-                            });
-  _.map(componentsDirs, function(componentDir) {
-                              stylesFiles.push(componentDir + '**/*.scss');
-                            });
-  _.map(componentsDirs, function(componentDir) {
-                              pagesFiles.push(componentDir + '**/*.pug');
-                            });
-  _.map(componentsDirs, function(componentDir) {
-                              pagesFiles.push(componentDir + '**/*.yml');
-                            });
-
-  var task = function () {
+  const task = () => {
     // Initialising the server
     browserSync.start(serverBase);
 

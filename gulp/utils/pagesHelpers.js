@@ -1,18 +1,17 @@
-'use strict';
-var yamljs      = require('yamljs');
-var _           = require('lodash');
-var markdown    = require('marked');
-var pugInline   = require('jade-inline-file');
+const yamljs    = require('yamljs');
+const _         = require('lodash');
+const markdown  = require('marked');
+const pugInline = require('jade-inline-file');
 
-module.exports = function (config) {
-  var srcDir = config.basePaths.src;
+module.exports = (config) => {
+  const srcDir = config.basePaths.src;
 
   // TODO: Rewrite and document this helper function
 
   /**
    * Helper doesn't validates if a user specifies a value
    */
-  function hasValue (value) {
+  function hasValue(value) {
     return value !== null && value !== undefined;
   }
 
@@ -26,7 +25,7 @@ module.exports = function (config) {
    *
    * If the user doesn't pass any value, take the default from the schema
    */
-  function mergeSimpleOptionDefault (optionValue, optionSchema) {
+  function mergeSimpleOptionDefault(optionValue, optionSchema) {
     // if the passed options has any value for this option
     // just take that value
     if (hasValue(optionValue)) {
@@ -49,20 +48,21 @@ module.exports = function (config) {
    * doesn't specify any value
    */
   function mergeComplexOptionDefault(optionValue, optionSchema) {
-    var transformedOption = {};
+    const transformedOption = {};
 
     // For each sub-option of the schema
-    _.forEach(optionSchema, function(subO, subOKey) {
-      var subOptionValue = mergeSimpleOptionDefault(optionValue[subOKey], subO);
+    _.forEach(optionSchema, (subO, subOKey) => {
+      const subOptionValue = mergeSimpleOptionDefault(optionValue[subOKey], subO);
+      let realSubOKey;
 
       // process the suboption transformed key
       if (subOKey === 'all') {
-        subOKey = '';
+        realSubOKey = '';
       } else {
-        subOKey = '-' + subOKey;
+        realSubOKey = `-${subOKey}`;
       }
 
-      transformedOption[subOKey] = subOptionValue;
+      transformedOption[realSubOKey] = subOptionValue;
     });
     return transformedOption;
   }
@@ -85,12 +85,11 @@ module.exports = function (config) {
   //   ratio:
   //     '': value3
   //   border: true
-  var mergeDefaultOptions = function(options, path) {
-    var optionsSchema, schema;
-    options = options || {};
-    schema = yamljs.load(srcDir + path + '/definition.yml');
-    optionsSchema = schema.options;
-    return _.mapValues(optionsSchema, function(o, oKey) {
+  const mergeDefaultOptions = (options = {}, path) => {
+    const schema = yamljs.load(`${srcDir}${path}/definition.yml`);
+    const optionsSchema = schema.options;
+
+    return _.mapValues(optionsSchema, (o, oKey) => {
       // Handle simple option (options that are just an array)
       if (Array.isArray(o)) {
         return mergeSimpleOptionDefault(options[oKey], o);
@@ -101,8 +100,8 @@ module.exports = function (config) {
   };
 
   return {
-    mergeDefaultOptions: mergeDefaultOptions,
-    markdown: markdown,
-    inline: pugInline
+    mergeDefaultOptions,
+    markdown,
+    inline : pugInline,
   };
 };

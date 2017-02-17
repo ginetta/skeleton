@@ -1,79 +1,73 @@
-'use strict';
-var fs            = require('fs');
-var yamljs        = require('yamljs');
-var pugIncludeGlob  = require('pug-include-glob');
-var merge         = require('merge-stream');
-var path          = require('path');
-var pageshelpers  = require('../utils/pagesHelpers');
-var handleError   = require('../utils/handleError');
+const fs             = require('fs');
+const yamljs         = require('yamljs');
+const pugIncludeGlob = require('pug-include-glob');
+const merge          = require('merge-stream');
+const path           = require('path');
+const pageshelpers   = require('../utils/pagesHelpers');
+const handleError    = require('../utils/handleError');
 
-
-module.exports = function (gulp, $, config) {
-  var srcFiles           = config.appFiles.pages;
-  var destFiles          = config.paths.pages.dest;
-  var languages          = config.languages;
-  var contentPath        = config.paths.content.dest;
-  var baseDir            = config.basePaths.src;
-  var moduleHelpers      = pageshelpers(config);
-  var manifestFile       = config.paths.revManifest.dest;
+module.exports = (gulp, $, config) => {
+  const srcFiles      = config.appFiles.pages;
+  const destFiles     = config.paths.pages.dest;
+  const languages     = config.languages;
+  const contentPath   = config.paths.content.dest;
+  const baseDir       = config.basePaths.src;
+  const moduleHelpers = pageshelpers(config);
+  const manifestFile  = config.paths.revManifest.dest;
 
   // Put the default language at the root
-  var getLanguagePath = function(language) {
+  const getLanguagePath = (language) => {
     if (language === config.languages[0]) {
       return '';
-    } else {
-      return language + '/';
     }
+    return `${language}/`;
   };
 
   // Returns the relative path between the page and the root of the web server
-  var getRelativePath = function(file, language) {
-    var destPath = config.paths.pages.src + getLanguagePath(language);
-    var filePath = path.dirname(file.path);
-    return (path.relative(filePath, destPath) || '.') + '/';
+  const getRelativePath = (file, language) => {
+    const destPath = config.paths.pages.src + getLanguagePath(language);
+    const filePath = path.dirname(file.path);
+    return `${path.relative(filePath, destPath) || '.'}/`;
   };
 
-  var task = function () {
-
+  const task = () => {
     // Load the content for the page
     function loadContent(language) {
-
-      return yamljs.load(contentPath + language + '.yml');
+      return yamljs.load(`${contentPath}${language}.yml`);
     }
 
     function getDestPath(language) {
-      var destPath = destFiles + getLanguagePath(language);
+      const destPath = destFiles + getLanguagePath(language);
       return destPath;
     }
 
-
     function compilePages(language) {
-      var destPath = getDestPath(language);
+      const destPath = getDestPath(language);
 
       return gulp.src(srcFiles)
-              .pipe($.plumber(handleError))
-              .pipe($.data(function(file) {
-                return {
-                  data:         loadContent(language),
-                  relativePath: getRelativePath(file, language),
-                  helpers:      moduleHelpers,
-                  language:     language
-                };
-              }))
-              .pipe($.pug({
-                client:  false,
-                pretty: true,
-                basedir: baseDir,
-                plugins: [
-                  pugIncludeGlob()
-                ]
-              }))
-              .pipe($.if(config.isProd, $.revReplace({manifest: fs.existsSync(manifestFile) && gulp.src([manifestFile])})))
-              .pipe(gulp.dest(destPath));
+        .pipe($.plumber(handleError))
+        .pipe($.data(file => ({
+          data         : loadContent(language),
+          relativePath : getRelativePath(file, language),
+          helpers      : moduleHelpers,
+          language,
+        })))
+        .pipe($.pug({
+          client  : false,
+          pretty  : true,
+          basedir : baseDir,
+          plugins : [
+            pugIncludeGlob(),
+          ],
+        }))
+        .pipe($.if(config.isProd, $.revReplace({
+          manifest : fs.existsSync(manifestFile) && gulp.src([manifestFile]),
+        })))
+        .pipe(gulp.dest(destPath));
     }
 
     // Generate the pages for each language
-    var pagesStreams = languages.map(compilePages);
+    const pagesStreams = languages.map(compilePages);
 
     return merge(pagesStreams);
   };

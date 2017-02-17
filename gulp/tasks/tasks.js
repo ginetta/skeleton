@@ -1,13 +1,11 @@
-'use strict';
+module.exports = (gulp, $, config) => {
+  const gulpFiles   = config.gulpFiles;
 
-module.exports = function (gulp, $, config) {
-  var gulpFiles   = config.gulpFiles;
-
-  var task = function () {
-    return gulp.src(gulpFiles)
-      .pipe($.eslint({envs: ['node']}))
-      .pipe($.eslint.format());
-  };
+  const task = () =>
+    gulp.src(gulpFiles)
+      .pipe($.eslint())
+      .pipe($.eslint.format())
+      ;
 
   task.description = 'Lints the gulp tasks';
   return task;
