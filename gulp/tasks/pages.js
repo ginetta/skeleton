@@ -3,6 +3,8 @@ const yamljs = require('yamljs');
 const pugIncludeGlob = require('pug-include-glob');
 const merge = require('merge-stream');
 const path = require('path');
+const glob = require('glob');
+const _ = require('lodash');
 const pageshelpers = require('../utils/pagesHelpers');
 const handleError = require('../utils/handleError');
 
@@ -12,7 +14,6 @@ module.exports = (gulp, $, config) => {
   const languages = config.languages;
   const contentPath = config.paths.content.dest;
   const baseDir = config.basePaths.src;
-  const moduleHelpers = pageshelpers(config);
   const manifestFile = config.paths.revManifest.dest;
 
   // Put the default language at the root
@@ -41,17 +42,34 @@ module.exports = (gulp, $, config) => {
       return destPath;
     }
 
+    function loadMergedDefinitions() {
+      return glob.sync(`${config.basePaths.src}**/definition.yml`)
+        .reduce((acc, definitionPath) => {
+          const normalizedPath = definitionPath
+            .replace(config.basePaths.src, '')
+            .replace('/definition.yml', '')
+            ;
+          return _.merge(acc, {
+            [normalizedPath]: yamljs.load(definitionPath),
+          });
+        }, {})
+        ;
+    }
+
     function compilePages(language) {
       const destPath = getDestPath(language);
 
       return gulp.src(srcFiles)
         .pipe($.plumber(handleError))
-        .pipe($.data(file => ({
-          data: loadContent(language),
-          relativePath: getRelativePath(file, language),
-          helpers: moduleHelpers,
-          language,
-        })))
+        .pipe($.data((file) => {
+          const mergedDefinitions = loadMergedDefinitions();
+          return {
+            data: loadContent(language),
+            relativePath: getRelativePath(file, language),
+            helpers: pageshelpers(config, mergedDefinitions),
+            language,
+          };
+        }))
         .pipe($.pug({
           client: false,
           pretty: true,
