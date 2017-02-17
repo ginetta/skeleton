@@ -25,6 +25,17 @@ rules:
       - 2
       - max: 1
 
+  # Force trailing commas as this promotes smaller diffs. However
+  # we want to disable on functions, as this is invalid syntax (without any
+  # transpilation)
+  comma-dangle:
+    - 2
+    - arrays: always
+      objects: always
+      imports: always
+      exports: always
+      functions: never
+
 
 
   # -------------------

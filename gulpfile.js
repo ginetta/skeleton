@@ -31,13 +31,13 @@ gulp.task(
     'build:assets',
     gulp.parallel(
       'build:styles',
-      'build:scripts',
+      'build:scripts'
     ),
     gulp.series(
       'build:content',
-      'build:pages',
-    ),
-  ),
+      'build:pages'
+    )
+  )
 );
 
 // -------//
@@ -61,6 +61,6 @@ gulp.task(
   'default',
   gulp.series(
     'build',
-    'serve',
-  ),
+    'serve'
+  )
 );
