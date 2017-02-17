@@ -1,7 +1,7 @@
 const merge = require('merge-stream');
 
 module.exports = (gulp, $, config) => {
-  const srcFiles  = config.paths.content.src;
+  const srcFiles = config.paths.content.src;
   const languages = config.languages;
   const destFiles = config.paths.content.dest;
 

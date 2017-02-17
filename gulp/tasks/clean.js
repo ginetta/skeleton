@@ -1,7 +1,7 @@
 const del = require('del');
 
 module.exports = (gulp, $, config) => {
-  const destFolder  = `${config.basePaths.dest}*`;
+  const destFolder = `${config.basePaths.dest}*`;
 
   const task = () => del([destFolder]);
 

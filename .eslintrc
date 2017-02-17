@@ -4,11 +4,6 @@ env:
   browser: false
 rules:
 
-  no-multi-spaces:
-    - 2
-    - exceptions:
-        VariableDeclarator: true
-
   no-multiple-empty-lines:
       - 2
       - max: 1

@@ -4,9 +4,9 @@ const rsync = require('rsyncwrapper');
 module.exports = (gulp, $, config) => {
   const environment = config.environments.testing;
   const defaultPath = '/home/www-clients/';
-  const serverPath  = `${environment.username}@${environment.host}`;
-  const deploySrc   = config.basePaths.dest;
-  const deployDest  = `${serverPath}:${defaultPath}${environment.projectPath}${environment.releasePath}`;
+  const serverPath = `${environment.username}@${environment.host}`;
+  const deploySrc = config.basePaths.dest;
+  const deployDest = `${serverPath}:${defaultPath}${environment.projectPath}${environment.releasePath}`;
 
   const task = (done) => {
     const rsyncOptions = {

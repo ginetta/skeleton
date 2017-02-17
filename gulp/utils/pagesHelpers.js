@@ -1,6 +1,6 @@
-const yamljs    = require('yamljs');
-const _         = require('lodash');
-const markdown  = require('marked');
+const yamljs = require('yamljs');
+const _ = require('lodash');
+const markdown = require('marked');
 const pugInline = require('jade-inline-file');
 
 module.exports = (config) => {
