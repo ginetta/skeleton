@@ -15,10 +15,13 @@ module.exports = (gulp, $, config) => {
       .pipe($.cssGlobbing({
         extensions: ['.scss'],
       }))
-      .pipe($.sourcemaps.init())
-      .pipe($.sass({ includePaths: ['node_modules'] }))
+      .pipe($.if(!config.isProd, $.sourcemaps.init()))
+      .pipe($.sass({
+        includePaths : ['node_modules'],
+        outputStyle  : config.isProd ? 'compressed' : '',
+      }))
       .pipe($.autoprefixer({ browsers: ['last 2 versions', 'ie 9'] }))
-      .pipe($.sourcemaps.write({ includeContent: true }))
+      .pipe($.if(!config.isProd, $.sourcemaps.write({ includeContent: true })))
       .pipe($.if(config.isProd, $.revReplace({
         manifest: fs.existsSync(manifestFile) && gulp.src(manifestFile),
       })))
