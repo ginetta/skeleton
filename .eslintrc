@@ -4,20 +4,10 @@ env:
   browser: true
   commonjs: true
 rules:
-  # specify whether double or single quotes should be used
-  quotes: [2, "single", "avoid-escape"]
 
-  # controls location of Use Strict Directives
-  strict: [2, "global"]
-
-  # disallow use of multiple spaces
-  no-multi-spaces: [0]
-
-  # enforces spacing between keys and values in object literal properties
-  key-spacing: [0]
-
-  # allow just one var statement per function (off by default)
-  one-var: [2, {uninitialized: "always", initialized: "never"}]
+  # -------------------
+  # Static Complexity Rules: they guide us to write better code.
+  # -------------------
 
   # specify the maximum number of statement allowed in a function
   # (off by default)
