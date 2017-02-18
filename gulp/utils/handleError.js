@@ -1,9 +1,7 @@
 const gNotify = require('gulp-notify');
 const bsNotify = require('./browserSync').notify;
 
-module.exports = () => {
-  const args = Array.prototype.slice.call(arguments);
-
+module.exports = function notify(...args) {
   // Send error to the terminal with gulp-notify
   gNotify.onError({
     title: '<%= error.plugin %>',
