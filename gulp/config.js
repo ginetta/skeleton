@@ -6,7 +6,7 @@ module.exports = () => {
     root: path.join(__dirname, '..'),
     src: 'src/',
     content: 'content/',
-    static: 'static/',
+    assets: 'assets/',
     dest: 'build/',
     tmp: '.tmp/',
   };
@@ -23,7 +23,7 @@ module.exports = () => {
       dest: `${basePaths.dest}css/`,
     },
     content: {
-      src: `${basePaths.content}`,
+      src: `${basePaths.content}texts/`,
       dest: `${basePaths.dest}content/`,
     },
     pages: {
@@ -34,11 +34,11 @@ module.exports = () => {
       src: `${basePaths.src}layouts/`,
     },
     assets: {
-      src: `${basePaths.static}assets/`,
+      src: [`${basePaths.assets}`, `${basePaths.content}`],
       dest: `${basePaths.dest}assets`,
     },
     meta: {
-      src: `${basePaths.static}meta/`,
+      src: `${basePaths.assets}meta/`,
       dest: `${basePaths.dest}`,
     },
     revManifest: {
@@ -52,7 +52,7 @@ module.exports = () => {
     content: `${paths.content.src}**/*.yml`,
     pages: `${paths.pages.src}**/*.pug`,
     layouts: `${paths.layouts.src}**/*.pug`,
-    assets: `${paths.assets.src}**/*`,
+    assets: paths.assets.src.map(folder => `${folder}**/*`),
     meta: `${paths.meta.src}**/*`,
   };
 
