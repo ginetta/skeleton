@@ -76,16 +76,6 @@ module.exports = () => {
     'gulpfile.js',
   ];
 
-  const environments = {
-    testing: {
-      host: argv.host,
-      username: argv.username,
-      projectPath: 'preview.ginetta.net/skeleton/', // 'client.ginetta.net/project-name/'
-      releasePath: argv.path,
-      privateKey: argv.privateKey,
-    },
-  };
-
   return {
     basePaths,
     languages,
@@ -93,7 +83,6 @@ module.exports = () => {
     appFiles,
     components,
     gulpFiles,
-    environments,
     isProd: process.env.NODE_ENV === 'production',
   };
 };

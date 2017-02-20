@@ -40,12 +40,6 @@ gulp.task(
   )
 );
 
-// -------//
-// Deploy //
-// -------//
-
-gulp.task('deploy', t.getTask('deploy'));
-
 // ------- -//
 //  Others  //
 // ------ --//
