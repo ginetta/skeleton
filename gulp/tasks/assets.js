@@ -23,7 +23,7 @@ module.exports = (gulp, $, config) => {
     const logosSt = gulp.src(logosSrc)
       .pipe($.changed(logosSrc))
       .pipe($.if(config.isProd, $.rev()))
-      .pipe($.if(config.isProd, gulp.dest(logosSrc)))
+      .pipe($.if(config.isProd, gulp.dest(logosDest)))
       .pipe($.if(config.isProd, $.rev.manifest(manifestFile, { merge: true, base: logosDest })))
       .pipe(gulp.dest(logosDest));
 
