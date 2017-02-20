@@ -9,8 +9,11 @@ const t = require('./gulp/utils/tasksHelpers')(gulp, config);
 // Cleans the build folder
 gulp.task('clean', t.getTask('clean'));
 
-// Moves all the assets to the build
+// Moves all the assets to the build. While on production, also revs the assets.
 gulp.task('build:assets', t.getTask('assets'));
+
+// Moves all the meta files to the build
+gulp.task('build:meta', t.getTask('meta'));
 
 // Concatenates all the content files
 gulp.task('build:content', t.getTask('content'));
@@ -28,7 +31,10 @@ gulp.task(
   'build',
   gulp.series(
     'clean',
-    'build:assets',
+    gulp.parallel(
+      'build:assets',
+      'build:meta'
+    ),
     gulp.parallel(
       'build:styles',
       'build:scripts'

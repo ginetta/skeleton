@@ -6,7 +6,7 @@ module.exports = () => {
     root: path.join(__dirname, '..'),
     src: 'src/',
     content: 'content/',
-    assets: 'assets/',
+    static: 'static/',
     dest: 'build/',
     tmp: '.tmp/',
   };
@@ -23,8 +23,8 @@ module.exports = () => {
       dest: `${basePaths.dest}css/`,
     },
     content: {
-      src: `${basePaths.content}texts/`,
-      dest: `${basePaths.dest}content/texts/`,
+      src: `${basePaths.content}`,
+      dest: `${basePaths.dest}content/`,
     },
     pages: {
       src: `${basePaths.src}pages/`,
@@ -33,21 +33,13 @@ module.exports = () => {
     layouts: {
       src: `${basePaths.src}layouts/`,
     },
-    images: {
-      src: `${basePaths.content}images/`,
-      dest: `${basePaths.dest}content/images/`,
+    assets: {
+      src: `${basePaths.static}assets/`,
+      dest: `${basePaths.dest}assets`,
     },
-    logos: {
-      src: `${basePaths.assets}logos/`,
-      dest: `${basePaths.dest}assets/logos/`,
-    },
-    favicons: {
-      src: `${basePaths.assets}favicons/`,
-      dest: basePaths.dest,
-    },
-    fonts: {
-      src: `${basePaths.assets}fonts/`,
-      dest: `${basePaths.dest}assets/fonts/`,
+    meta: {
+      src: `${basePaths.static}meta/`,
+      dest: `${basePaths.dest}`,
     },
     revManifest: {
       dest: `${basePaths.dest}rev-manifest.json`,
@@ -60,10 +52,8 @@ module.exports = () => {
     content: `${paths.content.src}**/*.yml`,
     pages: `${paths.pages.src}**/*.pug`,
     layouts: `${paths.layouts.src}**/*.pug`,
-    images: `${paths.images.src}**/*`,
-    logos: `${paths.logos.src}**/*`,
-    favicons: `${paths.favicons.src}**/*`,
-    fonts: `${paths.fonts.src}**/*`,
+    assets: `${paths.assets.src}**/*`,
+    meta: `${paths.meta.src}**/*`,
   };
 
   const components = [
