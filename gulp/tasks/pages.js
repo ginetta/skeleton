@@ -7,6 +7,7 @@ const glob = require('glob');
 const _ = require('lodash');
 const pageshelpers = require('../utils/pagesHelpers');
 const handleError = require('../utils/handleError');
+const configHelpers = require('../utils/configHelpers');
 
 module.exports = (gulp, $, config) => {
   const entry = config.paths.pages.entry;
@@ -15,31 +16,26 @@ module.exports = (gulp, $, config) => {
   const definition = config.paths.definition.entry;
   const manifestFile = config.paths.revManifest.dest;
 
-  // Put the default language at the root
-  const getLanguagePath = (language) => {
-    if (language === config.languages[0]) {
-      return '';
-    }
-    return `${language}/`;
-  };
-
-  // Returns the relative path between the page and the root of the web server
-  const getRelativePath = (file, language) => {
-    const destPath = config.paths.pages.entryPath + getLanguagePath(language);
-    const filePath = path.dirname(file.path);
-    return `${path.relative(filePath, destPath) || '.'}/`;
-  };
+  // Load the content for the page
+  function loadContentForLanguage(language) {
+    return yamljs.load(`${contentPath}${language}.yml`);
+  }
 
   const task = () => {
-    // Load the content for the page
-    function loadContentForLanguage(language) {
-      return yamljs.load(`${contentPath}${language}.yml`);
-    }
+    const languages = configHelpers.getAvailableLanguages(config);
 
     function getDestPath(language) {
-      const destPath = dest + getLanguagePath(language);
+      const destPath = dest + configHelpers.getLanguagePath(language, languages);
       return destPath;
     }
+
+    // Returns the relative path between the page and the root of the web server
+    const getRelativePath = (file, language) => {
+      const destPath = config.paths.pages.entryPath +
+        configHelpers.getLanguagePath(language, languages);
+      const filePath = path.dirname(file.path);
+      return `${path.relative(filePath, destPath) || '.'}/`;
+    };
 
     function loadMergedDefinitions() {
       return definition.map(d => glob.sync(d))
@@ -84,7 +80,7 @@ module.exports = (gulp, $, config) => {
     }
 
     // Generate the pages for each language
-    const pagesStreams = config.languages.map(compilePages);
+    const pagesStreams = languages.map(compilePages);
 
     return merge(pagesStreams);
   };

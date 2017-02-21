@@ -1,8 +1,4 @@
-const argv = require('yargs').argv;
-
 module.exports = () => {
-  const languages = ['en'];
-
   let paths = {
     base: {
       entry: 'src/',
@@ -85,7 +81,6 @@ module.exports = () => {
   });
 
   return {
-    languages,
     paths,
     isProd: process.env.NODE_ENV === 'production',
   };
