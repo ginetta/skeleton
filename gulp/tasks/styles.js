@@ -3,14 +3,14 @@ const stream = require('../utils/browserSync').stream;
 const handleError = require('../utils/handleError');
 
 module.exports = (gulp, $, config) => {
-  const srcFiles = config.appFiles.styles;
-  const destFiles = config.paths.styles.dest;
+  const entryGlobs = config.entryGlobs.styles;
+  const destPath = config.destPaths.styles;
   // previously rev files such as assets that might have been referenced
   // in the styles (and their path needs to be updated)
-  const manifestFile = config.paths.revManifest.dest;
+  const manifestDestPath = config.destPaths.revManifest;
 
   const task = () =>
-    gulp.src(srcFiles)
+    gulp.src(entryGlobs)
       .pipe($.plumber(handleError))
       .pipe($.sassGlob())
       .pipe($.if(!config.isProd, $.sourcemaps.init()))
@@ -21,15 +21,15 @@ module.exports = (gulp, $, config) => {
       .pipe($.autoprefixer({ browsers: ['last 2 versions', 'ie 9'] }))
       .pipe($.if(!config.isProd, $.sourcemaps.write({ includeContent: true })))
       .pipe($.if(config.isProd, $.revReplace({
-        manifest: fs.existsSync(manifestFile) && gulp.src(manifestFile),
+        manifest: fs.existsSync(manifestDestPath) && gulp.src(manifestDestPath),
       })))
       .pipe($.if(config.isProd, $.rev()))
-      .pipe($.if(config.isProd, gulp.dest(destFiles)))
-      .pipe($.if(config.isProd, $.rev.manifest(manifestFile, {
+      .pipe($.if(config.isProd, gulp.dest(destPath)))
+      .pipe($.if(config.isProd, $.rev.manifest(manifestDestPath, {
         merge: true,
-        base: destFiles,
+        base: destPath,
       })))
-      .pipe(gulp.dest(destFiles))
+      .pipe(gulp.dest(destPath))
       .pipe(stream({ match: '**/*.css' }))
       ;
 

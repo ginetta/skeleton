@@ -11,7 +11,7 @@ gulp.task('clean', t.getTask('clean'));
 
 // Moves all the assets to the build. While on production, also revs the assets.
 gulp.task('build:assets', t.getTask('assets'));
-
+//
 // Moves all the meta files to the build
 gulp.task('build:meta', t.getTask('meta'));
 
@@ -53,8 +53,8 @@ gulp.task(
 // Serve the build folder
 gulp.task('serve', t.getTask('serve'));
 
-// Lints the gulp tasks
-gulp.task('tasks', t.getTask('tasks'));
+// Lints the tooling files.
+gulp.task('tooling', t.getTask('tooling'));
 
 // What happens when just running 'gulp'
 gulp.task(

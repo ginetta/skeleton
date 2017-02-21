@@ -7,46 +7,41 @@ const glob = require('glob');
 const _ = require('lodash');
 const pageshelpers = require('../utils/pagesHelpers');
 const handleError = require('../utils/handleError');
+const configHelpers = require('../utils/configHelpers');
 
 module.exports = (gulp, $, config) => {
-  const srcFiles = config.appFiles.pages;
-  const destFiles = config.paths.pages.dest;
-  const languages = config.languages;
-  const contentPath = config.paths.content.dest;
-  const baseDir = config.basePaths.src;
-  const manifestFile = config.paths.revManifest.dest;
+  const entryGlob = config.entryGlobs.pages;
+  const destPath = config.destPaths.pages;
+  const contentPath = config.destPaths.content;
+  const definitionGlob = config.entryGlobs.definitions;
+  const manifestDestPath = config.destPaths.revManifest;
 
-  // Put the default language at the root
-  const getLanguagePath = (language) => {
-    if (language === config.languages[0]) {
-      return '';
-    }
-    return `${language}/`;
-  };
-
-  // Returns the relative path between the page and the root of the web server
-  const getRelativePath = (file, language) => {
-    const destPath = config.paths.pages.src + getLanguagePath(language);
-    const filePath = path.dirname(file.path);
-    return `${path.relative(filePath, destPath) || '.'}/`;
-  };
+  // Load the content for the page
+  function loadContentForLanguage(language) {
+    return yamljs.load(`${contentPath}${language}.yml`);
+  }
 
   const task = () => {
-    // Load the content for the page
-    function loadContent(language) {
-      return yamljs.load(`${contentPath}${language}.yml`);
-    }
+    const languages = configHelpers.getAvailableLanguages(config);
 
     function getDestPath(language) {
-      const destPath = destFiles + getLanguagePath(language);
-      return destPath;
+      return destPath + configHelpers.getLanguagePath(language, languages);
     }
 
+    // Returns the relative path between the page and the root of the web server
+    const getRelativePath = (file, language) => {
+      const languageDestPath = config.entryPaths.pages +
+        configHelpers.getLanguagePath(language, languages);
+      const filePath = path.dirname(file.path);
+      return `${path.relative(filePath, languageDestPath) || '.'}/`;
+    };
+
     function loadMergedDefinitions() {
-      return glob.sync(`${config.basePaths.src}**/definition.yml`)
+      return definitionGlob.map(d => glob.sync(d))
+        .reduce((a, b) => a.concat(b), [])
         .reduce((acc, definitionPath) => {
           const normalizedPath = definitionPath
-            .replace(config.basePaths.src, '')
+            .replace(config.entryPaths.src, '')
             .replace('/definition.yml', '')
             ;
           return _.merge(acc, {
@@ -57,14 +52,14 @@ module.exports = (gulp, $, config) => {
     }
 
     function compilePages(language) {
-      const destPath = getDestPath(language);
+      const languageDestPath = getDestPath(language);
 
-      return gulp.src(srcFiles)
+      return gulp.src(entryGlob)
         .pipe($.plumber(handleError))
         .pipe($.data((file) => {
           const mergedDefinitions = loadMergedDefinitions();
           return {
-            data: loadContent(language),
+            data: loadContentForLanguage(language),
             relativePath: getRelativePath(file, language),
             helpers: pageshelpers(config, mergedDefinitions),
             language,
@@ -73,15 +68,14 @@ module.exports = (gulp, $, config) => {
         .pipe($.pug({
           client: false,
           pretty: true,
-          basedir: baseDir,
           plugins: [
             pugIncludeGlob(),
           ],
         }))
         .pipe($.if(config.isProd, $.revReplace({
-          manifest: fs.existsSync(manifestFile) && gulp.src([manifestFile]),
+          manifest: fs.existsSync(manifestDestPath) && gulp.src(manifestDestPath),
         })))
-        .pipe(gulp.dest(destPath));
+        .pipe(gulp.dest(languageDestPath));
     }
 
     // Generate the pages for each language
