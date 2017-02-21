@@ -46,7 +46,7 @@ module.exports = () => {
     },
   };
 
-  const assetsFileTypes = '+(appcache|atom|bbaw|bmp|crx|css|cur|eot|f4[abpv]|flv|geojson|gif|htc|ico|jpe?g|js|json(ld)?|m4[av]|manifest|map|mp4|oex|og[agv]|opus|otf|pdf|png|rdf|rss|safariextz|svg|svgz?|swf|topojson|tt[cf]|txt|vcard|vcf|vtt|webapp|web[mp]|webmanifest|woff2?|xloc|xml|xpi)';
+  const assetsFileTypes = '+(bmp|eot|flv|gif|ico|jpg|jpeg|mp4|png|svg|swf|webp|woff|woff2|xloc|xml|xpi)';
 
   const appFiles = {
     scripts: `${paths.scripts.src}**/*.js`,
