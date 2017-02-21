@@ -34,11 +34,11 @@ module.exports = () => {
       src: `${basePaths.src}layouts/`,
     },
     assets: {
-      src: [`${basePaths.assets}`, `${basePaths.content}`],
+      src: `${basePaths.content}`,
       dest: `${basePaths.dest}assets`,
     },
     meta: {
-      src: `${basePaths.assets}meta/`,
+      src: `${basePaths.src}meta/`,
       dest: `${basePaths.dest}`,
     },
     revManifest: {
@@ -52,7 +52,7 @@ module.exports = () => {
     content: `${paths.content.src}**/*.yml`,
     pages: `${paths.pages.src}**/*.pug`,
     layouts: `${paths.layouts.src}**/*.pug`,
-    assets: paths.assets.src.map(folder => `${folder}**/*`),
+    assets: `${paths.assets.src}**/*`,
     meta: `${paths.meta.src}**/*`,
   };
 

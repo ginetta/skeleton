@@ -2,8 +2,6 @@ module.exports = (gulp, $, config) => {
   const metaSrc = config.appFiles.meta;
   const metaDest = config.paths.meta.dest;
 
-  console.log({metaSrc, metaDest});
-
   const task = () => gulp.src(metaSrc)
       .pipe($.changed(metaSrc))
       .pipe(gulp.dest(metaDest))
