@@ -7,7 +7,6 @@ module.exports = (gulp, $, config) => {
 
   const blacklistedFolders = [
     path.normalize(path.resolve(__dirname, '../../', config.paths.content.src)), // /content/texts
-    path.normalize(path.resolve(__dirname, '../../', config.paths.meta.src))     // /assets/meta
   ];
 
   const isAssetToBeRevAndCopied = file => !blacklistedFolders.some(blacklistedFolder =>
