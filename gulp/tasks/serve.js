@@ -15,6 +15,7 @@ module.exports = (gulp, $, config) => {
     gulp.watch(config.watchGlobs.content, gulp.series('build:content', 'build:pages', reload));
     gulp.watch(config.watchGlobs.assets, gulp.parallel('build:assets'));
     gulp.watch(config.watchGlobs.meta, gulp.parallel('build:meta'));
+    gulp.watch(config.watchGlobs.icons, gulp.parallel('build:icons'));
   };
 
   task.description = 'Serve the build folder';

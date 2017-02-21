@@ -1,0 +1,5 @@
+data:
+  name: close
+  title: Back
+options:
+  role: ['presentation', 'img']
