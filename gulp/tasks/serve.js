@@ -12,6 +12,7 @@ module.exports = (gulp, $, config) => {
   const contentSrcFiles = config.appFiles.content;
   const assetsFiles = config.appFiles.assets;
   const componentsDirs = config.components;
+  const metaFiles = config.appFiles.meta;
 
   _.map(componentsDirs, componentDir => scriptFiles.push(`${componentDir}**/*.js`));
   _.map(componentsDirs, componentDir => stylesFiles.push(`${componentDir}**/*.scss`));
@@ -36,6 +37,9 @@ module.exports = (gulp, $, config) => {
 
     // Watching Assets
     gulp.watch(assetsFiles, gulp.parallel('build:assets'));
+
+    // Watching Meta
+    gulp.watch(metaFiles, gulp.parallel('build:meta'));
   };
 
   task.description = 'Serve the build folder';
