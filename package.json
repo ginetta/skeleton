@@ -8,8 +8,7 @@
     "start": "gulp",
     "build": "NODE_ENV=production gulp build",
     "test": "gulp test",
-    "serve": "gulp serve",
-    "deploy": "gulp deploy"
+    "serve": "gulp serve"
   },
   "dependencies": {
     "sensible": "0.8.2"
@@ -43,14 +42,12 @@
     "gulp-sass-glob": "^1.0.8",
     "gulp-sourcemaps": "^2.4.1",
     "gulp-sync": "^0.1.4",
-    "gulp-util": "^3.0.8",
     "jade-inline-file": "^0.1.0",
     "lodash": "^4.17.4",
     "marked": "^0.3.6",
     "merge-stream": "^1.0.1",
     "pug": "^2.0.0-beta11",
     "pug-include-glob": "^0.3.2",
-    "rsyncwrapper": "^2.0.1",
     "webpack": "^2.2.1",
     "webpack-glob-entries": "^1.0.1",
     "webpack-stream": "^3.2.0",
