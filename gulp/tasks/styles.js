@@ -12,9 +12,7 @@ module.exports = (gulp, $, config) => {
   const task = () =>
     gulp.src(srcFiles)
       .pipe($.plumber(handleError))
-      .pipe($.cssGlobbing({
-        extensions: ['.scss'],
-      }))
+      .pipe($.sassGlob())
       .pipe($.if(!config.isProd, $.sourcemaps.init()))
       .pipe($.sass({
         includePaths: ['node_modules'],
