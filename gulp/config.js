@@ -1,80 +1,92 @@
 const argv = require('yargs').argv;
-const path = require('path');
 
 module.exports = () => {
-  const basePaths = {
-    root: path.join(__dirname, '..'),
-    src: 'src/',
-    content: 'content/',
-    assets: 'assets/',
-    dest: 'build/',
-    tmp: '.tmp/',
-  };
-
   const languages = ['en'];
 
-  const paths = {
+  let skeletonConfig = {
+    base: {
+      entry: 'src/',
+      dest: 'build/',
+    },
+  };
+
+  skeletonConfig = Object.assign({}, skeletonConfig, {
     scripts: {
-      src: `${basePaths.src}scripts/`,
-      dest: `${basePaths.dest}js/`,
+      entry: [`${skeletonConfig.base.entry}scripts/**/*.js`],
+      all: [
+        `${skeletonConfig.base.entry}**/*.js`,
+      ],
+      dest: `${skeletonConfig.base.dest}js/`,
     },
     styles: {
-      src: `${basePaths.src}styles/`,
-      dest: `${basePaths.dest}css/`,
-    },
-    content: {
-      src: `${basePaths.content}texts/`,
-      dest: `${basePaths.dest}content/`,
+      entry: [
+        `${skeletonConfig.base.entry}styles/**/*.scss`
+      ],
+      all: [
+        `${skeletonConfig.base.entry}**/*.scss`
+      ],
+      dest: `${skeletonConfig.base.dest}css/`,
     },
     pages: {
-      src: `${basePaths.src}pages/`,
-      dest: basePaths.dest,
+      entryPath: `${skeletonConfig.base.entry}pages`,
+      entry: [`${skeletonConfig.base.entry}pages/**/*.pug`],
+      all: [
+        `${skeletonConfig.base.entry}**/*.pug`,
+        `${skeletonConfig.base.entry}**/*.yml`, // definition files
+      ],
+      dest: `${skeletonConfig.base.dest}`,
     },
-    layouts: {
-      src: `${basePaths.src}layouts/`,
+    content: {
+      entryPath: 'content/texts/',
+      entry: ['content/texts/**/*.yml'],
+      all: ['content/texts/**/*.yml'],
+      dest: `${skeletonConfig.base.dest}content/texts/`,
     },
     assets: {
-      src: [`${basePaths.src}materials/`, `${basePaths.content}`],
-      dest: `${basePaths.dest}assets`,
+      entry: [
+        `${skeletonConfig.base.entry}materials/**/*.+(bmp|eot|flv|gif|ico|jpg|jpeg|mp4|png|svg|swf|webp|woff|woff2|xloc|xml|xpi)`,
+        'content/**/*',
+        '!content/texts',
+      ],
+      all: [
+        `${skeletonConfig.base.entry}materials/**/*.+(bmp|eot|flv|gif|ico|jpg|jpeg|mp4|png|svg|swf|webp|woff|woff2|xloc|xml|xpi)`,
+        'content/**/*',
+        '!content/texts',
+      ],
+      dest: `${skeletonConfig.base.dest}assets`,
     },
     meta: {
-      src: `${basePaths.src}meta/`,
-      dest: `${basePaths.dest}`,
+      entry: [
+        'content/meta/**/*',
+      ],
+      all: [
+        'content/meta/**/*',
+      ],
+      dest: skeletonConfig.base.dest,
+    },
+    definition: {
+      entry: [
+        `${skeletonConfig.base.entry}**/definition.yml`,
+      ],
+      all: [
+        `${skeletonConfig.base.entry}**/definition.yml`,
+      ],
     },
     revManifest: {
-      dest: `${basePaths.dest}rev-manifest.json`,
+      dest: `${skeletonConfig.base.dest}rev-manifest.json`,
     },
-  };
-
-  const assetsFileTypes = '+(bmp|eot|flv|gif|ico|jpg|jpeg|mp4|png|svg|swf|webp|woff|woff2|xloc|xml|xpi)';
-
-  const appFiles = {
-    scripts: `${paths.scripts.src}**/*.js`,
-    styles: `${paths.styles.src}**/*.scss`,
-    content: `${paths.content.src}**/*.yml`,
-    pages: `${paths.pages.src}**/*.pug`,
-    layouts: `${paths.layouts.src}**/*.pug`,
-    assets: paths.assets.src.map(folder => `${folder}**/*.${assetsFileTypes}`),
-    meta: `${paths.meta.src}**/*`,
-  };
-
-  const components = [
-    `${basePaths.src}modules/`,
-    `${basePaths.src}elements/`,
-  ];
-
-  const gulpFiles = [
-    'gulp/**/*.js',
-    'gulpfile.js',
-  ];
+    tooling: {
+      all: [
+        'gulp/**/*.js',
+        'gulpfile.js',
+        'webpack.config.js'
+      ]
+    }
+  });
 
   return {
-    basePaths,
     languages,
-    paths,
-    appFiles,
-    components,
-    gulpFiles,
+    skeletonConfig,
     isProd: process.env.NODE_ENV === 'production',
   };
 };

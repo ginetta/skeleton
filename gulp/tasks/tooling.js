@@ -1,12 +1,12 @@
 module.exports = (gulp, $, config) => {
-  const gulpFiles = config.gulpFiles;
+  const entry = config.skeletonConfig.tooling.all;
 
   const task = () =>
-    gulp.src(gulpFiles)
+    gulp.src(entry)
       .pipe($.eslint())
       .pipe($.eslint.format())
       ;
 
-  task.description = 'Lints the gulp tasks';
+  task.description = 'Lints the tooling files.';
   return task;
 };

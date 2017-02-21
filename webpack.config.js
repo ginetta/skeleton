@@ -6,8 +6,10 @@ module.exports = config => ({
   // Here the application starts executing
   // and webpack starts bundling
   // can be string | object {entryname: entrypath} | array
-  // we are using an object here (result of `globEntries`)
-  entry: globEntries(config.appFiles.scripts),
+  // we are using an object here (merged result of `globEntries` for each entry glob)
+  entry: config.skeletonConfig.scripts.entry
+    .map(globEntries)
+    .reduce((a, b) => Object.assign({}, a, b), {}),
 
   // options related to how webpack emits results
   output: {

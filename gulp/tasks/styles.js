@@ -3,14 +3,14 @@ const stream = require('../utils/browserSync').stream;
 const handleError = require('../utils/handleError');
 
 module.exports = (gulp, $, config) => {
-  const srcFiles = config.appFiles.styles;
-  const destFiles = config.paths.styles.dest;
+  const entry = config.skeletonConfig.styles.entry;
+  const dest = config.skeletonConfig.styles.dest;
   // previously rev files such as assets that might have been referenced
   // in the styles (and their path needs to be updated)
-  const manifestFile = config.paths.revManifest.dest;
+  const manifestFile = config.skeletonConfig.revManifest.dest;
 
   const task = () =>
-    gulp.src(srcFiles)
+    gulp.src(entry)
       .pipe($.plumber(handleError))
       .pipe($.sassGlob())
       .pipe($.if(!config.isProd, $.sourcemaps.init()))
@@ -24,12 +24,12 @@ module.exports = (gulp, $, config) => {
         manifest: fs.existsSync(manifestFile) && gulp.src(manifestFile),
       })))
       .pipe($.if(config.isProd, $.rev()))
-      .pipe($.if(config.isProd, gulp.dest(destFiles)))
+      .pipe($.if(config.isProd, gulp.dest(dest)))
       .pipe($.if(config.isProd, $.rev.manifest(manifestFile, {
         merge: true,
-        base: destFiles,
+        base: dest,
       })))
-      .pipe(gulp.dest(destFiles))
+      .pipe(gulp.dest(dest))
       .pipe(stream({ match: '**/*.css' }))
       ;
 

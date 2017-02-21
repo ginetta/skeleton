@@ -1,10 +1,10 @@
 module.exports = (gulp, $, config) => {
-  const metaSrc = config.appFiles.meta;
-  const metaDest = config.paths.meta.dest;
+  const entry = config.skeletonConfig.meta.entry;
+  const dest = config.skeletonConfig.meta.dest;
 
-  const task = () => gulp.src(metaSrc)
-      .pipe($.changed(metaSrc))
-      .pipe(gulp.dest(metaDest))
+  const task = () => gulp.src(entry)
+      .pipe($.changed(entry))
+      .pipe(gulp.dest(dest))
       ;
 
   task.description = 'Moves all the meta files to the build';

@@ -5,41 +5,35 @@ const reload = browserSync.reload;
 
 // eslint-disable-next-line max-statements
 module.exports = (gulp, $, config) => {
-  const serverBase = config.basePaths.dest;
-  const scriptFiles = [config.appFiles.scripts];
-  const stylesFiles = [config.appFiles.styles];
-  const pagesFiles = [config.appFiles.pages, config.appFiles.layouts];
-  const contentSrcFiles = config.appFiles.content;
-  const assetsFiles = config.appFiles.assets;
-  const componentsDirs = config.components;
-  const metaFiles = config.appFiles.meta;
-
-  _.map(componentsDirs, componentDir => scriptFiles.push(`${componentDir}**/*.js`));
-  _.map(componentsDirs, componentDir => stylesFiles.push(`${componentDir}**/*.scss`));
-  _.map(componentsDirs, componentDir => pagesFiles.push(`${componentDir}**/*.pug`));
-  _.map(componentsDirs, componentDir => pagesFiles.push(`${componentDir}**/*.yml`));
+  const scripts = config.skeletonConfig.scripts.all;
+  const styles = config.skeletonConfig.styles.all;
+  const pages = config.skeletonConfig.pages.all;
+  const content = config.skeletonConfig.content.all;
+  const assets = config.skeletonConfig.assets.all;
+  const meta = config.skeletonConfig.meta.all;
+  const server = config.skeletonConfig.base.dest;
 
   const task = () => {
     // Initialising the server
-    browserSync.start(serverBase);
+    browserSync.start(server);
 
     // Watching Scripts
-    gulp.watch(scriptFiles, gulp.parallel('build:scripts'));
+    gulp.watch(scripts, gulp.parallel('build:scripts'));
 
     // Watching Styles
-    gulp.watch(stylesFiles, gulp.parallel('build:styles'));
+    gulp.watch(styles, gulp.parallel('build:styles'));
 
     // Watching Pages
-    gulp.watch(pagesFiles, gulp.series('build:pages', reload));
+    gulp.watch(pages, gulp.series('build:pages', reload));
 
     // Watching Content
-    gulp.watch(contentSrcFiles, gulp.series('build:content', 'build:pages', reload));
+    gulp.watch(content, gulp.series('build:content', 'build:pages', reload));
 
     // Watching Assets
-    gulp.watch(assetsFiles, gulp.parallel('build:assets'));
+    gulp.watch(assets, gulp.parallel('build:assets'));
 
     // Watching Meta
-    gulp.watch(metaFiles, gulp.parallel('build:meta'));
+    gulp.watch(meta, gulp.parallel('build:meta'));
   };
 
   task.description = 'Serve the build folder';

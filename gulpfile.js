@@ -53,8 +53,8 @@ gulp.task(
 // Serve the build folder
 gulp.task('serve', t.getTask('serve'));
 
-// Lints the gulp tasks
-gulp.task('tasks', t.getTask('tasks'));
+// Lints the tooling files.
+gulp.task('tooling', t.getTask('tooling'));
 
 // What happens when just running 'gulp'
 gulp.task(
