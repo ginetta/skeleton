@@ -11,7 +11,10 @@ gulp.task('clean', t.getTask('clean'));
 
 // Moves all the assets to the build. While on production, also revs the assets.
 gulp.task('build:assets', t.getTask('assets'));
-//
+
+// Generates an SVG sprite out of svg icons
+gulp.task('build:icons', t.getTask('icons'));
+
 // Moves all the meta files to the build
 gulp.task('build:meta', t.getTask('meta'));
 
@@ -35,6 +38,7 @@ gulp.task(
       'build:assets',
       'build:meta'
     ),
+    'build:icons',
     gulp.parallel(
       'build:styles',
       'build:scripts'

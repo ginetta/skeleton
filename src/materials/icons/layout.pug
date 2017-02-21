@@ -1,0 +1,29 @@
+//- inspired by https://github.com/jonathantneal/svg4everybody#readability-and-accessibility
+
+//- Example: should read "The title"
+//- a(href="#")
+//-   +icon({name: 'arrow-right'})
+//-   | The title
+
+//- Example: should read "The title"
+//- a(href="#")
+//-   +icon({name: 'arrow-right', title: 'The title'}, { role: 'img' })
+
+
+//- Example: should read "foward" (fallback is the svg title)
+//- a(href="#")
+//-   +icon({name: 'arrow-right'})
+mixin icon(data, options)
+  - var options = helpers.mergeDefaultOptions(options, 'materials/icons');
+  - var shouldHaveTitle = options.role === 'img' && data.title
+  - var titleUniqueId = 'icon-title--' + iconCount++
+
+  svg(
+    class="icon",
+    role=options.role,
+    title=shouldHaveTitle && data.title,
+    aria-labelledby= shouldHaveTitle && titleUniqueId
+  )&attributes(attributes)
+    if shouldHaveTitle
+      title(id=titleUniqueId)= data.title
+    use(xlink:href="assets/icons/sprite.svg#" + data.name)

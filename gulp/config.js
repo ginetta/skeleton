@@ -21,6 +21,7 @@ module.exports = () => {
     ],
     meta: ['src/meta/**/*'],
     definitions: ['src/**/definition.yml'],
+    icons: ['src/materials/icons/*.svg'],
     tooling: ['gulp/**/*.js', 'gulpfile.js', 'webpack.config.js']
   };
 
@@ -40,7 +41,8 @@ module.exports = () => {
       'src/materials/**/*',
       'content/**/*',
     ],
-    meta: ['src/meta/**/*']
+    meta: ['src/meta/**/*'],
+    icons: ['src/materials/icons/*.svg']
   };
 
   const entryPaths = {
@@ -57,6 +59,7 @@ module.exports = () => {
     content: 'build/content/',
     assets: 'build/assets/',
     meta: 'build/',
+    icons: 'build/assets/icons/',
     revManifest: 'build/rev-manifest.json',
   };
 
