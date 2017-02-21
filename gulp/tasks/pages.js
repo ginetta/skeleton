@@ -9,11 +9,11 @@ const pageshelpers = require('../utils/pagesHelpers');
 const handleError = require('../utils/handleError');
 
 module.exports = (gulp, $, config) => {
-  const entry = config.skeletonConfig.pages.entry;
-  const dest = config.skeletonConfig.pages.dest;
-  const contentPath = config.skeletonConfig.content.dest;
-  const definition = config.skeletonConfig.definition.entry;
-  const manifestFile = config.skeletonConfig.revManifest.dest;
+  const entry = config.paths.pages.entry;
+  const dest = config.paths.pages.dest;
+  const contentPath = config.paths.content.dest;
+  const definition = config.paths.definition.entry;
+  const manifestFile = config.paths.revManifest.dest;
 
   // Put the default language at the root
   const getLanguagePath = (language) => {
@@ -25,7 +25,7 @@ module.exports = (gulp, $, config) => {
 
   // Returns the relative path between the page and the root of the web server
   const getRelativePath = (file, language) => {
-    const destPath = config.skeletonConfig.pages.entryPath + getLanguagePath(language);
+    const destPath = config.paths.pages.entryPath + getLanguagePath(language);
     const filePath = path.dirname(file.path);
     return `${path.relative(filePath, destPath) || '.'}/`;
   };
@@ -46,7 +46,7 @@ module.exports = (gulp, $, config) => {
         .reduce((a, b) => a.concat(b), [])
         .reduce((acc, definitionPath) => {
           const normalizedPath = definitionPath
-            .replace(config.skeletonConfig.base.entry, '')
+            .replace(config.paths.base.entry, '')
             .replace('/definition.yml', '')
             ;
           return _.merge(acc, {

@@ -3,11 +3,11 @@ const stream = require('../utils/browserSync').stream;
 const handleError = require('../utils/handleError');
 
 module.exports = (gulp, $, config) => {
-  const entry = config.skeletonConfig.styles.entry;
-  const dest = config.skeletonConfig.styles.dest;
+  const entry = config.paths.styles.entry;
+  const dest = config.paths.styles.dest;
   // previously rev files such as assets that might have been referenced
   // in the styles (and their path needs to be updated)
-  const manifestFile = config.skeletonConfig.revManifest.dest;
+  const manifestFile = config.paths.revManifest.dest;
 
   const task = () =>
     gulp.src(entry)

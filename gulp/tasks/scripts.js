@@ -5,9 +5,9 @@ const gulpWebpack = require('webpack-stream');
 const webpackConfig = require('../../webpack.config');
 
 module.exports = (gulp, $, config) => {
-  const entry = config.skeletonConfig.scripts.entry;
-  const dest = config.skeletonConfig.scripts.dest;
-  const manifestFile = config.skeletonConfig.revManifest.dest;
+  const entry = config.paths.scripts.entry;
+  const dest = config.paths.scripts.dest;
+  const manifestFile = config.paths.revManifest.dest;
 
   const task = () =>
     gulp.src(entry)

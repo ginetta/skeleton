@@ -1,5 +1,5 @@
 module.exports = (gulp, $, config) => {
-  const entry = config.skeletonConfig.tooling.all;
+  const entry = config.paths.tooling.all;
 
   const task = () =>
     gulp.src(entry)

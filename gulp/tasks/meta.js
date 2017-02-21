@@ -1,6 +1,6 @@
 module.exports = (gulp, $, config) => {
-  const entry = config.skeletonConfig.meta.entry;
-  const dest = config.skeletonConfig.meta.dest;
+  const entry = config.paths.meta.entry;
+  const dest = config.paths.meta.dest;
 
   const task = () => gulp.src(entry)
       .pipe($.changed(entry))

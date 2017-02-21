@@ -1,7 +1,7 @@
 module.exports = (gulp, $, config) => {
-  const entry = config.skeletonConfig.assets.entry;
-  const dest = config.skeletonConfig.assets.dest;
-  const manifestFile = config.skeletonConfig.revManifest.dest;
+  const entry = config.paths.assets.entry;
+  const dest = config.paths.assets.dest;
+  const manifestFile = config.paths.revManifest.dest;
 
   const task = () => gulp.src(entry)
       .pipe($.changed(dest))

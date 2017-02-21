@@ -1,8 +1,8 @@
 const merge = require('merge-stream');
 
 module.exports = (gulp, $, config) => {
-  const entry = config.skeletonConfig.content.entryPath;
-  const dest = config.skeletonConfig.content.dest;
+  const entry = config.paths.content.entryPath;
+  const dest = config.paths.content.dest;
 
   const task = () => {
     // Generate the language file for each language
