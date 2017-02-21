@@ -1,4 +1,3 @@
-const _ = require('lodash');
 const browserSync = require('../utils/browserSync');
 
 const reload = browserSync.reload;
