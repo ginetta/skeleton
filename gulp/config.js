@@ -8,7 +8,11 @@ module.exports = () => {
 
   paths = Object.assign({}, paths, {
     scripts: {
-      entry: [`${paths.base.entry}scripts/**/*.js`],
+      entry: [
+        `${paths.base.entry}layouts/**/*.js`,
+        `${paths.base.entry}pages/**/*.js`,
+        `${paths.base.entry}vendor.js`,
+      ],
       all: [
         `${paths.base.entry}**/*.js`,
       ],
@@ -16,7 +20,8 @@ module.exports = () => {
     },
     styles: {
       entry: [
-        `${paths.base.entry}styles/**/*.scss`
+        `${paths.base.entry}layouts/**/*.scss`,
+        `${paths.base.entry}pages/**/*.scss`,
       ],
       all: [
         `${paths.base.entry}**/*.scss`

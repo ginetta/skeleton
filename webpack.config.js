@@ -1,16 +1,7 @@
 const webpack = require('webpack');
 const path = require('path');
-const globEntries = require('webpack-glob-entries');
 
 module.exports = config => ({
-  // Here the application starts executing
-  // and webpack starts bundling
-  // can be string | object {entryname: entrypath} | array
-  // we are using an object here (merged result of `globEntries` for each entry glob)
-  entry: config.paths.scripts.entry
-    .map(globEntries)
-    .reduce((a, b) => Object.assign({}, a, b), {}),
-
   // options related to how webpack emits results
   output: {
     // the filename template for entry chunks

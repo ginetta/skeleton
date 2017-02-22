@@ -1,13 +1,16 @@
-extends ../layouts/default
+extends ../layouts/default/layout
 
-include ../modules/**/*
 include ../elements/**/*
+include ../modules/**/*
+
 
 block meta
   title project-name
   //- TODO: add you page meta tags
 
 block body
-  .about.l-absolute-centered
-    +header(data.index.header)
-      != helpers.markdown(data.index.content)
+  h1 Skeleton
+  a(href="about") About
+
+block append scripts
+  script(src=relativePath + '/js/index.js')

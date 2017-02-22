@@ -1,0 +1,15 @@
+extends ../../layouts/default/layout
+
+include ../../elements/**/*
+include ../../modules/**/*
+
+block append styles
+  link(rel='stylesheet', href=relativePath + 'css/about/style.css')
+
+block meta
+  title project-name
+  //- TODO: add you page meta tags
+
+block body
+  h1 Skeleton
+  a(href="..") Home
