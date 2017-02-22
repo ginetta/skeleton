@@ -36,6 +36,8 @@ module.exports = () => {
     assets: {
       src: [
         `${basePaths.src}materials/icons/`,
+        `${basePaths.src}materials/fonts/`,
+        `${basePaths.src}materials/images/`,
         `${basePaths.content}images/`
       ],
       dest: `${basePaths.dest}assets`,
