@@ -24,7 +24,7 @@ module.exports = () => {
     },
     content: {
       src: `${basePaths.content}texts/`,
-      dest: `${basePaths.dest}content/texts/`,
+      dest: `${basePaths.dest}content/`,
     },
     pages: {
       src: `${basePaths.src}pages/`,
@@ -33,21 +33,18 @@ module.exports = () => {
     layouts: {
       src: `${basePaths.src}layouts/`,
     },
-    images: {
-      src: `${basePaths.content}images/`,
-      dest: `${basePaths.dest}content/images/`,
+    assets: {
+      src: [
+        `${basePaths.src}materials/icons/`,
+        `${basePaths.src}materials/fonts/`,
+        `${basePaths.src}materials/images/`,
+        `${basePaths.content}images/`
+      ],
+      dest: `${basePaths.dest}assets`,
     },
-    logos: {
-      src: `${basePaths.assets}logos/`,
-      dest: `${basePaths.dest}assets/logos/`,
-    },
-    favicons: {
-      src: `${basePaths.assets}favicons/`,
-      dest: basePaths.dest,
-    },
-    fonts: {
-      src: `${basePaths.assets}fonts/`,
-      dest: `${basePaths.dest}assets/fonts/`,
+    meta: {
+      src: `${basePaths.src}meta/`,
+      dest: `${basePaths.dest}`,
     },
     revManifest: {
       dest: `${basePaths.dest}rev-manifest.json`,
@@ -60,10 +57,8 @@ module.exports = () => {
     content: `${paths.content.src}**/*.yml`,
     pages: `${paths.pages.src}**/*.pug`,
     layouts: `${paths.layouts.src}**/*.pug`,
-    images: `${paths.images.src}**/*`,
-    logos: `${paths.logos.src}**/*`,
-    favicons: `${paths.favicons.src}**/*`,
-    fonts: `${paths.fonts.src}**/*`,
+    assets: paths.assets.src.map(folder => `${folder}**/*`),
+    meta: `${paths.meta.src}**/*`,
   };
 
   const components = [

@@ -10,11 +10,9 @@ module.exports = (gulp, $, config) => {
   const stylesFiles = [config.appFiles.styles];
   const pagesFiles = [config.appFiles.pages, config.appFiles.layouts];
   const contentSrcFiles = config.appFiles.content;
-  const logosFiles = config.appFiles.logos;
-  const faviconsFiles = config.appFiles.favicons;
-  const imagesFiles = config.appFiles.images;
-  const fontsFiles = config.appFiles.fonts;
+  const assetsFiles = config.appFiles.assets;
   const componentsDirs = config.components;
+  const metaFiles = config.appFiles.meta;
 
   _.map(componentsDirs, componentDir => scriptFiles.push(`${componentDir}**/*.js`));
   _.map(componentsDirs, componentDir => stylesFiles.push(`${componentDir}**/*.scss`));
@@ -37,8 +35,11 @@ module.exports = (gulp, $, config) => {
     // Watching Content
     gulp.watch(contentSrcFiles, gulp.series('build:content', 'build:pages', reload));
 
-    // // Watching Assets
-    gulp.watch([logosFiles, faviconsFiles, imagesFiles, fontsFiles], gulp.parallel('build:assets'));
+    // Watching Assets
+    gulp.watch(assetsFiles, gulp.parallel('build:assets'));
+
+    // Watching Meta
+    gulp.watch(metaFiles, gulp.parallel('build:meta'));
   };
 
   task.description = 'Serve the build folder';
