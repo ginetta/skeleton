@@ -5,16 +5,7 @@ module.exports = (gulp, $, config) => {
   const assetsDest = config.paths.assets.dest;
   const manifestFile = config.paths.revManifest.dest;
 
-  const blacklistedFolders = [
-    path.normalize(path.resolve(__dirname, '../../', config.paths.content.src)), // /content/texts
-  ];
-
-  const isAssetToBeRevAndCopied = file => !blacklistedFolders.some(blacklistedFolder =>
-      file.path.indexOf(blacklistedFolder) !== -1
-    );
-
   const task = () => gulp.src(assetsSrc)
-      .pipe($.filter(isAssetToBeRevAndCopied))
       .pipe($.changed(assetsDest))
       .pipe($.if(config.isProd, $.rev()))
       .pipe($.if(config.isProd, gulp.dest(assetsDest)))

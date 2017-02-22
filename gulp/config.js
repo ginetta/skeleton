@@ -34,7 +34,10 @@ module.exports = () => {
       src: `${basePaths.src}layouts/`,
     },
     assets: {
-      src: [`${basePaths.src}materials/`, `${basePaths.content}`],
+      src: [
+        `${basePaths.src}materials/icons/`,
+        `${basePaths.content}images/`
+      ],
       dest: `${basePaths.dest}assets`,
     },
     meta: {
@@ -46,15 +49,13 @@ module.exports = () => {
     },
   };
 
-  const assetsFileTypes = '+(bmp|eot|flv|gif|ico|jpg|jpeg|mp4|png|svg|swf|webp|woff|woff2|xloc|xml|xpi)';
-
   const appFiles = {
     scripts: `${paths.scripts.src}**/*.js`,
     styles: `${paths.styles.src}**/*.scss`,
     content: `${paths.content.src}**/*.yml`,
     pages: `${paths.pages.src}**/*.pug`,
     layouts: `${paths.layouts.src}**/*.pug`,
-    assets: paths.assets.src.map(folder => `${folder}**/*.${assetsFileTypes}`),
+    assets: paths.assets.src.map(folder => `${folder}**/*`),
     meta: `${paths.meta.src}**/*`,
   };
 
