@@ -7,11 +7,12 @@
     "3.base",
     "4.layout";
 
-@import "../modules/**/*.scss";
+@import "../materials/**/*.scss";
 @import "../elements/**/*.scss";
+@import "../modules/**/*.scss";
+
 
 @import
     "5.helpers",
     "6.print",
     "7.shame";
-
