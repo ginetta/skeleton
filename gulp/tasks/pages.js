@@ -41,7 +41,7 @@ module.exports = (gulp, $, config) => {
         .reduce((a, b) => a.concat(b), [])
         .reduce((acc, definitionPath) => {
           const normalizedPath = definitionPath
-            .replace(config.entryPaths.src, '')
+            .replace(config.entryPaths.root, '')
             .replace('/definition.yml', '')
             ;
           return _.merge(acc, {

@@ -44,7 +44,7 @@ module.exports = () => {
   };
 
   const entryPaths = {
-    src: 'src/',
+    root: 'src/',
     pages: 'src/pages',
     content: 'content/texts/',
   };
