@@ -13,7 +13,7 @@ module.exports = () => {
     // this files will generate content files
     content: ['content/texts/**/*.yml'],
     assets: [
-      'src/materials/**/',
+      'src/materials/**/*',
       '!src/materials/**/*.{yml,scss,pug,js}',
       'content/**/*',
       '!content/texts/**/*',
@@ -37,7 +37,7 @@ module.exports = () => {
     pages: ['src/**/*.pug', 'src/**/*.yml'],
     content: ['content/texts/**/*.yml'],
     assets: [
-      'src/materials/**/',
+      'src/materials/**/*',
       'content/**/*',
     ],
     meta: ['src/meta/**/*']
