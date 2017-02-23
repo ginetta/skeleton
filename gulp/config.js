@@ -55,8 +55,8 @@ module.exports = () => {
     styles: 'build/css/',
     pages: 'build/',
     content: 'build/content/',
-    assets: 'build/assets',
-    meta: 'build',
+    assets: 'build/assets/',
+    meta: 'build/',
     revManifest: 'build/rev-manifest.json',
   };
 
