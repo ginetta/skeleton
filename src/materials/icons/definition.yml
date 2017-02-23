@@ -3,3 +3,4 @@ data:
   title: Back
 options:
   role: ['presentation', 'img']
+  reference: [true, false]
