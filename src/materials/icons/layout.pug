@@ -18,12 +18,15 @@ mixin icon(data, options)
   - var shouldHaveTitle = options.role === 'img' && data.title
   - var titleUniqueId = 'icon-title--' + iconCount++
 
-  svg(
-    class="icon",
-    role=options.role,
-    title=shouldHaveTitle && data.title,
-    aria-labelledby= shouldHaveTitle && titleUniqueId
-  )&attributes(attributes)
-    if shouldHaveTitle
-      title(id=titleUniqueId)= data.title
-    use(xlink:href="assets/icons/sprite.svg#" + data.name)
+  if options.reference
+    svg(
+      class="icon",
+      role=options.role,
+      title=shouldHaveTitle && data.title,
+      aria-labelledby= shouldHaveTitle && titleUniqueId
+    )&attributes(attributes)
+      if shouldHaveTitle
+        title(id=titleUniqueId)= data.title
+      use(xlink:href="assets/icons/sprite.svg#" + data.name)
+  else
+    != helpers.inline("build/assets/icons/" + data.name + ".svg")
