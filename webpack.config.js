@@ -1,14 +1,23 @@
 const webpack = require('webpack');
 const path = require('path');
-const globEntries = require('webpack-glob-entries');
+const glob = require('glob');
 
 module.exports = config => ({
+  context: path.resolve(__dirname, config.entryPaths.root),
   // Here the application starts executing
   // and webpack starts bundling
   // can be string | object {entryname: entrypath} | array
   // we are using an object here (merged result of `globEntries` for each entry glob)
   entry: config.entryGlobs.scripts
-    .map(globEntries)
+    // convert glob to array of paths
+    .map(pattern => glob.sync(pattern))
+    // convert array of paths to webpack entries
+    // (by removing "src" and ".js" from chunkname)
+    // e.g. { "layout/default/script": "src/layout/default/script.js" }
+    .map(paths => paths.reduce((acc, chunkPath) => Object.assign({}, acc, {
+      [chunkPath.replace(config.entryPaths.root, '').replace('.js', '')]: chunkPath
+    }), {}))
+    // concat resolved paths from each glob
     .reduce((a, b) => Object.assign({}, a, b), {}),
 
   // options related to how webpack emits results
@@ -18,7 +27,7 @@ module.exports = config => ({
 
     // the target directory for all output files
     // must be an absolute path (thus the `path.resolve`)
-    path: path.resolve(__dirname, 'build'),
+    path: path.resolve(__dirname, config.destPaths.root),
   },
 
   module: {
@@ -51,8 +60,8 @@ module.exports = config => ({
     // serve the shared code from cache, rather than being forced to load a
     // larger bundle whenever a new page is visited.
     new webpack.optimize.CommonsChunkPlugin({
-      name: 'vendor',
-      filename: 'vendor.js',
+      name: 'layouts/default/vendor',
+      filename: 'layouts/default/vendor.js',
     }),
 
   // Production-Only Plugins

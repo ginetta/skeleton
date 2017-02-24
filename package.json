@@ -50,7 +50,6 @@
     "pug": "^2.0.0-beta11",
     "pug-include-glob": "^0.3.2",
     "webpack": "^2.2.1",
-    "webpack-glob-entries": "^1.0.1",
     "webpack-stream": "^3.2.0",
     "yamljs": "^0.2.8",
     "yargs": "^6.6.0"
