@@ -10,7 +10,7 @@ module.exports = (gulp, $, config) => {
   const manifestDestPath = config.destPaths.revManifest;
 
   const task = () =>
-    gulp.src(entryGlobs)
+    gulp.src(entryGlobs, { base: config.entryPaths.root })
       .pipe($.plumber(handleError))
       .pipe($.sassGlob())
       .pipe($.if(!config.isProd, $.sourcemaps.init()))
