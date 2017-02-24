@@ -1,0 +1,42 @@
+/* basic structure */
+.l-grid {
+  overflow: hidden;
+}
+
+.l-clear {
+  clear: both;
+}
+
+.l-one-whole {
+  width: 100%;
+}
+
+.l-one-half {
+  width: 50%;
+}
+
+.l-one-third {
+  width: 33.333%;
+}
+
+.l-one-quarter {
+  width: 25%;
+}
+
+@include breakpoint(mobile) {
+  .l-one-whole-mobile {
+    width: 100%;
+  }
+
+  .l-one-half-mobile {
+    width: 50%;
+  }
+
+  .l-one-third-mobile {
+    width: 33.333%;
+  }
+
+  .l-one-quarter-mobile {
+    width: 25%;
+  }
+}
