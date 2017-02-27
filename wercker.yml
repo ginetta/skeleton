@@ -37,7 +37,7 @@ deploy-branch:
       context: wercker/deploy-branch
       msg: Deploy was successfull
       fail: There was an error in the deployement
-      url: https://$G_STAGING_PROJECT_PATH/branch/$WERCKER_GIT_BRANCH
+      url: http://$G_STAGING_PROJECT_PATH/branch/$WERCKER_GIT_BRANCH
 
 deploy-master:
   steps:
