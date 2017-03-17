@@ -8,7 +8,7 @@ module.exports = {
 
   // Put the default language at the root
   getLanguagePath: (language, languages) => {
-    if (languages.lenght === 1) {
+    if (languages.length === 1) {
       return '';
     }
     return `${language}/`;

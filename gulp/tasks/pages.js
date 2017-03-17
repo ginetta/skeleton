@@ -29,11 +29,14 @@ module.exports = (gulp, $, config) => {
     }
 
     // Returns the relative path between the page and the root of the web server
-    const getRelativePath = (file, language) => {
-      const languageDestPath = config.entryPaths.pages +
-        configHelpers.getLanguagePath(language, languages);
-      const filePath = path.dirname(file.path);
-      return `${path.relative(filePath, languageDestPath) || '.'}/`;
+    const getRootPathFromPage = (file, language) => {
+      // e.g.: /src/pages
+      const originalPath = path.dirname(file.path);
+      // e.g.: /src/pages/en
+      const finalPath = `${originalPath}/${configHelpers.getLanguagePath(language, languages)}`;
+
+      // e.g.: ..
+      return path.relative(finalPath, originalPath);
     };
 
     function loadMergedDefinitions() {
@@ -60,7 +63,7 @@ module.exports = (gulp, $, config) => {
           const mergedDefinitions = loadMergedDefinitions();
           return {
             data: loadContentForLanguage(language),
-            relativePath: getRelativePath(file, language),
+            relativePath: getRootPathFromPage(file, language),
             helpers: pageshelpers(config, mergedDefinitions),
             language,
           };
