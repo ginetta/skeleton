@@ -5,3 +5,4 @@ node_modules
 *.orig
 .tmp
 npm-debug.log
+coverage

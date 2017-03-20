@@ -7,7 +7,8 @@
     "gulp": "gulp",
     "start": "gulp",
     "build": "NODE_ENV=production gulp build",
-    "test": "gulp test",
+    "test": "jest --coverage --collectCoverageFrom=src/**/*.js",
+    "test:tdd": "npm run test -- --watch",
     "serve": "gulp serve"
   },
   "dependencies": {
@@ -43,6 +44,7 @@
     "gulp-sourcemaps": "^2.4.1",
     "gulp-sync": "^0.1.4",
     "jade-inline-file": "^0.1.0",
+    "jest": "^19.0.2",
     "lodash": "^4.17.4",
     "marked": "^0.3.6",
     "merge-stream": "^1.0.1",
