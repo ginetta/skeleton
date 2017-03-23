@@ -42,7 +42,11 @@ module.exports = (gulp, $, config) => {
       const finalPath = `${originalPath}/${configHelpers.getLanguagePath(language, languages, defaultLanguage)}`;
 
       // e.g.: ..
-      return path.relative(finalPath, originalPath);
+      const relativePath = path.relative(finalPath, originalPath);
+
+      // "" --> ""
+      // ".." --> "../"
+      return relativePath ? `${relativePath}/` : relativePath;
     };
 
     function loadMergedDefinitions() {
