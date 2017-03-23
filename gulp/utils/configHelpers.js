@@ -7,10 +7,17 @@ module.exports = {
   },
 
   // Put the default language at the root
-  getLanguagePath: (language, languages) => {
+  getLanguagePath: (language, languages, defaultLanguage) => {
+    // put files on root if there is only 1 language
     if (languages.length === 1) {
       return '';
     }
+
+    // put the defaultLanguage pages on the root
+    if (language === defaultLanguage) {
+      return '';
+    }
+
     return `${language}/`;
   }
 };

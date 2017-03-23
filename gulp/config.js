@@ -66,5 +66,6 @@ module.exports = () => {
     entryGlobs,
     watchGlobs,
     isProd: process.env.NODE_ENV === 'production',
+    defaultLanguage: 'en'
   };
 };

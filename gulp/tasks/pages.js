@@ -15,6 +15,7 @@ module.exports = (gulp, $, config) => {
   const contentPath = config.destPaths.content;
   const definitionGlob = config.entryGlobs.definitions;
   const manifestDestPath = config.destPaths.revManifest;
+  const defaultLanguage = config.defaultLanguage;
 
   // Load the content for the page
   function loadContentForLanguage(language) {
@@ -25,7 +26,7 @@ module.exports = (gulp, $, config) => {
     const languages = configHelpers.getAvailableLanguages(config);
 
     function getDestPath(language) {
-      return destPath + configHelpers.getLanguagePath(language, languages);
+      return destPath + configHelpers.getLanguagePath(language, languages, defaultLanguage);
     }
 
     // Returns the relative path between the page and the root of the web server
@@ -33,7 +34,7 @@ module.exports = (gulp, $, config) => {
       // e.g.: /src/pages
       const originalPath = path.dirname(file.path);
       // e.g.: /src/pages/en
-      const finalPath = `${originalPath}/${configHelpers.getLanguagePath(language, languages)}`;
+      const finalPath = `${originalPath}/${configHelpers.getLanguagePath(language, languages, defaultLanguage)}`;
 
       // e.g.: ..
       return path.relative(finalPath, originalPath);
