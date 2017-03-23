@@ -15,7 +15,7 @@ module.exports = (gulp, $, config) => {
   const contentPath = config.destPaths.content;
   const definitionGlob = config.entryGlobs.definitions;
   const manifestDestPath = config.destPaths.revManifest;
-  const defaultLanguage = config.defaultLanguage;
+  let defaultLanguage = config.defaultLanguage;
 
   // Load the content for the page
   function loadContentForLanguage(language) {
@@ -24,6 +24,11 @@ module.exports = (gulp, $, config) => {
 
   const task = () => {
     const languages = configHelpers.getAvailableLanguages(config);
+
+    if (!defaultLanguage && languages.length > 1) {
+      console.warn('There is more than one language defined. Consider adding a defaultLanguage on gulp/config.js. Alternatively, configure your server so it handles the root path of the project.');
+      defaultLanguage = languages[0];
+    }
 
     function getDestPath(language) {
       return destPath + configHelpers.getLanguagePath(language, languages, defaultLanguage);
