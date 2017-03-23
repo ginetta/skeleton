@@ -31,6 +31,13 @@ deploy-branch:
       user: $G_STAGING_USER
       sshkey: $G_STAGING_KEY
       source: $WERCKER_SOURCE_DIR/build/
+  after-steps:
+    - mbrevda/github-status:
+      token: $G_GITHUB_TOKEN
+      context: wercker/deploy-branch
+      msg: Deploy was successfull
+      fail: There was an error in the deployement
+      url: http://$G_STAGING_PROJECT_PATH/branch/$WERCKER_GIT_BRANCH
 
 deploy-master:
   steps:
