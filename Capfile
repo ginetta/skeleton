@@ -1,26 +1,11 @@
 # Load DSL and Setup Up Stages
-#require 'capistrano/setup'
-# Includes default deployment tasks
-#require 'capistrano/deploy'
-# Load tasks from gems
-#require 'capistrano/composer'
-# Loads custom tasks from `lib/capistrano/tasks' if you have any defined.
-# Customize this path to change the location of your custom tasks.
-#Dir.glob('lib/capistrano/tasks/*.cap').each { |r| import r }
-#require 'capistrano-nc/nc'
-# load 'config/deploy/cap_notify.rb'
-#require 'capistrano/memcached'
-#require 'slackistrano'
-#require 'capistrano/npm'
-
-# Load DSL and Setup Up Stages
 require 'capistrano/setup'
 
 # Includes default deployment tasks
 require 'capistrano/deploy'
 
 # Load tasks from gems
-# require 'capistrano/composer'
+require 'capistrano/npm'
 
 require "capistrano/scm/git"
 install_plugin Capistrano::SCM::Git
@@ -31,10 +16,8 @@ Dir.glob('lib/capistrano/tasks/*.cap').each { |r| import r }
 
 # require 'capistrano-nc/nc'
 
-#load 'config/deploy/cap_notify.rb'
+# load 'config/deploy/cap_notify.rb'
 
 require 'slackistrano/capistrano'
 
-#require 'capistrano/file-permissions'
-
-#require 'capistrano/npm'
+# require 'capistrano/file-permissions'

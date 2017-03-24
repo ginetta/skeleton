@@ -10,9 +10,7 @@ set :deploy_to, -> { "/var/www/vhosts/#{fetch(:application)}" }
 
 # Extended Server Syntax
 # ======================
-# server 'endeavour', user: 'deploy', roles: %w{web app db}
-# server 'www-ch.stage.ttss.ch', user: 'deploy', roles: %w{web app db}
-server 'compute-01.stage.ginetta.net', user: 'deploy', roles: %w{web app db}, port: 2232
+server 'compute-01.stage.ginetta.net', user: 'deploy', roles: %w{web app db}
 
 # you can set custom ssh options
 # it's possible to pass any option but you need to keep in mind that net/ssh understand limited list of options
@@ -24,4 +22,4 @@ server 'compute-01.stage.ginetta.net', user: 'deploy', roles: %w{web app db}, po
 #    auth_methods: %w(password)
 #  }
 
-fetch(:default_env).merge!(wp_env: :staging)
+# fetch(:default_env).merge!(wp_env: :staging)

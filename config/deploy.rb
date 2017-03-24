@@ -10,8 +10,8 @@ set :nc_terminal, 'com.googlecode.iterm2'
 # set :file_permissions_groups, ["www-data"]
 
 # set :cap_notify_emails, [ 'tech@ttss.ch' ]
-# set :cap_notify_from, 'deploy@frontal.ch'
-# set :cap_notify_callsign, 'EXAMPLE'
+# set :cap_notify_from, 'deploy@ginetta.net'
+# set :cap_notify_callsign, 'GINETTA'
 # set :cap_notify_latest_commit, proc { `git rev-parse HEAD`.strip }
 
 set :slackistrano, {
