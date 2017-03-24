@@ -35,31 +35,29 @@ set :deploy_to, -> { "/var/www/vhosts/#{fetch(:application)}" }
 set :log_level, :info
 # set :log_level, :debug
 
-set :linked_files, %w{.env web/.htaccess}
-set :linked_dirs, %w{web/app/uploads web/app/ewww}
+# set :linked_files, %w{.env web/.htaccess}
+set :linked_files, %w{.env}
+# set :linked_dirs, %w{web/app/uploads web/app/ewww}
 
 namespace :deploy do
-    desc "Send email notification"
-        task :send_notification do
-            Notifier.deploy_notification(self).deliver_now
-    end
+  desc "Installs npm dependencies"
+  task :npm_install, :roles => :app, :except => { :no_release => true } do
+    run "npm install"
+  end
 
-    desc 'Update WordPress translations'
-	task :update_wp_translations do
-        on roles(:app) do
-            within fetch(:release_path) do
-                execute "wp core language update --path='#{fetch(:release_path)}/web/wp' --debug"
-            end
-        end
-    end
+  desc "Build source code into static assets"
+  task :npm_build, :roles => :app, :except => { :no_release => true } do
+    run "npm run build"
+  end
 end
 
+# by default it only installs dependencies. We remove the --production flag
+# so it also installs devDependencies
+set :npm_flags, '--silent --no-progress'
 
-set :npm_target_path, -> { release_path.join('subdir') } # default not set
-set :npm_flags, '--silent --no-progress'    # default
-set :npm_roles, :all                                     # default
-set :npm_env_variables, {}                               # default
 
 after :deploy, 'deploy:send_notification'
+before 'deploy', 'deploy:npm_install'
+before 'deploy', 'deploy:npm_build'
 # after 'deploy:finishing', 'deploy:update_wp_translations'
 # after 'deploy:publishing', 'memcached:restart'
