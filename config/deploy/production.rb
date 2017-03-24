@@ -23,4 +23,4 @@ server 'compute-01.stage.ginetta.net', user: 'deploy', roles: %w{web app db}
 #    auth_methods: %w(password)
 #  }
 
-fetch(:default_env).merge!(wp_env: :production)
+# fetch(:default_env).merge!(wp_env: :production)

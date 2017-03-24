@@ -10,26 +10,26 @@ all:
 # NDEPLOY
 #
 ndeploy_stage:
-	bundle exec cap -n staging deploy
+	cap -n staging deploy
 
 ndeploy_prod:
-	bundle exec cap -n production deploy
+	cap -n production deploy
 
 #
 # DEPLOY
 #
 deploy_stage:
-	bundle exec cap staging deploy
+	cap staging deploy
 
 deploy_prod:
-	bundle exec cap production deploy
-	# bundle exec cap -z node-x.foo.ch production deploy
+	cap production deploy
+	# cap -z node-x.foo.ch production deploy
 
 #
 # DEPLOY ROLLBACK
 #
 deploy_stage_rollback:
-	bundle exec cap staging deploy:rollback
+	cap staging deploy:rollback
 
 deploy_prod_rollback:
-	bundle exec cap production deploy:rollback
+	cap production deploy:rollback

@@ -1,63 +1,65 @@
-set :application, 'gientta-skeleton'
-set :repo_url, 'git@github.com:ginetta/skeleton.git'
-set :default_env, { path: "/usr/local/bin:$PATH" }
+# config valid only for current version of Capistrano
+lock "3.8.0"
 
-set :keep_releases, 2
+set :application, "ginetta-skeleton"
+set :repo_url, 'git@github.com:ginetta/skeleton.git'
 
 set :nc_terminal, 'com.googlecode.iterm2'
 
-set :cap_notify_emails, [ 'tech@ttss.ch' ]
-set :cap_notify_from, 'support@ginetta.net'
-set :cap_notify_callsign, 'GINETTA'
-set :cap_notify_latest_commit, proc { `git rev-parse HEAD`.strip }
+# set :file_permissions_paths, [ ]
+# set :file_permissions_groups, ["www-data"]
 
-# ttss channel
-# set :slack_webhook, "https://hooks.slack.com/services/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"
-# ginetta channel
-set :slack_webhook, "https://hooks.slack.com/services/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"
+# set :cap_notify_emails, [ 'tech@ttss.ch' ]
+# set :cap_notify_from, 'deploy@frontal.ch'
+# set :cap_notify_callsign, 'EXAMPLE'
+# set :cap_notify_latest_commit, proc { `git rev-parse HEAD`.strip }
 
-# Maybe required for restarting memcached but fails
-# set :pty, true
+set :slackistrano, {
+    channel: '#s-ginetta-ttss',
+    webhook: 'https://hooks.slack.com/services/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'
+}
 
-# Branch options
-# Prompts for the branch name (defaults to current branch)
-#ask :branch, proc { `git rev-parse --abbrev-ref HEAD`.chomp }
+# Default branch is :master
+# ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
 
-# Sets branch to current one
-#set :branch, proc { `git rev-parse --abbrev-ref HEAD`.chomp }
-
-# Hardcodes branch to always be master
-# This could be overridden in a stage config file
-set :branch, :master
-
+# Default deploy_to directory is /var/www/my_app_name
 set :deploy_to, -> { "/var/www/vhosts/#{fetch(:application)}" }
 
-set :log_level, :info
-# set :log_level, :debug
+# set :log_level, :info
+set :log_level, :debug
 
+# Default value for :format is :airbrussh.
+# set :format, :airbrussh
+
+# You can configure the Airbrussh format using :format_options.
+# These are the defaults.
+# set :format_options, command_output: true, log_file: "log/capistrano.log", color: :auto, truncate: :auto
+
+# Default value for :pty is false
+# set :pty, true
+
+# Default value for :linked_files is []
+# append :linked_files, "config/database.yml", "config/secrets.yml"
 # set :linked_files, %w{.env web/.htaccess}
-set :linked_files, %w{.env}
+
+# Default value for linked_dirs is []
+# append :linked_dirs, "log", "tmp/pids", "tmp/cache", "tmp/sockets", "public/system"
 # set :linked_dirs, %w{web/app/uploads web/app/ewww}
 
-namespace :deploy do
-  desc "Installs npm dependencies"
-  task :npm_install, :roles => :app, :except => { :no_release => true } do
-    run "npm install"
-  end
+# Default value for default_env is {}
+# set :default_env, { path: "/opt/ruby/bin:$PATH" }
+set :default_env, { path: "/usr/local/bin:$PATH" }
 
-  desc "Build source code into static assets"
-  task :npm_build, :roles => :app, :except => { :no_release => true } do
-    run "npm run build"
-  end
-end
+# Default value for keep_releases is 5
+set :keep_releases, 2
 
-# by default it only installs dependencies. We remove the --production flag
-# so it also installs devDependencies
-set :npm_flags, '--silent --no-progress'
+# before "deploy:updated", "deploy:set_permissions:acl"
 
-
-after :deploy, 'deploy:send_notification'
-before 'deploy', 'deploy:npm_install'
-before 'deploy', 'deploy:npm_build'
-# after 'deploy:finishing', 'deploy:update_wp_translations'
-# after 'deploy:publishing', 'memcached:restart'
+# namespace :deploy do
+#     desc "Send email notification"
+#         task :send_notification do
+#             Notifier.deploy_notification(self).deliver_now
+#     end
+# end
+#
+# after :deploy, 'deploy:send_notification'

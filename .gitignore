@@ -5,3 +5,9 @@ node_modules
 *.orig
 .tmp
 npm-debug.log
+.DS_Store
+/.env
+/log
+
+# AppFlow
+/web/.htaccess
