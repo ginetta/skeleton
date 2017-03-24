@@ -50,14 +50,14 @@ module.exports = () => {
   };
 
   const destPaths = {
-    root: 'build/',
-    scripts: 'build/js/',
-    styles: 'build/css/',
-    pages: 'build/',
-    content: 'build/content/',
-    assets: 'build/assets/',
-    meta: 'build/',
-    revManifest: 'build/rev-manifest.json',
+    root: 'public/',
+    scripts: 'public/js/',
+    styles: 'public/css/',
+    pages: 'public/',
+    content: 'public/content/',
+    assets: 'public/assets/',
+    meta: 'public/',
+    revManifest: 'public/rev-manifest.json',
   };
 
   return {
