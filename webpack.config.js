@@ -14,7 +14,11 @@ module.exports = config => ({
     .reduce((a, b) => a.concat(b), [])
     // convert array of files to Object of {chunkName: chunkPath}
     .reduce((a, currentEntryPath) => {
-      const chunkName = currentEntryPath.replace(path.extname(currentEntryPath), '').replace('src/', '');
+      const chunkName = currentEntryPath
+        // remove extension from chunkname
+        .replace(path.extname(currentEntryPath), '')
+        // remove root path from chunkname
+        .replace(config.entryPaths.root, '');
       return Object.assign({}, a, {
         [chunkName]: currentEntryPath
       });
