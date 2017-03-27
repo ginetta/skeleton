@@ -1,6 +1,7 @@
 const _ = require('lodash');
 const markdown = require('marked');
 const pugInline = require('jade-inline-file');
+const v4 = require('uuid/v4');
 
 module.exports = (config, mergedDefinitions) => {
   // TODO: Rewrite and document this helper function
@@ -100,5 +101,6 @@ module.exports = (config, mergedDefinitions) => {
     mergeDefaultOptions,
     markdown,
     inline: pugInline,
+    v4
   };
 };

@@ -53,6 +53,7 @@
     "merge-stream": "^1.0.1",
     "pug": "^2.0.0-beta11",
     "pug-include-glob": "^0.3.2",
+    "uuid": "^3.0.1",
     "webpack": "^2.2.1",
     "webpack-stream": "^3.2.0",
     "yamljs": "^0.2.8",
