@@ -16,7 +16,7 @@
 mixin icon(data, options)
   - var options = helpers.mergeDefaultOptions(options, 'materials/icons');
   - var shouldHaveTitle = options.role === 'img' && data.title
-  - var titleUniqueId = 'icon-title--' + iconCount++
+  - var titleUniqueId = 'icon-title--' + helpers.v4()
 
   if options.reference
     svg(
