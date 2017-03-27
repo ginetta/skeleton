@@ -8,7 +8,7 @@
     "start": "gulp",
     "build": "NODE_ENV=production gulp build",
     "test": "gulp test",
-    "test:tdd": "npm run test -- --watchAll",
+    "test:watch": "npm run test -- --watchAll",
     "serve": "gulp serve"
   },
   "dependencies": {
