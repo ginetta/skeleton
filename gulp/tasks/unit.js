@@ -1,3 +1,5 @@
+const argv = require('yargs').argv;
+
 module.exports = (gulp, $, config) => {
   const scriptsSpec = config.watchGlobs.scriptsSpec;
   const scripts = config.watchGlobs.scripts;
@@ -10,7 +12,9 @@ module.exports = (gulp, $, config) => {
 
   const task = () =>
     gulp.src(rootDir)
-      .pipe($.jestCli.default({
+      // we merge argv so we can override the configs via the command line
+      // e.g.: npm test -- --watchAll
+      .pipe($.jest.default(Object.assign({}, argv || {
         config: {
           collectCoverage: true,
           coverageReporters: [
@@ -21,7 +25,7 @@ module.exports = (gulp, $, config) => {
           ],
           collectCoverageFrom: covererageGlob
         }
-      }))
+      })))
       ;
 
   task.description = 'Cleans the build folder';

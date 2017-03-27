@@ -7,8 +7,8 @@
     "gulp": "gulp",
     "start": "gulp",
     "build": "NODE_ENV=production gulp build",
-    "test": "jest --coverage --collectCoverageFrom=src/**/*.js",
-    "test:tdd": "npm run test -- --watch",
+    "test": "gulp test",
+    "test:tdd": "npm run test -- --watchAll",
     "serve": "gulp serve"
   },
   "dependencies": {
