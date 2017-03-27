@@ -46,6 +46,12 @@ gulp.task(
   )
 );
 
+// ----------//
+//   Tests   //
+// ----------//
+gulp.task('test:unit', t.getTask('unit'));
+gulp.task('test', gulp.parallel('test:unit'));
+
 // ------- -//
 //  Others  //
 // ------ --//
