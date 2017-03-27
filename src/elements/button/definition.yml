@@ -1,0 +1,4 @@
+data:
+  text: text
+options:
+  size: ['normal', 'big', 'small']

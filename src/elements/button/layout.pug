@@ -1,0 +1,13 @@
+mixin button(data, options)
+  - var options = helpers.mergeDefaultOptions(options, 'elements/button');
+  - var classes = ['button', attributes.class];
+  - var isInput = attributes.type === 'submit'
+
+  - var tagName = attributes.href ? 'a' : 'button'
+  if isInput
+    - tagName = 'input'
+
+
+  - classes.push('button--size-' + options.size)
+
+  #{tagName}(class=classes,value=isInput && data.text)&attributes(attributes) #{!isInput ? data.text : null}

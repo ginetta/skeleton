@@ -1,0 +1,25 @@
+/*
+  [1] override <button> styles
+  [2] override <a> styles
+ */
+.button {
+  border: 0; // [1]
+  text-decoration: none; // [2]
+
+  @include base-font();
+  display: inline-block;
+  background: $c-white;
+  color: $c-eigengrau;
+
+
+  line-height: 1.2;
+  padding: .5em 1em;
+  cursor: pointer;
+  &:hover {
+    background: $c-silver;
+  }
+
+  &--size-normal { font-size: 16px; }
+  &--size-small  { font-size: 14px; }
+  &--size-big    { font-size: 20px; }
+}
