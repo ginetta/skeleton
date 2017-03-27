@@ -7,8 +7,8 @@ module.exports = (gulp, $, config) => {
       .pipe($.svgSprite({
         mode: {
           symbol: {
-            dest: '',
             sprite: 'sprite.svg',
+            inline: true
           },
         }
       }))

@@ -18,3 +18,6 @@ html(lang=language)
 
     script(src=relativePath + 'js/layouts/default/vendor.js')
     script(src=relativePath + 'js/layouts/default/script.js')
+
+    //- Inlines the svg sprite, so no extra request is needed.
+    != helpers.inline("build/assets/icons/symbol/sprite.svg")
