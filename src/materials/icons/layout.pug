@@ -27,6 +27,6 @@ mixin icon(data, options)
     )&attributes(attributes)
       if shouldHaveTitle
         title(id=titleUniqueId)= data.title
-      use(xlink:href="assets/icons/sprite.svg#" + data.name)
+      use(xlink:href="#" + data.name)
   else
     != helpers.inline("build/assets/icons/" + data.name + ".svg")
