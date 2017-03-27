@@ -12,15 +12,3 @@ $base-line-height : 1.5;
   font-weight: $base-font-weight;
   font-style : $base-font-style;
 }
-
-
-/**
- * Typography classes
- */
-
-.t-title {
-  @include base-font;
-  font-size: 5rem;
-  line-height: 1.25;
-  margin: 0;
-}
