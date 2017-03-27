@@ -33,6 +33,7 @@ module.exports = () => {
   // when they change, they have influence on the final html.
   const watchGlobs = {
     scripts: ['src/**/*.js'],
+    scriptsSpec: ['src/**/*.spec.js'],
     styles: ['src/**/*.scss'],
     pages: ['src/**/*.pug', 'src/**/*.yml'],
     content: ['content/texts/**/*.yml'],
