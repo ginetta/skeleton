@@ -5,9 +5,9 @@ module.exports = () => {
   // is not an entry file for styles (meaning it shouldn't get compiled)
   const entryGlobs = {
     // this will be webpack entries
-    scripts: ['src/scripts/**/*.js'],
+    scripts: ['src/{layouts,pages}/**/*.js'],
     // this will be compiled as css files
-    styles: ['src/styles/**/*.scss'],
+    styles: ['src/{layouts,pages}/**/*.scss'],
     // this files will generate pages
     pages: ['src/pages/**/*.pug'],
     // this files will generate content files
