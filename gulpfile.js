@@ -13,7 +13,7 @@ gulp.task('clean', t.getTask('clean'));
 gulp.task('build:assets', t.getTask('assets'));
 
 // Generates an SVG sprite out of svg icons
-gulp.task('build:icons', t.getTask('icons'));
+gulp.task('build:icons-sprite', t.getTask('icons-sprite'));
 
 // Moves all the meta files to the build
 gulp.task('build:meta', t.getTask('meta'));
@@ -38,7 +38,7 @@ gulp.task(
       'build:assets',
       'build:meta'
     ),
-    'build:icons',
+    'build:icons-sprite',
     gulp.parallel(
       'build:styles',
       'build:scripts'
