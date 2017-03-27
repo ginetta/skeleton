@@ -3,7 +3,7 @@
 const mediaQuery = require('sensible/mediaQuery');
 
 // This is how you require your component script:
-require('modules/header/script');
+require('components/header/script');
 
 // The code for the website comes here.
 if (mediaQuery.isNot('mobile')) {
