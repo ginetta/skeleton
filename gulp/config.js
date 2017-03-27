@@ -59,6 +59,7 @@ module.exports = () => {
     assets: 'build/assets/',
     meta: 'build/',
     revManifest: 'build/rev-manifest.json',
+    reports: 'reports/'
   };
 
   return {
