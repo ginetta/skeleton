@@ -1,8 +1,6 @@
 build
 node_modules
 .sass-cache
-.DS_Store
-*.orig
 .tmp
 npm-debug.log
 reports
