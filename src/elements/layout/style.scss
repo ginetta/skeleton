@@ -26,31 +26,29 @@
 .l-panorama,
 .l-square,
 .l-landscape {
-  &:before {
-    content: "";
+  &::before {
+    content: '';
     display: block;
   }
 }
 
 .l-panorama {
-  &:before {
+  &::before {
     padding-top: 50%;
   }
 }
 
 .l-square {
-  &:before {
+  &::before {
     padding-top: 100%;
   }
 }
 
 .l-landscape {
-  &:before {
+  &::before {
     padding-top: 75%;
   }
 }
-
-
 
 @include breakpoint(mobile) {
   .l-one-whole-mobile {
@@ -70,19 +68,19 @@
   }
 
   .l-panorama-mobile {
-    &:before{
+    &::before {
       padding-top: 50%;
     }
   }
 
   .l-square-mobile {
-    &:before {
+    &::before {
       padding-top: 100%;
     }
   }
 
   .l-landscape-mobile {
-    &:before {
+    &::before {
       padding-top: 75%;
     }
   }
@@ -90,7 +88,9 @@
 
 .l-absolute-centered {
   position: absolute;
-  top: 50%; left: 10%; right: 10%;
+  top: 50%;
+  left: 10%;
+  right: 10%;
   max-height: 80%;
   transform: translate(0, -50%);
 }

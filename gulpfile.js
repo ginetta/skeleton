@@ -63,8 +63,8 @@ gulp.task('test', gulp.parallel('test:unit'));
 // Serve the build folder
 gulp.task('serve', t.getTask('serve'));
 
-// Lints the tooling files.
-gulp.task('tooling', t.getTask('tooling'));
+// Lints scripts and styles.
+gulp.task('lint', t.getTask('lint'));
 
 // What happens when just running 'gulp'
 gulp.task(

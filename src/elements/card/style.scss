@@ -20,15 +20,14 @@
   }
 }
 
-
 .card-background {
   display: block;
   position: absolute;
   width: 100%;
-  top: 50%; left: 0;
+  top: 50%;
+  left: 0;
   transform: translate(0, -50%);
 }
-
 
 @include breakpoint(mobile) {
   .card {
