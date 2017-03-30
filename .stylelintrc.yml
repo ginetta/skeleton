@@ -1,0 +1,6 @@
+extends:
+  - stylelint-config-standard
+  - stylelint-config-sass-guidelines
+
+rules:
+  order/declaration-block-properties-alphabetical-order: null
