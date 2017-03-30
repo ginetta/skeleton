@@ -12,7 +12,8 @@
     "serve": "gulp serve"
   },
   "dependencies": {
-    "sensible": "0.8.2"
+    "sensible": "0.8.2",
+    "svg4everybody": "^2.1.7"
   },
   "devDependencies": {
     "babel-core": "^6.23.1",
