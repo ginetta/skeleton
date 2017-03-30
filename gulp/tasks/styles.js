@@ -20,6 +20,7 @@ module.exports = (gulp, $, config) => {
       }))
       .pipe($.autoprefixer({ browsers: ['last 2 versions', 'ie 9'] }))
       .pipe($.if(!config.isProd, $.sourcemaps.write({ includeContent: true })))
+      .pipe($.if(config.isProd, $.cssnano()))
       .pipe($.if(config.isProd, $.revReplace({
         manifest: fs.existsSync(manifestDestPath) && gulp.src(manifestDestPath),
       })))
